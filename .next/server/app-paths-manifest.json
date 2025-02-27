@@ -1,0 +1,5 @@
+{
+  "/playground/page": "app/playground/page.js",
+  "/page": "app/page.js",
+  "/(layout-experiments)/text-gradient-on-scroll/page": "app/(layout-experiments)/text-gradient-on-scroll/page.js"
+}

@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { useScroll, useMotionValueEvent, useTransform, useMotionValue } from 'motion/react';
-import { motion } from 'motion/react';
+import { useScroll, useMotionValueEvent, motion} from 'motion/react';
 import type { LenisRef } from 'lenis/react';
 import { ReactLenis } from 'lenis/react';
 import 'lenis/dist/lenis.css';

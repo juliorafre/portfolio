@@ -2,8 +2,7 @@
 
 import { MapIcon, XIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { useState, useRef, useEffect } from 'react';
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import { useState, useRef } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Mapbox from './mapbox';
 
