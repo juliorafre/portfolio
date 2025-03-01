@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${instrumentSerif.variable} antialiased`}>
+      <body className={`${instrumentSerif.variable} font-display antialiased`}>
         <main className="relative flex flex-col min-h-screen min-w-0 ">
           <Navbar />
           {children}

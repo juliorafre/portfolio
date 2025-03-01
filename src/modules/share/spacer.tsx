@@ -37,8 +37,8 @@ const Spacer = ({ url, vHSize, title, numberOfSquares }: SpacerProps) => {
     <div className='w-full px-12'>
       <div className={`relative h-[${vHSize}vh] w-full p-20 grid place-content-center overflow-hidden border rounded-2xl`}>
         <GridPattern numberOfSquares={numberOfSquares} />
-        <p className="absolute top-0 left-0 m-4 border px-2 py-1 backdrop-blur-sm rounded-full">Spacer component</p>
-        <a href={url} target="_blank" rel="noopener noreferrer" className="relative z-10 backdrop-blur-sm px-2 text-sm py-1 rounded-full border flex items-center gap-2 hover:bg-white/10 transition-colors">
+        <p className="absolute top-0 left-0 m-4 border px-2 py-1 backdrop-blur-xs rounded-full">Spacer component</p>
+        <a href={url} target="_blank" rel="noopener noreferrer" className="relative z-10 backdrop-blur-xs px-2 text-sm py-1 rounded-full border flex items-center gap-2 hover:bg-white/10 transition-colors">
           Inspiration: {title}
           <ExternalLinkIcon size={16} />
         </a>

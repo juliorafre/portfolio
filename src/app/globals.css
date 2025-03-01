@@ -1,38 +1,111 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@font-face {
-  font-family: 'Regular';
-  src: url('../../public/fonts/PPNeueWorld-Regular.ttf');
-}
+@plugin 'tailwindcss-animate';
 
-body {
-  font-family: 'Regular';
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.header {
-  background: hsl(0deg 0% 100% / 0.25);
-}
-
-.backdrop-glass {
-  @apply absolute h-[200%] inset-0 pointer-events-none;
-  background: linear-gradient(to bottom, hsl(0, 0%, 95%) 0%, transparent 50%);
-  backdrop-filter: blur(8px) brightness(100%) saturate(140%);
-  mask-image: linear-gradient(to bottom, black 0% 50%, transparent 50% 100%);
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-display: "ui-rounded", "sans-serif"; 
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: system-ui, 'Helvetica', sans-serif;
+
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
 @layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border, currentColor);
+    scroll-behavior: smooth;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    background-color: #FDFDFC;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -60,6 +133,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -86,15 +160,92 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
 
-
-
-@layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+}
+
+@layer utilities {
+  /* @font-face {
+    font-family: 'Regular';
+    src: url('../../public/fonts/PPNeueWorld-Regular.ttf');
   }
+
+  body {
+    font-family: 'Regular';
+  } */
+
+  body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: 'system-ui', Helvetica, sans-serif;
+  }
+
+  .header {
+    background: hsl(0deg 0% 100% / 0.25);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .backdrop-glass {
+    @apply pointer-events-none absolute inset-0;
+    background: linear-gradient(to bottom, hsl(0, 0%, 95%, 0.8) 0%, transparent 100%);
+    backdrop-filter: blur(8px) brightness(100%) saturate(140%);
+    -webkit-backdrop-filter: blur(8px) brightness(100%) saturate(140%);
+    mask-image: linear-gradient(to bottom, black 0% 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0% 50%, transparent 100%);
+  }
+
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+
+  @container (min-width: 640px) {
+    .container-sm\:text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-fade-in {
+      animation: fade-in 0.5s var(--ease-out);
+    }
+
+    .animate-slide-up {
+      animation: slide-up 0.5s var(--ease-out);
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-up {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.clip-path-container {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  overflow: hidden;
+  transition: clip-path 0.25s ease;
+  clip-path: inset(0px 75% 0px 0% round 17px);
 }

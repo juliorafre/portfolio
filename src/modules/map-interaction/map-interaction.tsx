@@ -55,7 +55,7 @@ const MapInteraction = () => {
             }}
             className="relative h-[300px] w-[300px] rounded-3xl overflow-hidden grid place-items-center"
           >
-            <button id="button-close-map" onClick={toggle} className="absolute z-10 top-0 right-0 mt-2 mr-2 bg-white/70 backdrop-blur rounded-full p-2 shadow hover:bg-slate-100 transition-colors">
+            <button id="button-close-map" onClick={toggle} className="absolute z-10 top-0 right-0 mt-2 mr-2 bg-white/70 backdrop-blur-sm rounded-full p-2 shadow-sm hover:bg-slate-100 transition-colors">
               <XIcon size={20} strokeWidth={4} className="text-gray-500" />
             </button>
 
@@ -71,7 +71,7 @@ const MapInteraction = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="absolute z-10 bottom-0 left-0 m-2 rounded-xl shadow bg-white/70 w-[120px] h-[55px] flex flex-col py-2 px-3 backdrop-blur leading-none">
+              className="absolute z-10 bottom-0 left-0 m-2 rounded-xl shadow-sm bg-white/70 w-[120px] h-[55px] flex flex-col py-2 px-3 backdrop-blur-sm leading-none">
               <p className="text-xs font-semibold text-[#646464]">Location</p>
               <p className="text-base font-bold">New York</p>
             </motion.div>
