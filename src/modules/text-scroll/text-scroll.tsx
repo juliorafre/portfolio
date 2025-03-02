@@ -51,13 +51,18 @@ export default function DraggableCurvedMenu() {
     setMiddleItem(actualMiddleItem);
   });
 
-  const onDrag = (_: any, info: PanInfo) => {
+  const onDrag = (
+    _: Parameters<NonNullable<motion.HTMLProps<"div">["onDrag"]>>[0], 
+    info: PanInfo
+  ) => {
     const currentRotation = rotation.get() + info.offset.y * dragFactor;
-
     rotation.set(currentRotation);
   };
 
-  const onDragEnd = (_: any, info: PanInfo) => {
+  const onDragEnd = (
+    _: Parameters<NonNullable<motion.HTMLProps<"div">["onDragEnd"]>>[0], 
+    info: PanInfo
+  ) => {
     const endRotation = rotation.get() + info.velocity.y * dragFactor;
     controls.start({
       rotate: endRotation,
