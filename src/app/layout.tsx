@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Instrument_Serif, Crimson_Pro, Inter } from 'next/font/google';
+import { Instrument_Serif, Crimson_Pro, Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 
 const instrumentSerif = Instrument_Serif({

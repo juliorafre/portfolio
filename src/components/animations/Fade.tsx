@@ -2,16 +2,6 @@
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 
-const container = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0.2,
-    },
-  },
-};
-
 const item = {
   hidden: {
     opacity: 0,

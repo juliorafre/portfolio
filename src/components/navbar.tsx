@@ -2,13 +2,10 @@
 
 import { siteConfig } from '@/app/siteConfig';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
-  const pathname = usePathname();
-
   return (
-    <div className="absolute top-0 left-0 right-0 mx-auto w-full max-w-3xl flex justify-center py-[22px] px-[40px]">
+    <div className="absolute top-0 right-0 left-0 mx-auto flex w-full max-w-3xl justify-center px-[40px] py-[22px]">
       <nav className="relative flex w-fit gap-x-8">
         <Link href={siteConfig.baseLinks.home}>Home</Link>
         <Link href={siteConfig.baseLinks.playground.home}>About</Link>

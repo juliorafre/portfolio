@@ -1,4 +1,4 @@
-import { CopyrightIcon, QuoteIcon } from 'lucide-react';
+import { CopyrightIcon } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -10,7 +10,6 @@ const Footer = () => {
         </p>
 
         <p className="text-muted-foreground flex items-center gap-x-1 text-sm font-light">
-          {/* <QuoteIcon size={14} /> */}
           Like biological morph and motion
         </p>
       </div>
