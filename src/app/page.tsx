@@ -122,7 +122,7 @@ export default function Home() {
               className="w-full"
             /> */}
               <video
-                src="/videos/map-interaction.mp4"
+                src="https://res.cloudinary.com/juliorafrecloud/video/upload/v1740954577/hpsdmhwpeau1xz7jyrmx.mp4"
                 playsInline
                 autoPlay
                 muted
