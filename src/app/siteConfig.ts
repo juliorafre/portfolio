@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Portfolio",
   url: "https://www.juliorafre.com",
-  description: "Portfolio",
+  description: "Portfolio of Julio Ramirez De Freitas",
   baseLinks: {
     home: "/",
     playground: {

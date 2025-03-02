@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
+import { Geist, Geist_Mono, Instrument_Serif, Crimson_Pro, Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
@@ -8,6 +8,18 @@ const instrumentSerif = Instrument_Serif({
   variable: '--font-instrument-serif',
   subsets: ['latin'],
   weight: '400',
+});
+
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+});
+
+const crimsonPro = Crimson_Pro({
+  variable: '--font-crimson-pro',
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -22,10 +34,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${instrumentSerif.variable} font-display antialiased`}>
-        <main className="relative flex flex-col min-h-screen min-w-0 ">
-          <Navbar />
-          {children}
+      <body className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} font-inter antialiased`}>
+        <main className="relative flex flex-col min-h-dvh md:min-h-screen min-w-0">
+          {/* <Navbar /> */}
+          <div className="grow-1">
+            {children}
+          </div>
           <Footer />
         </main>
       </body>

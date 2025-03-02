@@ -51,10 +51,10 @@ const TextGradientOnScrollWithMotion = () => {
         initial={{ opacity: 0.33 }}
         animate={{ opacity: isVisible ? 1 : 0.33 }}
         style={{
-          lineHeight: '40px',
           display: 'inline-block',
           marginRight: '0.25em',
         }}
+        className='leading-snug'
         transition={{ duration: 1.2, ease: [0.24, 0.86, 0.29, 0.9] }}
         key={word + '_' + index}
       >
@@ -69,8 +69,8 @@ const TextGradientOnScrollWithMotion = () => {
         <Spacer title="Darkrrom-Engineering" url="https://darkroom.engineering/about" vHSize={35} />
         <div ref={containerRef} className="grid grid-cols-12 py-[20vh] bg-black">
           <div ref={bodyRef} className="col-start-2 md:col-start-4 col-end-[-1]">
-            <p className="font-extrabold text-[67px] md:text-6xl w-[30vw] md:w-[22vw] font-sans text-balance text-[#E30614]">OUR PHILOSOPHY</p>
-            <div className="font-black text-[44px] md:text-4xl w-[80vw] md:w-[72vw] font-[Helvetica] text-balance text-[#b4b4b4] uppercase transition-opacity leading-snug">{textSplitted}</div>
+            <p className="font-extrabold text-[32px] md:text-6xl w-[30vw] md:w-[22vw] font-sans text-balance text-[#E30614]">OUR PHILOSOPHY</p>
+            <div className="font-black text-[16px] md:text-4xl w-[85vw] md:w-[72vw] font-[Helvetica] text-balance text-[#b4b4b4] uppercase transition-opacity leading-snug">{textSplitted}</div>
           </div>
         </div>
         <Spacer title="Darkrrom-Engineering" url="https://darkroom.engineering/about" vHSize={70} />
