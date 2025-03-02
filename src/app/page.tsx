@@ -67,9 +67,7 @@ export default function Home() {
         <motion.section id="about" variants={item}>
           <h3 className="text-muted-foreground text-base">About me</h3>
           <p className="max-w-prose">
-            I am a Creative Developer, focused on creating interactive projects, from large scale
-            experiences to small, playful landing pages. With a background in digital design I try
-            to add a unique motion language for every project.
+          I craft impactful, user-centric products, focusing on seamless interactions and interface design. Passionate about collaboration, I thrive in multidisciplinary teams, always learning and innovating. Specializing in React, TypeScript, and modern web architectures, I build high-performance, scalable applications with real-time data and interactive UIs. Currently exploring motion design, GSAP, and Three.js to push digital experiences further.
           </p>
           <div className="text-muted-foreground mt-4 flex gap-x-2 text-sm font-light uppercase">
             <a
