@@ -110,47 +110,6 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Contact */}
-        {/*  <motion.section variants={item}>
-        <div className="text-muted-foreground flex gap-x-2 text-sm font-light uppercase">
-          <a
-            href="mailto:juliorafre@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground flex items-center hover:underline"
-          >
-            Email
-          </a>
-          /
-          <a
-            href="https://github.com/juliorafre"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground flex items-center hover:underline"
-          >
-            GitHub
-          </a>
-          /
-          <a
-            href="https://x.com/juliorafre"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground flex items-center hover:underline"
-          >
-            X
-          </a>
-          /
-          <a
-            href="https://www.linkedin.com/in/juliorafre/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground flex items-center hover:underline"
-          >
-            LinkedIn
-          </a>
-        </div>
-      </motion.section> */}
-
         {/* Projects */}
         <motion.section variants={item}>
           <div className="mb-10 flex w-full flex-col pt-2 text-balance">
@@ -172,7 +131,7 @@ export default function Home() {
               ></video>
             </div>
             <p className="order-2 mb-2">
-              <span className="text-muted-foreground text-base">2024</span> - Map interaction
+              <span className="text-muted-foreground text-base">2024</span> - Playground: Map interaction
               exploration.
             </p>
             <p className="order-3 max-w-prose">
