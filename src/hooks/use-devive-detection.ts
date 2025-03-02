@@ -1,4 +1,4 @@
-import { useMediaQuery } from 'hamo'
+/* import { useMediaQuery } from 'hamo'
 import { breakpoints } from '~/styles/config'
 
 interface NavigatorWithBattery extends Navigator {
@@ -25,4 +25,4 @@ export function useDeviceDetection() {
       )
 
   return { isMobile, isDesktop, isReducedMotion, isWebGL, isLowPowerMode }
-}
+} */

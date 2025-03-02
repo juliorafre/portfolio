@@ -1,6 +1,7 @@
 'use client';
 import { PanInfo, motion, useAnimation, useMotionValue, useMotionValueEvent, useTransform } from 'motion/react';
 import { useRef, useState } from 'react';
+import React from 'react';
 
 const menuItems = [
   'Eero Aarnio Ball Chair',
@@ -51,18 +52,15 @@ export default function DraggableCurvedMenu() {
     setMiddleItem(actualMiddleItem);
   });
 
-  const onDrag = (
-    _: Parameters<NonNullable<motion.HTMLProps<"div">["onDrag"]>>[0], 
-    info: PanInfo
-  ) => {
+  // Fix: Use a type that the compiler won't complain about
+  type DragEvent = MouseEvent | TouchEvent | PointerEvent;
+  
+  const onDrag = (_: DragEvent, info: PanInfo) => {
     const currentRotation = rotation.get() + info.offset.y * dragFactor;
     rotation.set(currentRotation);
   };
 
-  const onDragEnd = (
-    _: Parameters<NonNullable<motion.HTMLProps<"div">["onDragEnd"]>>[0], 
-    info: PanInfo
-  ) => {
+  const onDragEnd = (_: DragEvent, info: PanInfo) => {
     const endRotation = rotation.get() + info.velocity.y * dragFactor;
     controls.start({
       rotate: endRotation,
