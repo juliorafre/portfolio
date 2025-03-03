@@ -129,7 +129,7 @@ export default function Home() {
               ></video>
             </div>
             <p className="order-2 mb-2">
-              <span className="text-muted-foreground text-base">2024</span> - Playground: Map interaction
+              <span className="text-muted-foreground text-base">2025</span> - Playground: Map interaction
               exploration.
             </p>
             <p className="order-3 max-w-prose">
