@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import type { LenisRef } from 'lenis/react';
 import { ReactLenis } from 'lenis/react';
+import { RRSSLink } from '@/components/rrss-link';
 import 'lenis/dist/lenis.css';
 
 const container = {
@@ -67,44 +68,21 @@ export default function Home() {
         <motion.section id="about" variants={item}>
           <h3 className="text-muted-foreground text-base">About me</h3>
           <p className="max-w-prose">
-          I craft impactful, user-centric products, focusing on seamless interactions and interface design. Passionate about collaboration, I thrive in multidisciplinary teams, always learning and innovating. Specializing in React, TypeScript, and modern web architectures, I build high-performance, scalable applications with real-time data and interactive UIs. Currently exploring motion design, GSAP, and Three.js to push digital experiences further.
+            I craft impactful, user-centric products, focusing on seamless interactions and
+            interface design. Passionate about collaboration, I thrive in multidisciplinary teams,
+            always learning and innovating. Specializing in React, TypeScript, and modern web
+            architectures, I build high-performance, scalable applications with real-time data and
+            interactive UIs. Currently exploring motion design, GSAP, and Three.js to push digital
+            experiences further.
           </p>
-          <div className="text-muted-foreground mt-4 flex gap-x-2 text-sm font-light uppercase">
-            <a
-              href="mailto:juliorafre@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground flex items-center hover:underline"
-            >
-              Email
-            </a>
-            /
-            <a
-              href="https://github.com/juliorafre"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground flex items-center hover:underline"
-            >
-              GitHub
-            </a>
-            /
-            <a
-              href="https://x.com/juliorafre"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground flex items-center hover:underline"
-            >
-              X
-            </a>
-            /
-            <a
-              href="https://www.linkedin.com/in/juliorafre/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground flex items-center hover:underline"
-            >
-              LinkedIn
-            </a>
+          <div className="text-muted-foreground mt-4 flex items-center gap-x-2 text-sm font-light uppercase">
+            <RRSSLink platform="email" href="mailto:juliorafre@gmail.com" />
+            <span className="text-xs text-gray-300">✦</span>
+            <RRSSLink platform="github" href="https://github.com/juliorafre" />
+            <span className="text-xs text-gray-300">✦</span>
+            <RRSSLink platform="x" href="https://x.com/juliorafre" />
+            <span className="text-xs text-gray-300">✦</span>
+            <RRSSLink platform="linkedin" href="https://www.linkedin.com/in/juliorafre/" />
           </div>
         </motion.section>
 
@@ -128,11 +106,11 @@ export default function Home() {
                 className="aspect-video w-full"
               ></video>
             </div>
-            <p className="order-2 mb-2">
-              <span className="text-muted-foreground text-base">2025</span> - Playground: Map interaction
-              exploration.
-            </p>
-            <p className="order-3 max-w-prose">
+            <div className="order-2 mb-2 flex flex-col">
+              <p className="text-muted-foreground text-base">2025</p>
+              <p>Playground: Map interaction exploration.</p>
+            </div>
+            <p className="order-3 max-w-prose text-muted-foreground">
               Inspired by the work of @nitishkmrk and built with motion-react and mapbox.
             </p>
           </div>
@@ -146,11 +124,11 @@ export default function Home() {
                 className="w-full"
               />
             </div>
-            <p className="order-2 mb-2">
-              <span className="text-muted-foreground text-base">2022-2024</span> - madi™ an
-              AI-powered web platform for protein engineering.
-            </p>
-            <p className="order-3 max-w-prose">
+            <div className="order-2 mb-2 flex flex-col">
+              <p className="text-muted-foreground text-base">2022-2024</p>
+              <p>madi™ an AI-powered web platform for protein engineering.</p>
+            </div>
+            <p className="order-3 max-w-prose text-muted-foreground">
               Developed interactive UI components and data visualizations to streamline analysis and
               optimization. Collaborated with AI researchers and biochemists to enhance workflows,
               improving efficiency and scalability. Led frontend development, ensuring performance

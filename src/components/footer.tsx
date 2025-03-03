@@ -9,7 +9,7 @@ const Footer = () => {
           2025
         </p>
 
-        <p className="text-muted-foreground flex items-center gap-x-1 text-sm font-light">
+        <p className="text-muted-foreground flex items-center gap-x-1 text-sm font-light font-instrument-serif font-s">
           Like biological morph and motion
         </p>
       </div>
