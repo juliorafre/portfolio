@@ -9,7 +9,8 @@ import type { LenisRef } from 'lenis/react';
 import { ReactLenis } from 'lenis/react';
 import { RRSSLink } from '@/components/rrss-link';
 import 'lenis/dist/lenis.css';
-
+import ExternalLink from '@/components/external-link';
+import NavLink from '@/components/nav-link';
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -86,6 +87,15 @@ export default function Home() {
           </div>
         </motion.section>
 
+        {/* About */}
+        <motion.section id="currently" variants={item}>
+          <h3 className="text-muted-foreground text-base">Currently</h3>
+          <p className="max-w-prose text-balance">
+            Listening to <ExternalLink href="https://frontend.fm/">Frontend.FM</ExternalLink> by
+            Maxi Ferreira <br /> Reading <ExternalLink href="https://largeapps.dev/">Building Large Scale Web Apps</ExternalLink> by Addy Osmani & Hassan Djirdeh.
+          </p>
+        </motion.section>
+
         {/* Projects */}
         <motion.section variants={item}>
           <div className="mb-10 flex w-full flex-col pt-2 text-balance">
@@ -106,13 +116,18 @@ export default function Home() {
                 className="aspect-video w-full"
               ></video>
             </div>
-            <div className="order-2 mb-2 flex flex-col">
+            <div className="order-2 mb-1 flex flex-col">
               <p className="text-muted-foreground text-base">2025</p>
               <p>Playground: Map interaction exploration.</p>
             </div>
-            <p className="order-3 max-w-prose text-muted-foreground">
+            <p className="text-muted-foreground order-3 mb-1 max-w-prose">
               Inspired by the work of @nitishkmrk and built with motion-react and mapbox.
             </p>
+            <div className="order-4 flex flex-row gap-x-2">
+              <NavLink href="/map-interaction" showIcon>
+                Demo
+              </NavLink>
+            </div>
           </div>
           <div className="mb-10 flex w-full flex-col pt-2 text-balance">
             <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-6">
@@ -124,16 +139,19 @@ export default function Home() {
                 className="w-full"
               />
             </div>
-            <div className="order-2 mb-2 flex flex-col">
+            <div className="order-2 mb-1 flex flex-col">
               <p className="text-muted-foreground text-base">2022-2024</p>
               <p>madi™ an AI-powered web platform for protein engineering.</p>
             </div>
-            <p className="order-3 max-w-prose text-muted-foreground">
+            <p className="text-muted-foreground order-3 mb-1 max-w-prose">
               Developed interactive UI components and data visualizations to streamline analysis and
               optimization. Collaborated with AI researchers and biochemists to enhance workflows,
               improving efficiency and scalability. Led frontend development, ensuring performance
               and maintainability.
             </p>
+            <div className="order-4 flex flex-row gap-x-2">
+              <ExternalLink href="https://www.madi.bio/">Website</ExternalLink>
+            </div>
           </div>
         </motion.section>
 
