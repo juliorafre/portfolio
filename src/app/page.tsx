@@ -91,8 +91,10 @@ export default function Home() {
         <motion.section id="currently" variants={item}>
           <h3 className="text-muted-foreground text-base">Currently</h3>
           <p className="max-w-prose text-balance">
-            Listening to <ExternalLink href="https://frontend.fm/">Frontend.FM</ExternalLink> by
-            Maxi Ferreira <br /> Reading <ExternalLink href="https://largeapps.dev/">Building Large Scale Web Apps</ExternalLink> by Addy Osmani & Hassan Djirdeh.
+            Listening to <ExternalLink href="https://frontend.fm/">Frontend.FM</ExternalLink> {/* by
+            Maxi Ferreira */} <br /> Reading{' '}
+            <ExternalLink href="https://largeapps.dev/">Building Large Scale Web Apps</ExternalLink>{' '}
+            by Addy Osmani & Hassan Djirdeh.
           </p>
         </motion.section>
 
@@ -163,6 +165,8 @@ export default function Home() {
             <Link href="/text-gradient-on-scroll">Text Gradient On Scroll</Link>
             <Link href="/map-interaction">Map Interaction</Link>
             <Link href="/draggable-curved">Draggable Curved</Link>
+            <Link href="/button-categorization">Button Categorization</Link>
+            <Link href="/streaming-text">Streaming Text</Link>
           </div>
         </section>
       </motion.div>
