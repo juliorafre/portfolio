@@ -2,7 +2,7 @@
 import gsap from 'gsap';
 import Observer from 'gsap/Observer';
 import { useGSAP } from '@gsap/react';
-import { useLayoutEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 
 const imagesList = [
@@ -34,9 +34,7 @@ const Carousel = () => {
 
         const wrap = gsap.utils.wrap(-contentHalf, 0);
 
-        let xTo;
-
-        xTo = gsap.quickTo(containerRef.current, 'x', {
+        const xTo = gsap.quickTo(containerRef.current, 'x', {
           duration: 0.5,
           ease: 'power3',
           modifiers: {
@@ -44,7 +42,7 @@ const Carousel = () => {
           },
         });
 
-        let itemValues = [];
+        const itemValues: number[] = [];
 
         for (let i = 0; i < cardsLength; i++) {
           itemValues.push((Math.random() - 0.5) * 2);
@@ -103,7 +101,10 @@ const Carousel = () => {
         ref={containerRef}
       >
         {imagesList.map((img, index) => (
-          <div className="card aspect-video w-[80vw] lg:w-[672px] overflow-hidden bg-red-50" key={index}>
+          <div
+            className="card aspect-video w-[80vw] overflow-hidden bg-red-50 lg:w-[672px]"
+            key={index}
+          >
             <Image
               src={img.url}
               width={3600}

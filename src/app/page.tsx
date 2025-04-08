@@ -3,7 +3,6 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import ProfileImage from '@/components/profile-image';
-import Image from 'next/image';
 import { motion } from 'motion/react';
 import type { LenisRef } from 'lenis/react';
 import { ReactLenis } from 'lenis/react';
