@@ -12,7 +12,7 @@ const useAnimatedText = ({ text }: useAnimatedTextProps) => {
   const [cursor, setCursor] = useState(0);
 
   useEffect(() => {
-    let controls = animate(animatedCursor, text.length, {
+    const controls = animate(animatedCursor, text.length, {
       duration: 1.85,
       ease: 'linear',
       onUpdate: latest => {

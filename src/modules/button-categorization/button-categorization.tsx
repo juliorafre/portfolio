@@ -4,10 +4,12 @@ import { InfoIcon, SparklesIcon, LaptopIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
+// https://codesandbox.io/p/sandbox/framer-motion-familys-fluid-button-f68w5h
+
 const badgeStylesVariants = {
   base: 'font-display inline-flex w-fit items-center gap-x-1.5 rounded-lg border px-3 py-1 font-medium',
   idle: 'border-neutral-100 bg-neutral-100 text-neutral-500',
-  analyzing: 'border-blue-500 bg-white text-blue-500',
+  analyzing: 'border-neutral-100 bg-white text-blue-500',
   success: 'border-[#DCF3FF] bg-[#DCF3FF] text-[#4D83A1]',
 };
 
@@ -41,8 +43,6 @@ const BadgeCategorization = () => {
 
       <div className="flex flex-col items-center gap-y-2 overflow-hidden">
         <motion.div
-          layout
-          layoutId="button-categorization"
           transition={{
             type: 'ease',
             ease: 'easeInOut',
@@ -56,7 +56,7 @@ const BadgeCategorization = () => {
             {state === 'idle' && (
               <motion.span
                 layout
-                className="inline-flex items-center gap-x-1.5"
+                className="inline-flex items-center gap-x-1.5 overflow-hidden"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
@@ -65,10 +65,12 @@ const BadgeCategorization = () => {
                 <InfoIcon size={16} />
               </motion.span>
             )}
+          </AnimatePresence>
+          <AnimatePresence mode="popLayout" initial={false}>
             {state === 'analyzing' && (
               <motion.span
                 layout
-                className="inline-flex items-center gap-x-1.5"
+                className="inline-flex items-center gap-x-1.5 overflow-hidden"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
@@ -77,10 +79,12 @@ const BadgeCategorization = () => {
                 <SparklesIcon size={16} />
               </motion.span>
             )}
+          </AnimatePresence>
+          <AnimatePresence mode="popLayout" initial={false}>
             {state === 'success' && (
               <motion.span
                 layout
-                className="inline-flex items-center gap-x-1.5"
+                className="inline-flex items-center gap-x-1.5 overflow-hidden"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}

@@ -41,6 +41,7 @@ const ProfileImage = ({ size = 100 }: ProfileImageProps) => {
       >
         <motion.div
           layout
+          layoutId="image"
           className={`relative w-[${size}px] top-0 left-0 bg-white`}
           style={{
             height: isHovered ? size * 1.72 : size,

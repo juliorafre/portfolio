@@ -11,6 +11,8 @@ import { RRSSLink } from '@/components/rrss-link';
 import 'lenis/dist/lenis.css';
 import ExternalLink from '@/components/external-link';
 import NavLink from '@/components/nav-link';
+import Carousel from '@/components/carousel';
+
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -67,8 +69,8 @@ export default function Home() {
 
         {/* About */}
         <motion.section id="about" variants={item}>
-          <h3 className="text-muted-foreground text-base">About me</h3>
-          <p className="max-w-prose">
+          <h3 className="text-muted-foreground text-base lg:text-sm">About me</h3>
+          <p className="text-base text-balance lg:text-sm">
             I craft impactful, user-centric products, focusing on seamless interactions and
             interface design. Passionate about collaboration, I thrive in multidisciplinary teams,
             always learning and innovating. Specializing in React, TypeScript, and modern web
@@ -89,11 +91,13 @@ export default function Home() {
 
         {/* About */}
         <motion.section id="currently" variants={item}>
-          <h3 className="text-muted-foreground text-base">Currently</h3>
-          <p className="max-w-prose text-balance">
-            Listening to <ExternalLink href="https://frontend.fm/">Frontend.FM</ExternalLink> {/* by
-            Maxi Ferreira */} <br /> Reading{' '}
-            <ExternalLink href="https://largeapps.dev/">Building Large Scale Web Apps</ExternalLink>{' '}
+          <h3 className="text-muted-foreground text-base lg:text-sm">Currently</h3>
+          <p className="text-base text-balance lg:text-sm">
+            Listening to <ExternalLink href="https://frontend.fm/">Frontend.FM</ExternalLink> by
+            Maxi Ferreira <br /> Reading
+            <ExternalLink href="https://largeapps.dev/">
+              Building Large Scale Web Apps
+            </ExternalLink>{' '}
             by Addy Osmani & Hassan Djirdeh.
           </p>
         </motion.section>
@@ -119,19 +123,19 @@ export default function Home() {
               ></video>
             </div>
             <div className="order-2 mb-1 flex flex-col">
-              <p className="text-muted-foreground text-base">2025</p>
-              <p>Playground: Map interaction exploration.</p>
+              <p className="text-muted-foreground text-base lg:text-sm">2025</p>
+              <p className="text-base lg:text-sm">Playground: Map interaction exploration.</p>
             </div>
-            <p className="text-muted-foreground order-3 mb-1 max-w-prose">
+            <p className="text-muted-foreground order-3 mb-1 text-base text-balance lg:text-sm">
               Inspired by the work of @nitishkmrk and built with motion-react and mapbox.
             </p>
-            <div className="order-4 flex flex-row gap-x-2">
+            <div className="order-4 flex flex-row gap-x-2 text-base lg:text-sm">
               <NavLink href="/map-interaction" showIcon>
                 Demo
               </NavLink>
             </div>
           </div>
-          <div className="mb-10 flex w-full flex-col pt-2 text-balance">
+          {/* <div className="mb-10 flex w-full flex-col pt-2 text-balance">
             <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-6">
               <Image
                 src="/images/discovery-2.png"
@@ -142,20 +146,44 @@ export default function Home() {
               />
             </div>
             <div className="order-2 mb-1 flex flex-col">
-              <p className="text-muted-foreground text-base">2022-2024</p>
-              <p>madi™ an AI-powered web platform for protein engineering.</p>
+              <p className="text-muted-foreground text-base lg:text-sm">2022-2024</p>
+              <p className="text-base lg:text-sm">
+                madi™ an AI-powered web platform for protein engineering.
+              </p>
             </div>
-            <p className="text-muted-foreground order-3 mb-1 max-w-prose">
+            <p className="text-muted-foreground order-3 mb-1 text-base text-balance lg:text-sm">
               Developed interactive UI components and data visualizations to streamline analysis and
               optimization. Collaborated with AI researchers and biochemists to enhance workflows,
               improving efficiency and scalability. Led frontend development, ensuring performance
               and maintainability.
             </p>
-            <div className="order-4 flex flex-row gap-x-2">
+            <div className="order-4 flex flex-row gap-x-2 text-base lg:text-sm">
+              <ExternalLink href="https://www.madi.bio/">Website</ExternalLink>
+            </div>
+          </div> */}
+          <div className="mb-10 flex w-full flex-col pt-2 text-balance">
+            <div className="order-1 mb-2 rounded-lg border bg-gray-100 p-6">
+              <Carousel />
+            </div>
+            <div className="order-2 mb-1 flex flex-col">
+              <p className="text-muted-foreground text-base lg:text-sm">2022-2024</p>
+              <p className="text-base lg:text-sm">
+                madi™ an AI-powered web platform for protein engineering.
+              </p>
+            </div>
+            <p className="text-muted-foreground order-3 mb-1 text-base text-balance lg:text-sm">
+              Developed interactive UI components and data visualizations to streamline analysis and
+              optimization. Collaborated with AI researchers and biochemists to enhance workflows,
+              improving efficiency and scalability. Led frontend development, ensuring performance
+              and maintainability.
+            </p>
+            <div className="order-4 flex flex-row gap-x-2 text-base lg:text-sm">
               <ExternalLink href="https://www.madi.bio/">Website</ExternalLink>
             </div>
           </div>
         </motion.section>
+
+       {/*  <Carousel /> */}
 
         {/* Playgrounds */}
         <section>

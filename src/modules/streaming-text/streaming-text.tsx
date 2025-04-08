@@ -7,8 +7,8 @@ import useAnimatedText from './useAnimatedText';
 const textExample =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod et quos in illum laudantium omnis! Sit vitae ipsum pariatur optio corporis, quisquam laborum sunt quaerat doloremque inventore, omnis nobis id! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio sint iste incidunt cupiditate beatae soluta totam saepe. Asperiores odio aspernatur totam, qui exercitationem quisquam architecto repudiandae repellendus non blanditiis labore?id! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio sint iste incidunt cupiditate beatae soluta totam saepe. Asperiores odio aspernatur totam, qui exercitationem quisquam architecto repudiandae repellendus non blanditiis labore?';
 
-let delay = 300;
-let characters = 50;
+const delay = 300;
+const characters = 50;
 
 const StreamingText = () => {
   const [text, setText] = useState('');
