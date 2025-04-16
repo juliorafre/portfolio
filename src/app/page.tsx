@@ -10,7 +10,8 @@ import { RRSSLink } from '@/components/rrss-link';
 import 'lenis/dist/lenis.css';
 import ExternalLink from '@/components/external-link';
 import NavLink from '@/components/nav-link';
-import Carousel from '@/components/carousel';
+import Carousel from '@/modules/carousel/components/carousel';
+import ImageShowcase from '@/modules/carousel/components/image-showcase';
 
 const container = {
   hidden: { opacity: 0 },
@@ -182,7 +183,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-       {/*  <Carousel /> */}
+        <ImageShowcase />
 
         {/* Playgrounds */}
         <section>
