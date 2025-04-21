@@ -28,7 +28,7 @@ const ImageShowcase = () => {
           {
             scale: 1,
             filter: 'blur(0px)',
-            rotate: () => randomBetween(-5, 12),
+            rotate: () => randomBetween(-5, 8),
             ease: 'elastic.out(0.5, 0.3, 0.1)', // spring-like
             duration: 0.85,
             stagger: 0.1,
@@ -47,7 +47,7 @@ const ImageShowcase = () => {
 
   return (
     <div
-      className="inset-shadow-lg relative h-[250px] w-full overflow-hidden rounded-2xl border border-neutral-300 bg-neutral-200 sm:h-[400px] @container/image-showcase"
+      className="inset-shadow-lg @container/image-showcase relative min-h-[280px] w-full overflow-hidden rounded-2xl border border-neutral-300 bg-neutral-200 aspect-video"
       ref={containerRef}
     >
       {sampleClothes.map((img, idx) => {
@@ -55,14 +55,15 @@ const ImageShowcase = () => {
           <div
             key={img.url}
             id={`image-card-${idx}`}
-            className="image-card absolute h-1/3 sm:h-[25vw] max-h-[250px] w-auto bg-transparent select-none"
+            className="image-card absolute h-[30vw] max-h-[250px] w-auto bg-transparent select-none sm:h-full aspect-square"
             style={{
               filter: 'blur(4px)',
-              transform: `rotate(-12deg) translateX(0px)`,
+              transform: `translate(calc(-50% + ${img.translateX}), calc(-50% + ${img.translateY}))`,
               transformOrigin: 'bottom center',
               position: 'absolute',
-              top: img.top,
-              left: img.left,
+              top: '50%',
+              left: '50%',
+              rotate: '0deg',
             }}
           >
             <Image
@@ -71,7 +72,7 @@ const ImageShowcase = () => {
               height={img.height}
               alt={img.alt}
               loading="lazy"
-              className="pointer-events-none h-full w-full object-cover drop-shadow-xl"
+              className="pointer-events-none h-full w-full object-contain drop-shadow-xl"
               style={{
                 scale: img.scale,
               }}
@@ -81,7 +82,7 @@ const ImageShowcase = () => {
       })}
       <button
         id="reload-button"
-        className="absolute bottom-0 left-0 mb-2 sm:mb-[20px] ml-2 sm:ml-[20px] flex cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white/75 backdrop-blur-xl py-2 px-4 sm:px-2 opacity-60 hover:bg-neutral-100 text-nowrap text-sm sm:text-base"
+        className="absolute bottom-0 left-0 mb-2 ml-2 flex cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white/75 px-4 py-2 text-sm text-nowrap opacity-60 backdrop-blur-xl hover:bg-neutral-100 sm:mb-[20px] sm:ml-[20px] sm:px-2 sm:text-base"
         onClick={() => setKey(prev => prev + 1)}
         type="button"
         aria-label="Reload animation"
