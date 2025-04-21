@@ -59,7 +59,10 @@ export default function Home() {
         className="container mx-auto max-w-3xl space-y-10 px-6 pt-10 text-balance"
       >
         {/* Hero */}
-        <motion.div variants={item} className="mb-10 flex flex-row items-center gap-4">
+        <motion.div
+          variants={item}
+          className="mb-10 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4"
+        >
           <ProfileImage size={70} />
           <div className="flex flex-col leading-tight">
             <p className="">Julio Ramirez</p>
@@ -89,7 +92,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* About */}
+        {/* Currently */}
         <motion.section id="currently" variants={item}>
           <h3 className="text-muted-foreground text-base lg:text-sm">Currently</h3>
           <p className="text-base text-balance lg:text-sm">
@@ -104,6 +107,31 @@ export default function Home() {
 
         {/* Projects */}
         <motion.section variants={item}>
+          <div className="mb-10 flex w-full flex-col pt-2 text-balance">
+            <div className="order-1 mb-2">
+              <ImageShowcase />
+            </div>
+            <div className="order-2 mb-1 flex flex-col">
+              <p className="text-muted-foreground text-base lg:text-sm">April 2025</p>
+              <p className="text-base lg:text-sm">Showcase sticker clothes.</p>
+            </div>
+            <p className="text-muted-foreground order-3 mb-1 text-base text-balance lg:text-sm">
+              Small experiment replicating the sticker clothes reveal animation by{' '}
+              <ExternalLink
+                href="https://x.com/bartek_marzec"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @bartek_marzec
+              </ExternalLink>
+              .
+            </p>
+             <div className="order-4 flex flex-row gap-x-2 text-base lg:text-sm">
+              <NavLink href="/map-interaction" showIcon>
+                Code
+              </NavLink>
+            </div>
+          </div>
           <div className="mb-10 flex w-full flex-col pt-2 text-balance">
             <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-6">
               {/* <Image
@@ -123,8 +151,8 @@ export default function Home() {
               ></video>
             </div>
             <div className="order-2 mb-1 flex flex-col">
-              <p className="text-muted-foreground text-base lg:text-sm">2025</p>
-              <p className="text-base lg:text-sm">Playground: Map interaction exploration.</p>
+              <p className="text-muted-foreground text-base lg:text-sm">March 2025</p>
+              <p className="text-base lg:text-sm">Map interaction exploration.</p>
             </div>
             <p className="text-muted-foreground order-3 mb-1 text-base text-balance lg:text-sm">
               Inspired by the work of @nitishkmrk and built with motion-react and mapbox.
@@ -182,8 +210,6 @@ export default function Home() {
             </div>
           </div>
         </motion.section>
-
-        <ImageShowcase />
 
         {/* Playgrounds */}
         <section>

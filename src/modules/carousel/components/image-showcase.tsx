@@ -46,46 +46,50 @@ const ImageShowcase = () => {
   );
 
   return (
-    <div className="relative h-[400px] w-full rounded-4xl bg-neutral-200" ref={containerRef}>
-    {sampleClothes.map((img, idx) => {
-      return (
-        <div
-          key={img.url}
-          id={`image-card-${idx}`}
-          className="image-card absolute h-[250px] w-auto bg-transparent select-none"
-          style={{
-            filter: 'blur(4px)',
-            transform: `scale(0) rotate(-12deg) translateX(0px)`,
-            transformOrigin: 'bottom center',
-            position: 'absolute',
-            top: img.top,
-            left: img.left,
-          }}
-        >
-          <Image
-            src={img.url}
-            width={img.width}
-            height={img.height}
-            alt={img.alt}
-            loading="lazy"
-            className="pointer-events-none size-full object-cover drop-shadow-xl"
-            style={{
-              scale: img.scale,
-            }}
-          />
-        </div>
-      );
-    })}
-    <button
-      className="absolute bottom-0 left-0 mb-[20px] ml-[20px] cursor-pointer rounded-full bg-white p-[8px] opacity-60 hover:bg-neutral-100"
-      onClick={() => setKey(prev => prev + 1)}
-      type="button"
-      aria-label="Reload animation"
+    <div
+      className="inset-shadow-lg relative h-[250px] w-full overflow-hidden rounded-2xl border border-neutral-300 bg-neutral-200 sm:h-[400px] @container/image-showcase"
+      ref={containerRef}
     >
-      <span className="sr-only">Reload animation</span>
-      <RefreshCcwIcon size={20} />
-    </button>
-  </div>
+      {sampleClothes.map((img, idx) => {
+        return (
+          <div
+            key={img.url}
+            id={`image-card-${idx}`}
+            className="image-card absolute h-1/3 sm:h-[25vw] max-h-[250px] w-auto bg-transparent select-none"
+            style={{
+              filter: 'blur(4px)',
+              transform: `rotate(-12deg) translateX(0px)`,
+              transformOrigin: 'bottom center',
+              position: 'absolute',
+              top: img.top,
+              left: img.left,
+            }}
+          >
+            <Image
+              src={img.url}
+              width={img.width}
+              height={img.height}
+              alt={img.alt}
+              loading="lazy"
+              className="pointer-events-none h-full w-full object-cover drop-shadow-xl"
+              style={{
+                scale: img.scale,
+              }}
+            />
+          </div>
+        );
+      })}
+      <button
+        id="reload-button"
+        className="absolute bottom-0 left-0 mb-2 sm:mb-[20px] ml-2 sm:ml-[20px] flex cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white/75 backdrop-blur-xl py-2 px-4 sm:px-2 opacity-60 hover:bg-neutral-100 text-nowrap text-sm sm:text-base"
+        onClick={() => setKey(prev => prev + 1)}
+        type="button"
+        aria-label="Reload animation"
+      >
+        <RefreshCcwIcon className="size-4 sm:size-5" />
+        <span className="sm:sr-only">Reload animation</span>
+      </button>
+    </div>
   );
 };
 

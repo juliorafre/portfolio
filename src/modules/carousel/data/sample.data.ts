@@ -87,6 +87,6 @@ export const sampleClothes = [
     left: '20%',
     width: 1024,
     height: 1024,
-    scale: 1,
+    scale: 0.8,
   },
 ];
