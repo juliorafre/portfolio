@@ -107,6 +107,7 @@ export default function Home() {
 
         {/* Projects */}
         <motion.section variants={item}>
+          <p className="font-medium">Latest crafts</p>
           <div className="mb-10 flex w-full flex-col pt-2 text-balance">
             <div className="order-1 mb-2">
               <ImageShowcase />
@@ -118,7 +119,7 @@ export default function Home() {
             <p className="text-muted-foreground order-3 mb-1 text-base text-balance lg:text-sm">
               Small experiment replicating the sticker clothes reveal animation by{' '}
               <ExternalLink
-                href="https://x.com/bartek_marzec"
+                href="https://x.com/bartek_marzec/status/1835432359815958530"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -126,11 +127,11 @@ export default function Home() {
               </ExternalLink>
               .
             </p>
-             <div className="order-4 flex flex-row gap-x-2 text-base lg:text-sm">
+            {/*  <div className="order-4 flex flex-row gap-x-2 text-base lg:text-sm">
               <NavLink href="/map-interaction" showIcon>
                 Code
               </NavLink>
-            </div>
+            </div> */}
           </div>
           <div className="mb-10 flex w-full flex-col pt-2 text-balance">
             <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-6">

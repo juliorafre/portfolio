@@ -1,3 +1,5 @@
+'use client';
+
 import { sampleClothes } from '@/modules/carousel/data/sample.data';
 import Image from 'next/image';
 import { useGSAP } from '@gsap/react';
@@ -7,6 +9,7 @@ import gsap from 'gsap';
 import { useRef, useState } from 'react';
 import { randomBetween } from '@/lib';
 import { RefreshCcwIcon } from 'lucide-react';
+import { motion } from 'motion/react';
 
 gsap.registerPlugin(Observer, useGSAP, ScrollTrigger);
 
@@ -47,7 +50,7 @@ const ImageShowcase = () => {
 
   return (
     <div
-      className="inset-shadow-lg @container/image-showcase relative min-h-[280px] w-full overflow-hidden rounded-2xl border border-neutral-300 bg-neutral-200 aspect-video"
+      className="inset-shadow-lg @container/image-showcase relative aspect-video min-h-[280px] w-full overflow-hidden rounded-2xl border border-neutral-300 bg-neutral-200"
       ref={containerRef}
     >
       {sampleClothes.map((img, idx) => {
@@ -55,7 +58,7 @@ const ImageShowcase = () => {
           <div
             key={img.url}
             id={`image-card-${idx}`}
-            className="image-card absolute h-[30vw] max-h-[250px] w-auto bg-transparent select-none sm:h-full aspect-square"
+            className="image-card aspect-square h-[30vw] max-h-[250px] w-auto bg-transparent select-none sm:h-full"
             style={{
               filter: 'blur(4px)',
               transform: `translate(calc(-50% + ${img.translateX}), calc(-50% + ${img.translateY}))`,
@@ -66,20 +69,62 @@ const ImageShowcase = () => {
               rotate: '0deg',
             }}
           >
-            <Image
-              src={img.url}
-              width={img.width}
-              height={img.height}
-              alt={img.alt}
-              loading="lazy"
-              className="pointer-events-none h-full w-full object-contain drop-shadow-xl"
-              style={{
-                scale: img.scale,
+            <motion.div
+              className="size-full"
+              whileHover={{
+                scale: 1.1,
+                transition: {
+                  type: 'spring',
+                  stiffness: 300,
+                  damping: 10,
+                },
               }}
-            />
+            >
+              <Image
+                src={img.url}
+                width={img.width}
+                height={img.height}
+                alt={img.alt}
+                loading="lazy"
+                className="pointer-events-none h-full w-full object-contain drop-shadow-xl"
+                style={{
+                  scale: img.scale,
+                }}
+              />
+            </motion.div>
           </div>
         );
       })}
+      {/* Dummy card for testing */}
+      {/*       <div
+        key={'example-key'}
+        id={'example-id'}
+        className="image-card absolute aspect-square h-[30vw] max-h-[250px] w-auto bg-transparent select-none sm:h-full"
+        style={{
+          filter: 'blur(4px)',
+          transform: `translate(calc(-50% + 0), calc(-50% + 0))`,
+          transformOrigin: 'bottom center',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          rotate: '0deg',
+        }}
+      >
+        <motion.div
+          className="size-[100px] bg-red-400"
+          whileHover={{
+            scale: 1.1,
+          }}
+          transition={{
+            type: 'spring',
+            stiffness: 300,
+            damping: 10,
+          }}
+        >
+          <p>hi</p>
+        </motion.div>
+      </div> */}
+      {/* End of dummy card */}
       <button
         id="reload-button"
         className="absolute bottom-0 left-0 mb-2 ml-2 flex cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white/75 px-4 py-2 text-sm text-nowrap opacity-60 backdrop-blur-xl hover:bg-neutral-100 sm:mb-[20px] sm:ml-[20px] sm:px-2 sm:text-base"
