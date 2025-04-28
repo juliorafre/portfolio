@@ -66,7 +66,7 @@ export default function Home() {
           <ProfileImage size={70} />
           <div className="flex flex-col leading-tight">
             <p className="">Julio Ramirez</p>
-            <p className="text-muted-foreground">Frontend Engineer based in Santiago, Chile</p>
+            <p className="text-muted-foreground">Frontend Developer based in Santiago, Chile</p>
           </div>
         </motion.div>
 
@@ -97,10 +97,8 @@ export default function Home() {
           <h3 className="text-muted-foreground text-base lg:text-sm">Currently</h3>
           <p className="text-base text-balance lg:text-sm">
             Listening to <ExternalLink href="https://frontend.fm/">Frontend.FM</ExternalLink> by
-            Maxi Ferreira <br /> Reading
-            <ExternalLink href="https://largeapps.dev/">
-              Building Large Scale Web Apps
-            </ExternalLink>{' '}
+            Maxi Ferreira <br /> Reading{' '}
+            <ExternalLink href="https://largeapps.dev/">Building Large Scale Web Apps</ExternalLink>{' '}
             by Addy Osmani & Hassan Djirdeh.
           </p>
         </motion.section>

@@ -24,6 +24,21 @@ const crimsonPro = Crimson_Pro({
 export const metadata: Metadata = {
   title: 'Julio Ramirez - Ingeniero Frontend en Santiago, Chile',
   description: 'Soy Julio Ramirez, un Ingeniero Frontend especializado en React, TypeScript y arquitecturas web modernas. Diseño productos centrados en el usuario con interfaces e interacciones fluidas. Actualmente, exploro el diseño de movimiento utilizando GSAP y Three.js para llevar las experiencias digitales al siguiente nivel.',
+  openGraph: {
+    title: 'Julio Ramirez - Ingeniero Frontend en Santiago, Chile',
+    description: 'Soy Julio Ramirez, un Ingeniero Frontend especializado en React, TypeScript y arquitecturas web modernas. Diseño productos centrados en el usuario con interfaces e interacciones fluidas. Actualmente, exploro el diseño de movimiento utilizando GSAP y Three.js para llevar las experiencias digitales al siguiente nivel.',
+    url: 'https://juliorafre.com',
+    siteName: 'Julio Ramirez - Ingeniero Frontend en Santiago, Chile',
+    locale: 'es_CL',
+    type: 'website',
+    images: [
+      {
+        url: 'https://juliorafre.com/opengraph-image.png',
+        width: 1200,
+        height: 600,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
