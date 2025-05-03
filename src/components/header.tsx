@@ -1,0 +1,84 @@
+'use client';
+
+import { siteConfig } from '@/app/siteConfig';
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'motion/react';
+// import { RRSSLink } from '@/components/rrss-link';
+import { usePathname } from 'next/navigation';
+
+const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  const pathname = usePathname();
+  const isActive = pathname === href || (pathname.startsWith(href) && href !== '/');
+
+  return (
+    <Link
+      href={href}
+      className={`text-sm ${isActive ? 'text-black' : 'text-muted-foreground'} hover:text-black`}
+      style={{
+        transition: 'color .2s cubic-bezier(.075,.82,.165,1)',
+      }}
+    >
+      {children}
+    </Link>
+  );
+};
+
+const Header = () => {
+  return (
+    <div className="container mx-auto flex max-w-3xl flex-col items-end justify-end gap-x-4 px-6 py-4.5 md:flex-row md:items-center md:justify-between">
+      <div className="flex w-full items-center justify-between gap-x-2 md:w-fit md:justify-start">
+        <motion.div
+          id="logo"
+          className="w-fit"
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 60,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+        >
+          <Image
+            src="/images/logo.png"
+            alt="galaxy-pixel-art"
+            width={100}
+            height={100}
+            className="size-13 invert md:size-10"
+          />
+        </motion.div>
+        <nav className="relative flex w-fit items-baseline gap-x-4">
+          <NavLink href={siteConfig.baseLinks.home}>Home</NavLink>
+          <NavLink href={siteConfig.baseLinks.about}>About</NavLink>
+          <NavLink href={siteConfig.baseLinks.blog}>Blog</NavLink>
+          <NavLink href={siteConfig.baseLinks.playground.home}>Experiments</NavLink>
+         {/*  <NavLink href={siteConfig.baseLinks.photos}>Photos</NavLink> */}
+        </nav>
+      </div>
+      {/*   <div className="text-muted-foreground flex items-center gap-x-2 text-xs font-light uppercase">
+        <RRSSLink platform="email" href="mailto:juliorafre@gmail.com" />
+        <span className="text-xs text-gray-300">✦</span>
+        <RRSSLink platform="github" href="https://github.com/juliorafre" />
+        <span className="text-xs text-gray-300">✦</span>
+        <RRSSLink platform="x" href="https://x.com/juliorafre" />
+        <span className="text-xs text-gray-300">✦</span>
+        <RRSSLink platform="linkedin" href="https://www.linkedin.com/in/juliorafre/" />
+      </div> */}
+    </div>
+  );
+};
+
+export default Header;
+
+/* 
+<nav className="flex justify-between items-center p-4 py-4 bg-red-50">
+      <div className="w-full flex max-w-6xl mx-auto gap-x-4 items-center">
+        <div className="flex flex-col leading-tight">
+          <p className='font-bold font-display'>Julio Ramirez</p>
+          <p>✦ Front End Engineer </p>
+        </div>
+        <Link href={siteConfig.baseLinks.playground.home}>About</Link>
+        <Link href={siteConfig.baseLinks.playground.home}>Pics</Link>
+        <Link href={siteConfig.baseLinks.playground.home}>Playground</Link>
+      </div>
+    </nav>
+     */

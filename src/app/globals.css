@@ -8,7 +8,7 @@
   --font-instrument-serif: var(--font-instrument-serif), serif;
   --font-crimson-pro: var(--font-crimson-pro), serif;
   --font-inter: var(--font-inter), sans-serif;
-  
+
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
@@ -121,7 +121,12 @@
     min-height: 100vh;
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
-    background-color: #FDFDFC;
+    background-color: #fdfdfc;
+  }
+
+  ::selection {
+    background-color: var(--selection);
+    text-shadow: none;
   }
 
   img,
@@ -160,6 +165,7 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --selection: rgba(0, 0, 0, 0.071);
   }
 
   .dark {
@@ -187,10 +193,15 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --selection: 10°, 89%, 89%;
   }
 
   * {
     @apply border-border outline-ring/50;
+  }
+
+  p {
+    @apply text-balance;
   }
 }
 
@@ -214,6 +225,19 @@
 
   .scroll-smooth {
     scroll-behavior: smooth;
+  }
+
+  .clip-path-container {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    overflow: hidden;
+    transition: clip-path 0.25s ease;
+    clip-path: inset(0px 75% 0px 0% round 17px);
+  }
+
+  .main-container {
+    @apply container mx-auto max-w-3xl px-6 py-10;
   }
 
   @container (min-width: 640px) {
@@ -254,11 +278,6 @@
   }
 }
 
-.clip-path-container {
-  position: absolute;
-  z-index: 10;
-  width: 100%;
-  overflow: hidden;
-  transition: clip-path 0.25s ease;
-  clip-path: inset(0px 75% 0px 0% round 17px);
+@utility flex-center {
+  @apply flex items-center justify-center;
 }

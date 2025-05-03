@@ -1,0 +1,140 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Motion documentation for LLMs
+
+## React (prev Framer Motion)
+
+### Get started
+- [Get started with Motion for React](mdc:docs/react-quick-start.md): Get started with Motion for React with our installation guide and interactive examples.
+
+### Animations
+- [Gestures](mdc:docs/react-gestures.md): Learn how to use Motion for React's powerful gesture system to trigger animations and events.
+- [Layout animations](mdc:docs/react-layout-animations.md): Learn how to create layout and shared layout animations with Motion for React.
+- [React animation](mdc:docs/react-animation.md): Learn how to animate with Motion for React. Discover springs, exit animations, layout animations, scroll animations and more.
+- [Scroll animations](mdc:docs/react-scroll-animations.md): Learn how to create scroll-linked and scroll-triggered animations in React with Motion.
+- [Transitions](mdc:docs/react-transitions.md): A transition defines how values animate from one state to another. Learn how to configure transitions in Motion for React, with durations, cubic bezier curves, springs and more.
+
+### Components
+- [AnimatePresence](mdc:docs/react-animate-presence.md): Learn how to quickly make exit animations with Motion for React's AnimatePresence component.
+- [LayoutGroup](mdc:docs/react-layout-group.md): Animate layout across component groups with the LayoutGroup component.
+- [LazyMotion](mdc:docs/react-lazy-motion.md): Reduce the bundlesize of Motion for React by lazy-loading functionality with the LazyMotion component.
+- [motion](mdc:docs/react-motion-component.md): The motion component is a DOM element supercharged with 120fps animations and gestures.
+- [MotionConfig](mdc:docs/react-motion-config.md): Learn how use the MotionConfig component to set a default transition for all components, define reduced motion settings, or set a security policy.
+- [Reorder](mdc:docs/react-reorder.md): Learn how to create simple drag-to-reorder effects with Motion for React's Reorder components.
+
+### Motion Values
+- [Motion values overview](mdc:docs/react-motion-value.md): Learn how to use Motion's motion values, a performant way to track state and velocity.
+- [useMotionTemplate](mdc:docs/react-use-motion-template.md): Combine multiple motion values with a string template.
+- [useMotionValueEvent](mdc:docs/react-use-motion-value-event.md): Subscribe to motion value events from a React component.
+- [useScroll](mdc:docs/react-use-scroll.md): Learn how to create scroll-linked animations with Motion's simple yet powerful useScroll hook.
+- [useSpring](mdc:docs/react-use-spring.md): useSpring creates a motion value that animates to its target with a spring.
+- [useTime](mdc:docs/react-use-time.md): A motion value that updates every animation frame with the duration, in milliseconds, since it was created.
+- [useTransform](mdc:docs/react-use-transform.md): useTransform creates a new motion value that transforms the output of one or more motion values.
+- [useVelocity](mdc:docs/react-use-velocity.md): Create a motion value that tracks the velocity of another motion value.
+
+### Hooks
+- [useAnimate](mdc:docs/react-use-animate.md): Create an animate function with animation controls, timelines, scoped selectors and automatic cleanup.
+- [useAnimationFrame](mdc:docs/react-use-animation-frame.md): Create an animation loop that runs a callback every frame.
+- [useDragControls](mdc:docs/react-use-drag-controls.md): Learn how to manually start/stop dragging a motion component with the useDragControls hook.
+- [useInView](mdc:docs/react-use-in-view.md): A simple state hook for detecting when an element is within the viewport.
+- [useReducedMotion](mdc:docs/react-use-reduced-motion.md): A hook that determines whether the user prefers reduced motion.
+
+### Integrations
+- [Framer](mdc:docs/framer.md): Motion for React is already installed in your Framer project. Learn how to use it in your code components and overrides with this simple guide.
+- [Integrate Motion with Radix](mdc:docs/radix.md): Learn how to animate Radix components with Motion for React. Easily add layout, exit and spring animations to your Radix components. With live code examples for Tabs, Tooltip and more.
+
+### Guides
+- [Accessibility](mdc:docs/react-accessibility.md): How to design accessible animations with Motion for React.
+- [Reduce bundle size](mdc:docs/react-reduce-bundle-size.md): Learn what makes up Motion's bundle size, and how to reduce it.
+- [Upgrade guide](mdc:docs/react-upgrade-guide.md): How to upgrade to the latest version of Motion for React.
+
+### 3D
+- [Layout cameras](mdc:docs/react-three-fiber-layout-cameras.md): A perspective and orthographic camera that integrates with Framer Motion's layout animations.
+- [Motion for React Three Fiber](mdc:docs/react-three-fiber.md): Learn how to use Motion for React with React Three Fiber.
+- [MotionCanvas](mdc:docs/react-three-fiber-motion-canvas.md): A React Three Fiber Canvas replacement for linking Motion for React DOM and Three.js.
+
+
+## JavaScript
+
+### Get started
+- [Get started with Motion](mdc:docs/quick-start.md): Learn how to install Motion and create your first animation. Motion can animate anything and is the only animation library capable of hardware accelerated animations.
+
+### Animations
+- [animate](mdc:docs/animate.md): Learn how to use Motion's animate() function. Animate an element to a target using hardware accelerated animations.
+- [Easing functions](mdc:docs/easing-functions.md): Easing functions change the speed of an animation throughout the course of its duration. Learn which ones are included with Motion and how to use them.
+- [scroll](mdc:docs/scroll.md): Learn how to create parallax and scroll-linked animations with Motion's scroll() function. It's backwards-compatible with all browsers but also uses ScrollTimeline where possible for hardware accelerated animations.
+
+### Gestures
+- [hover](mdc:docs/hover.md): Learn how to create true hover gestures with Motion's hover function. It filters out touch events to fix "stuck" UIs and other broken behaviour.
+- [inView](mdc:docs/inview.md): Detect when an element enters or leaves the viewport using Motion's browser-native inView() function.
+- [press](mdc:docs/press.md): Learn how to create press gestures with Motion's press() function. Its simple API lets you respond to press start, end and cancel gestures, automatically filtering secondary mouse/touch events and adding keyboard accessibility by default.
+
+### Motion Values
+- [motionValue](mdc:docs/motion-value.md): Learn how to use Motion Values, a performant way to track the state and velocity of animated values.
+
+### Integrations
+- [CSS](mdc:docs/css.md): Learn how to make spring animations purely in CSS with Motion's spring function.
+- [Integrate Motion with Webflow](mdc:docs/webflow.md): Learn how to install Motion in your Webflow project for amazing animation performance and improved SEO.
+
+### Guides
+- [FAQs](mdc:docs/faqs.md): Frequently asked questions about Motion.
+- [Feature comparison](mdc:docs/feature-comparison.md): Compare the bundle size and feature set of Motion and GSAP.
+- [Improvements to Web Animations API](mdc:docs/improvements-to-the-web-animations-api-dx.md): Motion adds a number of features that improve the developer experience of the Web Animations API, and patches up some cross-browser inconsistencies.
+- [Migrate from GSAP to Motion](mdc:docs/migrate-from-gsap-to-motion.md): Learn how to improve performance and SEO by migrating your animations from GSAP to Motion.
+- [Performance](mdc:docs/performance.md): What makes an animation perform well? Perform poorly? Get the most performance from your web animations with Motion.
+- [Upgrade guide](mdc:docs/upgrade-guide.md): How to upgrade to the latest version of Motion.
+
+### Utils
+- [delay](mdc:docs/delay.md): A delay function locked to the animation frame loop.
+- [frame](mdc:docs/frame.md): Learn about Motion's powerful high-performance animation loop and how to use it to batch reads and writes per animation frame.
+- [mix](mdc:docs/mix.md): Learn how to mix two numbers, colors, complex strings, arrays and objects using Motion's powerful mix function.
+- [spring](mdc:docs/spring.md): Learn how to use Motion's spring generator to create physics-based animations.
+- [stagger](mdc:docs/stagger.md): Learn how to stagger animations across elements with Motion's stagger function.
+- [transform](mdc:docs/transform.md): Learn how to transform and map values from one range into another with Motion's powerful transform function.
+- [wrap](mdc:docs/wrap.md): Learn how to wrap numbers within a range. This is perfect for looping through a range infinitely. 
+
+
+## Vue
+
+### Get started
+- [Get started with Motion for Vue](mdc:docs/vue.md): Get started with Motion for Vue with our installation guide and interactive examples.
+
+### Animations
+- [Animation](mdc:docs/vue-animation.md): Learn how to animate with Motion for Vue. Discover springs, exit animations, layout animations, scroll animations and more.
+- [Gestures](mdc:docs/vue-gestures.md): Learn how to use Motion for Vue's powerful gesture system to trigger animations and events.
+- [Layout animations](mdc:docs/vue-layout-animations.md): Learn how to create layout and shared layout animations with Motion for Vue.
+- [Scroll animations](mdc:docs/vue-scroll-animations.md): Learn how to create scroll-linked and scroll-triggered animations with Motion for Vue.
+- [Transitions](mdc:docs/vue-transitions.md): A transition defines how values animate from one state to another. Learn how to configure transitions in Motion for Vue, with durations, cubic bezier curves, springs and more.
+
+### Components
+- [AnimatePresence](mdc:docs/vue-animate-presence.md): Learn how to quickly make exit animations with Motion for Vue's AnimatePresence component.
+- [LayoutGroup](mdc:docs/vue-layout-group.md): Animate layout across component groups with the LayoutGroup component.
+- [LazyMotion](mdc:docs/vue-lazymotion.md): Reduce the bundlesize of Motion for Vue by lazy-loading functionality with the LazyMotion component.
+- [motion](mdc:docs/vue-motion-component.md): The motion component is a DOM element supercharged with 120fps animations and gestures.
+- [MotionConfig](mdc:docs/vue-motion-config.md): Learn how use the MotionConfig component to set a default transition for all components, define reduced motion settings, or set a security policy.
+- [Reorder](mdc:docs/vue-reorder.md): Learn how to create simple drag-to-reorder effects with Motion for Vue's Reorder components.
+
+### Motion Values
+- [Motion values](mdc:docs/vue-motion-value.md): Learn how to use Motion's motion values, a performant way to track state and velocity.
+- [useMotionTemplate](mdc:docs/vue-use-motion-template.md): Combine multiple motion values with a string template.
+- [useMotionValueEvent](mdc:docs/vue-use-motion-value-event.md): Subscribe to motion value events from a Vue component.
+- [useScroll](mdc:docs/vue-use-scroll.md): Learn how to create scroll-linked animations with Motion's simple yet powerful useScroll hook.
+- [useSpring](mdc:docs/vue-use-spring.md): useSpring creates a motion value that animates to its target with a spring.
+- [useTime](mdc:docs/vue-use-time.md): A motion value that updates every animation frame with the duration, in milliseconds, since it was created.
+- [useTransform](mdc:docs/vue-use-transform.md): useTransform creates a new motion value that transforms the output of one or more motion values.
+- [useVelocity](mdc:docs/vue-use-velocity.md): Create a motion value that tracks the velocity of another motion value.
+
+### Hooks
+- [useAnimate](mdc:docs/vue-use-animate.md): Create an animate function with animation controls, timelines, scoped selectors and automatic cleanup.
+- [useAnimationFrame](mdc:docs/vue-use-animation-frame.md): Create an animation loop that runs a callback every frame.
+- [useDragControls](mdc:docs/vue-use-drag-controls.md): Learn how to manually start/stop dragging a motion component with the useDragControls hook.
+- [useInView](mdc:docs/vue-use-in-view.md): A simple state hook for detecting when an element is within the viewport.
+- [useReducedMotion](mdc:docs/vue-use-reduced-motion.md): A hook that determines whether the user prefers reduced motion.
+
+### Integrations
+- [Integrate Motion with Radix](mdc:docs/vue-radix.md): Learn how to animate Radix components with Motion for Vue. Easily add layout, exit and spring animations to your Radix components. With live code examples for Tabs, Tooltip and more.
+
+

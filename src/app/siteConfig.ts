@@ -4,6 +4,9 @@ export const siteConfig = {
   description: "Portfolio of Julio Ramirez De Freitas",
   baseLinks: {
     home: "/",
+    about: "/about",
+    photos: "/photos",
+    blog: "/blog",
     playground: {
       home: "/playground",
       textParallax: "/playground/text-parallax",

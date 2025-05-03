@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
-import { Instrument_Serif, Crimson_Pro, Inter } from 'next/font/google';
+import { Instrument_Serif, Crimson_Pro, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import 'lenis/dist/lenis.css';
 import Footer from '@/components/footer';
+import LenisInit from '@/components/lenis-init';
+import Header from '@/components/header';
 
 const instrumentSerif = Instrument_Serif({
   variable: '--font-instrument-serif',
@@ -21,12 +24,20 @@ const crimsonPro = Crimson_Pro({
   weight: ['200', '300', '400', '500', '600', '700'],
 });
 
+const jetBrainsMono = JetBrains_Mono({
+  variable: '--font-jetbrains-mono',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+});
+
 export const metadata: Metadata = {
   title: 'Julio Ramirez - Ingeniero Frontend en Santiago, Chile',
-  description: 'Soy Julio Ramirez, un Ingeniero Frontend especializado en React, TypeScript y arquitecturas web modernas. Diseño productos centrados en el usuario con interfaces e interacciones fluidas. Actualmente, exploro el diseño de movimiento utilizando GSAP y Three.js para llevar las experiencias digitales al siguiente nivel.',
+  description:
+    'Soy Julio Ramirez, un Ingeniero Frontend especializado en React, TypeScript y arquitecturas web modernas. Diseño productos centrados en el usuario con interfaces e interacciones fluidas. Actualmente, exploro el diseño de movimiento utilizando GSAP y Three.js para llevar las experiencias digitales al siguiente nivel.',
   openGraph: {
     title: 'Julio Ramirez - Ingeniero Frontend en Santiago, Chile',
-    description: 'Soy Julio Ramirez, un Ingeniero Frontend especializado en React, TypeScript y arquitecturas web modernas. Diseño productos centrados en el usuario con interfaces e interacciones fluidas. Actualmente, exploro el diseño de movimiento utilizando GSAP y Three.js para llevar las experiencias digitales al siguiente nivel.',
+    description:
+      'Soy Julio Ramirez, un Ingeniero Frontend especializado en React, TypeScript y arquitecturas web modernas. Diseño productos centrados en el usuario con interfaces e interacciones fluidas. Actualmente, exploro el diseño de movimiento utilizando GSAP y Three.js para llevar las experiencias digitales al siguiente nivel.',
     url: 'https://juliorafre.com',
     siteName: 'Julio Ramirez - Ingeniero Frontend en Santiago, Chile',
     locale: 'es_CL',
@@ -48,12 +59,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} font-inter antialiased`}>
-        <main className="relative flex flex-col min-h-dvh md:min-h-screen min-w-0">
-          {/* <Navbar /> */}
-          <div className="grow-1">
-            {children}
-          </div>
+      <body
+        className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} font-inter antialiased`}
+      >
+        <LenisInit />
+        <Header />
+        <main className="relative flex min-h-dvh min-w-0 flex-col md:min-h-screen">
+          <div className="grow-1">{children}</div>
           <Footer />
         </main>
       </body>
