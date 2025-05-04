@@ -26,35 +26,37 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
 
 const Header = () => {
   return (
-    <div className="container mx-auto flex max-w-3xl flex-col items-end justify-end gap-x-4 px-6 py-4.5 md:flex-row md:items-center md:justify-between">
-      <div className="flex w-full items-center justify-between gap-x-2 md:w-fit md:justify-start">
-        <motion.div
-          id="logo"
-          className="w-fit"
-          animate={{ rotate: 360 }}
-          transition={{
-            duration: 60,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-        >
-          <Image
-            src="/images/logo.png"
-            alt="galaxy-pixel-art"
-            width={100}
-            height={100}
-            className="size-13 invert md:size-10"
-          />
-        </motion.div>
-        <nav className="relative flex w-fit items-baseline gap-x-4">
-          <NavLink href={siteConfig.baseLinks.home}>Home</NavLink>
-          <NavLink href={siteConfig.baseLinks.about}>About</NavLink>
-          <NavLink href={siteConfig.baseLinks.blog}>Blog</NavLink>
-          <NavLink href={siteConfig.baseLinks.playground.home}>Experiments</NavLink>
-         {/*  <NavLink href={siteConfig.baseLinks.photos}>Photos</NavLink> */}
-        </nav>
-      </div>
-      {/*   <div className="text-muted-foreground flex items-center gap-x-2 text-xs font-light uppercase">
+    <>
+      <header className="relative container mx-auto hidden max-w-3xl flex-col items-end justify-end gap-x-4 px-6 py-4.5 md:flex md:flex-row md:items-center md:justify-between">
+        <div className="flex w-full items-center justify-between gap-x-2 md:w-fit md:justify-start">
+          <motion.div
+            id="logo"
+            className="w-fit"
+            animate={{ rotate: 360 }}
+            transition={{
+              duration: 60,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
+          >
+            <Image
+              src="/images/logo.png"
+              alt="galaxy-pixel-art"
+              width={100}
+              height={100}
+              className="size-13 invert md:size-10"
+            />
+          </motion.div>
+          <nav className="relative flex w-fit items-baseline gap-x-4">
+            <NavLink href={siteConfig.baseLinks.home}>Home</NavLink>
+            <NavLink href={siteConfig.baseLinks.about}>About</NavLink>
+            <NavLink href={siteConfig.baseLinks.blog}>Blog</NavLink>
+            <NavLink href={siteConfig.baseLinks.playground.home}>Experiments</NavLink>
+            {/*  <NavLink href={siteConfig.baseLinks.photos}>Photos</NavLink> */}
+          </nav>
+        </div>
+
+        {/*   <div className="text-muted-foreground flex items-center gap-x-2 text-xs font-light uppercase">
         <RRSSLink platform="email" href="mailto:juliorafre@gmail.com" />
         <span className="text-xs text-gray-300">✦</span>
         <RRSSLink platform="github" href="https://github.com/juliorafre" />
@@ -63,7 +65,37 @@ const Header = () => {
         <span className="text-xs text-gray-300">✦</span>
         <RRSSLink platform="linkedin" href="https://www.linkedin.com/in/juliorafre/" />
       </div> */}
-    </div>
+      </header>
+
+      <motion.header
+        initial={{
+          opacity: 0,
+          filter: 'blur(4px)',
+          translateY: '120%',
+        }}
+        animate={{
+          opacity: 1,
+          filter: 'blur(0px)',
+          translateY: '0%',
+        }}
+        transition={{
+          type: 'spring',
+          duration: 0.55,
+          bounce: 0.3,
+          ease: 'easeInOut',
+          delay: 0.6,
+        }}
+        className="header-mobile inset-shadow-accent fixed bottom-0 left-1/2 z-[999] w-[90%] translate-x-[-50%] translate-y-[-2vh] overflow-hidden rounded-full border border-gray-200 px-10 py-4 shadow-2xl md:hidden"
+      >
+        <div className="backdrop" />
+        <nav className="relative flex w-full items-baseline justify-between gap-x-4">
+          <NavLink href={siteConfig.baseLinks.home}>Home</NavLink>
+          <NavLink href={siteConfig.baseLinks.about}>About</NavLink>
+          <NavLink href={siteConfig.baseLinks.blog}>Blog</NavLink>
+          <NavLink href={siteConfig.baseLinks.playground.home}>Experiments</NavLink>
+        </nav>
+      </motion.header>
+    </>
   );
 };
 

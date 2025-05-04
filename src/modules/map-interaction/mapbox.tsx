@@ -7,7 +7,7 @@ const Mapbox = () => {
   return (
     <Map
       reuseMaps
-      mapboxAccessToken="pk.eyJ1IjoianVsaW9yYWZyZSIsImEiOiJjbTc2ZjYxYXEwdmJ2MmtweHM0ODF5eHJyIn0.78hxX8FyO2jthSyIMk1fkw"
+      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_KEY}
       initialViewState={{
         zoom: 11.133496816795057,
         bearing: 10.399999999999636,
@@ -16,10 +16,22 @@ const Mapbox = () => {
         padding: { top: 0, bottom: 0, left: 0, right: 0 },
         pitch: 0,
       }}
-      onMove={(e) => {
+      onMove={e => {
         console.log(e.viewState);
       }}
       style={{ width: 300, height: 300 }}
+      onIdle={() => {
+        console.log('map idle');
+      }}
+      onLoad={() => {
+        console.log('map loaded');
+      }}
+      onRemove={() => {
+        console.log('map removed');
+      }}
+      onRender={() => {
+        console.log('map rendered');
+      }}
       mapStyle="mapbox://styles/mapbox/standard"
     >
       <NavigationControl position="top-left" />

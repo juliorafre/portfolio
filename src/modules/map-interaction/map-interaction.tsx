@@ -15,7 +15,7 @@ const MapInteraction = () => {
   };
 
   return (
-    <div id="map-interaction-container" className="h-screen w-full grid place-items-center">
+    <div id="map-interaction-container" className="grid h-full w-full place-items-center">
       <AnimatePresence initial={false} mode="popLayout">
         {!isOpen && (
           <motion.button
@@ -29,9 +29,15 @@ const MapInteraction = () => {
               bounce: 0,
               ease: 'easeInOut',
             }}
-            className="bg-[#f0eeee] border border-[#C4C4C4] rounded-full px-4 py-2 hover:bg-slate-100 transition-colors"
+            className="rounded-full border border-[#C4C4C4] bg-[#f0eeee] px-4 py-2 transition-colors hover:bg-slate-100"
           >
-            <motion.span layout initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.125 } }} exit={{ opacity: 0 }} className="flex items-center gap-2 font-display">
+            <motion.span
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { delay: 0.125 } }}
+              exit={{ opacity: 0 }}
+              className="font-display flex items-center gap-2"
+            >
               <MapIcon size={20} /> View on Map
             </motion.span>
           </motion.button>
@@ -53,9 +59,13 @@ const MapInteraction = () => {
               bounce: 0.3,
               ease: 'easeInOut',
             }}
-            className="relative h-[300px] w-[300px] rounded-3xl overflow-hidden grid place-items-center"
+            className="relative grid h-[300px] w-[300px] place-items-center overflow-hidden rounded-3xl"
           >
-            <button id="button-close-map" onClick={toggle} className="absolute z-10 top-0 right-0 mt-2 mr-2 bg-white/70 backdrop-blur-sm rounded-full p-2 shadow-sm hover:bg-slate-100 transition-colors">
+            <button
+              id="button-close-map"
+              onClick={toggle}
+              className="absolute top-0 right-0 z-10 mt-2 mr-2 rounded-full bg-white/70 p-2 shadow-sm backdrop-blur-sm transition-colors hover:bg-slate-100"
+            >
               <XIcon size={20} strokeWidth={4} className="text-gray-500" />
             </button>
 
@@ -71,7 +81,8 @@ const MapInteraction = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="absolute z-10 bottom-0 left-0 m-2 rounded-xl shadow-sm bg-white/70 w-[120px] h-[55px] flex flex-col py-2 px-3 backdrop-blur-sm leading-none">
+              className="absolute bottom-0 left-0 z-10 m-2 flex h-[55px] w-[120px] flex-col rounded-xl bg-white/70 px-3 py-2 leading-none shadow-sm backdrop-blur-sm"
+            >
               <p className="text-xs font-semibold text-[#646464]">Location</p>
               <p className="text-base font-bold">New York</p>
             </motion.div>

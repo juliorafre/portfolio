@@ -2,7 +2,7 @@ import { CopyrightIcon } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <div className="mx-auto mt-10 w-full border-t">
+    <footer className="mx-auto mt-10 w-full border-t">
       <div className="font-jetbrains-mono mx-auto flex w-full max-w-3xl flex-row items-center justify-between px-4 py-3.5 md:px-10">
         <p className="text-muted-foreground flex items-center gap-x-1 text-sm font-light">
           <CopyrightIcon size={14} />
@@ -13,7 +13,7 @@ const Footer = () => {
           &quot;Like biological morph and motion&quot;
         </p>
       </div>
-    </div>
+    </footer>
   );
 };
 

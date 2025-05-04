@@ -60,14 +60,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} font-inter antialiased`}
+        className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} font-inter grid grid-rows-[auto_1fr_auto] antialiased`}
       >
         <LenisInit />
         <Header />
-        <main className="relative flex min-h-dvh min-w-0 flex-col md:min-h-screen">
-          <div className="grow-1">{children}</div>
-          <Footer />
-        </main>
+        <main className="relative min-h-dvh min-w-0 md:min-h-max">{children}</main>
+        <Footer />
       </body>
     </html>
   );
