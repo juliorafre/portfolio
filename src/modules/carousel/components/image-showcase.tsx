@@ -32,7 +32,7 @@ const ImageShowcase = () => {
             scale: 1,
             filter: 'blur(0px)',
             rotate: () => randomBetween(-5, 8),
-            ease: 'elastic.out(0.5, 0.3, 0.1)', // spring-like
+            ease: 'elastic.out(0.4, 0.3, 0.1)', // spring-like
             duration: 0.85,
             stagger: 0.1,
             scrollTrigger: {

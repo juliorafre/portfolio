@@ -94,11 +94,11 @@ export default function Home() {
             </CustomLink>
             .
           </p>
-          {/*  <div className="order-4 flex flex-row gap-x-2 text-base">
-              <NavLink href="/map-interaction" showIcon>
-                Code
-              </NavLink>
-            </div> */}
+          <div className="order-4 flex flex-row gap-x-2 text-base">
+            <NavLink href="/image-showcase" showIcon>
+              Code
+            </NavLink>
+          </div>
         </div>
         <div className="mb-10 flex w-full flex-col pt-2 text-balance">
           <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-6">
