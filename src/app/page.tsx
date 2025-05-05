@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { RRSSLink } from '@/components/rrss-link';
-import ExternalLink from '@/components/external-link';
+import CustomLink from '@/components/custom-link';
 import NavLink from '@/components/nav-link';
 import Carousel from '@/modules/carousel/components/carousel';
 import ImageShowcase from '@/modules/carousel/components/image-showcase';
@@ -69,10 +69,10 @@ export default function Home() {
       <motion.section id="currently" variants={item}>
         <h3 className="text-muted-foreground text-base">Currently</h3>
         <p className="text-base text-balance">
-          Listening to <ExternalLink href="https://frontend.fm/">Frontend.FM</ExternalLink> by Maxi
+          Listening to <CustomLink href="https://frontend.fm/">Frontend.FM</CustomLink> by Maxi
           Ferreira <br /> Reading{' '}
-          <ExternalLink href="https://largeapps.dev/">Building Large Scale Web Apps</ExternalLink>{' '}
-          by Addy Osmani & Hassan Djirdeh.
+          <CustomLink href="https://largeapps.dev/">Building Large Scale Web Apps</CustomLink> by
+          Addy Osmani & Hassan Djirdeh.
         </p>
       </motion.section>
 
@@ -89,9 +89,9 @@ export default function Home() {
           </div>
           <p className="text-muted-foreground order-3 mb-1 text-base text-balance">
             Small experiment replicating the sticker clothes reveal animation by{' '}
-            <ExternalLink href="https://x.com/bartek_marzec/status/1835432359815958530">
+            <CustomLink href="https://x.com/bartek_marzec/status/1835432359815958530">
               @bartek_marzec
-            </ExternalLink>
+            </CustomLink>
             .
           </p>
           {/*  <div className="order-4 flex flex-row gap-x-2 text-base">
@@ -154,7 +154,7 @@ export default function Home() {
               and maintainability.
             </p>
             <div className="order-4 flex flex-row gap-x-2 text-base">
-              <ExternalLink href="https://www.madi.bio/">Website</ExternalLink>
+              <CustomLink href="https://www.madi.bio/">Website</CustomLink>
             </div>
           </div> */}
         <div className="mb-10 flex w-full flex-col pt-2 text-balance">
@@ -172,8 +172,8 @@ export default function Home() {
             maintainability.
           </p>
           <div className="order-4 flex flex-row gap-x-2 text-base">
-            <ExternalLink href="https://www.madi.bio/">Read about it</ExternalLink>
-            <ExternalLink href="https://www.madi.bio/">Website</ExternalLink>
+            <CustomLink href="https://www.madi.bio/">Read about it</CustomLink>
+            <CustomLink href="https://www.madi.bio/">Website</CustomLink>
           </div>
         </div>
       </motion.section>
