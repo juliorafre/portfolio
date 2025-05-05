@@ -37,7 +37,7 @@ export default function Home() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="main-container space-y-10"
+      className="container mx-auto max-w-3xl space-y-10 px-6 py-10"
     >
       {/* Hero */}
       <motion.div variants={item} className="mb-10">
