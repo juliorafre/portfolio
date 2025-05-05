@@ -1,12 +1,12 @@
-import { ArrowUpRightIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef } from "react";
+import { ArrowUpRightIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import type { ComponentPropsWithoutRef } from 'react';
 
-type ExternalLinkProps = ComponentPropsWithoutRef<"a"> & {
+type ExternalLinkProps = ComponentPropsWithoutRef<'a'> & {
   showIcon?: boolean;
 };
 
-const ExternalLink = ({ 
+const ExternalLink = ({
   href,
   children,
   className,
@@ -20,9 +20,8 @@ const ExternalLink = ({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "inline-flex items-center gap-0.5 relative",
-        "after:content-[''] after:absolute after:bottom-px after:left-0 after:w-full after:h-px after:bg-accent-link",
-        "bg-accent-link/20 mt-0.5",
+        'relative inline-flex items-center gap-0.5 px-1',
+        'mt-0.5 via-[#90aaeb] transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#efa79b] hover:to-[#bde064] hover:text-black',
         className
       )}
     >

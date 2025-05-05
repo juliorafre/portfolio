@@ -60,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} font-inter grid grid-rows-[auto_1fr_auto] antialiased`}
+        className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} font-inter grid grid-rows-[auto_1fr_auto] pb-15 md:pb-0 antialiased`}
       >
         <LenisInit />
         <Header />

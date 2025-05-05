@@ -17,9 +17,8 @@ const NavLink = ({
     <Link
       href={href}
       className={cn(
-        'relative inline-flex items-center gap-0.5',
-        "after:bg-accent-link after:absolute after:bottom-px after:left-0 after:h-px after:w-full after:content-['']",
-        'bg-accent-link/20 mt-0.5',
+        'relative inline-flex items-center gap-0.5 px-1',
+        'mt-0.5 via-[#90aaeb] transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#efa79b] hover:to-[#bde064] hover:text-black',
         className
       )}
     >

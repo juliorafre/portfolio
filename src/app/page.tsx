@@ -172,6 +172,7 @@ export default function Home() {
             maintainability.
           </p>
           <div className="order-4 flex flex-row gap-x-2 text-base">
+            <ExternalLink href="https://www.madi.bio/">Read about it</ExternalLink>
             <ExternalLink href="https://www.madi.bio/">Website</ExternalLink>
           </div>
         </div>
