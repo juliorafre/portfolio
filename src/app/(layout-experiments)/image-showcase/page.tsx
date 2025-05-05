@@ -1,6 +1,6 @@
 import ImageShowcase from '@/modules/carousel/components/image-showcase';
 import CodeBlock from '@/components/codeblock';
-
+import CustomLink from '@/components/custom-link';
 const ImageShowcaseScreen = () => {
   const code =
     "'use client';\n\n" +
@@ -111,8 +111,17 @@ const ImageShowcaseScreen = () => {
     'export default ImageShowcase;\n';
 
   return (
-    <div className="container mx-auto grid h-full max-w-3xl place-items-start gap-y-4 pt-10">
+    <div className="main-container h-full space-y-6 gap-y-4">
+      <h1 className="mb-4 text-xl">Image Showcase</h1>
+      <p className="text-muted-foreground order-3 mb-1 text-base text-balance">
+        Small experiment replicating the sticker clothes reveal animation by{' '}
+        <CustomLink href="https://x.com/bartek_marzec/status/1835432359815958530">
+          @bartek_marzec
+        </CustomLink>
+        .
+      </p>
       <ImageShowcase />
+
       <CodeBlock lang="tsx">{code}</CodeBlock>
     </div>
   );
