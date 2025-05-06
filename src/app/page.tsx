@@ -77,9 +77,11 @@ export default function Home() {
         </p>
       </motion.section>
 
-      {/* Projects */}
+      {/* Feed */}
       <motion.section variants={item}>
+        {/* Feed title */}
         <h2 className="mb-2 text-base">Feed</h2>
+
         <div className="mb-10 flex w-full flex-col pt-2">
           <div className="order-1 mb-2">
             <ImageShowcase />
@@ -101,6 +103,7 @@ export default function Home() {
             </CustomLink>
           </div>
         </div>
+
         <div className="mb-10 flex w-full flex-col pt-2">
           <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-3 md:p-6">
             {/* <Image
@@ -132,8 +135,9 @@ export default function Home() {
             </CustomLink>
           </div>
         </div>
+
         <div className="mb-10 flex w-full flex-col pt-2">
-          <div className="order-1 mb-2 aspect-video rounded-lg border bg-gray-100 p-3 md:p-6">
+          <div className="order-1 mb-2 aspect-video overflow-hidden rounded-lg border bg-gray-100 p-3 md:p-6">
             <Carousel />
           </div>
           <div className="order-2 flex flex-col">

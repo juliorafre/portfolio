@@ -245,7 +245,7 @@
       */
       -webkit-backdrop-filter: blur(16px);
       backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, hsl(0deg 0% 95%), transparent 100%); /* prev 50% */
+      background: linear-gradient(to bottom, hsl(0deg 0% 100%), transparent 100%); /* prev 50% */
       pointer-events: none;
     }
 

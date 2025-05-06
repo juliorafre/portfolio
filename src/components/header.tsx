@@ -52,19 +52,8 @@ const Header = () => {
             <NavLink href={siteConfig.baseLinks.about}>About</NavLink>
             <NavLink href={siteConfig.baseLinks.blog}>Blog</NavLink>
             <NavLink href={siteConfig.baseLinks.playground.home}>Experiments</NavLink>
-            {/*  <NavLink href={siteConfig.baseLinks.photos}>Photos</NavLink> */}
           </nav>
         </div>
-
-        {/*   <div className="text-muted-foreground flex items-center gap-x-2 text-xs font-light uppercase">
-        <RRSSLink platform="email" href="mailto:juliorafre@gmail.com" />
-        <span className="text-xs text-gray-300">✦</span>
-        <RRSSLink platform="github" href="https://github.com/juliorafre" />
-        <span className="text-xs text-gray-300">✦</span>
-        <RRSSLink platform="x" href="https://x.com/juliorafre" />
-        <span className="text-xs text-gray-300">✦</span>
-        <RRSSLink platform="linkedin" href="https://www.linkedin.com/in/juliorafre/" />
-      </div> */}
       </header>
 
       <motion.header
@@ -80,7 +69,7 @@ const Header = () => {
         }}
         transition={{
           type: 'spring',
-          duration: 0.55,
+          duration: 0.85,
           bounce: 0.3,
           ease: 'easeInOut',
           delay: 0.6,
