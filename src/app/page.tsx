@@ -1,18 +1,17 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'motion/react';
 import { RRSSLink } from '@/components/rrss-link';
 import CustomLink from '@/components/custom-link';
-import NavLink from '@/components/nav-link';
 import Carousel from '@/modules/carousel/components/carousel';
 import ImageShowcase from '@/modules/carousel/components/image-showcase';
 import Hero from '@/components/hero';
 
 const container = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, filter: 'blur(4px)' },
   show: {
     opacity: 1,
+    filter: 'blur(0px)',
     transition: {
       staggerChildren: 0.129,
     },
@@ -20,10 +19,11 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, y: 10 },
+  hidden: { opacity: 0, y: 10, filter: 'blur(4px)' },
   show: {
     opacity: 1,
     y: 0,
+    filter: 'blur(0px)',
     transition: {
       duration: 0.6,
       ease: 'easeInOut',
@@ -46,8 +46,8 @@ export default function Home() {
 
       {/* About */}
       <motion.section id="about" variants={item}>
-        <h3 className="text-base">About me</h3>
-        <p className="text-base text-balance text-[#666]">
+        <h2 className="text-base">About me</h2>
+        <p className="text-base text-[#666]">
           I craft impactful, user-centric products, focusing on seamless interactions and interface
           design. Passionate about collaboration, I thrive in multidisciplinary teams, always
           learning and innovating. Specializing in React, TypeScript, and modern web architectures,
@@ -67,27 +67,28 @@ export default function Home() {
 
       {/* Currently */}
       <motion.section id="currently" variants={item}>
-        <h3 className="text-muted-foreground text-base">Currently</h3>
-        <p className="text-base text-balance">
-          Listening to <CustomLink href="https://frontend.fm/">Frontend.FM</CustomLink> by Maxi
-          Ferreira <br /> Reading{' '}
+        <h2 className="text-base">Currently</h2>
+        <p className="text-base text-[#666]">
+          Listening to <CustomLink href="https://frontend.fm/">Frontend.FM</CustomLink> by{' '}
+          <span className="text-black">Maxi Ferreira</span> <br /> Reading{' '}
           <CustomLink href="https://largeapps.dev/">Building Large Scale Web Apps</CustomLink> by
-          Addy Osmani & Hassan Djirdeh.
+          <span className="text-black">Addy Osmani</span> &{' '}
+          <span className="text-black">Hassan Djirdeh</span>.
         </p>
       </motion.section>
 
       {/* Projects */}
       <motion.section variants={item}>
-        <p className="font-medium">Latest crafts</p>
-        <div className="mb-10 flex w-full flex-col pt-2 text-balance">
+        <h2 className="mb-2 text-base">Feed</h2>
+        <div className="mb-10 flex w-full flex-col pt-2">
           <div className="order-1 mb-2">
             <ImageShowcase />
           </div>
-          <div className="order-2 mb-1 flex flex-col">
+          <div className="order-2 flex flex-col">
             <p className="text-muted-foreground text-base">April 2025</p>
-            <p className="text-base">Showcase sticker clothes.</p>
+            <p className="text-base font-medium">Showcase sticker clothes.</p>
           </div>
-          <p className="text-muted-foreground order-3 mb-1 text-base text-balance">
+          <p className="text-muted-foreground order-3 mb-1 text-base">
             Small experiment replicating the sticker clothes reveal animation by{' '}
             <CustomLink href="https://x.com/bartek_marzec/status/1835432359815958530">
               @bartek_marzec
@@ -95,13 +96,13 @@ export default function Home() {
             .
           </p>
           <div className="order-4 flex flex-row gap-x-2 text-base">
-            <NavLink href="/image-showcase" showIcon>
+            <CustomLink href="/image-showcase" showIcon>
               Code
-            </NavLink>
+            </CustomLink>
           </div>
         </div>
-        <div className="mb-10 flex w-full flex-col pt-2 text-balance">
-          <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-6">
+        <div className="mb-10 flex w-full flex-col pt-2">
+          <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-3 md:p-6">
             {/* <Image
               src="/images/projects/map-interaction.gif"
               width={3600}
@@ -115,57 +116,33 @@ export default function Home() {
               autoPlay
               muted
               loop
-              className="aspect-video w-full"
+              className="aspect-video w-full object-cover"
             ></video>
           </div>
-          <div className="order-2 mb-1 flex flex-col">
+          <div className="order-2 flex flex-col">
             <p className="text-muted-foreground text-base">March 2025</p>
-            <p className="text-base">Map interaction exploration.</p>
+            <p className="text-base font-medium">Map interaction exploration.</p>
           </div>
-          <p className="text-muted-foreground order-3 mb-1 text-base text-balance">
+          <p className="text-muted-foreground order-3 mb-1 text-base">
             Inspired by the work of @nitishkmrk and built with motion-react and mapbox.
           </p>
           <div className="order-4 flex flex-row gap-x-2 text-base">
-            <NavLink href="/map-interaction" showIcon>
+            <CustomLink href="/map-interaction" showIcon>
               Demo
-            </NavLink>
+            </CustomLink>
           </div>
         </div>
-        {/* <div className="mb-10 flex w-full flex-col pt-2 text-balance">
-            <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-6">
-              <Image
-                src="/images/discovery-2.png"
-                width={3600}
-                height={1834}
-                alt="Project 1"
-                className="w-full"
-              />
-            </div>
-            <div className="order-2 mb-1 flex flex-col">
-              <p className="text-muted-foreground text-base">2022-2024</p>
-              <p className="text-base">
-                madi™ an AI-powered web platform for protein engineering.
-              </p>
-            </div>
-            <p className="text-muted-foreground order-3 mb-1 text-base text-balance">
-              Developed interactive UI components and data visualizations to streamline analysis and
-              optimization. Collaborated with AI researchers and biochemists to enhance workflows,
-              improving efficiency and scalability. Led frontend development, ensuring performance
-              and maintainability.
-            </p>
-            <div className="order-4 flex flex-row gap-x-2 text-base">
-              <CustomLink href="https://www.madi.bio/">Website</CustomLink>
-            </div>
-          </div> */}
-        <div className="mb-10 flex w-full flex-col pt-2 text-balance">
-          <div className="order-1 mb-2 rounded-lg border bg-gray-100 p-6">
+        <div className="mb-10 flex w-full flex-col pt-2">
+          <div className="order-1 mb-2 aspect-video rounded-lg border bg-gray-100 p-3 md:p-6">
             <Carousel />
           </div>
-          <div className="order-2 mb-1 flex flex-col">
-            <p className="text-muted-foreground text-base">2022-2024</p>
-            <p className="text-base">madi™ an AI-powered web platform for protein engineering.</p>
+          <div className="order-2 flex flex-col">
+            <p className="text-muted-foreground text-base">2022 –– 2024</p>
+            <p className="text-base font-medium">
+              madi™ an AI-powered web platform for protein engineering.
+            </p>
           </div>
-          <p className="text-muted-foreground order-3 mb-1 text-base text-balance">
+          <p className="text-muted-foreground order-3 mb-1 text-base">
             Developed interactive UI components and data visualizations to streamline analysis and
             optimization. Collaborated with AI researchers and biochemists to enhance workflows,
             improving efficiency and scalability. Led frontend development, ensuring performance and
@@ -181,13 +158,13 @@ export default function Home() {
       {/* Playgrounds */}
       <section>
         <h2 className="mb-2 text-lg">Playgrounds</h2>
-        <div className="flex flex-col">
-          <Link href="/text-parallax">Text Parallax</Link>
-          <Link href="/text-gradient-on-scroll">Text Gradient On Scroll</Link>
-          <Link href="/map-interaction">Map Interaction</Link>
-          <Link href="/draggable-curved">Draggable Curved</Link>
-          <Link href="/button-categorization">Button Categorization</Link>
-          <Link href="/streaming-text">Streaming Text</Link>
+        <div className="flex w-full flex-col">
+          <CustomLink href="/text-parallax">Text Parallax</CustomLink>
+          <CustomLink href="/text-gradient-on-scroll">Text Gradient On Scroll</CustomLink>
+          <CustomLink href="/map-interaction">Map Interaction</CustomLink>
+          <CustomLink href="/draggable-curved">Draggable Curved</CustomLink>
+          <CustomLink href="/button-categorization">Button Categorization</CustomLink>
+          <CustomLink href="/streaming-text">Streaming Text</CustomLink>
         </div>
       </section>
     </motion.div>

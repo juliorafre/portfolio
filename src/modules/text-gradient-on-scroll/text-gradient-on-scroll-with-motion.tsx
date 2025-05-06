@@ -105,7 +105,7 @@ const TextGradientOnScrollWithMotion = () => {
             <h2 className="w-[30vw] font-sans text-[32px] font-extrabold text-balance text-[#E30614] md:w-[22vw] md:text-6xl">
               OUR PHILOSOPHY
             </h2>
-            <p className="w-[85vw] font-[Helvetica] text-[16px] leading-snug font-black text-balance text-[#b4b4b4] uppercase transition-opacity md:w-[72vw] md:text-4xl">
+            <p className="w-[85vw] font-[Helvetica] text-[16px] leading-snug font-black text-[#b4b4b4] uppercase transition-opacity md:w-[72vw] md:text-4xl">
               {textSplitted}
             </p>
           </div>

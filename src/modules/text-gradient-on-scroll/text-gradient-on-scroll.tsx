@@ -35,7 +35,7 @@ const TextGradientOnScroll = () => {
 
   const textSplitted = text.split(' ').map((word, index) => (
     <span
-      ref={(el) => {
+      ref={el => {
         wordsRef.current[index] = el;
       }}
       style={{ opacity: 0.2, lineHeight: '40px' }}
@@ -65,11 +65,15 @@ const TextGradientOnScroll = () => {
       <div className="bg-white">
         <Spacer title="Darkrrom-Engineering" url="https://darkroom.engineering/about" vHSize={35} />
         <div ref={containerRef} className="grid grid-cols-12 bg-black py-[20vh]">
-          <div className="col-start-2 md:col-start-4 col-end-[-1] mb-[1vw]">
-            <p className="font-extrabold text-[67px] md:text-6xl w-[30vw] md:w-[22vw] font-sans text-balance text-[#E30614]">OUR PHILOSOPHY</p>
+          <div className="col-start-2 col-end-[-1] mb-[1vw] md:col-start-4">
+            <p className="w-[30vw] font-sans text-[67px] font-extrabold text-[#E30614] md:w-[22vw] md:text-6xl">
+              OUR PHILOSOPHY
+            </p>
           </div>
-          <div ref={bodyRef} className="col-start-2 md:col-start-4 col-end-[-1]">
-            <p className="font-black text-[44px] md:text-4xl w-[80vw] md:w-[72vw] font-[Helvetica] text-balance text-[#b7b7b7] uppercase transition-opacity leading-snug">{textSplitted}</p>
+          <div ref={bodyRef} className="col-start-2 col-end-[-1] md:col-start-4">
+            <p className="w-[80vw] font-[Helvetica] text-[44px] leading-snug font-black text-[#b7b7b7] uppercase transition-opacity md:w-[72vw] md:text-4xl">
+              {textSplitted}
+            </p>
           </div>
         </div>
         <Spacer title="Darkrrom-Engineering" url="https://darkroom.engineering/about" vHSize={70} />

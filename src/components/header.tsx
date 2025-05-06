@@ -70,13 +70,13 @@ const Header = () => {
       <motion.header
         initial={{
           opacity: 0,
-          filter: 'blur(4px)',
-          translateY: '120%',
+          filter: 'blur(8px)',
+          translateY: '4px',
         }}
         animate={{
           opacity: 1,
           filter: 'blur(0px)',
-          translateY: '0%',
+          translateY: '0px',
         }}
         transition={{
           type: 'spring',

@@ -113,7 +113,7 @@ const ImageShowcaseScreen = () => {
   return (
     <div className="main-container h-full space-y-6 gap-y-4">
       <h1 className="mb-4 text-xl">Image Showcase</h1>
-      <p className="text-muted-foreground order-3 mb-1 text-base text-balance">
+      <p className="text-muted-foreground order-3 mb-1 text-base">
         Small experiment replicating the sticker clothes reveal animation by{' '}
         <CustomLink href="https://x.com/bartek_marzec/status/1835432359815958530">
           @bartek_marzec
