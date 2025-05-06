@@ -1,6 +1,7 @@
 import ImageShowcase from '@/modules/carousel/components/image-showcase';
 import CodeBlock from '@/components/codeblock';
 import CustomLink from '@/components/custom-link';
+
 const ImageShowcaseScreen = () => {
   const code =
     "'use client';\n\n" +
@@ -120,9 +121,10 @@ const ImageShowcaseScreen = () => {
         </CustomLink>
         .
       </p>
+      
       <ImageShowcase />
 
-      <CodeBlock lang="tsx">{code}</CodeBlock>
+      <CodeBlock code={code} />
     </div>
   );
 };

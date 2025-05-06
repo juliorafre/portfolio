@@ -1,51 +1,24 @@
-/* import type { BundledLanguage } from 'shiki';
-import { codeToHtml } from 'shiki';
-
-interface CodeBlockProps {
-  children: string;
-  lang: BundledLanguage;
-}
-
-const CodeBlock = async ({ children, lang }: CodeBlockProps) => {
-  const out = await codeToHtml(children, {
-    lang,
-    theme: 'github-dark',
-  });
-
-  return (
-    <div
-      className="w-full rounded-lg border bg-gray-100 p-4"
-      dangerouslySetInnerHTML={{ __html: out }}
-    />
-  );
-};
-
-export default CodeBlock;
- */
-
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import Prism from 'prismjs';
-import 'prismjs/themes/prism-twilight.css';
-import 'prismjs/components/prism-typescript';
 import { Button } from '@/components/ui/button';
 import { CopyIcon, CheckIcon } from 'lucide-react';
+import { highlight } from 'sugar-high';
 
 interface CodeBlockProps {
-  children: string;
-  lang: string;
+  code: string;
 }
 
-const CodeBlock = ({ children, lang }: CodeBlockProps) => {
+const CodeBlock = ({ code }: CodeBlockProps) => {
   // Specify the element type for the ref
+
   const codeRef = useRef<HTMLElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
   const CopyToClipboard = () => {
-    if (children) {
-      navigator.clipboard.writeText(children);
+    if (code) {
+      navigator.clipboard.writeText(code);
       setIsCopied(true);
       const timeout = setTimeout(() => {
         setIsCopied(false);
@@ -55,11 +28,11 @@ const CodeBlock = ({ children, lang }: CodeBlockProps) => {
   };
 
   useEffect(() => {
-    // Ensure the ref is current before highlighting
     if (codeRef.current) {
-      Prism.highlightElement(codeRef.current);
+      const highlightedCode = highlight(code);
+      codeRef.current.innerHTML = highlightedCode;
     }
-  }, [children, lang]); // Dependencies ensure highlighting reruns if content/lang changes
+  }, [code]);
 
   return (
     <div
@@ -84,17 +57,8 @@ const CodeBlock = ({ children, lang }: CodeBlockProps) => {
         </Button>
       </div>
       {/* CODE */}
-      <pre className={`language-${lang}`}>
-        <code
-          ref={codeRef}
-          className={`language-${lang}`}
-          style={{
-            fontSize: '14px',
-            backgroundColor: '#171717',
-          }}
-        >
-          {children}
-        </code>
+      <pre className="overflow-x-auto rounded-xl bg-[#0f0f0f] p-4 text-sm">
+        <code ref={codeRef} />
       </pre>
       {/* END CODE */}
     </div>
