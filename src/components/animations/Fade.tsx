@@ -2,22 +2,26 @@
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 
-const item = {
-  hidden: {
-    opacity: 0,
-    y: 16,
-    filter: 'blur(4px)',
-  },
+const container = {
+  hidden: { opacity: 0, filter: 'blur(4px)' },
   show: {
     opacity: 1,
-    scale: 1,
+    filter: 'blur(0px)',
+    transition: {
+      staggerChildren: 0.129,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 10, filter: 'blur(4px)' },
+  show: {
+    opacity: 1,
     y: 0,
     filter: 'blur(0px)',
     transition: {
-      type: 'spring',
-      stiffness: 150,
-      damping: 19,
-      mass: 1.2,
+      duration: 0.6,
+      ease: 'easeInOut',
     },
   },
 };
@@ -30,22 +34,18 @@ const FadeContainer = ({
   className?: string;
 }) => {
   return (
-    <motion.div
-      className={cn(className)}
-      transition={{ staggerChildren: 0.05, delayChildren: 0.2 }}
-    >
+    <motion.div className={cn(className)} variants={container} initial="hidden" animate="show">
       {children}
     </motion.div>
   );
 };
 
-
-const FadeDiv = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+const FadeItem = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   return (
-    <motion.div className={cn(className)} variants={item}>
+    <motion.div className={cn(className)} variants={item} initial="hidden" animate="show">
       {children}
     </motion.div>
   );
 };
 
-export { FadeContainer, FadeDiv };
+export { FadeContainer, FadeItem };

@@ -25,6 +25,7 @@ const ImageShowcase = () => {
           cards,
           {
             scale: 0,
+            opacity: 1,
             filter: 'blur(10px)',
             rotate: () => randomBetween(-80, -20),
           },
@@ -67,6 +68,7 @@ const ImageShowcase = () => {
               top: '50%',
               left: '50%',
               rotate: '0deg',
+              opacity: 0,
             }}
           >
             <motion.div

@@ -1,51 +1,36 @@
-'use client';
-
-import { motion } from 'motion/react';
 import { RRSSLink } from '@/components/rrss-link';
 import CustomLink from '@/components/custom-link';
 import Carousel from '@/modules/carousel/components/carousel';
 import ImageShowcase from '@/modules/carousel/components/image-showcase';
 import Hero from '@/components/hero';
-
-const container = {
-  hidden: { opacity: 0, filter: 'blur(4px)' },
-  show: {
-    opacity: 1,
-    filter: 'blur(0px)',
-    transition: {
-      staggerChildren: 0.129,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 10, filter: 'blur(4px)' },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: 'blur(0px)',
-    transition: {
-      duration: 0.6,
-      ease: 'easeInOut',
-    },
-  },
-};
+import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
 
 export default function Home() {
   return (
-    <motion.div
-      variants={container}
-      initial="hidden"
-      animate="show"
+    <AnimationOrchestrator
       className="container mx-auto max-w-3xl space-y-10 px-6 py-10"
+      sessionKey="homePageAnimation"
     >
       {/* Hero */}
-      <motion.div variants={item} className="mb-10">
+      <div
+        style={
+          {
+            '--stagger': 0,
+          } as React.CSSProperties
+        }
+      >
         <Hero />
-      </motion.div>
+      </div>
 
       {/* About */}
-      <motion.section id="about" variants={item}>
+      <section
+        id="about"
+        style={
+          {
+            '--stagger': 1,
+          } as React.CSSProperties
+        }
+      >
         <h2 className="text-base">About me</h2>
         <p className="text-base text-[#666]">
           I craft impactful, user-centric products, focusing on seamless interactions and interface
@@ -63,10 +48,17 @@ export default function Home() {
           <span className="text-xs text-gray-300">✦</span>
           <RRSSLink platform="linkedin" href="https://www.linkedin.com/in/juliorafre/" />
         </div>
-      </motion.section>
+      </section>
 
       {/* Currently */}
-      <motion.section id="currently" variants={item}>
+      <section
+        id="currently"
+        style={
+          {
+            '--stagger': 2,
+          } as React.CSSProperties
+        }
+      >
         <h2 className="text-base">Currently</h2>
         <p className="text-base text-[#666]">
           Listening to <CustomLink href="https://frontend.fm/">Frontend.FM</CustomLink> by{' '}
@@ -75,10 +67,16 @@ export default function Home() {
           <span className="text-black">Addy Osmani</span> &{' '}
           <span className="text-black">Hassan Djirdeh</span>.
         </p>
-      </motion.section>
+      </section>
 
       {/* Feed */}
-      <motion.section variants={item}>
+      <section
+        style={
+          {
+            '--stagger': 3,
+          } as React.CSSProperties
+        }
+      >
         {/* Feed title */}
         <h2 className="mb-2 text-base">Feed</h2>
 
@@ -157,10 +155,16 @@ export default function Home() {
             <CustomLink href="https://www.madi.bio/">Website</CustomLink>
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Playgrounds */}
-      <section>
+      <section
+        style={
+          {
+            '--stagger': 4,
+          } as React.CSSProperties
+        }
+      >
         <h2 className="mb-2 text-lg">Playgrounds</h2>
         <div className="flex w-full flex-col">
           <CustomLink href="/text-parallax">Text Parallax</CustomLink>
@@ -171,6 +175,6 @@ export default function Home() {
           <CustomLink href="/streaming-text">Streaming Text</CustomLink>
         </div>
       </section>
-    </motion.div>
+    </AnimationOrchestrator>
   );
 }

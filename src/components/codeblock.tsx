@@ -39,10 +39,10 @@ const CodeBlock = ({ code }: CodeBlockProps) => {
       className={`relative w-full rounded-xl ${isExpanded ? 'h-auto overflow-scroll' : 'h-[300px] overflow-hidden'}`}
     >
       <div
-        className={`absolute inset-0 flex items-end justify-center p-10 ${isExpanded ? '' : 'bg-gradient-to-b from-transparent to-black/80'}`}
+        className={`absolute inset-0 flex items-end justify-center p-10 ${isExpanded ? 'pointer-events-none' : 'bg-gradient-to-b from-transparent to-black/80'}`}
       >
         <Button
-          className="absolute top-0 right-0 mt-7 mr-5 cursor-pointer"
+          className="absolute top-0 right-0 mt-7 mr-5 cursor-pointer pointer-events-auto"
           variant={'secondary'}
           onClick={CopyToClipboard}
         >
@@ -50,7 +50,7 @@ const CodeBlock = ({ code }: CodeBlockProps) => {
         </Button>
         <Button
           variant={'secondary'}
-          className="cursor-pointer"
+          className="cursor-pointer pointer-events-auto"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           {isExpanded ? 'Collapse' : 'Expand'}

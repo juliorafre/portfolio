@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 // import { RRSSLink } from '@/components/rrss-link';
 import { usePathname } from 'next/navigation';
+import gsap from 'gsap';
+import { useEffect, useRef } from 'react';
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const pathname = usePathname();
@@ -25,6 +27,18 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
 };
 
 const Header = () => {
+  const headerMobileRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (headerMobileRef.current) { 
+      
+    }
+    gsap.to(headerMobileRef.current, {
+      opacity: 1,
+      duration: 0.5,
+    });
+  }, []);
+
   return (
     <>
       <header className="relative container mx-auto hidden max-w-3xl flex-col items-end justify-end gap-x-4 px-6 py-4.5 md:flex md:flex-row md:items-center md:justify-between">
@@ -57,6 +71,7 @@ const Header = () => {
       </header>
 
       <motion.header
+        ref={headerMobileRef}
         initial={{
           opacity: 0,
           filter: 'blur(8px)',
