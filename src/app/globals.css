@@ -8,6 +8,8 @@
   --font-instrument-serif: var(--font-instrument-serif), serif;
   --font-crimson-pro: var(--font-crimson-pro), serif;
   --font-inter: var(--font-inter), sans-serif;
+  --font-amatic-sc: var(--font-amatic-sc), cursive;
+  --font-kalam: var(--font-kalam), cursive;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -138,8 +140,27 @@
     max-width: 100%;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
   p {
-    @apply text-balance;
+    overflow-wrap: break-word;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    text-wrap: pretty;
+  }
+
+  figcaption {
+    @apply text-muted-foreground mt-2 text-center text-sm italic;
   }
 
   :root {
@@ -247,6 +268,80 @@
 
   .header-mobile {
     background: hsl(0deg 0% 100% / 0.95);
+  }
+
+  /* ----------------------------------------------------------------------------- */
+  /* INFINITE CANVAS */
+  /* ----------------------------------------------------------------------------- */
+
+  .infinite-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .infinite-content {
+    display: grid;
+    width: max-content;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10vw;
+    padding: 5vw;
+  }
+
+  .background-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .background-grid::after {
+    content: '';
+    position: absolute;
+    background-image: url(/images/fx/grid.svg);
+    background-position: 50%;
+    -webkit-mask-image: radial-gradient(
+      circle at calc(50% - 94px) calc(50% - 93px),
+      #fff 40%,
+      transparent 75%
+    );
+    mask-image: radial-gradient(
+      circle at calc(50% - 94px) calc(50% - 93px),
+      #fff 40%,
+      transparent 75%
+    );
+    opacity: 0.4;
+    inset: -188px;
+    left: 0;
+    top: -2px;
+  }
+
+  /* ----------------------------------------------------------------------------- */
+  /* BLOG */
+  /* ----------------------------------------------------------------------------- */
+
+  .content {
+    @apply grid w-full grid-flow-row-dense grid-cols-12 place-content-center gap-y-4;
+  }
+
+  .content > .text-content {
+    @apply col-span-12 md:col-span-6 md:col-start-4;
+  }
+
+  .content > .full-content {
+    @apply col-span-12 grid place-content-center;
+  }
+
+  .content > .image-content {
+    @apply col-span-12 grid place-content-center py-10;
+  }
+
+  .content p {
+    @apply leading-relaxed text-balance;
+  }
+
+  .content h2 {
+    @apply mt-10 text-2xl font-semibold;
   }
 
   /*

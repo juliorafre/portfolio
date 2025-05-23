@@ -64,7 +64,7 @@ const Header = () => {
           <nav className="relative flex w-fit items-baseline gap-x-4">
             <NavLink href={siteConfig.baseLinks.home}>Home</NavLink>
             <NavLink href={siteConfig.baseLinks.about}>About</NavLink>
-            <NavLink href={siteConfig.baseLinks.blog}>Blog</NavLink>
+            <NavLink href={siteConfig.baseLinks.blog}>Writing</NavLink>
             <NavLink href={siteConfig.baseLinks.playground.home}>Experiments</NavLink>
           </nav>
         </div>

@@ -4,6 +4,7 @@ import Carousel from '@/modules/carousel/components/carousel';
 import ImageShowcase from '@/modules/carousel/components/image-showcase';
 import Hero from '@/components/hero';
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
+import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
 
 export default function Home() {
   return (
@@ -79,6 +80,22 @@ export default function Home() {
       >
         {/* Feed title */}
         <h2 className="mb-2 text-base">Feed</h2>
+
+        <div className="mb-10 flex w-full flex-col pt-2">
+          <div className="order-1 mb-2">
+            <InfiniteCanvas />
+          </div>
+          <div className="order-2 flex flex-col">
+            <p className="text-muted-foreground text-base">May 2025</p>
+            <p className="text-base font-medium">Memories. (Infinite Canvas)</p>
+          </div>
+          <p className="text-muted-foreground order-3 mb-1 text-base">WIP experiment.</p>
+          <div className="order-4 flex flex-row gap-x-2 text-base">
+            <CustomLink href="/infinite-canvas" showIcon>
+              Code
+            </CustomLink>
+          </div>
+        </div>
 
         <div className="mb-10 flex w-full flex-col pt-2">
           <div className="order-1 mb-2">
