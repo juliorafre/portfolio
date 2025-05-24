@@ -2,6 +2,7 @@
 
 import { siteConfig } from '@/app/siteConfig';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { motion } from 'motion/react';
 // import { RRSSLink } from '@/components/rrss-link';
@@ -16,13 +17,42 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className={`text-sm ${isActive ? 'text-black' : 'text-muted-foreground'} hover:text-black`}
+      className={`text-sm ${isActive ? 'text-black dark:text-white' : 'text-muted-foreground'} hover:text-black dark:hover:text-white`}
       style={{
         transition: 'color .2s cubic-bezier(.075,.82,.165,1)',
       }}
     >
       {children}
     </Link>
+  );
+};
+
+const ThemeSwitcher = () => {
+  const { setTheme, theme } = useTheme();
+
+  if (!theme) return null; // Avoid rendering until theme is available
+
+  return (
+    <div className="flex items-center gap-x-2">
+      <button
+        onClick={() => setTheme('light')}
+        className={`text-sm p-1 rounded ${theme === 'light' ? 'bg-gray-200 dark:bg-gray-700' : ''}`}
+      >
+        Light
+      </button>
+      <button
+        onClick={() => setTheme('dark')}
+        className={`text-sm p-1 rounded ${theme === 'dark' ? 'bg-gray-200 dark:bg-gray-700' : ''}`}
+      >
+        Dark
+      </button>
+      <button
+        onClick={() => setTheme('system')}
+        className={`text-sm p-1 rounded ${theme === 'system' ? 'bg-gray-200 dark:bg-gray-700' : ''}`}
+      >
+        System
+      </button>
+    </div>
   );
 };
 
@@ -42,10 +72,10 @@ const Header = () => {
   return (
     <>
       <header className="relative container mx-auto hidden max-w-3xl flex-col items-end justify-end gap-x-4 px-6 py-4.5 md:flex md:flex-row md:items-center md:justify-between">
-        <div className="flex w-full items-center justify-between gap-x-2 md:w-fit md:justify-start">
+        <div className="flex w-full items-center justify-start gap-x-2">
           <motion.div
             id="logo"
-            className="w-fit"
+            className="w-fit mr-2"
             animate={{ rotate: 360 }}
             transition={{
               duration: 60,
@@ -58,7 +88,7 @@ const Header = () => {
               alt="galaxy-pixel-art"
               width={100}
               height={100}
-              className="size-13 invert md:size-10"
+              className="size-13 invert dark:invert-0 md:size-10"
             />
           </motion.div>
           <nav className="relative flex w-fit items-baseline gap-x-4">
@@ -68,6 +98,7 @@ const Header = () => {
             <NavLink href={siteConfig.baseLinks.playground.home}>Experiments</NavLink>
           </nav>
         </div>
+        <ThemeSwitcher />
       </header>
 
       <motion.header
@@ -89,14 +120,15 @@ const Header = () => {
           ease: 'easeInOut',
           delay: 0.6,
         }}
-        className="header-mobile inset-shadow-accent fixed bottom-0 left-1/2 z-[999] w-[90%] translate-x-[-50%] translate-y-[-2vh] overflow-hidden rounded-full border border-gray-200 px-10 py-4 shadow-2xl md:hidden"
+        className="header-mobile inset-shadow-accent fixed bottom-0 left-1/2 z-[999] w-[90%] translate-x-[-50%] translate-y-[-2vh] overflow-hidden rounded-full border border-gray-200 dark:border-gray-700 px-6 py-3 shadow-2xl md:hidden"
       >
         <div className="backdrop" />
-        <nav className="relative flex w-full items-baseline justify-between gap-x-4">
+        <nav className="relative flex w-full items-baseline justify-between gap-x-2">
           <NavLink href={siteConfig.baseLinks.home}>Home</NavLink>
           <NavLink href={siteConfig.baseLinks.about}>About</NavLink>
           <NavLink href={siteConfig.baseLinks.blog}>Blog</NavLink>
-          <NavLink href={siteConfig.baseLinks.playground.home}>Experiments</NavLink>
+          <NavLink href={siteConfig.baseLinks.playground.home}>More</NavLink>
+          <ThemeSwitcher />
         </nav>
       </motion.header>
     </>

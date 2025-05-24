@@ -191,28 +191,18 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
     --selection: rgba(0, 0, 0, 0.071);
-    /* sugar-high */
-    /* --sh-class: #2d5e9d;
-    --sh-identifier: #354150;
-    --sh-sign: #8996a3;
-    --sh-property: #0550ae;
-    --sh-entity: #249a97;
-    --sh-jsxliterals: #6266d1;
-    --sh-string: #00a99a;
-    --sh-keyword: #f47067;
-    --sh-comment: #a19595; */
-    /* fondo del bloque de código */
-    --sh-background: #0d1117; /* mismo canvas oscuro de GitHub */
-    /* tokens */
-    --sh-class: #ffa657; /* nombres de clase / constructores  */
-    --sh-identifier: #e6edf3; /* texto neutro / variables genéricas */
-    --sh-sign: #c9d1d9; /* paréntesis, comas, signos           */
-    --sh-property: #79c0ff; /* propiedades, números, constantes    */
-    --sh-entity: #d2a8ff; /* funciones, decoradores, built-ins    */
-    --sh-jsxliterals: #79c0ff; /* etiquetas JSX / literals especiales */
-    --sh-string: #a5d6ff; /* cadenas                             */
-    --sh-keyword: #ff7b72; /* if, const, import…                  */
-    --sh-comment: #8b949e;
+
+    /* sugar-high light theme (default) */
+    --sh-background: #f6f8fa;      /* Light gray background */
+    --sh-class: #B31D28;           /* Dark red (type names) */
+    --sh-identifier: #24292e;      /* Near black (default text) */
+    --sh-sign: #24292e;            /* Near black (punctuation) */
+    --sh-property: #005cc5;        /* Blue (props, numbers) */
+    --sh-entity: #6f42c1;          /* Purple (functions, built-ins) */
+    --sh-jsxliterals: #005cc5;     /* Blue (JSX tags) */
+    --sh-string: #032f62;          /* Dark blue/greenish (strings) */
+    --sh-keyword: #d73a49;         /* Red (keywords) */
+    --sh-comment: #6a737d;         /* Gray (comments) */
   }
 
   .dark {
@@ -241,6 +231,18 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
     --selection: 10°, 89%, 89%;
+
+    /* sugar-high dark theme */
+    --sh-background: #0d1117;      /* Dark background (GitHub dark canvas) */
+    --sh-class: #ffa657;           /* Orange (class names) */
+    --sh-identifier: #e6edf3;      /* Light gray (default text) */
+    --sh-sign: #c9d1d9;            /* Lighter gray (punctuation) */
+    --sh-property: #79c0ff;        /* Light blue (props, numbers) */
+    --sh-entity: #d2a8ff;          /* Light purple (functions, built-ins) */
+    --sh-jsxliterals: #79c0ff;     /* Light blue (JSX tags) */
+    --sh-string: #a5d6ff;          /* Lighter blue (strings) */
+    --sh-keyword: #ff7b72;         /* Light red/coral (keywords) */
+    --sh-comment: #8b949e;         /* Gray (comments) */
   }
 
   * {

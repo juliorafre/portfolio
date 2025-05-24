@@ -5,6 +5,7 @@ import 'lenis/dist/lenis.css';
 import Footer from '@/components/footer';
 // import LenisInit from '@/components/lenis-init';
 import Header from '@/components/header';
+import { ThemeProvider } from '@/components/theme-provider';
 import Script from 'next/script';
 
 const instrumentSerif = Instrument_Serif({
@@ -76,9 +77,11 @@ export default function RootLayout({
         className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} ${amaticSC.variable} ${kalam.variable} font-inter grid grid-rows-[auto_1fr_auto] pb-15 antialiased md:pb-0`}
       >
         {/*  <LenisInit /> */}
-        <Header />
-        <main className="relative min-h-dvh min-w-0 md:min-h-max">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Header />
+          <main className="relative min-h-dvh min-w-0 md:min-h-max">{children}</main>
+          <Footer />
+        </ThemeProvider>
         <Script
           strategy="afterInteractive"
           src="https://static.cloudflareinsights.com/beacon.min.js"

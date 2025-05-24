@@ -33,7 +33,7 @@ export default function Home() {
         }
       >
         <h2 className="text-base">About me</h2>
-        <p className="text-base text-[#666]">
+        <p className="text-base text-muted-foreground">
           I craft impactful, user-centric products, focusing on seamless interactions and interface
           design. Passionate about collaboration, I thrive in multidisciplinary teams, always
           learning and innovating. Specializing in React, TypeScript, and modern web architectures,
@@ -42,11 +42,11 @@ export default function Home() {
         </p>
         <div className="text-muted-foreground mt-4 flex items-center gap-x-2 text-sm font-light uppercase">
           <RRSSLink platform="email" href="mailto:juliorafre@gmail.com" />
-          <span className="text-xs text-gray-300">✦</span>
+          <span className="text-xs text-border">✦</span>
           <RRSSLink platform="github" href="https://github.com/juliorafre" />
-          <span className="text-xs text-gray-300">✦</span>
-          <RRSSLink platform="x" href="https://x.com/juliorafre" />
-          <span className="text-xs text-gray-300">✦</span>
+          <span className="text-xs text-border">✦</span>
+          RRSSLink platform="x" href="https://x.com/juliorafre" />
+          <span className="text-xs text-border">✦</span>
           <RRSSLink platform="linkedin" href="https://www.linkedin.com/in/juliorafre/" />
         </div>
       </section>
@@ -61,12 +61,12 @@ export default function Home() {
         }
       >
         <h2 className="text-base">Currently</h2>
-        <p className="text-base text-[#666]">
+        <p className="text-base text-muted-foreground">
           Listening to <CustomLink href="https://frontend.fm/">Frontend.FM</CustomLink> by{' '}
-          <span className="text-black">Maxi Ferreira</span> <br /> Reading{' '}
+          <span className="text-foreground">Maxi Ferreira</span> <br /> Reading{' '}
           <CustomLink href="https://largeapps.dev/">Building Large Scale Web Apps</CustomLink> by
-          <span className="text-black">Addy Osmani</span> &{' '}
-          <span className="text-black">Hassan Djirdeh</span>.
+          <span className="text-foreground">Addy Osmani</span> &{' '}
+          <span className="text-foreground">Hassan Djirdeh</span>.
         </p>
       </section>
 
@@ -120,7 +120,7 @@ export default function Home() {
         </div>
 
         <div className="mb-10 flex w-full flex-col pt-2">
-          <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-3 md:p-6">
+          <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-muted p-3 md:p-6">
             {/* <Image
               src="/images/projects/map-interaction.gif"
               width={3600}
@@ -152,7 +152,7 @@ export default function Home() {
         </div>
 
         <div className="mb-10 flex w-full flex-col pt-2">
-          <div className="order-1 mb-2 aspect-video overflow-hidden rounded-lg border bg-gray-100 p-3 md:p-6">
+          <div className="order-1 mb-2 aspect-video overflow-hidden rounded-lg border bg-muted p-3 md:p-6">
             <Carousel />
           </div>
           <div className="order-2 flex flex-col">
