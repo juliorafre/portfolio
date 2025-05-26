@@ -48,7 +48,11 @@ const MemoryCard = ({ selectedMemory, resetSelectedMemory }: MemoryCardProps) =>
 
             <motion.img
               layoutId={layoutId}
-              className="absolute bottom-0 left-0 z-50 mb-4 ml-4 block w-[20%] object-contain drop-shadow-xl select-none"
+              transition={{
+                type: 'spring',
+                bounce: 0.2,
+              }}
+              className="absolute bottom-0 left-0 z-50 mb-4 ml-4 block w-[25%] object-contain drop-shadow-xl select-none"
               src={`/images/postcards/${selectedMemory.id}/${selectedMemory.id}.png`}
               alt="Infinite canvas"
               width={300}
@@ -151,7 +155,7 @@ const MemoryCard = ({ selectedMemory, resetSelectedMemory }: MemoryCardProps) =>
                     height={600}
                     className="absolute top-0 right-0 z-50 m-2 block w-full object-contain drop-shadow-xl select-none"
                   />
-                  <p className="font-kalam max-w-[78ch] text-[10px] mt-1 leading-[1.2rem] md:leading-[2.8rem] overflow-ellipsis md:text-lg">
+                  <p className="font-kalam mt-1 max-w-[78ch] text-[10px] leading-[1.2rem] overflow-ellipsis md:text-lg md:leading-[2.8rem]">
                     {memory?.comment}
                   </p>
                 </div>

@@ -29,6 +29,9 @@ const InfiniteCanvas = () => {
     setSelectedMemory(null);
   };
 
+  /* ----------------------------------------------------------------------------- */
+  /* GSAP IMPLEMENTATION */
+  /* ----------------------------------------------------------------------------- */
   useGSAP(
     () => {
       const container = document.querySelector('.infinite-wrapper');
@@ -53,8 +56,10 @@ const InfiniteCanvas = () => {
 
         // Add mouseover to images
         images.forEach(image => {
-          const onMouseOver = () => gsap.to(image, { scale: 1.2, duration: 0.3, ease: 'power4' });
-          const onMouseOut = () => gsap.to(image, { scale: 1, duration: 0.3, ease: 'power4' });
+          const onMouseOver = () =>
+            gsap.to(image, { scale: 1.2, duration: 0.65, ease: 'elastic.out(1, 0.75)' });
+          const onMouseOut = () =>
+            gsap.to(image, { scale: 1, duration: 0.65, ease: 'elastic.out(1, 0.75)' });
           image.addEventListener('mouseover', onMouseOver);
           image.addEventListener('mouseout', onMouseOut);
         });

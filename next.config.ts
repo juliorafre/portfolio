@@ -8,6 +8,18 @@ const nextConfig: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'mdx'],
   experimental: {
     mdxRs: true,
+    optimizePackageImports: ['@react-three/drei', '@react-three/fiber', 'gsap']
+  },
+  turbopack: {
+    rules: {
+      '*.glsl': {
+        loaders: ['glslify-loader'],
+      },
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
   },
 };
 

@@ -112,16 +112,20 @@ const ImageShowcaseScreen = () => {
     'export default ImageShowcase;\n';
 
   return (
-    <div className="main-container h-full space-y-6 gap-y-4">
-      <h1 className="mb-4 text-xl">Image Showcase</h1>
-      <p className="text-muted-foreground order-3 mb-1 text-base">
-        Small experiment replicating the sticker clothes reveal animation by{' '}
-        <CustomLink href="https://x.com/bartek_marzec/status/1835432359815958530">
-          @bartek_marzec
-        </CustomLink>
-        .
-      </p>
-      
+    <div className="main-container h-full space-y-4">
+      <div className="flex flex-col gap-y-1">
+        <h1 className="text-lg md:text-xl">Image Showcase</h1>
+        <p className="text-muted-foreground text-sm">25 April 2025</p>
+      </div>
+      <div className="space-y-4">
+        <p className="order-3 max-w-prose text-base leading-tight md:max-w-full">
+          Small experiment replicating the sticker clothes reveal animation by{' '}
+          <CustomLink href="https://x.com/bartek_marzec/status/1835432359815958530">
+            @bartek_marzec
+          </CustomLink>
+        </p>
+      </div>
+
       <ImageShowcase />
 
       <CodeBlock code={code} />

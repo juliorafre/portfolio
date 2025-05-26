@@ -438,13 +438,14 @@
     }
   }
 
+  /* ----------------------------------------------------------------------------- */
+  /* ANIMATIONS */
+  /* ----------------------------------------------------------------------------- */
+
   @media (prefers-reduced-motion: no-preference) {
+    /* ----- FADE IN ----- */
     .animate-fade-in {
       animation: fade-in 0.5s var(--ease-out);
-    }
-
-    .animate-slide-up {
-      animation: slide-up 0.5s var(--ease-out);
     }
 
     @keyframes fade-in {
@@ -454,6 +455,11 @@
       to {
         opacity: 1;
       }
+    }
+
+    /* ----- SLIDE UP ----- */
+    .animate-slide-up {
+      animation: slide-up 0.5s var(--ease-out);
     }
 
     @keyframes slide-up {
@@ -467,21 +473,36 @@
       }
     }
 
+    /* ----- ORCHESTRATION ----- */
     .orchestration > * {
+      opacity: 0;
+      transform: translateY(10px);
+      filter: blur(4px);
       animation: paco-enter 600ms ease both;
       animation-delay: calc(var(--delay) * var(--stagger, 1));
     }
 
     @keyframes paco-enter {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-        /* filter: blur(4px); */ /* Commented out to avoid performance issues */
-      }
       to {
         opacity: 1;
         transform: translateY(0px);
-        /* filter: blur(0px); */ /* Commented out to avoid performance issues */
+        filter: blur(0px);
+      }
+    }
+
+    /* ----- HIDE VEIL ----- */
+    .animate-hide-veil {
+      animation: hide-veil 1.2s var(--ease-out) forwards;
+    }
+
+    @keyframes hide-veil {
+      from {
+        opacity: 1;
+        filter: blur(0px);
+      }
+      to {
+        opacity: 0;
+        filter: blur(10px);
       }
     }
   }

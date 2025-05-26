@@ -24,16 +24,21 @@ const MemoryItem = ({ memory, onMemoryClick, layoutIdPrefix }: MemoryItemProps) 
           layoutIdPrefix,
         });
       }}
-      className="image-wrapper aspect-square w-[15cqw] scale-0 cursor-pointer opacity-0 select-none"
+      className="image-wrapper aspect-square w-[15cqw] scale-0 transform cursor-pointer select-none opacity-0"
     >
       <AnimatePresence initial={false} mode="popLayout">
         <MotionImage
           layoutId={layoutId}
-          className="block size-full object-contain drop-shadow-xl select-none"
+          transition={{
+            type: 'spring',
+            bounce: 0.15,
+          }}
+          className="block size-full object-contain drop-shadow-xl select-none pointer-events-none"
           src={`/images/postcards/${memory.id}/${memory.id}.png`}
           alt="Infinite canvas"
           width={500}
           height={500}
+          priority
         />
       </AnimatePresence>
     </div>

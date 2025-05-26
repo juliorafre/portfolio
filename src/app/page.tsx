@@ -86,13 +86,18 @@ export default function Home() {
             <InfiniteCanvas />
           </div>
           <div className="order-2 flex flex-col">
-            <p className="text-muted-foreground text-base">May 2025</p>
+            <time className="text-muted-foreground text-base" dateTime="2025-05-24">
+              May 20, 2025
+            </time>
             <p className="text-base font-medium">Memories. (Infinite Canvas)</p>
           </div>
           <p className="text-muted-foreground order-3 mb-1 text-base">WIP experiment.</p>
           <div className="order-4 flex flex-row gap-x-2 text-base">
             <CustomLink href="/infinite-canvas" showIcon>
               Code
+            </CustomLink>
+            <CustomLink href="/image-reveal-shaders" showIcon>
+              Image reveal shaders
             </CustomLink>
           </div>
         </div>
@@ -102,7 +107,9 @@ export default function Home() {
             <ImageShowcase />
           </div>
           <div className="order-2 flex flex-col">
-            <p className="text-muted-foreground text-base">April 2025</p>
+            <time className="text-muted-foreground text-base" dateTime="2025-04-25">
+              April 25, 2025
+            </time>
             <p className="text-base font-medium">Showcase sticker clothes.</p>
           </div>
           <p className="text-muted-foreground order-3 mb-1 text-base">
