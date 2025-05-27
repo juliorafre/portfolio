@@ -9,6 +9,21 @@ import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
 
+const NavLinks = () => {
+  return (
+    <nav className="relative flex w-fit items-baseline gap-x-4">
+      {siteConfig.baseLinks.map(link => {
+        if (!link.isVisible) return null;
+        return (
+          <NavLink key={link.url} href={link.url}>
+            {link.label}
+          </NavLink>
+        );
+      })}
+    </nav>
+  );
+};
+
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const pathname = usePathname();
   const isActive = pathname === href || (pathname.startsWith(href) && href !== '/');
@@ -30,8 +45,7 @@ const Header = () => {
   const headerMobileRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (headerMobileRef.current) { 
-      
+    if (headerMobileRef.current) {
     }
     gsap.to(headerMobileRef.current, {
       opacity: 1,
@@ -61,12 +75,7 @@ const Header = () => {
               className="size-13 invert md:size-10"
             />
           </motion.div>
-          <nav className="relative flex w-fit items-baseline gap-x-4">
-            <NavLink href={siteConfig.baseLinks.home}>Home</NavLink>
-            <NavLink href={siteConfig.baseLinks.about}>About</NavLink>
-            <NavLink href={siteConfig.baseLinks.blog}>Writing</NavLink>
-            <NavLink href={siteConfig.baseLinks.playground.home}>Experiments</NavLink>
-          </nav>
+          <NavLinks />
         </div>
       </header>
 
@@ -92,12 +101,7 @@ const Header = () => {
         className="header-mobile inset-shadow-accent fixed bottom-0 left-1/2 z-[999] w-[90%] translate-x-[-50%] translate-y-[-2vh] overflow-hidden rounded-full border border-gray-200 px-10 py-4 shadow-2xl md:hidden"
       >
         <div className="backdrop" />
-        <nav className="relative flex w-full items-baseline justify-between gap-x-4">
-          <NavLink href={siteConfig.baseLinks.home}>Home</NavLink>
-          <NavLink href={siteConfig.baseLinks.about}>About</NavLink>
-          <NavLink href={siteConfig.baseLinks.blog}>Blog</NavLink>
-          <NavLink href={siteConfig.baseLinks.playground.home}>Experiments</NavLink>
-        </nav>
+        <NavLinks />
       </motion.header>
     </>
   );

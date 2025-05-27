@@ -14,6 +14,7 @@ export default function Home() {
     >
       {/* Hero */}
       <div
+        className="orchestration-element"
         style={
           {
             '--stagger': 0,
@@ -26,6 +27,7 @@ export default function Home() {
       {/* About */}
       <section
         id="about"
+        className="orchestration-element"
         style={
           {
             '--stagger': 1,
@@ -48,12 +50,14 @@ export default function Home() {
           <RRSSLink platform="x" href="https://x.com/juliorafre" />
           <span className="text-xs text-gray-300">✦</span>
           <RRSSLink platform="linkedin" href="https://www.linkedin.com/in/juliorafre/" />
+          <span className="text-xs text-gray-300">✦</span>
         </div>
       </section>
 
       {/* Currently */}
       <section
         id="currently"
+        className="orchestration-element"
         style={
           {
             '--stagger': 2,
@@ -62,16 +66,21 @@ export default function Home() {
       >
         <h2 className="text-base">Currently</h2>
         <p className="text-base text-[#666]">
-          Listening to <CustomLink href="https://frontend.fm/">Frontend.FM</CustomLink> by{' '}
-          <span className="text-black">Maxi Ferreira</span> <br /> Reading{' '}
-          <CustomLink href="https://largeapps.dev/">Building Large Scale Web Apps</CustomLink> by
-          <span className="text-black">Addy Osmani</span> &{' '}
-          <span className="text-black">Hassan Djirdeh</span>.
+          Listening to{' '}
+          <CustomLink href="https://podcasts.apple.com/us/podcast/the-pragmatic-engineer/id1769051199">
+            The Pragmatic Engineer
+          </CustomLink>{' '}
+          by <span className="text-black">Gergely Orosz</span> <br /> Reading{' '}
+          <CustomLink href="https://www.amazon.com/AI-Engineering-Building-Applications-Foundation/dp/1098166302">
+            AI Engineering Building Applications with Foundation Models
+          </CustomLink>{' '}
+          by <span className="text-black">Chip Huyen</span>
         </p>
       </section>
 
       {/* Feed */}
       <section
+        className="orchestration-element"
         style={
           {
             '--stagger': 3,
@@ -96,9 +105,9 @@ export default function Home() {
             <CustomLink href="/infinite-canvas" showIcon>
               Code
             </CustomLink>
-            <CustomLink href="/image-reveal-shaders" showIcon>
+            {/*  <CustomLink href="/image-reveal-shaders" showIcon>
               Image reveal shaders
-            </CustomLink>
+            </CustomLink> */}
           </div>
         </div>
 
@@ -183,6 +192,7 @@ export default function Home() {
 
       {/* Playgrounds */}
       <section
+        className="orchestration-element"
         style={
           {
             '--stagger': 4,

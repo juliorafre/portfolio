@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="flex flex-col leading-tight">
         <h1 className="text-base font-medium">Julio Ramirez</h1>
         <h2 className="text-muted-foreground text-base">
-          Frontend Developer based in Santiago, Chile
+          Software Engineer focused on Frontend Web, based in Santiago, Chile
         </h2>
       </div>
     </div>

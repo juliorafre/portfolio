@@ -210,7 +210,6 @@ const RevealImage = ({ imageTexture, revealProgress, isFullScreen = false }: Rev
 
   // GETTING VIEWPORT SIZE
   const { viewport } = useThree();
-  const fullScreenScale = [viewport.width, viewport.height, 1];
 
   // UPDATING UNIFORMS ON RESIZE TO MAINTAIN ASPECT RATIO
   useEffect(() => {

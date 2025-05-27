@@ -475,18 +475,21 @@
 
     /* ----- ORCHESTRATION ----- */
     .orchestration > * {
-      opacity: 0;
-      transform: translateY(10px);
-      filter: blur(4px);
       animation: paco-enter 600ms ease both;
       animation-delay: calc(var(--delay) * var(--stagger, 1));
+    }
+
+    .orchestration-element {
+      opacity: 0;
+      transform: translateY(10px);
+      /*  filter: blur(4px); */
     }
 
     @keyframes paco-enter {
       to {
         opacity: 1;
         transform: translateY(0px);
-        filter: blur(0px);
+        /* filter: blur(0px); */
       }
     }
 
