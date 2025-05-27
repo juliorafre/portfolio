@@ -1,5 +1,12 @@
 import type { Metadata } from 'next';
-import { Instrument_Serif, Crimson_Pro, Inter, JetBrains_Mono, Amatic_SC, Kalam } from 'next/font/google';
+import {
+  Instrument_Serif,
+  Crimson_Pro,
+  Inter,
+  JetBrains_Mono,
+  Amatic_SC,
+  Kalam,
+} from 'next/font/google';
 import './globals.css';
 import 'lenis/dist/lenis.css';
 import Footer from '@/components/footer';
@@ -44,15 +51,15 @@ const kalam = Kalam({
 });
 
 export const metadata: Metadata = {
-  title: 'Julio Ramirez - Ingeniero Frontend en Santiago, Chile',
+  title: 'Julio Ramirez | Software Engineer focused on Frontend',
   description:
-    'Soy Julio Ramirez, un Ingeniero Frontend especializado en React, TypeScript y arquitecturas web modernas. Diseño productos centrados en el usuario con interfaces e interacciones fluidas. Actualmente, exploro el diseño de movimiento utilizando GSAP y Three.js para llevar las experiencias digitales al siguiente nivel.',
+    'I am Julio Ramirez, a Frontend Engineer specialized in React, TypeScript, and modern web architectures. I design user-centered products with fluid interfaces and interactions. Currently, I explore motion design using GSAP and Three.js to take digital experiences to the next level.',
   openGraph: {
-    title: 'Julio Ramirez - Ingeniero Frontend en Santiago, Chile',
+    title: 'Julio Ramirez | Software Engineer focused on Frontend',
     description:
-      'Soy Julio Ramirez, un Ingeniero Frontend especializado en React, TypeScript y arquitecturas web modernas. Diseño productos centrados en el usuario con interfaces e interacciones fluidas. Actualmente, exploro el diseño de movimiento utilizando GSAP y Three.js para llevar las experiencias digitales al siguiente nivel.',
+      'I am Julio Ramirez, a Frontend Engineer specialized in React, TypeScript, and modern web architectures. I design user-centered products with fluid interfaces and interactions. Currently, I explore motion design using GSAP and Three.js to take digital experiences to the next level.',
     url: 'https://juliorafre.com',
-    siteName: 'Julio Ramirez - Ingeniero Frontend en Santiago, Chile',
+    siteName: 'Julio Ramirez | Software Engineer focused on Frontend',
     locale: 'es_CL',
     type: 'website',
     images: [
