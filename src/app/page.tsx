@@ -95,7 +95,7 @@ export default function Home() {
             <InfiniteCanvas />
           </div>
           <div className="order-2 flex flex-col">
-            <time className="text-muted-foreground text-base" dateTime="2025-05-24">
+            <time className="text-muted-foreground text-sm" dateTime="2025-05-24">
               May 20, 2025
             </time>
             <p className="text-base font-medium">Memories. (Infinite Canvas)</p>

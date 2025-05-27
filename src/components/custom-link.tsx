@@ -14,7 +14,7 @@ type CustomLinkProps = Omit<ComponentPropsWithoutRef<'a'>, 'href'> &
 
 // Shared base styles
 const baseStyles = cn(
-  'relative inline gap-0.5 pr-1 pl-2 font-normal',
+  'relative inline gap-0.5 py-[0.3px] pr-1 pl-1.5 font-normal',
   'mt-0 bg-gradient-to-r from-[#efa79b]/30 via-[#90aaeb]/30 to-[#bde064]/30 text-black transition-colors duration-300',
   'md:hover:bg-gradient-to-r md:hover:from-[#efa79b] md:hover:via-[#90aaeb] md:hover:to-[#bde064] md:hover:text-black'
 );
