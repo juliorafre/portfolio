@@ -1,11 +1,13 @@
 import type { NextConfig } from 'next';
 import createMDX from '@next/mdx';
 
+/** @type {import('next').NextConfig} */
+
 const withMDX = createMDX({});
 
 const nextConfig: NextConfig = {
   /* config options here */
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   experimental: {
     mdxRs: true,
     optimizePackageImports: ['@react-three/drei', '@react-three/fiber', 'gsap']
@@ -22,5 +24,7 @@ const nextConfig: NextConfig = {
     },
   },
 };
+
+
 
 export default withMDX(nextConfig);

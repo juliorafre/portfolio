@@ -6,7 +6,7 @@ import Carousel from '@/modules/carousel/components/carousel';
 const BlogPage = () => {
   const { slug } = useParams();
   return (
-    <article className="@container relative w-full space-y-10 px-6 py-10">
+    <>
       {/* header */}
       <div className="flex flex-col items-center">
         <div className="mx-auto w-full max-w-3xl text-center">
@@ -127,9 +127,8 @@ const BlogPage = () => {
         <div className="full-content">
           <Carousel />
         </div>
-       
       </section>
-    </article>
+    </>
   );
 };
 

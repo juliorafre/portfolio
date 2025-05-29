@@ -1,30 +1,19 @@
-// import Link from 'next/link';
+import Link from 'next/link';
 
-const Blog = () => {
+const BlogPage = () => {
   return (
-    <div className="main-container">
-      <p> Coming soon..</p>
-      {/* <h1 className="mb-6 text-2xl font-semibold">List of blogs</h1>
-      <div className="space-y-2">
-        <div>
-          <Link href="/blog/1">
-            <div className="grid grid-cols-[auto_1fr] gap-4">
-              <p>May 16, 2025</p>
-              <p>Introducing Codex</p>
-            </div>
-          </Link>
-        </div>
-        <div>
-          <Link href="/blog/1">
-            <div className="grid grid-cols-[auto_1fr] gap-4">
-              <p>May 16, 2025</p>
-              <p>Introducing Codex</p>
-            </div>
-          </Link>
-        </div>
-      </div> */}
+    <div>
+      <h1>List of blogs</h1>
+      <ul className="list-disc space-y-2 pl-4">
+        <li>
+          <Link href="/blog/example">Example</Link>
+        </li>
+        <li>
+          <Link href="/blog/example-2">Example 2</Link>
+        </li>
+      </ul>
     </div>
   );
 };
 
-export default Blog;
+export default BlogPage;

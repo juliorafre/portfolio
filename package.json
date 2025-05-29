@@ -14,7 +14,7 @@
     "@gsap/react": "^2.1.2",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^15.2.1",
+    "@next/mdx": "^15.3.2",
     "@radix-ui/react-slot": "^1.2.1",
     "@radix-ui/react-toggle": "^1.1.2",
     "@radix-ui/react-toggle-group": "^1.1.2",
