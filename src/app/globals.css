@@ -321,28 +321,91 @@
   /* ----------------------------------------------------------------------------- */
 
   .content {
-    @apply grid w-full grid-flow-row-dense grid-cols-12 place-content-center gap-y-4;
+    @apply grid w-full grid-flow-row-dense grid-cols-12 place-content-center px-6;
   }
 
-  .content > .text-content {
-    @apply col-span-12 md:col-span-6 md:col-start-4;
-  }
-
-  .content > .full-content {
-    @apply col-span-12 grid place-content-center;
+  .content > * {
+    @apply col-span-12 lg:col-span-6 lg:col-start-4;
   }
 
   .content > .image-content {
-    @apply col-span-12 grid place-content-center py-10;
+    @apply col-span-12 grid place-content-center overflow-hidden rounded-xl py-5 lg:py-10 lg:col-span-8 lg:col-start-3;
+  }
+
+  .content > .double-image-content {
+    @apply col-span-12 grid place-content-center overflow-hidden rounded-xl py-10 lg:col-span-10 lg:col-start-2;
+  }
+
+  /* .content > p > a {
+    @apply hover:text-muted-foreground underline underline-offset-3 transition-colors duration-200;
+  } */
+
+  .content > p,
+  .content > h1,
+  .content > h2,
+  .content > h3,
+  .content > h4,
+  .content > h5,
+  .content > h6 {
+    @apply wrap-break-word;
+  }
+
+  .content > p,
+  .content > h2,
+  .content > h3,
+  .content > h4,
+  .content > h5,
+  .content > h6 {
+    @apply text-pretty;
   }
 
   .content p {
-    @apply leading-relaxed text-balance;
+    @apply leading-relaxed;
+    font-size: 1.0625rem;
+    line-height: 1.7499375rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.55rem;
+  }
+
+  .content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .content > h1 {
+    @apply mt-8 mb-4 text-4xl;
   }
 
   .content h2 {
-    @apply mt-10 text-2xl font-semibold;
+    @apply mt-8 mb-4 text-2xl;
   }
+
+  .content h3 {
+    @apply mt-8 mb-4 text-xl;
+  }
+
+  .content h4 {
+    @apply mt-6 mb-4 text-lg;
+  }
+
+  .content h5 {
+    @apply mt-4 mb-4 text-base;
+  }
+
+  .content h6 {
+    @apply mt-2 mb-4 text-sm;
+  }
+
+  .content ul {
+    @apply ml-6 mb-[1.55rem] list-outside list-disc space-y-2;
+  }
+
+  .content ol {
+    @apply ml-6 mb-[1.55rem] list-inside list-decimal space-y-2;
+  }
+
+  /* ----------------------------------------------------------------------------- */
+  /* BLOG END */
+  /* ----------------------------------------------------------------------------- */
 
   /*
     This code gets applied for folks using
@@ -424,7 +487,7 @@
   }
 
   .main-container {
-    @apply mx-auto w-full max-w-3xl px-6 py-10;
+    @apply mx-auto w-full max-w-3xl px-6 pt-4 pb-10;
   }
 
   .orchestration {

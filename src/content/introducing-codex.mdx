@@ -1,54 +1,84 @@
 ---
 title: 'Introducing Codex'
-description: 'A cloud-based software engineering agent that can work on many tasks in parallel, powered by codex-1. Available to ChatGPT Pro, Team, and Enterprise users today, and Plus users soon.'
-date: '2025-05-16'
+abstract: 'A cloud-based software engineering agent that can work on many tasks in parallel, powered by codex-1. Available to ChatGPT Pro, Team, and Enterprise users today, and Plus users soon.'
+publishedOn: '2025-05-16'
 author: 'OpenAI Team'
 tags: ['codex', 'ai', 'software-engineering', 'automation', 'development']
-featured: true
+published: true
 slug: 'introducing-codex'
 ---
 
-# Introducing Codex
+A cloud-based software-engineering agent that can work on many tasks in parallel, powered by **codex-1**. Available to ChatGPT **Pro**, **Team** and **Enterprise** users today, and **Plus** users soon.
 
-A cloud-based software engineering agent that can work on many tasks in parallel, powered by codex-1. Available to ChatGPT Pro, Team, and Enterprise users today, and Plus users soon.
+<Image
+  alt="Codex"
+  width={1000}
+  height={1000}
+  src="/images/blog/codex/codex.webp"
+  className="h-auto w-full"
+/>
 
-![Codex](/images/blog/codex/codex.webp)
+Today we’re launching a research preview of Codex — a cloud-based software-engineering agent that can work on many tasks in parallel. Codex can perform tasks for you such as writing features, answering questions about your codebase, fixing bugs, and proposing pull requests for review; each task runs in its own cloud sandbox environment, pre-loaded with your repository.
 
-## What is Codex?
+Codex is powered by **codex-1**, a version of OpenAI **o3** optimized for software engineering. It was trained using reinforcement learning on real-world coding tasks to generate code that closely mirrors human style and pull-request preferences, adheres precisely to instructions, and iteratively runs tests until they pass. We’re starting to roll out Codex to ChatGPT Pro, Enterprise and Team users today, with support for Plus and Edu coming soon.
 
-Today we are launching a research preview of Codex: a cloud-based software engineering agent that can work on many tasks in parallel. Codex can perform tasks for you such as writing features, answering questions about your codebase, fixing bugs, and proposing pull requests for review; each task runs in its own cloud sandbox environment, preloaded with your repository.
+## How Codex works
 
-## Codex is powered by codex-1
+You can access Codex through the sidebar in ChatGPT and assign it new coding tasks by typing a prompt and clicking **Code**. To ask a question about your codebase, click **Ask**.  
+Each task is processed independently in a secure, isolated environment pre-loaded with your code. Codex can read and edit files, and run commands — including test harnesses, linters and type checkers.
 
-Codex is powered by codex-1, a version of OpenAI o3 optimized for software engineering. It was trained using reinforcement learning on real-world coding tasks in a variety of environments to generate code that closely mirrors human style and PR preferences, adheres precisely to instructions, and can iteratively run tests until it receives a passing result. We are starting to roll out Codex to ChatGPT Pro, Enterprise, and Team users today, with support for Plus and Edu coming soon.
+Task completion typically takes between **1 – 30 minutes**, depending on complexity, and you can monitor progress in real time.
 
-## How to Use Codex
+When Codex finishes a task it commits its changes inside the sandbox and provides verifiable evidence of what it did (terminal logs, test output, citations). You can then review the results, request further revisions, open a GitHub pull request, or integrate the changes into your local environment.  
+You can configure the Codex environment to mirror your real development setup, and guide it further with **`AGENTS.md`** files placed in your repo.
 
-Today you can access Codex through the sidebar in ChatGPT and assign it new coding tasks by typing a prompt and clicking "Code". If you want to ask Codex a question about your codebase, click "Ask". Each task is processed independently in a separate, isolated environment preloaded with your codebase. Codex can read and edit files, as well as run commands including test harnesses, linters, and type checkers. Task completion typically takes between 1 and 30 minutes, depending on complexity, and you can monitor Codex's progress in real time.
+## Building safe and trustworthy agents
 
-## Key Features
+We are releasing Codex as a research preview in line with our iterative deployment strategy. Security and transparency were top priorities so that users can verify its output — a safeguard that becomes increasingly important as AI handles more complex coding tasks.
 
-- **Parallel Task Processing**: Work on multiple coding tasks simultaneously
-- **Isolated Environments**: Each task runs in its own secure sandbox
-- **Repository Integration**: Preloaded with your codebase for context-aware assistance
-- **Real-time Monitoring**: Track progress as Codex works on your tasks
-- **Comprehensive Tooling**: Access to test harnesses, linters, and type checkers
+When Codex is uncertain or faces failing tests it explicitly surfaces these issues, enabling users to make informed decisions. **You must still manually review and validate all agent-generated code before integration and execution.**
 
-## Performance Benchmarks
+### Preventing abuse & secure execution
 
-![Codex Performance](/images/blog/codex/codex.webp)
+Codex was trained to refuse requests aimed at malicious software development while supporting legitimate tasks. The agent runs entirely within a secure, isolated container without internet access, limited to your repository and any pre-installed dependencies you configure.
 
-*23 SWE-Bench Verified samples that were not runnable on our internal infrastructure were excluded. codex-1 was tested at a maximum context length of 192k tokens and medium 'reasoning effort', which is the setting that will be available in product today. For details on o3 evaluations, see here.*
+## Aligning to human preferences
 
-## Availability
+A primary training goal for **codex-1** was to align its output closely with human coding preferences and standards. Compared with OpenAI **o3**, codex-1 consistently produces cleaner patches ready for immediate human review and integration into standard workflows.
 
-Codex is currently available to:
-- **ChatGPT Pro users**: Available now
-- **Enterprise users**: Available now  
-- **Team users**: Available now
-- **Plus users**: Coming soon
-- **Edu users**: Coming soon
+## Early use cases
 
----
+Internal OpenAI teams already use Codex daily to offload repetitive, well-scoped tasks such as refactoring, renaming and writing tests, as well as scaffolding new features and fixing bugs.
 
-*Ready to experience the future of software engineering? Try Codex today and see how AI can accelerate your development workflow.* 
+Early external testers include:
+
+- **[Cisco](https://blogs.cisco.com/)** — evaluating Codex across their product portfolio to accelerate innovation.
+- **[Temporal](https://temporal.io/)** — using Codex to speed up feature development, debugging and refactoring.
+- **[Superhuman](https://superhuman.com/)** — leveraging Codex for quick improvements in test coverage and integration fixes.
+- **[Kodiak Robotics](https://kodiak.ai/)** — applying Codex to write debugging tools, improve test coverage and refactor code for autonomous-driving software.
+
+Based on tester feedback we recommend assigning well-scoped tasks to multiple agents in parallel and experimenting with different prompts to explore the model’s capabilities.
+
+## Updates to Codex CLI
+
+Last month we launched **Codex CLI**, an open-source coding agent for your terminal. Today we’re releasing **codex-mini-latest**, a smaller codex-1 model optimized for low-latency Q&A and editing, now the default in Codex CLI and available via the API.
+
+We also simplified authentication: you can sign in with your ChatGPT account and choose an organization; the CLI will generate and configure the API key automatically. Plus and Pro users who sign in today can redeem \$5 and \$50 in free API credits, respectively, for the next 30 days.
+
+## Codex availability, pricing and limitations
+
+Codex is rolling out today to ChatGPT **Pro**, **Enterprise** and **Team** users worldwide, with **Plus** and **Edu** support coming soon. Access will be generous and free for several weeks; later we will introduce rate-limited usage and flexible paid tiers.
+
+For API calls, **codex-mini-latest** is priced at **\$1.50 / 1 M input tokens** and **\$6 / 1 M output tokens**, with a 75 % prompt-caching discount.
+
+Codex is early in its development: it currently lacks image inputs for frontend work and does not yet support mid-task course-correction. Delegating to a remote agent can also feel slower than interactive editing, but we expect workflows to evolve as capabilities improve.
+
+## What’s next
+
+We envision developers owning the pieces they care about and delegating the rest to agents — moving faster and being more productive with AI. Our roadmap includes:
+
+1. **More interactive agent workflows** — provide guidance mid-task, collaborate on implementation strategies, receive proactive status updates.
+2. **Deeper tool integrations** — assign tasks from Codex CLI, ChatGPT Desktop, issue trackers or CI systems.
+3. **Unified workflows** in which real-time pairing and asynchronous delegation converge across IDEs and everyday tools.
+
+Software engineering is among the first industries to experience significant AI-driven productivity gains, opening new possibilities for individuals and small teams. **This is just the beginning—let’s**

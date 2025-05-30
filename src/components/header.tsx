@@ -11,7 +11,7 @@ import { useEffect, useRef } from 'react';
 
 const NavLinks = () => {
   return (
-    <nav className="relative flex w-fit items-baseline gap-x-4">
+    <nav className="relative flex w-full items-center justify-between gap-x-4">
       {siteConfig.baseLinks.map(link => {
         if (!link.isVisible) return null;
         return (
@@ -70,9 +70,9 @@ const Header = () => {
             <Image
               src="/images/logo.png"
               alt="galaxy-pixel-art"
-              width={100}
-              height={100}
-              className="size-13 invert md:size-10"
+              width={50}
+              height={50}
+              className="size-13 aspect-square invert md:size-10"
             />
           </motion.div>
           <NavLinks />

@@ -2,50 +2,32 @@ import React, { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
 import { highlight } from 'sugar-high';
 import CodeSnippet from '@/components/code-snippet';
+import Image, { ImageProps } from 'next/image';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
-type ParagraphProps = ComponentPropsWithoutRef<'p'>;
+//type ParagraphProps = ComponentPropsWithoutRef<'p'>;
 type ListProps = ComponentPropsWithoutRef<'ul'>;
 type ListItemProps = ComponentPropsWithoutRef<'li'>;
 type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
 export const components = {
-  h1: (props: HeadingProps) => (
-    <h1 className="font-medium pt-12 mb-0" {...props} />
-  ),
+  h1: (props: HeadingProps) => <h1 className="mb-0 pt-12 font-medium" {...props} />,
   h2: (props: HeadingProps) => (
-    <h2
-      className="text-gray-800 dark:text-zinc-200 font-medium mt-8 mb-3"
-      {...props}
-    />
+    <h2 className="mt-8 mb-3 font-medium text-gray-800 dark:text-zinc-200" {...props} />
   ),
   h3: (props: HeadingProps) => (
-    <h3
-      className="text-gray-800 dark:text-zinc-200 font-medium mt-8 mb-3"
-      {...props}
-    />
+    <h3 className="mt-8 mb-3 font-medium text-gray-800 dark:text-zinc-200" {...props} />
   ),
   h4: (props: HeadingProps) => <h4 className="font-medium" {...props} />,
-  p: (props: ParagraphProps) => (
-    <p className="text-gray-800 dark:text-zinc-300 leading-snug" {...props} />
-  ),
   ol: (props: ListProps) => (
-    <ol
-      className="text-gray-800 dark:text-zinc-300 list-decimal pl-5 space-y-2"
-      {...props}
-    />
+    <ol className="list-decimal space-y-2 pl-5 text-gray-800 dark:text-zinc-300" {...props} />
   ),
   ul: (props: ListProps) => (
-    <ul
-      className="text-gray-800 dark:text-zinc-300 list-disc pl-5 space-y-1"
-      {...props}
-    />
+    <ul className="list-disc space-y-1 pl-5 text-gray-800 dark:text-zinc-300" {...props} />
   ),
   li: (props: ListItemProps) => <li className="pl-1" {...props} />,
-  em: (props: ComponentPropsWithoutRef<'em'>) => (
-    <em className="font-medium" {...props} />
-  ),
+  em: (props: ComponentPropsWithoutRef<'em'>) => <em className="font-medium" {...props} />,
   strong: (props: ComponentPropsWithoutRef<'strong'>) => (
     <strong className="font-medium" {...props} />
   ),
@@ -67,13 +49,7 @@ export const components = {
       );
     }
     return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={className}
-        {...props}
-      >
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className} {...props}>
         {children}
       </a>
     );
@@ -109,6 +85,32 @@ export const components = {
       {...props}
     />
   ),
+  Image: (props: ImageProps) => {
+    return (
+      <div className="image-content overflow-hidden rounded-xl">
+        <Image
+          {...props}
+          alt={props.alt}
+          width={props.width}
+          height={props.height}
+          className="h-auto w-full"
+        />
+      </div>
+    );
+  },
+  ImageShowcase: (props: ImageProps) => {
+    return (
+      <div className="image-content overflow-hidden rounded-xl">
+        <Image
+          {...props}
+          alt={props.alt}
+          width={props.width}
+          height={props.height}
+          className="h-auto w-full"
+        />
+      </div>
+    );
+  },
 };
 
 declare global {

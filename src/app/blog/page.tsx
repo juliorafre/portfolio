@@ -1,16 +1,23 @@
-import Link from 'next/link';
+import { getBlogPostList } from '@/lib/file-helper';
+import BlogSummaryCard from '@/modules/blogs/blog-summary-card';
 
-const BlogPage = () => {
+const BlogPage = async () => {
+  const blogPosts = await getBlogPostList();
+
   return (
-    <div>
+    <div className="main-container">
       <h1>List of blogs</h1>
-      <ul className="list-disc space-y-2 pl-4">
-        <li>
-          <Link href="/blog/example">Example</Link>
-        </li>
-        <li>
-          <Link href="/blog/example-2">Example 2</Link>
-        </li>
+      <ul className="space-y-4">
+        {blogPosts.map(({ title, abstract, publishedOn, slug }) => (
+          <li key={slug}>
+            <BlogSummaryCard
+              title={title}
+              abstract={abstract}
+              publishedOn={publishedOn}
+              slug={slug}
+            />
+          </li>
+        ))}
       </ul>
     </div>
   );

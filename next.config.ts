@@ -3,7 +3,9 @@ import createMDX from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
 
-const withMDX = createMDX({});
+const withMDX = createMDX({
+  extension: /\.(mdx)$/,
+});
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -23,6 +25,7 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  transpilePackages: ['next-mdx-remote'],
 };
 
 
