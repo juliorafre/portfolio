@@ -320,19 +320,31 @@
   /* BLOG */
   /* ----------------------------------------------------------------------------- */
 
-  .content {
-    @apply grid w-full grid-flow-row-dense grid-cols-12 place-content-center px-6;
+  .post-header {
+    @apply grid w-full grid-flow-row grid-cols-12 px-6;
   }
 
-  .content > * {
+  .post-header > * {
     @apply col-span-12 lg:col-span-6 lg:col-start-4;
   }
 
-  .content > .image-content {
-    @apply col-span-12 grid place-content-center overflow-hidden rounded-xl py-5 lg:py-10 lg:col-span-8 lg:col-start-3;
+  .post-content {
+    @apply grid w-full grid-flow-row-dense grid-cols-12 place-content-center px-6;
   }
 
-  .content > .double-image-content {
+  .post-content > * {
+    @apply col-span-12 lg:col-span-6 lg:col-start-4;
+  }
+
+  .post-content > .wide {
+    @apply col-span-12 lg:col-span-8 lg:col-start-3;
+  }
+
+  .post-content > .image-content {
+    @apply grid place-content-center overflow-hidden rounded-xl pt-0 pb-5 first:lg:pt-10 lg:pb-10;
+  }
+
+  .post-content > .double-image-content {
     @apply col-span-12 grid place-content-center overflow-hidden rounded-xl py-10 lg:col-span-10 lg:col-start-2;
   }
 
@@ -340,26 +352,26 @@
     @apply hover:text-muted-foreground underline underline-offset-3 transition-colors duration-200;
   } */
 
-  .content > p,
-  .content > h1,
-  .content > h2,
-  .content > h3,
-  .content > h4,
-  .content > h5,
-  .content > h6 {
+  .post-content > p,
+  .post-content > h1,
+  .post-content > h2,
+  .post-content > h3,
+  .post-content > h4,
+  .post-content > h5,
+  .post-content > h6 {
     @apply wrap-break-word;
   }
 
-  .content > p,
-  .content > h2,
-  .content > h3,
-  .content > h4,
-  .content > h5,
-  .content > h6 {
+  .post-content > p,
+  .post-content > h2,
+  .post-content > h3,
+  .post-content > h4,
+  .post-content > h5,
+  .post-content > h6 {
     @apply text-pretty;
   }
 
-  .content p {
+  .post-content p {
     @apply leading-relaxed;
     font-size: 1.0625rem;
     line-height: 1.7499375rem;
@@ -367,40 +379,40 @@
     margin-bottom: 1.55rem;
   }
 
-  .content p:last-child {
+  .post-content p:last-child {
     margin-bottom: 0;
   }
 
-  .content > h1 {
+  .post-content > h1 {
     @apply mt-8 mb-4 text-4xl;
   }
 
-  .content h2 {
+  .post-content h2 {
     @apply mt-8 mb-4 text-2xl;
   }
 
-  .content h3 {
+  .post-content h3 {
     @apply mt-8 mb-4 text-xl;
   }
 
-  .content h4 {
+  .post-content h4 {
     @apply mt-6 mb-4 text-lg;
   }
 
-  .content h5 {
+  .post-content h5 {
     @apply mt-4 mb-4 text-base;
   }
 
-  .content h6 {
+  .post-content h6 {
     @apply mt-2 mb-4 text-sm;
   }
 
-  .content ul {
-    @apply ml-6 mb-[1.55rem] list-outside list-disc space-y-2;
+  .post-content ul {
+    @apply mb-[1.55rem] ml-6 list-outside list-disc space-y-2;
   }
 
-  .content ol {
-    @apply ml-6 mb-[1.55rem] list-inside list-decimal space-y-2;
+  .post-content ol {
+    @apply mb-[1.55rem] ml-6 list-inside list-decimal space-y-2;
   }
 
   /* ----------------------------------------------------------------------------- */

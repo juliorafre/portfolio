@@ -1,23 +1,23 @@
 import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
-import { Post } from '@/types';
+import { PostMetadata } from '@/types';
 import React from 'react';
 
 export const getBlogPostList = async () => {
   const fileNames = await readDirectory('src/content');
 
-  const blogPosts: Post[] = [];
+  const blogPosts: PostMetadata[] = [];
 
   for (const fileName of fileNames) {
     const rawContent = await readFile(`src/content/${fileName}`);
 
     const { data: frontmatter } = matter(rawContent);
 
-    const newPost: Post = {
+    const newPost: PostMetadata = {
       slug: fileName.replace('.mdx', '') as string,
       ...frontmatter,
-    } as Post
+    } as PostMetadata
 
     blogPosts.push(newPost);
   }
