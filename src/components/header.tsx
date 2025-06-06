@@ -8,14 +8,17 @@ import { motion } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
+import { cn } from '@/lib';
 
-const NavLinks = () => {
+const NavLinks = ({ className, isMobile }: { className?: string; isMobile?: boolean }) => {
   return (
-    <nav className="relative flex w-full items-center justify-between gap-x-4">
+    <nav className={cn('relative flex items-center justify-center gap-x-2', className)}>
       {siteConfig.baseLinks.map(link => {
+        const isComingSoon = 'isComingSoon' in link && link.isComingSoon;
         if (!link.isVisible) return null;
+        if (isMobile && isComingSoon) return null;
         return (
-          <NavLink key={link.url} href={link.url}>
+          <NavLink key={link.url} href={link.url} isComingSoon={isComingSoon} isMobile={isMobile}>
             {link.label}
           </NavLink>
         );
@@ -24,19 +27,48 @@ const NavLinks = () => {
   );
 };
 
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+const NavLink = ({
+  href,
+  isComingSoon,
+  isMobile,
+  children,
+}: {
+  href: string;
+  isComingSoon?: boolean;
+  children: React.ReactNode;
+  isMobile?: boolean;
+}) => {
   const pathname = usePathname();
   const isActive = pathname === href || (pathname.startsWith(href) && href !== '/');
 
   return (
     <Link
-      href={href}
-      className={`text-sm ${isActive ? 'text-black' : 'text-muted-foreground'} hover:text-black`}
-      style={{
-        transition: 'color .2s cubic-bezier(.075,.82,.165,1)',
+      href={isComingSoon ? '#' : href}
+      onClick={e => {
+        if (isComingSoon) {
+          e.preventDefault();
+        }
       }}
+      className={cn(
+        'group flex items-center gap-x-2 rounded-sm px-2 py-1 transition-all duration-300',
+        isActive && !isMobile
+          ? 'text-black dark:text-white'
+          : 'text-neutral-500 dark:text-neutral-400',
+        isActive && isMobile && 'text-black dark:text-black',
+        'hover:bg-neutral-200 hover:text-black dark:hover:bg-neutral-600 dark:hover:text-white',
+        isComingSoon &&
+          'hover:text-muted-foreground dark:hover:text-muted-foreground cursor-auto opacity-50 hover:bg-transparent hover:opacity-50 dark:hover:bg-transparent'
+      )}
+      /* style={{
+        transition: 'all .2s cubic-bezier(.075,.82,.165,1)',
+      }} */
     >
       {children}
+      {/* {isComingSoon && (
+        <span className="rounded bg-neutral-200 px-1 text-xs font-semibold text-neutral-400 dark:text-neutral-600">
+          Soon
+        </span>
+      )} */}
     </Link>
   );
 };
@@ -46,33 +78,41 @@ const Header = () => {
 
   useEffect(() => {
     if (headerMobileRef.current) {
+      gsap.to(headerMobileRef.current, {
+        opacity: 1,
+        duration: 0.5,
+      });
     }
-    gsap.to(headerMobileRef.current, {
-      opacity: 1,
-      duration: 0.5,
-    });
-  }, []);
+  }, [headerMobileRef]);
 
   return (
     <>
-      <header className="relative container mx-auto hidden max-w-3xl flex-col items-end justify-end gap-x-4 px-6 py-4.5 md:flex md:flex-row md:items-center md:justify-between">
+      <header className="relative hidden flex-col items-end justify-end gap-x-4 px-6 py-4.5 md:flex md:flex-row md:items-center md:justify-between">
         <div className="flex w-full items-center justify-between gap-x-2 md:w-fit md:justify-start">
           <motion.div
             id="logo"
-            className="w-fit"
-            animate={{ rotate: 360 }}
+            className="w-full"
+            initial={{ opacity: 0 }}
+            animate={{ rotate: 360, opacity: 1 }}
             transition={{
-              duration: 60,
-              repeat: Infinity,
-              ease: 'linear',
+              opacity: {
+                duration: 0.5,
+                ease: 'easeInOut',
+              },
+              rotate: {
+                delay: 0.5,
+                duration: 60,
+                repeat: Infinity,
+                ease: 'linear',
+              },
             }}
           >
             <Image
               src="/images/logo.png"
-              alt="galaxy-pixel-art"
-              width={50}
-              height={50}
-              className="size-13 aspect-square invert md:size-10"
+              alt="logo"
+              width={40}
+              height={40}
+              className="size-10 invert md:size-10 dark:invert-0"
             />
           </motion.div>
           <NavLinks />
@@ -83,42 +123,34 @@ const Header = () => {
         ref={headerMobileRef}
         initial={{
           opacity: 0,
-          filter: 'blur(8px)',
-          translateY: '4px',
+          y: 40,
         }}
         animate={{
           opacity: 1,
-          filter: 'blur(0px)',
-          translateY: '0px',
+          y: 0,
         }}
         transition={{
           type: 'spring',
-          duration: 0.85,
+          duration: 0.95,
           bounce: 0.3,
           ease: 'easeInOut',
-          delay: 0.6,
+          delay: 0.2,
         }}
-        className="header-mobile inset-shadow-accent fixed bottom-0 left-1/2 z-[999] w-[90%] translate-x-[-50%] translate-y-[-2vh] overflow-hidden rounded-full border border-gray-200 px-10 py-4 shadow-2xl md:hidden"
+        className="inset-shadow-accent fixed bottom-0 left-1/2 z-[999] translate-x-[-50%] translate-y-[-2vh] overflow-hidden rounded-full bg-[rgba(224,_224,_224,_0.9)] shadow-2xl backdrop-blur-sm md:hidden "
+        style={{
+          backdropFilter: 'blur(10px)',
+          borderRadius: '50px',
+          boxShadow: 'inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff',
+          cursor: 'pointer',
+          padding: '8px 20px',
+          border: '2px solid rgb(206, 206, 206)',
+        }}
       >
-        <div className="backdrop" />
-        <NavLinks />
+        {/* <div className="backdrop" /> */}
+        <NavLinks isMobile />
       </motion.header>
     </>
   );
 };
 
 export default Header;
-
-/* 
-<nav className="flex justify-between items-center p-4 py-4 bg-red-50">
-      <div className="w-full flex max-w-6xl mx-auto gap-x-4 items-center">
-        <div className="flex flex-col leading-tight">
-          <p className='font-bold font-display'>Julio Ramirez</p>
-          <p>✦ Front End Engineer </p>
-        </div>
-        <Link href={siteConfig.baseLinks.playground.home}>About</Link>
-        <Link href={siteConfig.baseLinks.playground.home}>Pics</Link>
-        <Link href={siteConfig.baseLinks.playground.home}>Playground</Link>
-      </div>
-    </nav>
-     */

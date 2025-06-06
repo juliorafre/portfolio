@@ -1,7 +1,7 @@
 import { RRSSLink } from '@/components/rrss-link';
 import CustomLink from '@/components/custom-link';
 import Carousel from '@/modules/carousel/components/carousel';
-import ImageShowcase from '@/modules/carousel/components/image-showcase';
+import ImageShowcase from '@/components/image-showcase/image-showcase';
 import Hero from '@/components/hero';
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
 import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
@@ -35,28 +35,28 @@ export default function Home() {
         }
       >
         <h2 className="text-base">About me</h2>
-        <p className="text-base text-[#666]">
+        <p className="text-muted-foreground text-base">
           I craft impactful, user-centric products, focusing on seamless interactions and interface
           design. Passionate about collaboration, I thrive in multidisciplinary teams, always
           learning and innovating. Specializing in React, TypeScript, and modern web architectures,
           I build high-performance, scalable applications with real-time data and interactive UIs.
           Currently exploring motion design, GSAP, and Three.js to push digital experiences further.
         </p>
-        <div className="text-muted-foreground mt-4 flex items-center gap-x-2 text-sm font-light uppercase">
+        <div className="mt-4 flex items-center gap-x-2 text-sm font-light uppercase">
           <RRSSLink platform="email" href="mailto:juliorafre@gmail.com" />
-          <span className="text-xs text-gray-300">✦</span>
+          <span className="text-muted-foreground text-xs">✦</span>
           <RRSSLink platform="github" href="https://github.com/juliorafre" />
-          <span className="text-xs text-gray-300">✦</span>
+          <span className="text-muted-foreground text-xs">✦</span>
           <RRSSLink platform="x" href="https://x.com/juliorafre" />
-          <span className="text-xs text-gray-300">✦</span>
+          <span className="text-muted-foreground text-xs">✦</span>
           <RRSSLink platform="linkedin" href="https://www.linkedin.com/in/juliorafre/" />
-          <span className="text-xs text-gray-300">✦</span>
+          <span className="text-muted-foreground text-xs">✦</span>
         </div>
       </section>
 
-      {/* Currently */}
+      {/* Today */}
       <section
-        id="currently"
+        id="today"
         className="orchestration-element"
         style={
           {
@@ -64,17 +64,18 @@ export default function Home() {
           } as React.CSSProperties
         }
       >
-        <h2 className="text-base">Currently</h2>
-        <p className="text-base text-[#666]">
+        <h2 className="text-base">Today</h2>
+        <p className="text-muted-foreground text-base">
           Listening to{' '}
           <CustomLink href="https://podcasts.apple.com/us/podcast/the-pragmatic-engineer/id1769051199">
             The Pragmatic Engineer
           </CustomLink>{' '}
-          by <span className="text-black">Gergely Orosz</span> <br /> Reading{' '}
+          by <span className="dark:text-muted-foreground text-black">Gergely Orosz</span> <br />{' '}
+          Reading{' '}
           <CustomLink href="https://www.amazon.com/AI-Engineering-Building-Applications-Foundation/dp/1098166302">
             AI Engineering Building Applications with Foundation Models
           </CustomLink>{' '}
-          by <span className="text-black">Chip Huyen</span>
+          by <span className="dark:text-muted-foreground text-black">Chip Huyen</span>
         </p>
       </section>
 
@@ -184,7 +185,7 @@ export default function Home() {
             maintainability.
           </p>
           <div className="order-4 flex flex-row gap-x-2 text-base">
-            <CustomLink href="https://www.madi.bio/">Read about it</CustomLink>
+            <CustomLink href="/blog/madi">Read about it</CustomLink>
             <CustomLink href="https://www.madi.bio/">Website</CustomLink>
           </div>
         </div>

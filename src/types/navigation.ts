@@ -4,6 +4,7 @@ export interface NavigationLink {
   label: string;
   paths?: NavigationLink[];
   isVisible?: boolean;
+  isComingSoon?: boolean;
 }
 
 export interface BreadcrumbItem {

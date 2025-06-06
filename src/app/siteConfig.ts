@@ -22,11 +22,13 @@ export const siteConfig = {
       url: "/about",
       label: "About",
       isVisible: true,
+      isComingSoon: true,
     },
     {
       url: "/photos",
       label: "Photos",
       isVisible: false,
+      isComingSoon: true,
     },
     {
       url: "/blog",
@@ -37,6 +39,7 @@ export const siteConfig = {
       url: "/playground",
       label: "Playground",
       isVisible: true,
+      isComingSoon: true,
       paths: [{
         url: "/playground/text-parallax",
         label: "Text Parallax",

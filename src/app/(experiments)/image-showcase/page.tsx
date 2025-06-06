@@ -1,4 +1,4 @@
-import ImageShowcase from '@/modules/carousel/components/image-showcase';
+import ImageShowcase from '@/components/image-showcase/image-showcase';
 import CodeBlock from '@/components/codeblock';
 import CustomLink from '@/components/custom-link';
 

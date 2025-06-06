@@ -1,29 +1,37 @@
-import { Post } from '@/types';
+import { PostMetadata } from '@/types';
 import Link from 'next/link';
 
 interface BlogSummaryCardProps {
-  title: Post['title'];
-  abstract: Post['abstract'];
-  publishedOn: Post['publishedOn'];
-  slug: Post['slug'];
+  title: PostMetadata['title'];
+  abstract: PostMetadata['abstract'];
+  publishedOn: PostMetadata['publishedOn'];
+  slug: PostMetadata['slug'];
 }
 
 const BlogSummaryCard = ({ title, abstract, publishedOn, slug }: BlogSummaryCardProps) => {
+  // console.log(title, abstract, publishedOn, slug);
   return (
     <Link
+      prefetch={true}
       href={`/blog/${slug}`}
-      className="flex w-full flex-col gap-2 rounded-lg border border-gray-200 p-4 hover:bg-gray-50"
+      className="-mr-4 -ml-4 grid w-[calc(100%_+_1rem)] grid-cols-[1fr_auto] items-baseline gap-x-4 rounded-lg px-4 py-3 transition-all duration-200 hover:bg-gray-100 hover:ring-1 hover:ring-gray-200 focus-visible:ring-1 focus-visible:ring-gray-200 active:scale-98 active:bg-gray-100 active:ring-1 active:ring-gray-200 md:transition-transform dark:active:ring-gray-800"
+      aria-description={abstract}
     >
-      {title && <h2 className="text-lg font-semibold">{title}</h2>}
-      {abstract && <p className="text-sm text-gray-500">{abstract}</p>}
+      {title && (
+        <div>
+          <h2 className="text-lg">{title}</h2>
+        </div>
+      )}
       {publishedOn && (
-        <p className="text-sm text-gray-500">
+        <time
+          dateTime={publishedOn}
+          className="font-jetbrains-mono bg-gradient-rainbow-light rounded border border-gray-300 px-1 text-sm text-gray-500 dark:border-gray-600 dark:bg-gray-900 dark:text-white"
+        >
           {new Date(publishedOn).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
+            month: 'short',
             day: 'numeric',
           })}
-        </p>
+        </time>
       )}
     </Link>
   );

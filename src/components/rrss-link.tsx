@@ -20,7 +20,7 @@ export function RRSSLink({ platform, href, className = '' }: RRSSLinkProps) {
   const { label } = platformConfig[platform];
   const isExternal = platform !== 'email';
 
-  const baseStyles = 'text-black flex items-center hover:underline transition-all duration-300';
+  const baseStyles = 'text-black dark:text-foreground flex items-center hover:underline transition-all duration-300';
 
   return (
     <a

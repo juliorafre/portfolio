@@ -1,9 +1,7 @@
 import { loadBlogPost } from '@/lib/file-helper';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import CodeSnippet from '@/components/code-snippet';
-import Image, { ImageProps } from 'next/image';
-import ImageShowcase from '@/modules/carousel/components/image-showcase';
-import BlogHeader from '@/components/blog/blog-header';
+import BlogHeader from '@/components/blog-header';
+import components from '@/lib/mdx-components';
 
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
@@ -33,54 +31,7 @@ const BlogPostPage = async ({ params }: { params: Promise<{ slug: string }> }) =
       />
       {/* Content */}
       <div className="post-content">
-        <MDXRemote
-          source={content}
-          components={{
-            pre: CodeSnippet,
-            Image: (props: ImageProps) => {
-              return (
-                <div className="image-content wide">
-                  <div className="overflow-hidden rounded-xl">
-                    <Image
-                      {...props}
-                      alt={props.alt}
-                      width={props.width}
-                      height={props.height}
-                      className="h-auto w-full"
-                    />
-                  </div>
-                </div>
-              );
-            },
-            DoubleImageContent: (props: ImageProps) => {
-              return (
-                <div className="image-content grid grid-cols-1 gap-6 md:grid-cols-2">
-                  <div className="overflow-hidden rounded-xl">
-                    <Image
-                      {...props}
-                      alt={props.alt}
-                      width={props.width}
-                      height={props.height}
-                      className="h-auto w-full"
-                    />
-                  </div>
-                  <div className="overflow-hidden rounded-xl">
-                    <Image
-                      {...props}
-                      alt={props.alt}
-                      width={props.width}
-                      height={props.height}
-                      className="h-auto w-full"
-                    />
-                  </div>
-                </div>
-              );
-            },
-            ImageShowcase: (props: ImageProps) => {
-              return <ImageShowcase {...props} />;
-            },
-          }}
-        />
+        <MDXRemote source={content} components={components} />
       </div>
     </article>
   );

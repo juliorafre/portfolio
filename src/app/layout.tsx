@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import type { Viewport } from 'next'
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 import {
   Instrument_Serif,
   Crimson_Pro,
@@ -72,6 +75,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FDFDFC' },
+    { media: '(prefers-color-scheme: dark)', color: '#1A1818' },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -92,6 +102,7 @@ export default function RootLayout({
           data-cf-beacon='{"token": "a01a229b64994eb891953c8b0dda26fd"}'
           id="cloudflare-analytics"
         ></Script>
+         <SpeedInsights />
       </body>
     </html>
   );

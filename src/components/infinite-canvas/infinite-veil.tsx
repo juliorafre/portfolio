@@ -19,9 +19,9 @@ const InfiniteVeil = () => {
         isVeilHidden && 'animate-hide-veil pointer-events-none'
       )}
     >
-      <p className="font-instrument-serif mt-6 text-4xl">Memories</p>
+      <p className="font-instrument-serif mt-6 text-4xl dark:text-gray-800">Memories</p>
       <button
-        className="inset-shadow-lg inset-shadow-white-200/50 h-[46px] cursor-pointer rounded-full border border-neutral-700/10 bg-neutral-200/80 px-6 py-1 text-sm transition-all hover:bg-neutral-200/90 md:h-auto"
+        className="inset-shadow-lg inset-shadow-white-200/50 h-[46px] cursor-pointer rounded-full border border-neutral-700/10 bg-neutral-200/80 px-6 py-1 text-sm transition-all hover:bg-neutral-200/90 md:h-auto dark:text-gray-800"
         onClick={handleHideVeil}
       >
         Explore

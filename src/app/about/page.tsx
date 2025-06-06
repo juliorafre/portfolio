@@ -3,7 +3,7 @@
 const About = () => {
   return (
     <div className="main-container">
-     {/*  <div className="blog-header">
+      {/* <div className="blog-header">
         <Hero />
       </div>
 
@@ -14,7 +14,11 @@ const About = () => {
         high-performance, scalable applications with real-time data and interactive UIs. Currently
         exploring motion design, GSAP, and Three.js to push digital experiences further.
       </p> */}
-      <p> Coming soon...</p>
+      <div className="flex items-center justify-center">
+        <div className="px-4 py-2  rounded-lg border border-dashed border-gray-300 bg-gray-100">
+          <p className="font-medium text-lg text-gray-500"> Coming soon</p>
+        </div>
+      </div>
     </div>
   );
 };

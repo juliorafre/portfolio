@@ -8,7 +8,7 @@ const BlogHeader = (props: PostMetadata) => {
         <time
           id="publishedOn"
           dateTime="2025-05-16"
-          className="text-muted-foreground block font-mono font-semibold"
+          className="text-muted-foreground block font-jetbrains-mono font-semibold"
         >
           {formatDate(props.publishedOn)}
         </time>
