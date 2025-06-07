@@ -1,16 +1,16 @@
+import React from 'react';
 import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
 import { PostMetadata } from '@/types';
-import React from 'react';
 
 export const getBlogPostList = async () => {
-  const fileNames = await readDirectory('public/content');
+  const fileNames = await readDirectory('/content');
 
   const blogPosts: PostMetadata[] = [];
 
   for (const fileName of fileNames) {
-    const rawContent = await readFile(`public/content/${fileName}`);
+    const rawContent = await readFile(`/content/${fileName}`);
 
     const { data: frontmatter } = matter(rawContent);
 
@@ -29,7 +29,7 @@ export const getBlogPostList = async () => {
 
 export const loadBlogPost = React.cache(async (slug: string) => {
   console.log('Loading blog post', slug);
-  const rawContent = await readFile(`public/content/${slug}.mdx`);
+  const rawContent = await readFile(`/content/${slug}.mdx`);
   const { data: frontmatter, content } = matter(rawContent);
   return {
     frontmatter,

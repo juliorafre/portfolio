@@ -14,9 +14,6 @@ const nextConfig: NextConfig = {
     mdxRs: true,
     optimizePackageImports: ['@react-three/drei', '@react-three/fiber', 'gsap']
   },
-  outputFileTracingIncludes: {
-    '/*': ['./content/**/*'],
-  },
   turbopack: {
     rules: {
       '*.glsl': {
