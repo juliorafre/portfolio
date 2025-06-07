@@ -1,4 +1,3 @@
-import React from 'react';
 import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
@@ -27,15 +26,14 @@ export const getBlogPostList = async () => {
   );
 }
 
-export const loadBlogPost = React.cache(async (slug: string) => {
-  console.log('Loading blog post', slug);
+export const loadBlogPost = async (slug: string) => {
   const rawContent = await readFile(`/content/${slug}.mdx`);
   const { data: frontmatter, content } = matter(rawContent);
   return {
     frontmatter,
     content,
   }
-})
+}
 
 export const readFile = (localPath: string) => {
   return fs.readFile(path.join(process.cwd(), localPath), 'utf8')
