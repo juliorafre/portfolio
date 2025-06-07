@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   experimental: {
+    useCache: true,
     mdxRs: true,
     optimizePackageImports: ['@react-three/drei', '@react-three/fiber', 'gsap']
   },
