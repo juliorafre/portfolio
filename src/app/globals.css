@@ -10,9 +10,7 @@
   --font-kalam: 'Kalam', cursive;
   --font-instrument-serif: 'Instrument Serif', serif;
   --font-crimson-pro: 'Crimson Pro', serif;
-
-  --bg-gradient-rainbow: linear-gradient(to right, #efa79b, #90aaeb, #bde064);
-  --bg-gradient-rainbow-light: linear-gradient(to right, #efa79b/20, #90aaeb/20, #bde064/20);
+  --background-dark: #181818;
 
   --radius: 0.625rem;
   --background: oklch(0.9936 0.0013 106.42);
@@ -106,10 +104,10 @@
   --font-kalam: var(--font-kalam), cursive;
   --font-jetbrains-mono: var(--font-jetbrains-mono), monospace;
 
+  --color-background-dark: var(--background-dark);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-bg-gradient-rainbow: var(--bg-gradient-rainbow);
-  --color-bg-gradient-rainbow-light: var(--bg-gradient-rainbow-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -277,13 +275,13 @@
     background: hsl(0deg 0% 100% / 0.95);
   }
 
-  /* .bg-gradient-rainbow-light {
-    @apply bg-gradient-to-r from-[#efa79b]/20 via-[#90aaeb]/20 to-[#bde064]/20;
+  .bg-gradient-rainbow-light {
+    @apply bg-gradient-to-r from-[#efa79b]/20 via-[#90aaeb]/20 to-[#bde064]/20 dark:from-[#1A3776]/20 dark:via-[#F5315B]/20 dark:to-orange-500/20;
   }
 
   .bg-gradient-rainbow {
     @apply bg-gradient-to-r from-[#efa79b] via-[#90aaeb] to-[#bde064];
-  } */
+  }
 
   /* ----------------------------------------------------------------------------- */
   /* INFINITE CANVAS */

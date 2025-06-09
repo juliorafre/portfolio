@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import type { Viewport } from 'next'
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import type { Viewport } from 'next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import {
   Instrument_Serif,
@@ -80,7 +80,7 @@ export const viewport: Viewport = {
     { media: '(prefers-color-scheme: light)', color: '#FDFDFC' },
     { media: '(prefers-color-scheme: dark)', color: '#1A1818' },
   ],
-}
+};
 
 export default function RootLayout({
   children,
@@ -90,7 +90,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} ${amaticSC.variable} ${kalam.variable} font-inter grid grid-rows-[auto_1fr_auto] pb-15 antialiased md:pb-0`}
+        className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} ${amaticSC.variable} ${kalam.variable} font-inter dark:bg-background-dark grid grid-rows-[auto_1fr_auto] pb-15 antialiased md:pb-0`}
       >
         {/*  <LenisInit /> */}
         <Header />
@@ -102,7 +102,7 @@ export default function RootLayout({
           data-cf-beacon='{"token": "a01a229b64994eb891953c8b0dda26fd"}'
           id="cloudflare-analytics"
         ></Script>
-         <SpeedInsights />
+        <SpeedInsights />
       </body>
     </html>
   );
