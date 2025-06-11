@@ -7,7 +7,7 @@ const BlogPage = async () => {
   return (
     <div className="main-container space-y-6 mt-4">
       <div className="w-full space-y-1 md:max-w-1/2">
-        <h1 className="text-3xl font-semibold">Journal</h1>
+        <h1 className="text-3xl font-semibold">Journal (WIP)</h1>
         <p className="text-muted-foreground">
           Sharing my interest in a little bit of everything, but mostly – technology, design and
           art.

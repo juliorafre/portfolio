@@ -13,12 +13,12 @@ interface TerminalProps {
   copyable?: boolean;
 }
 
-export function Terminal({ 
-  title = 'command.shell', 
-  children, 
+export function Terminal({
+  title = 'command.shell',
+  children,
   className,
   showControls = true,
-  copyable = true 
+  copyable = true,
 }: TerminalProps) {
   const [isCopied, setIsCopied] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
@@ -39,6 +39,7 @@ export function Terminal({
     if (typeof node === 'number') return node.toString();
     if (Array.isArray(node)) return node.map(extractTextContent).join('');
     if (node && typeof node === 'object' && 'props' in node) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return extractTextContent((node as any).props.children);
     }
     return '';
@@ -60,15 +61,13 @@ export function Terminal({
         <div className="flex items-center gap-3">
           {/* Traffic Light Controls */}
           <div className="flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-red-500 hover:bg-red-400 transition-colors cursor-pointer" />
-            <div className="h-3 w-3 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer" />
-            <div className="h-3 w-3 rounded-full bg-green-500 hover:bg-green-400 transition-colors cursor-pointer" />
+            <div className="h-3 w-3 cursor-pointer rounded-full bg-red-500 transition-colors hover:bg-red-400" />
+            <div className="h-3 w-3 cursor-pointer rounded-full bg-yellow-500 transition-colors hover:bg-yellow-400" />
+            <div className="h-3 w-3 cursor-pointer rounded-full bg-green-500 transition-colors hover:bg-green-400" />
           </div>
-          
+
           {/* Terminal Title */}
-          <span className="text-sm font-medium text-gray-300 select-none">
-            {title}
-          </span>
+          <span className="text-sm font-medium text-gray-300 select-none">{title}</span>
         </div>
 
         {/* Control Buttons */}
@@ -77,7 +76,7 @@ export function Terminal({
             {copyable && (
               <button
                 onClick={handleCopy}
-                className="p-1.5 rounded-md hover:bg-gray-700/50 transition-colors group"
+                className="group rounded-md p-1.5 transition-colors hover:bg-gray-700/50"
                 aria-label={isCopied ? 'Copied!' : 'Copy to clipboard'}
               >
                 <AnimatePresence mode="wait">
@@ -103,10 +102,10 @@ export function Terminal({
                 </AnimatePresence>
               </button>
             )}
-            
+
             <button
               onClick={() => setIsMaximized(!isMaximized)}
-              className="p-1.5 rounded-md hover:bg-gray-700/50 transition-colors group"
+              className="group rounded-md p-1.5 transition-colors hover:bg-gray-700/50"
               aria-label={isMaximized ? 'Minimize' : 'Maximize'}
             >
               {isMaximized ? (
@@ -121,14 +120,12 @@ export function Terminal({
 
       {/* Terminal Content */}
       <div className="relative">
-        <pre className="overflow-x-auto p-4 text-sm leading-relaxed font-mono bg-gray-900/50">
-          <code className="text-gray-100">
-            {children}
-          </code>
+        <pre className="overflow-x-auto bg-gray-900/50 p-4 font-mono text-sm leading-relaxed">
+          <code className="text-gray-100">{children}</code>
         </pre>
-        
+
         {/* Subtle gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900/20 pointer-events-none" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900/20" />
       </div>
     </motion.div>
   );
@@ -145,7 +142,7 @@ export function TerminalLine({ number, children, className }: TerminalLineProps)
   return (
     <div className={cn('flex items-baseline gap-3', className)}>
       {number && (
-        <span className="text-gray-500 text-xs font-mono select-none min-w-[1.5rem] text-right">
+        <span className="min-w-[1.5rem] text-right font-mono text-xs text-gray-500 select-none">
           {number}
         </span>
       )}
@@ -156,7 +153,7 @@ export function TerminalLine({ number, children, className }: TerminalLineProps)
 
 // Syntax highlighting components
 export function TerminalCommand({ children }: { children: React.ReactNode }) {
-  return <span className="text-cyan-400 font-semibold">{children}</span>;
+  return <span className="font-semibold text-cyan-400">{children}</span>;
 }
 
 export function TerminalFlag({ children }: { children: React.ReactNode }) {
@@ -173,4 +170,4 @@ export function TerminalUrl({ children }: { children: React.ReactNode }) {
 
 export function TerminalJson({ children }: { children: React.ReactNode }) {
   return <span className="text-orange-300">{children}</span>;
-} 
+}
