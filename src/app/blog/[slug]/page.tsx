@@ -18,7 +18,7 @@ const BlogPostPage = async ({ params }: { params: Promise<{ slug: string }> }) =
   const { title, abstract, publishedOn, author, tags, published, slug: postSlug } = frontmatter;
 
   return (
-    <article className="container mx-auto mt-10 w-full md:mt-6">
+    <article className="mx-auto mt-10 w-full md:mt-6">
       {/* Header */}
       <BlogHeader
         title={title}

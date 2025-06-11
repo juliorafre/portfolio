@@ -13,7 +13,7 @@ const BlogPage = async () => {
           art.
         </p>
       </div>
-      <ul>
+      <ul className='space-y-1'>
         {blogPosts.map(({ title, abstract, publishedOn, slug }) => (
           <li key={slug}>
             <BlogSummaryCard

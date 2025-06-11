@@ -5,6 +5,7 @@ import ImageShowcase from '@/components/image-showcase/image-showcase';
 import Hero from '@/components/hero';
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
 import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
+import ResumeLink from '@/components/resume-link';
 
 export default function Home() {
   return (
@@ -36,11 +37,14 @@ export default function Home() {
       >
         <h2 className="text-base">About me</h2>
         <p className="text-muted-foreground text-base">
-          I craft impactful, user-centric products, focusing on seamless interactions and interface
+          {/* I craft impactful, user-centric products, focusing on seamless interactions and interface
           design. Passionate about collaboration, I thrive in multidisciplinary teams, always
           learning and innovating. Specializing in React, TypeScript, and modern web architectures,
           I build high-performance, scalable applications with real-time data and interactive UIs.
-          Currently exploring motion design, GSAP, and Three.js to push digital experiences further.
+          Currently exploring motion design, GSAP, and Three.js to push digital experiences further. */}
+          I’m a frontend developer passionate about turning ideas into seamless, interactive
+          experiences. Currently diving into GSAP and Three.js to craft more dynamic digital
+          moments.
         </p>
         <div className="mt-4 flex items-center gap-x-2 text-sm font-light uppercase">
           <RRSSLink platform="email" href="mailto:juliorafre@gmail.com" />
@@ -51,6 +55,7 @@ export default function Home() {
           <span className="text-muted-foreground text-xs">✦</span>
           <RRSSLink platform="linkedin" href="https://www.linkedin.com/in/juliorafre/" />
           <span className="text-muted-foreground text-xs">✦</span>
+          <ResumeLink />
         </div>
       </section>
 

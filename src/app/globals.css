@@ -353,8 +353,12 @@
     @apply col-span-12 lg:col-span-8 lg:col-start-3;
   }
 
+  .post-content > .full-wide {
+    @apply col-span-12 lg:col-span-12 lg:col-start-1;
+  }
+
   .post-content > .image-content {
-    @apply grid place-content-center overflow-hidden rounded-xl pt-0 pb-5 lg:pb-10 first:lg:pt-10;
+    @apply mt-0 mb-5 grid place-content-center lg:mb-10 first:lg:mt-5;
   }
 
   .post-content > .double-image-content {
@@ -384,7 +388,7 @@
     @apply text-pretty;
   }
 
-  .post-content p {
+  .post-content > p {
     @apply leading-relaxed;
     font-size: 1.0625rem;
     line-height: 1.7499375rem;
@@ -397,27 +401,27 @@
   }
 
   .post-content > h1 {
-    @apply mt-4 mb-4 text-4xl font-bold;
+    @apply font-instrument-serif mt-4 mb-4 text-4xl font-bold;
   }
 
   .post-content h2 {
-    @apply mt-4 mb-4 text-2xl font-semibold;
+    @apply font-instrument-serif mt-4 mb-4 text-2xl font-semibold;
   }
 
   .post-content h3 {
-    @apply mt-2 mb-2 text-xl font-medium;
+    @apply font-instrument-serif mt-2 mb-2 text-xl font-medium;
   }
 
   .post-content h4 {
-    @apply mt-2 mb-2 text-lg font-medium;
+    @apply font-instrument-serif mt-2 mb-2 text-lg font-medium;
   }
 
   .post-content h5 {
-    @apply mt-2 mb-2 text-base font-medium;
+    @apply font-instrument-serif mt-2 mb-2 text-base font-medium;
   }
 
   .post-content h6 {
-    @apply mt-2 mb-2 text-sm font-medium;
+    @apply font-instrument-serif mt-2 mb-2 text-sm font-medium;
   }
 
   .post-content ul {
@@ -611,3 +615,42 @@
   @apply bg-gradient-to-r from-[#efa79b]/20 via-[#90aaeb]/20 to-[#bde064]/20;
 }
  */
+
+
+
+ /* Terminal specific styles */
+.terminal-glow {
+  box-shadow: 
+    0 0 20px rgba(59, 130, 246, 0.1),
+    0 0 40px rgba(59, 130, 246, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.terminal-scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 0, 0.03) 2px,
+    rgba(0, 255, 0, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* Typing animation for terminal cursor */
+@keyframes terminal-cursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.terminal-cursor::after {
+  content: '█';
+  animation: terminal-cursor 1s infinite;
+  color: #10b981;
+}

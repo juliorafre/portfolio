@@ -14,7 +14,7 @@ const BlogHeader = (props: PostMetadata) => {
         </time>
         <h1
           id="title"
-          className="max-w-[50.5rem] text-3xl font-bold text-balance lg:text-4xl"
+          className="max-w-[50.5rem] text-3xl font-bold font-instrument-serif text-balance lg:text-4xl"
           style={{
             lineHeight:
               'clamp(2.28rem, calc(2.28rem + 1.72 * ((100vw - 23.4375rem) / 66.5625)), 3rem)',

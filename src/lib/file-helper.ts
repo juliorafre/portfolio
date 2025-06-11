@@ -13,6 +13,10 @@ export const getBlogPostList = async () => {
 
     const { data: frontmatter } = matter(rawContent);
 
+    if (frontmatter.published === false) {
+      continue;
+    }
+
     const newPost: PostMetadata = {
       slug: fileName.replace('.mdx', '') as string,
       ...frontmatter,

@@ -2,7 +2,7 @@
 import gsap from 'gsap';
 import Observer from 'gsap/Observer';
 import { useGSAP } from '@gsap/react';
-import { useRef } from 'react';
+import { useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { imagesList } from '@/modules/carousel/data/carousel.data';
 
@@ -10,6 +10,40 @@ gsap.registerPlugin(Observer, useGSAP);
 
 const Carousel = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const carouselWrapperRef = useRef<HTMLDivElement>(null);
+
+  // Function to update card scales based on their position relative to the center
+  const updateCardScales = useCallback(() => {
+    if (!containerRef.current || !carouselWrapperRef.current) return;
+
+    const cards = containerRef.current.querySelectorAll('.card');
+    const wrapperRect = carouselWrapperRef.current.getBoundingClientRect();
+    const wrapperCenter = wrapperRect.left + wrapperRect.width / 2;
+
+    cards.forEach((card) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      
+      // Calculate distance from wrapper center
+      const distanceFromCenter = Math.abs(cardCenter - wrapperCenter);
+      const cardWidth = cardRect.width;
+      
+      // Normalize distance (0 = center, 1 = edge of card width)
+      const normalizedDistance = Math.min(distanceFromCenter / (cardWidth * 0.6), 1);
+      
+      // Calculate scale: 1.1 for focused (center), 0.9 for distant
+      const targetScale = 1.1 - (normalizedDistance * 0.2);
+      const clampedScale = Math.max(0.9, Math.min(1.1, targetScale));
+      
+      // Apply smooth scaling with GSAP
+      gsap.to(card, {
+        scale: clampedScale,
+        duration: 0.3,
+        ease: 'power2.out',
+        transformOrigin: 'center center',
+      });
+    });
+  }, []);
 
   useGSAP(
     () => {
@@ -46,11 +80,19 @@ const Carousel = () => {
           ease: 'back.inOut(3)',
         });
 
+        // Initialize card scales
+        gsap.set(cards, { scale: 0.9 });
+        
+        // Initial scale update
+        setTimeout(updateCardScales, 100);
+
         let total = 0;
 
         const tick = (time: number, deltaTime: number) => {
           total -= deltaTime / 20; // Adjust the speed of automatic scrolling
           xTo(total);
+          // Update scales continuously during automatic scrolling
+          updateCardScales();
         };
 
         gsap.ticker.add(tick);
@@ -65,6 +107,8 @@ const Carousel = () => {
           onDrag: self => {
             total += self.deltaX;
             xTo(total);
+            // Update scales during drag
+            updateCardScales();
           },
           onRelease: () => {
             tl.reverse();
@@ -75,20 +119,33 @@ const Carousel = () => {
             gsap.ticker.add(tick);
           },
         });
+
+        // Add resize listener to recalculate scales
+        const handleResize = () => {
+          setTimeout(updateCardScales, 100);
+        };
+        
+        window.addEventListener('resize', handleResize);
+        
+        // Cleanup
+        return () => {
+          window.removeEventListener('resize', handleResize);
+          gsap.ticker.remove(tick);
+        };
       }
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [updateCardScales] }
   );
 
   return (
-    <div className="flex w-full items-center overflow-clip">
+    <div className="flex w-full items-center overflow-clip" ref={carouselWrapperRef}>
       <div
         className="flex w-max cursor-grab gap-[1vw] pt-0 pr-[1vw] pb-0 pl-0 whitespace-nowrap select-none active:cursor-grabbing"
         ref={containerRef}
       >
         {imagesList.map((img, index) => (
           <div
-            className="card aspect-video w-[80vw] overflow-hidden bg-red-50 lg:w-[672px]"
+            className="card aspect-video w-[80vw] overflow-hidden bg-red-50 lg:w-[672px] transition-transform"
             key={index}
           >
             <Image

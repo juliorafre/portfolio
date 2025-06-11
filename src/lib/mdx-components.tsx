@@ -1,10 +1,21 @@
 import CodeSnippet from '@/components/code-snippet';
 import ImageShowcase from '@/components/image-showcase';
-import Image, { ImageProps } from 'next/image';
 import { ComponentPropsWithoutRef } from 'react';
-import Highlight from '@/components/highlight/highlight';
+import Highlight from '@/components/blog-collection/highlight/highlight';
+import ImagePost from '@/components/blog-collection/image-post';
+import { AnimatedTerminal } from '@/components/blog-collection/animated-terminal';
+import {
+  TerminalCommand,
+  TerminalFlag,
+  TerminalString,
+  TerminalUrl,
+  TerminalJson,
+  Terminal,
+  TerminalLine,
+} from '@/components/blog-collection/terminal';
+import CarouselWoved from '@/components/blog-collection/carousel-wowed/carousel-wowed';
 
-//type HeadingProps = ComponentPropsWithoutRef<'h1'>;
+type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 //type ParagraphProps = ComponentPropsWithoutRef<'p'>;
 //type ListProps = ComponentPropsWithoutRef<'ul'>;
 //type ListItemProps = ComponentPropsWithoutRef<'li'>;
@@ -12,22 +23,22 @@ import Highlight from '@/components/highlight/highlight';
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
 const components = {
+  h1: ({ children, ...props }: HeadingProps) => (
+    <h1 className="font-instrument-serif text-3xl" {...props}>
+      {children}
+    </h1>
+  ),
+  CarouselWoved,
+  AnimatedTerminal,
+  TerminalLine,
+  TerminalCommand,
+  TerminalFlag,
+  TerminalString,
+  TerminalUrl,
+  TerminalJson,
+  Terminal,
   pre: CodeSnippet,
-  Image: (props: ImageProps) => {
-    return (
-      <div className="image-content wide">
-        <div className="overflow-hidden rounded-xl">
-          <Image
-            {...props}
-            alt={props.alt}
-            width={props.width}
-            height={props.height}
-            className="h-auto w-full"
-          />
-        </div>
-      </div>
-    );
-  },
+  Image: ImagePost,
   ImageShowcase,
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table>

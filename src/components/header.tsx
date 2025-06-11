@@ -51,6 +51,7 @@ const NavLink = ({
       }}
       className={cn(
         'group flex items-center gap-x-2 rounded-sm px-2 py-1 transition-all duration-300',
+        isMobile && 'px-2 py-3 first:pl-6 last:pr-6',
         isActive && !isMobile
           ? 'text-black dark:text-white'
           : 'text-neutral-500 dark:text-neutral-400',
@@ -136,13 +137,13 @@ const Header = () => {
           ease: 'easeInOut',
           delay: 0.2,
         }}
-        className="inset-shadow-accent fixed bottom-0 left-1/2 z-[999] translate-x-[-50%] translate-y-[-2vh] overflow-hidden rounded-full bg-[rgba(224,_224,_224,_0.9)] shadow-2xl backdrop-blur-sm md:hidden "
+        className="inset-shadow-accent fixed bottom-0 left-1/2 z-[999] translate-x-[-50%] translate-y-[-2vh] overflow-hidden rounded-full bg-[rgba(224,_224,_224,_0.9)] shadow-2xl backdrop-blur-sm md:hidden"
         style={{
           backdropFilter: 'blur(10px)',
           borderRadius: '50px',
           boxShadow: 'inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff',
           cursor: 'pointer',
-          padding: '8px 20px',
+          /* padding: '8px 20px', */
           border: '2px solid rgb(206, 206, 206)',
         }}
       >
