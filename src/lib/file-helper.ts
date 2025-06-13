@@ -1,3 +1,5 @@
+'use server'
+
 import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
@@ -39,10 +41,10 @@ export const loadBlogPost = async (slug: string) => {
   }
 }
 
-export const readFile = (localPath: string) => {
+export const readFile = async (localPath: string) => {
   return fs.readFile(path.join(process.cwd(), localPath), 'utf8')
 }
 
-export const readDirectory = (localPath: string) => {
+export const readDirectory = async (localPath: string) => {
   return fs.readdir(path.join(process.cwd(), localPath))
 }

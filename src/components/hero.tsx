@@ -1,15 +1,15 @@
 // import ProfileImage from './profile-image';
 
-const Hero = () => {
+import { cn } from '@/lib';
+
+const Hero = ({ className, style }: { className?: string; style?: React.CSSProperties }) => {
   return (
-    <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4">
+    <div className={cn('flex w-full flex-col items-start gap-2', className)} style={style}>
       {/* <ProfileImage size={80} /> */}
-      <div className="flex flex-col leading-tight">
-        <h1 className="text-base font-medium text-primary">Julio Ramirez</h1>
-        <h2 className="text-base font-medium text-muted-foreground">
-          Software Engineer focused on Frontend Web, based in Santiago, Chile
-        </h2>
-      </div>
+      <h1 className="text-primary block text-base leading-tight font-medium">Julio Ramirez</h1>
+      <h2 className="text-muted-foreground block text-base leading-tight font-medium">
+        Software Engineer focused on Frontend Web, based in Santiago, Chile
+      </h2>
     </div>
   );
 };

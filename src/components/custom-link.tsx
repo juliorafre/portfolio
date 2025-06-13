@@ -14,7 +14,7 @@ type CustomLinkProps = Omit<ComponentPropsWithoutRef<'a'>, 'href'> &
 
 // Shared base styles
 const baseStyles: HTMLAttributes<HTMLElement>['className'] = cn(
-  'relative inline gap-0.5 py-[0.3px] text-black pr-1 pl-1.5 font-normal',
+  'relative inline gap-0.5 py-[0.3px] pr-1 pl-1.5 font-normal text-black',
   'mt-0 bg-gradient-to-r from-[#efa79b]/30 via-[#90aaeb]/30 to-[#bde064]/30 transition-colors duration-300 dark:text-neutral-300',
   'bg-gradient-to-r dark:from-[#3E86C6] dark:via-[#F5315B]/80 dark:to-orange-500/80 dark:bg-clip-text dark:p-0 dark:text-transparent',
   'md:hover:not-dark:bg-gradient-to-r md:hover:not-dark:from-[#efa79b] md:hover:not-dark:via-[#90aaeb] md:hover:not-dark:to-[#bde064] md:hover:not-dark:text-black'
@@ -27,6 +27,7 @@ const CustomLink = ({
   showIcon: showIconProp, // Rename to avoid conflict
   ...props
 }: CustomLinkProps) => {
+  if (!href) href = '#';
   const isExternal = href.startsWith('http');
   // const isInternal = href.startsWith('/');
   const isAnchor = href.startsWith('#');
@@ -40,7 +41,7 @@ const CustomLink = ({
         {showIcon && (
           <ArrowUpRightIcon
             size={16}
-            className="ml-0.5 inline-block dark:text-white -translate-y-[0.1rem] transform "
+            className="ml-0.5 inline-block -translate-y-[0.1rem] transform dark:text-white"
           />
         )}
       </a>
@@ -73,7 +74,7 @@ const CustomLink = ({
       {showIcon && (
         <ArrowUpRightIcon
           size={16}
-          className="ml-0.5 inline-block dark:text-white -translate-y-[0.1rem] transform "
+          className="ml-0.5 inline-block -translate-y-[0.1rem] transform dark:text-white"
         />
       )}
     </Link>

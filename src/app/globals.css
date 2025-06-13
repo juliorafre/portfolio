@@ -566,22 +566,47 @@
     }
 
     /* ----- ORCHESTRATION ----- */
-    .orchestration > * {
+
+    /* .orchestration > * {
+      animation: paco-enter 800ms ease both;
+      animation-delay: calc(var(--delay) * var(--stagger, 1));
+    } */
+
+    .orchestration .orchestration-element {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(4px);
       animation: paco-enter 800ms ease both;
       animation-delay: calc(var(--delay) * var(--stagger, 1));
     }
 
-    .orchestration-element {
-      opacity: 0;
-      transform: translateY(20px);
-      /*  filter: blur(4px); */
+    .stagger-0 {
+      --stagger: 0;
+    }
+    .stagger-1 {
+      --stagger: 1;
+    }
+    .stagger-2 {
+      --stagger: 2;
+    }
+    .stagger-3 {
+      --stagger: 3;
+    }
+    .stagger-4 {
+      --stagger: 4;
+    }
+    .stagger-5 {
+      --stagger: 5;
+    }
+    .stagger-6 {
+      --stagger: 6;
     }
 
     @keyframes paco-enter {
       to {
         opacity: 1;
         transform: translateY(0px);
-        /* filter: blur(0px); */
+        filter: blur(0px);
       }
     }
 
@@ -616,11 +641,9 @@
 }
  */
 
-
-
- /* Terminal specific styles */
+/* Terminal specific styles */
 .terminal-glow {
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(59, 130, 246, 0.1),
     0 0 40px rgba(59, 130, 246, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -645,8 +668,14 @@
 
 /* Typing animation for terminal cursor */
 @keyframes terminal-cursor {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 .terminal-cursor::after {

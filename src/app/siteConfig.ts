@@ -16,7 +16,7 @@ export const siteConfig = {
     {
       url: "/",
       label: "Home",
-      isVisible: true,
+      isVisible: false,
     },
     {
       url: "/about",
@@ -31,32 +31,32 @@ export const siteConfig = {
       isComingSoon: true,
     },
     {
-      url: "/blog",
-      label: "Writing",
+      url: "/crafts",
+      label: "Crafts",
       isVisible: true,
-    },
-    {
-      url: "/playground",
-      label: "Playground",
-      isVisible: true,
-      isComingSoon: true,
+      isComingSoon: false,
       paths: [{
-        url: "/playground/text-parallax",
+        url: "/crafts/text-parallax",
         label: "Text Parallax",
         isVisible: false,
       }, {
-        url: "/playground/text-gradient-on-scroll",
+        url: "/crafts/text-gradient-on-scroll",
         label: "Text Gradient on Scroll",
         isVisible: false,
       }, {
-        url: "/playground/map-interaction",
+        url: "/crafts/map-interaction",
         label: "Map Interaction",
         isVisible: false,
       }, {
-        url: "/playground/draggable-curved",
+        url: "/crafts/draggable-curved",
         label: "Draggable Curved",
         isVisible: false,
       }]
-    }
+    },
+    {
+      url: "/blog",
+      label: "Journal",
+      isVisible: true,
+    },
   ]
 } as const satisfies SiteConfig;
