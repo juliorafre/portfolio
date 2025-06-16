@@ -26,10 +26,11 @@ export default async function Home() {
           design. Passionate about collaboration, I thrive in multidisciplinary teams, always
           learning and innovating. Specializing in React, TypeScript, and modern web architectures,
           I build high-performance, scalable applications with real-time data and interactive UIs.
-          Currently exploring motion design, GSAP, and Three.js to push digital experiences further. */}
+          Currently exploring motion design, GSAP, and Motion (prev framer-motion) to push digital experiences further. */}
           I’m a frontend developer passionate about turning ideas into seamless, interactive
-          experiences. Currently diving into GSAP and Three.js to craft more dynamic digital
-          moments.
+          experiences. Currently diving into GSAP and Motion{' '}
+          <span className="whitespace-nowrap">(prev framer-motion)</span> to craft more dynamic
+          digital moments.
         </p>
         <div className="mt-4 flex items-center gap-x-2 text-sm font-light uppercase">
           <RRSSLink platform="email" href="mailto:juliorafre@gmail.com" />
@@ -45,7 +46,7 @@ export default async function Home() {
       </section>
 
       {/* Today */}
-      <section id="today" className="orchestration-element stagger-2">
+      <section id="today" className="orchestration-element stagger-2 w-full">
         <h2 className="text-base">Today</h2>
         <p className="text-muted-foreground text-base">
           Listening to{' '}

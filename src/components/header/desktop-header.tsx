@@ -8,7 +8,7 @@ import { NavLinks } from './nav-links';
 
 export const DesktopHeader = () => {
   return (
-    <header className="relative hidden flex-col items-end justify-end gap-x-4 px-6 py-4.5 md:flex md:flex-row md:items-center md:justify-between">
+    <header className="relative container mx-auto max-w-3xl hidden flex-col items-end justify-end gap-x-4 px-6 py-4.5 md:flex md:flex-row md:items-center md:justify-between">
       <div className="flex w-full items-center justify-between gap-x-2 md:w-fit md:justify-start">
         <Link href="/">
           <motion.div

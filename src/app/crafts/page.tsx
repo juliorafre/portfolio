@@ -122,6 +122,7 @@ const PlaygroundPage = () => {
           <CustomLink href="/draggable-curved">Draggable Curved</CustomLink>
           <CustomLink href="/button-categorization">Button Categorization</CustomLink>
           <CustomLink href="/streaming-text">Streaming Text</CustomLink>
+          <CustomLink href="/inertia-grid">Inertia Grid</CustomLink>
         </div>
       </section>
     </AnimationOrchestrator>

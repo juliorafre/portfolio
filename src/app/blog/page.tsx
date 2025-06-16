@@ -14,10 +14,10 @@ const BlogPage = async () => {
           art.
         </p>
       </div>
-      <ul className="orchestration-element stagger-1 space-y-1">
+      <ul className="space-y-1">
         {blogPosts.map(({ title, abstract, publishedOn, slug }, index) => {
           return (
-            <li key={slug} className={`orchestration-element stagger-${index + 2}`}>
+            <li key={slug} className={`orchestration-element stagger-${index + 1}`}>
               <BlogSummaryCard
                 title={title}
                 abstract={abstract}

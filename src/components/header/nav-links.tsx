@@ -17,6 +17,7 @@ export const NavLinks = ({ className, isMobile }: NavLinksProps) => {
         const isComingSoon = 'isComingSoon' in link && link.isComingSoon;
         if (!link.isVisible) return null;
         if (isMobile && isComingSoon) return null;
+        if (isMobile && link.url === '/') return null;
         return (
           <NavLink key={link.url} href={link.url} isComingSoon={isComingSoon} isMobile={isMobile}>
             {link.label}

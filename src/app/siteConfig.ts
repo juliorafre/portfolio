@@ -16,7 +16,7 @@ export const siteConfig = {
     {
       url: "/",
       label: "Home",
-      isVisible: false,
+      isVisible: true,
     },
     {
       url: "/about",
@@ -51,7 +51,13 @@ export const siteConfig = {
         url: "/crafts/draggable-curved",
         label: "Draggable Curved",
         isVisible: false,
-      }]
+      },
+      {
+        url: "/crafts/inertia-grid",
+        label: "Inertia Grid",
+        isVisible: false,
+      }
+      ]
     },
     {
       url: "/blog",
