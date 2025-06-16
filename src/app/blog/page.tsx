@@ -1,6 +1,7 @@
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
 import { getBlogPostList } from '@/lib/file-helper';
 import BlogSummaryCard from '@/modules/blogs/blog-summary-card';
+import JournalCard from '@/components/blog-collection/journal-card';
 
 const BlogPage = async () => {
   const blogPosts = await getBlogPostList();
@@ -15,7 +16,18 @@ const BlogPage = async () => {
         </p>
       </div>
       <ul className="space-y-1">
-        {blogPosts.map(({ title, abstract, publishedOn, slug }, index) => {
+        {blogPosts.map(({ title, abstract, publishedOn, slug, type }, index) => {
+          if (type === 'journal') {
+            return (
+              <JournalCard
+                key={slug}
+                title={title}
+                abstract={abstract}
+                publishedOn={publishedOn}
+                index={index}
+              />
+            );
+          }
           return (
             <li key={slug} className={`orchestration-element stagger-${index + 1}`}>
               <BlogSummaryCard

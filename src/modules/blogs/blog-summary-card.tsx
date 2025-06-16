@@ -14,7 +14,7 @@ const BlogSummaryCard = ({ title, abstract, publishedOn, slug }: BlogSummaryCard
     <Link
       prefetch={true}
       href={`/blog/${slug}`}
-      className="-mr-4 -ml-4 grid w-[calc(100%_+_1rem)] grid-cols-[1fr_auto] items-baseline gap-x-4 rounded-lg bg-white px-4 py-3 transition-all duration-200 hover:bg-gray-100 hover:ring-1 hover:ring-gray-200 focus-visible:ring-1 focus-visible:ring-gray-200 active:scale-98 active:bg-gray-100 active:ring-1 active:ring-gray-200 md:transition-transform dark:bg-transparent hover:dark:bg-neutral-900 dark:hover:ring-gray-600 dark:active:ring-gray-800"
+      className="-mr-4 -ml-4 grid w-[calc(100%_+_1rem)] grid-cols-[1fr_auto] items-baseline gap-x-4 rounded-lg bg-white px-4 py-3 transition-all duration-200 hover:bg-gray-100 hover:ring-1 hover:ring-gray-200 focus-visible:ring-1 focus-visible:ring-gray-200 active:scale-98 active:bg-gray-100 active:ring-1 active:ring-gray-200 md:transition-transform dark:bg-transparent hover:dark:bg-neutral-900 dark:hover:ring-gray-600 dark:active:ring-gray-800 active:dark:bg-neutral-800"
       aria-description={abstract}
     >
       {title && (

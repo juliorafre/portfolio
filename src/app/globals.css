@@ -567,15 +567,13 @@
 
     /* ----- ORCHESTRATION ----- */
 
-    /* .orchestration > * {
-      animation: paco-enter 800ms ease both;
-      animation-delay: calc(var(--delay) * var(--stagger, 1));
-    } */
-
-    .orchestration .orchestration-element {
+    .orchestration-element {
       opacity: 0;
       transform: translateY(20px);
       filter: blur(4px);
+    }
+
+    .orchestration .orchestration-element {
       animation: paco-enter 800ms ease both;
       animation-delay: calc(var(--delay) * var(--stagger, 1));
     }
@@ -600,6 +598,39 @@
     }
     .stagger-6 {
       --stagger: 6;
+    }
+    .stagger-7 {
+      --stagger: 7;
+    }
+    .stagger-8 {
+      --stagger: 8;
+    }
+    .stagger-9 {
+      --stagger: 9;
+    }
+    .stagger-10 {
+      --stagger: 10;
+    }
+    .stagger-11 {
+      --stagger: 11;
+    }
+    .stagger-12 {
+      --stagger: 12;
+    }
+    .stagger-13 {
+      --stagger: 13;
+    }
+    .stagger-14 {
+      --stagger: 14;
+    }
+    .stagger-15 {
+      --stagger: 15;
+    }
+    .stagger-16 {
+      --stagger: 16;
+    }
+    .stagger-17 {
+      --stagger: 17;
     }
 
     @keyframes paco-enter {
