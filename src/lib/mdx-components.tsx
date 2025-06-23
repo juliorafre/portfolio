@@ -14,8 +14,16 @@ import {
   TerminalLine,
 } from '@/components/blog-collection/terminal';
 import CarouselWoved from '@/components/blog-collection/carousel-wowed/carousel-wowed';
+import CaseStudiesHeader from '@/components/blog-collection/case-studies-header';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
-type HeadingProps = ComponentPropsWithoutRef<'h1'>;
+//type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 //type ParagraphProps = ComponentPropsWithoutRef<'p'>;
 //type ListProps = ComponentPropsWithoutRef<'ul'>;
 //type ListItemProps = ComponentPropsWithoutRef<'li'>;
@@ -23,11 +31,7 @@ type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
 const components = {
-  h1: ({ children, ...props }: HeadingProps) => (
-    <h1 className="font-instrument-serif text-3xl" {...props}>
-      {children}
-    </h1>
-  ),
+  CaseStudiesHeader,
   CarouselWoved,
   AnimatedTerminal,
   TerminalLine,
@@ -37,6 +41,13 @@ const components = {
   TerminalUrl,
   TerminalJson,
   Terminal,
+  // Carousel
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  // End of Carousel
   pre: CodeSnippet,
   Image: ImagePost,
   ImageShowcase,

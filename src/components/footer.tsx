@@ -3,7 +3,7 @@ import { CopyrightIcon } from 'lucide-react';
 const Footer = () => {
   return (
     <footer className="mx-auto mt-10 mb-6 block w-full md:mb-0">
-      <div className="mx-auto flex w-full max-w-3xl flex-col items-start gap-y-1 px-6 py-3.5 md:px-4">
+      <div className="mx-auto flex w-full max-w-3xl flex-col items-start gap-y-1 px-6 py-3.5 md:px-0">
         <p className="font-jetbrains-mono text-sm bg-clip-text text-transparent bg-gradient-to-r from-[#ee5c43] via-[#1248d0] dark:via-[#8dff42] to-[#f12ef1] ">
           &quot;Like biological morph and motion&quot;
         </p>

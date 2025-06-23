@@ -13,8 +13,7 @@ const PlaygroundPage = () => {
       <div className="orchestration-element stagger-0 w-full space-y-1 md:max-w-1/2">
         <h1 className="text-xl font-semibold">Crafts</h1>
         <p className="text-muted-foreground">
-          Sharing my interest in a little bit of everything, but mostly – technology, design and
-          art.
+          Sharing some of my experimentals components and projects.
         </p>
       </div>
 
@@ -72,7 +71,7 @@ const PlaygroundPage = () => {
               autoPlay
               muted
               loop
-              className="aspect-video w-full object-cover"
+              className="aspect-video w-full object-cover rounded-lg overflow"
             ></video>
           </div>
           <div className="order-2 flex flex-col">
@@ -115,14 +114,49 @@ const PlaygroundPage = () => {
       {/* Playgrounds */}
       <section className="orchestration-element stagger-2">
         <h2 className="mb-2 text-lg">Playgrounds</h2>
-        <div className="flex w-full flex-col">
-          <CustomLink href="/text-parallax">Text Parallax</CustomLink>
-          <CustomLink href="/text-gradient-on-scroll">Text Gradient On Scroll</CustomLink>
-          <CustomLink href="/map-interaction">Map Interaction</CustomLink>
-          <CustomLink href="/draggable-curved">Draggable Curved</CustomLink>
-          <CustomLink href="/button-categorization">Button Categorization</CustomLink>
-          <CustomLink href="/streaming-text">Streaming Text</CustomLink>
-          <CustomLink href="/inertia-grid">Inertia Grid</CustomLink>
+        <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-4">
+          <CustomLink
+            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
+            href="/text-parallax"
+          >
+            Text Parallax
+          </CustomLink>
+          <CustomLink
+            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
+            href="/text-gradient-on-scroll"
+          >
+            Text Gradient On Scroll
+          </CustomLink>
+          <CustomLink
+            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
+            href="/map-interaction"
+          >
+            Map Interaction
+          </CustomLink>
+          <CustomLink
+            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
+            href="/draggable-curved"
+          >
+            Draggable Curved
+          </CustomLink>
+          <CustomLink
+            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
+            href="/button-categorization"
+          >
+            Button Categorization
+          </CustomLink>
+          <CustomLink
+            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
+            href="/streaming-text"
+          >
+            Streaming Text
+          </CustomLink>
+          <CustomLink
+            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
+            href="/inertia-grid"
+          >
+            Inertia Grid
+          </CustomLink>
         </div>
       </section>
     </AnimationOrchestrator>

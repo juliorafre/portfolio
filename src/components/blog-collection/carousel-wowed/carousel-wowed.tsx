@@ -8,7 +8,14 @@ import gsap from 'gsap';
 
 gsap.registerPlugin(Observer, ScrollTrigger);
 
-const CarouselWowed = () => {
+export interface CarouselWowedProps {
+  images: {
+    src: string;
+    alt: string;
+  }[];
+}
+
+const CarouselWowed = ({ images }: CarouselWowedProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -73,7 +80,24 @@ const CarouselWowed = () => {
           paddingRight: '12.5vw',
         }}
       >
-        <div className="carousel-card flex h-full w-[65vw] shrink-0 snap-center items-center justify-center md:w-[20vw] md:snap-start">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className="carousel-card flex h-full w-[65vw] shrink-0 snap-center items-center justify-center md:w-[20vw] md:snap-start"
+          >
+            <div className="relative aspect-square h-auto w-[65vw]">
+              <Image
+                className="h-full w-full rounded-lg object-cover shadow"
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(max-width: 768px) 65vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </div>
+          </div>
+        ))}
+
+        {/*  <div className="carousel-card flex h-full w-[65vw] shrink-0 snap-center items-center justify-center md:w-[20vw] md:snap-start">
           <div className="aspect-square h-auto w-full">
             <Image
               className="h-full w-full rounded-lg object-cover shadow"
@@ -155,7 +179,7 @@ const CarouselWowed = () => {
               height={1000}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

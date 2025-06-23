@@ -5,6 +5,7 @@ import { AnimationOrchestrator } from '@/components/animations/animation-orchest
 import ResumeLink from '@/components/resume-link';
 import { getReadingBooks } from './blog/actions';
 
+
 export default async function Home() {
   const listOfBooks = await getReadingBooks();
 
@@ -12,7 +13,7 @@ export default async function Home() {
 
   return (
     <AnimationOrchestrator
-      className="container mx-auto flex h-full max-w-3xl flex-col items-center justify-center space-y-10 px-6 py-10"
+      className="container mx-auto flex h-full max-w-3xl flex-col items-center justify-center space-y-10 px-6 md:px-0 py-10"
       sessionKey="homePageAnimation"
     >
       {/* Hero */}

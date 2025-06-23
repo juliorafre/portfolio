@@ -1,8 +1,6 @@
 @import 'tailwindcss';
 @plugin 'tailwindcss-animate';
 
-/* --background: 60 20% 99%; */
-
 :root {
   --font-jetbrains-mono: 'JetBrains Mono', monospace;
   --font-inter: 'Inter', sans-serif;
@@ -334,27 +332,36 @@
   /* ----------------------------------------------------------------------------- */
 
   .post-header {
-    @apply grid w-full grid-flow-row grid-cols-12 px-6;
+    /* @apply grid w-full grid-flow-row grid-cols-12 px-6; */
+    @apply mx-auto w-full max-w-3xl px-6;
   }
 
-  .post-header > * {
+  /* .post-header > * {
     @apply col-span-12 lg:col-span-6 lg:col-start-4;
-  }
+  } */
 
   .post-content {
-    @apply grid w-full grid-flow-row-dense grid-cols-12 place-content-center px-6;
+    /*  @apply grid w-full grid-flow-row-dense grid-cols-12 place-content-center px-6; */
+    @apply flex w-full flex-col px-6 md:px-0;
   }
 
-  .post-content > * {
-    @apply col-span-12 lg:col-span-6 lg:col-start-4;
+  .post-content > *:not(.wide):not(.full-wide) {
+    /* @apply col-span-12 lg:col-span-6 lg:col-start-4; */
+    @apply mx-auto w-full max-w-3xl;
   }
 
   .post-content > .wide {
-    @apply col-span-12 lg:col-span-8 lg:col-start-3;
+    /* @apply col-span-12 lg:col-span-8 lg:col-start-3; */
+    @apply mx-auto w-full max-w-4xl;
   }
 
   .post-content > .full-wide {
-    @apply col-span-12 lg:col-span-12 lg:col-start-1;
+    /* @apply col-span-12 lg:col-span-12 lg:col-start-1; */
+    @apply mx-auto w-full max-w-full;
+  }
+
+  .post-content > .video-content {
+    @apply relative mx-auto my-6 aspect-video w-full overflow-hidden rounded-lg shadow-lg;
   }
 
   .post-content > .image-content {
@@ -389,7 +396,7 @@
   }
 
   .post-content > p {
-    @apply leading-relaxed;
+    @apply leading-relaxed text-[#444] dark:text-[#ccc];
     font-size: 1.0625rem;
     line-height: 1.7499375rem;
     letter-spacing: -0.01em;
@@ -401,27 +408,27 @@
   }
 
   .post-content > h1 {
-    @apply font-instrument-serif mt-4 mb-4 text-4xl font-bold;
+    @apply mt-4 mb-4 text-lg font-semibold text-[#202020] dark:text-[#ccc];
   }
 
   .post-content h2 {
-    @apply font-instrument-serif mt-4 mb-4 text-2xl font-semibold;
+    @apply mt-4 mb-4 text-lg font-semibold text-[#202020] dark:text-[#ccc];
   }
 
   .post-content h3 {
-    @apply font-instrument-serif mt-2 mb-2 text-xl font-medium;
+    @apply mt-2 mb-2 text-lg font-semibold text-[#202020] dark:text-[#ccc];
   }
 
   .post-content h4 {
-    @apply font-instrument-serif mt-2 mb-2 text-lg font-medium;
+    @apply mt-2 mb-2 text-lg font-semibold text-[#202020] dark:text-[#ccc];
   }
 
   .post-content h5 {
-    @apply font-instrument-serif mt-2 mb-2 text-base font-medium;
+    @apply mt-2 mb-2 text-lg font-semibold text-[#202020] dark:text-[#ccc];
   }
 
   .post-content h6 {
-    @apply font-instrument-serif mt-2 mb-2 text-sm font-medium;
+    @apply mt-2 mb-2 text-lg font-semibold text-[#202020] dark:text-[#ccc];
   }
 
   .post-content ul {
@@ -435,6 +442,10 @@
   /* ----------------------------------------------------------------------------- */
   /* BLOG END */
   /* ----------------------------------------------------------------------------- */
+
+  .job-protera {
+    @apply inline-block rounded-lg bg-gradient-to-r from-purple-950 via-fuchsia-600 to-green-500 px-2 text-white;
+  }
 
   /*
     This code gets applied for folks using
@@ -516,7 +527,7 @@
   }
 
   .main-container {
-    @apply mx-auto w-full max-w-3xl px-6 pt-4 pb-10;
+    @apply mx-auto w-full max-w-3xl px-6 pt-4 pb-10 md:px-0;
   }
 
   .orchestration {

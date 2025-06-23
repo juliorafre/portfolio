@@ -15,7 +15,7 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
 const BlogPostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const { frontmatter, content } = await loadBlogPost(slug);
-  const { title, abstract, publishedOn, author, tags, published, slug: postSlug } = frontmatter;
+  const { title, abstract, publishedOn, author, tags, published, slug: postSlug, type } = frontmatter;
 
   return (
     <article className="mx-auto mt-10 w-full md:mt-6">
@@ -28,6 +28,7 @@ const BlogPostPage = async ({ params }: { params: Promise<{ slug: string }> }) =
         tags={tags}
         published={published}
         slug={postSlug}
+        type={type}
       />
       {/* Content */}
       <div className="post-content">

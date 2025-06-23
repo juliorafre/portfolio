@@ -22,7 +22,7 @@ export const siteConfig = {
       url: "/about",
       label: "About",
       isVisible: true,
-      isComingSoon: true,
+      isComingSoon: false,
     },
     {
       url: "/photos",

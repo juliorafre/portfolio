@@ -1,5 +1,5 @@
 ---
-title: 'Airbnb icons design with AI WIP'
+title: 'Airbnb icons styles prompt'
 abstract: 'La ultima actualizacion de interfaz de Airbnb trajo consigo un update en los iconos haciendolos realistas, animados y muy divertidos.'
 publishedOn: '2025-06-02'
 author: 'Julio Ramirez'
@@ -16,7 +16,7 @@ type: 'blog'
   height={1000}
 />
 
-This is not a real blog post, it's a work in progress. 🚨
+Probablemente hayas visto el ultimo keynote de Airbnb, donde presentaron actualizaciones apra susu servicios y muchas otras cosas. Sin embargo no vengo a hablar sobre los updates de Airbnb si no algo que les intereso  mas de uno por X, los nuevos iconos animados, 
 
 # The San Francisco Compute Company
 
@@ -28,9 +28,7 @@ Never pay to move your data. We run the clusters from UEFI on up and support you
 
 Motion design is more than just making things move on screen—it's about creating meaningful connections between users and digital experiences. Every transition, every hover effect, and every animated element serves a purpose in guiding users through their journey.
 
-[Youtube Video ](https://youtu.be/wMo0IOsxU_8?si=Uywq5B0PhAqOq2CA&t=2092)
-
-<div className="relative mb-6 h-0 w-full overflow-hidden rounded-lg pb-[56.25%] shadow-lg">
+<div className="video-content">
   <iframe
     style={{
       position: 'absolute',
@@ -49,11 +47,43 @@ Motion design is more than just making things move on screen—it's about creati
   ></iframe>
 </div>
 
-<CarouselWoved />
+<CarouselWoved
+  images={[
+    {
+      src: '/images/samples/minis/mini-1.png',
+      alt: 'Carousel Image 1',
+    },
+    {
+      src: '/images/samples/minis/mini-2.png',
+      alt: 'Carousel Image 2',
+    },
+    {
+      src: '/images/samples/minis/mini-3.png',
+      alt: 'Carousel Image 3',
+    },
+    {
+      src: '/images/samples/minis/mini-4.png',
+      alt: 'Carousel Image 4',
+    },
+    {
+      src: '/images/samples/minis/mini-5.png',
+      alt: 'Carousel Image 5',
+    },
+    {
+      src: '/images/samples/minis/mini-6.png',
+      alt: 'Carousel Image 6',
+    },
+    {
+      src: '/images/samples/minis/mini-7.png',
+      alt: 'Carousel Image 7',
+    },
+  ]}
+/>
 
 Here is the prompt I used to create the animation:
 
 <a id="prompt"></a>
+
 <Highlight>
 Photograph of a hyper-realistic miniature &lt;element&gt;, crafted with premium detail and realism — set in a clean studio environment with a pure white background, soft diffused lighting, and a gentle natural shadow cast beneath. The model features realistic proportions, subtly rounded edges (if applicable), and surface finishes true to scale (e.g. satin-matte, brushed metal, soft fabric, weathered stone, translucent plastic, etc.). Include high-fidelity micro-textures (e.g. wood grain, foliage, ceramic, skin, glass, etc.), scaled accurately. Shot from a 3/4 perspective at approximately 40–100 cm camera distance using a 50 mm equivalent lens at ƒ/11 for full depth of field. High-resolution output (8K), cropped to a square aspect ratio (1:1). Rendered with photographic fidelity — avoid stylization, cartoonish effects, or toy-like aesthetics.
 
@@ -63,7 +93,7 @@ Negative prompt: exaggerated proportions, toy appearance, cartoon filters, visib
 
 Change the <i>&lt;element&gt;</i> to the object you want to create.
 
-<Terminal title="api-request.sh">
+{/* <Terminal title="api-request.sh">
   <TerminalLine number={1}>
     <TerminalCommand>curl</TerminalCommand> <TerminalFlag>--request</TerminalFlag> POST
   </TerminalLine>
@@ -91,4 +121,4 @@ Change the <i>&lt;element&gt;</i> to the object you want to create.
   <TerminalLine number={8}>
     <TerminalJson>"method": card,</TerminalJson>
   </TerminalLine>
-</Terminal>
+</Terminal> */}

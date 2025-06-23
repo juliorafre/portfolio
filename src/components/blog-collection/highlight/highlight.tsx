@@ -3,6 +3,7 @@ import { CopyIcon, CheckIcon } from 'lucide-react';
 import { useMemo, useState, isValidElement } from 'react';
 import { useCopyToClipboard } from '@uidotdev/usehooks';
 import { motion, AnimatePresence } from 'motion/react';
+// import Image from 'next/image';
 
 const Highlight = ({ children }: { children: React.ReactNode }) => {
   const [isCopied, setIsCopied] = useState('idle');
@@ -47,11 +48,19 @@ const Highlight = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <div className="highlight group font-jetbrains-mono relative mb-6 rounded-xl border-3 border-white bg-neutral-100 p-4 inset-shadow-accent-foreground text-sm font-semibold text-black shadow-lg md:text-base dark:border-gray-800 dark:bg-neutral-900 dark:text-white">
+    <div className="highlight group font-jetbrains-mono inset-shadow-accent-foreground relative mb-6 rounded-xl border-3 border-white bg-neutral-100 p-4 text-sm font-semibold text-black shadow-lg md:text-base dark:border-gray-800 dark:bg-neutral-900 dark:text-white">
+      {/* <SparklesIcon className="absolute top-0 left-0 z-90 size-9 -translate-x-1/2 -translate-y-1/2 fill-amber-300 text-amber-300 dark:fill-amber-500 dark:text-amber-500" /> */}
+      {/* <Image
+        src="/images/sparkles.png"
+        alt="sparkles"
+        width={1000}
+        height={1000}
+        className="absolute top-0 right-0 z-90 size-50 drop-shadow-xl translate-x-1/3 -translate-y-1/3"
+      /> */}
       <button
         onClick={copyToClipboard}
         disabled={isCopied === 'copied'}
-        className="absolute top-2 right-2 z-50 grid cursor-pointer place-items-center overflow-hidden rounded-md bg-neutral-200/40 backdrop-blur p-2 hover:bg-neutral-300 dark:bg-neutral-800/40 dark:hover:bg-neutral-700 group-hover:opacity-100 opacity-100 md:opacity-0 transition-all duration-300"
+        className="absolute top-2 right-2 z-50 grid cursor-pointer place-items-center overflow-hidden rounded-md bg-neutral-300/40 p-2 opacity-100 backdrop-blur transition-all duration-300 group-hover:opacity-100 hover:bg-neutral-300 md:opacity-0 dark:bg-neutral-800/40 dark:hover:bg-neutral-700"
       >
         <AnimatePresence mode="popLayout" initial={false}>
           <motion.span
@@ -69,7 +78,7 @@ const Highlight = ({ children }: { children: React.ReactNode }) => {
           </motion.span>
         </AnimatePresence>
       </button>
-      <div className="bg-gradient-to-r from-[#ee5c43] via-[#1248d0] to-[#f12ef1] bg-clip-text text-transparent dark:via-[#8dff42]  text-pretty text-xs md:text-base">
+      <div className="bg-gradient-to-r from-[#ee5c43] via-[#1248d0] to-[#f12ef1] bg-clip-text text-xs font-light text-pretty text-transparent md:text-base dark:via-[#8dff42]">
         {children}
       </div>
     </div>

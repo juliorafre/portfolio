@@ -44,7 +44,6 @@ const BadgeCategorization = () => {
       <div className="flex flex-col items-center gap-y-2 overflow-hidden">
         <motion.div
           transition={{
-            type: 'ease',
             ease: 'easeInOut',
           }}
           style={{
