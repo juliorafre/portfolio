@@ -1,7 +1,16 @@
-import { loadBlogPost } from '@/lib/file-helper';
+import { getBlogPostList, loadBlogPost } from '@/lib/file-helper';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import BlogHeader from '@/components/blog-header';
 import components from '@/lib/mdx-components';
+
+export async function generateStaticParams() {
+  // Evaluate this generateStaticParams function is needed?
+  const posts = await getBlogPostList();
+  
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;

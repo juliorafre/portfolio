@@ -7,7 +7,7 @@ const BlogHeader = (props: PostMetadata) => {
       <div className="flex flex-col space-y-2">
         <time
           id="publishedOn"
-          dateTime="2025-05-16"
+          dateTime={props.publishedOn}
           className="text-muted-foreground font-jetbrains-mono block font-semibold"
         >
           {formatDate(props.publishedOn)}

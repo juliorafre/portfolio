@@ -54,14 +54,52 @@ const kalam = Kalam({
 });
 
 export const metadata: Metadata = {
-  title: 'Julio Ramirez | Software Engineer focused on Frontend',
+  metadataBase: new URL('https://www.juliorafre.com'),
+  title: {
+    default: 'Julio Ramirez | Software Engineer focused on Frontend',
+    template: '%s | Julio Ramirez'
+  },
   description:
     'I am Julio Ramirez, a Frontend Engineer specialized in React, TypeScript, and modern web architectures. I design user-centered products with fluid interfaces and interactions. Currently, I explore motion design using GSAP and Three.js to take digital experiences to the next level.',
+  keywords: [
+    'frontend engineer',
+    'react developer',
+    'typescript',
+    'nextjs',
+    'motion design',
+    'gsap',
+    'three.js',
+    'animations',
+    'web interactions',
+    'ui/ux',
+    'software engineer',
+    'javascript',
+    'web development'
+  ],
+  authors: [{ name: 'Julio Ramirez', url: 'https://www.juliorafre.com' }],
+  creator: 'Julio Ramirez',
+  publisher: 'Julio Ramirez',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: 'Julio Ramirez | Software Engineer focused on Frontend',
     description:
       'I am Julio Ramirez, a Frontend Engineer specialized in React, TypeScript, and modern web architectures. I design user-centered products with fluid interfaces and interactions. Currently, I explore motion design using GSAP and Three.js to take digital experiences to the next level.',
-    url: 'https://juliorafre.com',
+    url: 'https://www.juliorafre.com',
     siteName: 'Julio Ramirez | Software Engineer focused on Frontend',
     locale: 'es_CL',
     type: 'website',
@@ -69,7 +107,7 @@ export const metadata: Metadata = {
       {
         url: 'https://juliorafre.com/opengraph-image.png',
         width: 1200,
-        height: 600,
+        height: 630,
       },
     ],
   },

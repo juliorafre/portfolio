@@ -4,8 +4,11 @@ import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
 import { PostMetadata } from '@/types';
+import { unstable_cache } from 'next/cache';
 
-export const getBlogPostList = async () => {
+// TODO: Evaluate if this is needed, or if we can use the cache from the server component
+
+export const getBlogPostList = unstable_cache(async () => {
   const fileNames = await readDirectory('/content');
 
   const blogPosts: PostMetadata[] = [];
@@ -30,16 +33,26 @@ export const getBlogPostList = async () => {
   return blogPosts.sort((p1, p2) =>
     p1.publishedOn < p2.publishedOn ? 1 : -1
   );
-}
+},
+  ['blog-post-list'],
+  {
+    revalidate: 86400, // Revalidate every day
+    tags: ['blog-posts'],
+  })
 
-export const loadBlogPost = async (slug: string) => {
+export const loadBlogPost = unstable_cache(async (slug: string) => {
   const rawContent = await readFile(`/content/${slug}.mdx`);
   const { data: frontmatter, content } = matter(rawContent);
   return {
     frontmatter,
     content,
   }
-}
+},
+  ['blog-post'],
+  {
+    revalidate: 86400, // Revalidate every day
+    tags: ['blog-posts'],
+  })
 
 export const readFile = async (localPath: string) => {
   return fs.readFile(path.join(process.cwd(), localPath), 'utf8')

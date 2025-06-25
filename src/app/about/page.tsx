@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import {
   Carousel,
@@ -12,7 +10,7 @@ import { AnimationOrchestrator } from '@/components/animations/animation-orchest
 import { experiences } from '@/modules/about/data';
 import CustomLink from '@/components/custom-link';
 
-const images = ['/images/about/3.png', '/images/about/1.png', '/images/about/2.png'];
+const images = ['/images/about/1.png', '/images/about/2.png', '/images/about/3.png'];
 
 const About = () => {
   return (
@@ -68,7 +66,7 @@ const About = () => {
 
       <section className="orchestration-element stagger-2 space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="font-bold">Experience</h2>
+          <h2 className="font-bold">Work experience</h2>
           <CustomLink href="https://www.linkedin.com/in/juliorafre/" showIcon>
             Find more on Linkedin
           </CustomLink>

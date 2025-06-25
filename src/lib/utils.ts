@@ -23,7 +23,27 @@ export const range = (start: number, end: number, step = 1) => {
 
 export const formatDate = (date: string | Date) => {
   if (!date) return '';
-  return new Date(date).toLocaleDateString('en-US', {
+
+  let dateObj: Date;
+
+  if (typeof date === 'string') {
+    // Check if it's a date-only string (YYYY-MM-DD format)
+    const dateOnlyRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+    if (dateOnlyRegex.test(date)) {
+      // For date-only strings, create date in local timezone to avoid UTC conversion issues
+      const [year, month, day] = date.split('-').map(Number);
+      dateObj = new Date(year, month - 1, day); // month is 0-indexed
+    } else {
+      // For other string formats (with time), use regular Date constructor
+      dateObj = new Date(date);
+    }
+  } else {
+    // For Date objects, use as-is
+    dateObj = date;
+  }
+
+  return dateObj.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -58,7 +78,7 @@ export const formatDistanceToNow = (
 
   const now = new Date();
   const targetDate = new Date(date);
-  
+
   // Validate date
   if (isNaN(targetDate.getTime())) {
     return 'Invalid date';
@@ -136,7 +156,7 @@ export const formatDistanceToNow = (
   for (const [unitName, unitMs] of Object.entries(units)) {
     if (absDiffInMs >= unitMs || unitName === 'second') {
       const value = Math.floor(absDiffInMs / unitMs);
-      
+
       // Skip seconds if includeSeconds is false and we're under a minute
       if (unitName === 'second' && !includeSeconds) {
         return t.justNow;
@@ -154,11 +174,11 @@ export const formatDistanceToNow = (
 
       // Add suffix based on whether it's past or future
       if (locale === 'es') {
-        return isFuture 
+        return isFuture
           ? `${t.in} ${value} ${unitText}`
           : `${t.ago} ${value} ${unitText}`;
       } else {
-        return isFuture 
+        return isFuture
           ? `${t.in} ${value} ${unitText}`
           : `${value} ${unitText} ${t.ago}`;
       }
@@ -181,7 +201,7 @@ export const formatDistanceToNow = (
 export const formatDistanceToNowCompact = (date: Date | string | number): string => {
   const now = new Date();
   const targetDate = new Date(date);
-  
+
   if (isNaN(targetDate.getTime())) {
     return 'Invalid';
   }

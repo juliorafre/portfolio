@@ -1,5 +1,3 @@
-'use client';
-
 import { DesktopHeader } from './desktop-header';
 import { MobileHeader } from './mobile-header';
 
