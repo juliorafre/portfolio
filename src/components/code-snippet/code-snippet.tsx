@@ -1,8 +1,8 @@
-import React from 'react';
 import { Code } from 'bright';
+import React from 'react';
+import CodeBlock from '@/components/codeblock';
 import styles from './code-snippet.module.css';
 import theme from './theme.js';
-import CodeBlock from '@/components/codeblock';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CodeSnippet = (props: any) => {

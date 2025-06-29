@@ -1,9 +1,9 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export const cn = (...inputs: ClassValue[]) => {
-  return twMerge(clsx(inputs))
-}
+  return twMerge(clsx(inputs));
+};
 
 export const randomBetween = (min: number, max: number) => {
   return Math.random() * (max - min) + min;
@@ -50,13 +50,12 @@ export const formatDate = (date: string | Date) => {
   });
 };
 
-
 /**
  * Formats the distance from a given date to now in a human-readable format
  * @param date - The date to compare with now (can be Date object, string, or number)
  * @param options - Configuration options for formatting
  * @returns A human-readable string representing the time distance
- * 
+ *
  * @example
  * formatDistanceToNow(new Date()) // "just now"
  * formatDistanceToNow(new Date(Date.now() - 1000 * 60 * 5)) // "5 minutes ago"
@@ -70,11 +69,7 @@ export const formatDistanceToNow = (
     locale?: 'en' | 'es';
   } = {}
 ): string => {
-  const {
-    addSuffix = true,
-    includeSeconds = false,
-    locale = 'en'
-  } = options;
+  const { addSuffix = true, includeSeconds = false, locale = 'en' } = options;
 
   const now = new Date();
   const targetDate = new Date(date);
@@ -177,11 +172,10 @@ export const formatDistanceToNow = (
         return isFuture
           ? `${t.in} ${value} ${unitText}`
           : `${t.ago} ${value} ${unitText}`;
-      } else {
-        return isFuture
-          ? `${t.in} ${value} ${unitText}`
-          : `${value} ${unitText} ${t.ago}`;
       }
+      return isFuture
+        ? `${t.in} ${value} ${unitText}`
+        : `${value} ${unitText} ${t.ago}`;
     }
   }
 
@@ -192,13 +186,15 @@ export const formatDistanceToNow = (
  * A simpler version that returns relative time in a more compact format
  * @param date - The date to compare with now
  * @returns A compact relative time string
- * 
+ *
  * @example
  * formatDistanceToNowCompact(new Date()) // "now"
  * formatDistanceToNowCompact(new Date(Date.now() - 1000 * 60 * 5)) // "5m"
  * formatDistanceToNowCompact(new Date(Date.now() - 1000 * 60 * 60 * 2)) // "2h"
  */
-export const formatDistanceToNowCompact = (date: Date | string | number): string => {
+export const formatDistanceToNowCompact = (
+  date: Date | string | number
+): string => {
   const now = new Date();
   const targetDate = new Date(date);
 

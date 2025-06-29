@@ -1,11 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
-import InertiaPlugin from 'gsap/InertiaPlugin';
 import CustomBounce from 'gsap/CustomBounce';
 import CustomEase from 'gsap/CustomEase';
+import InertiaPlugin from 'gsap/InertiaPlugin';
+import Image from 'next/image';
 import { useRef } from 'react';
 
 gsap.registerPlugin(useGSAP, InertiaPlugin, CustomEase, CustomBounce);
@@ -20,7 +20,7 @@ const InertiaGrid = () => {
       deltaX = 0,
       deltaY = 0;
 
-    rootRef.current.addEventListener('mousemove', e => {
+    rootRef.current.addEventListener('mousemove', (e) => {
       deltaX = e.clientX - oldX;
       deltaY = e.clientY - oldY;
 
@@ -31,7 +31,7 @@ const InertiaGrid = () => {
     // Store initial positions for each element
     const initialPositions = new Map();
 
-    rootRef.current.querySelectorAll('.media').forEach(media => {
+    rootRef.current.querySelectorAll('.media').forEach((media) => {
       //const mediaImg = media.querySelector('img') as HTMLImageElement;
       const computedStyle = window.getComputedStyle(media);
       const matrix = new DOMMatrix(computedStyle.transform);
@@ -94,7 +94,11 @@ const InertiaGrid = () => {
   });
 
   return (
-    <div ref={rootRef} id="inertia-grid" className="mx-auto h-full w-full max-w-3xl">
+    <div
+      className="mx-auto h-full w-full max-w-3xl"
+      id="inertia-grid"
+      ref={rootRef}
+    >
       {/* <div className="grid grid-cols-2 gap-6 p-10 md:grid-cols-4">
         {Array.from({ length: 12 }).map((_, index) => (
           <div className="media rounded-lg will-change-transform" key={index}>
@@ -116,11 +120,11 @@ const InertiaGrid = () => {
           }}
         >
           <Image
-            src={`/images/samples/minis/mini-1.png`}
             alt="mini-1"
-            width={800}
-            height={800}
             className="pointer-events-none size-[11vw] h-full w-full rounded-lg object-contain will-change-transform"
+            height={800}
+            src={'/images/samples/minis/mini-1.png'}
+            width={800}
           />
         </div>
         <div
@@ -130,11 +134,11 @@ const InertiaGrid = () => {
           }}
         >
           <Image
-            src={`/images/samples/minis/mini-2.png`}
             alt="mini-1"
-            width={800}
-            height={800}
             className="pointer-events-none size-[11vw] h-full w-full rounded-lg object-contain will-change-transform"
+            height={800}
+            src={'/images/samples/minis/mini-2.png'}
+            width={800}
           />
         </div>
         <div
@@ -144,11 +148,11 @@ const InertiaGrid = () => {
           }}
         >
           <Image
-            src={`/images/samples/minis/mini-3.png`}
             alt="mini-1"
-            width={800}
-            height={800}
             className="pointer-events-none size-[11vw] h-full w-full rounded-lg object-contain will-change-transform"
+            height={800}
+            src={'/images/samples/minis/mini-3.png'}
+            width={800}
           />
         </div>
         <div
@@ -158,11 +162,11 @@ const InertiaGrid = () => {
           }}
         >
           <Image
-            src={`/images/samples/minis/mini-4.png`}
             alt="mini-1"
-            width={800}
-            height={800}
             className="pointer-events-none size-[11vw] h-full w-full rounded-lg object-contain will-change-transform"
+            height={800}
+            src={'/images/samples/minis/mini-4.png'}
+            width={800}
           />
         </div>
       </div>

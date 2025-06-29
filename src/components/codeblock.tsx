@@ -1,9 +1,9 @@
 'use client';
 
+import { CheckIcon, CopyIcon } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { CopyIcon, CheckIcon } from 'lucide-react';
 import { highlight } from 'sugar-high';
+import { Button } from '@/components/ui/button';
 
 interface CodeBlockProps {
   code: string;
@@ -42,16 +42,16 @@ const CodeBlock = ({ code }: CodeBlockProps) => {
         className={`absolute inset-0 flex items-end justify-center p-10 ${isExpanded ? 'pointer-events-none' : 'bg-gradient-to-b from-transparent to-black/80'}`}
       >
         <Button
-          className="absolute top-0 right-0 mt-7 mr-5 cursor-pointer pointer-events-auto"
-          variant={'secondary'}
+          className="pointer-events-auto absolute top-0 right-0 mt-7 mr-5 cursor-pointer"
           onClick={CopyToClipboard}
+          variant={'secondary'}
         >
           {isCopied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}
         </Button>
         <Button
-          variant={'secondary'}
-          className="cursor-pointer pointer-events-auto"
+          className="pointer-events-auto cursor-pointer"
           onClick={() => setIsExpanded(!isExpanded)}
+          variant={'secondary'}
         >
           {isExpanded ? 'Collapse' : 'Expand'}
         </Button>

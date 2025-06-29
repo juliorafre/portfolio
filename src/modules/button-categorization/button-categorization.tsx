@@ -1,8 +1,8 @@
 'use client';
-import { cn } from '@/lib/utils';
-import { InfoIcon, SparklesIcon, LaptopIcon } from 'lucide-react';
+import { InfoIcon, LaptopIcon, SparklesIcon } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 // https://codesandbox.io/p/sandbox/framer-motion-familys-fluid-button-f68w5h
 
@@ -18,7 +18,13 @@ const BadgeCategorization = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setState(prev => (prev === 'idle' ? 'analyzing' : prev === 'analyzing' ? 'success' : 'idle'));
+      setState((prev) =>
+        prev === 'idle'
+          ? 'analyzing'
+          : prev === 'analyzing'
+            ? 'success'
+            : 'idle'
+      );
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -43,50 +49,50 @@ const BadgeCategorization = () => {
 
       <div className="flex flex-col items-center gap-y-2 overflow-hidden">
         <motion.div
-          transition={{
-            ease: 'easeInOut',
-          }}
+          className={cn(badgeStylesVariants.base, badgeStylesVariants[state])}
           style={{
             transformOrigin: 'left center',
           }}
-          className={cn(badgeStylesVariants.base, badgeStylesVariants[state])}
+          transition={{
+            ease: 'easeInOut',
+          }}
         >
-          <AnimatePresence mode="popLayout" initial={false}>
+          <AnimatePresence initial={false} mode="popLayout">
             {state === 'idle' && (
               <motion.span
-                layout
-                className="inline-flex items-center gap-x-1.5 overflow-hidden"
-                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
+                className="inline-flex items-center gap-x-1.5 overflow-hidden"
                 exit={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: -20 }}
+                layout
               >
                 Uncategorised
                 <InfoIcon size={16} />
               </motion.span>
             )}
           </AnimatePresence>
-          <AnimatePresence mode="popLayout" initial={false}>
+          <AnimatePresence initial={false} mode="popLayout">
             {state === 'analyzing' && (
               <motion.span
-                layout
-                className="inline-flex items-center gap-x-1.5 overflow-hidden"
-                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
+                className="inline-flex items-center gap-x-1.5 overflow-hidden"
                 exit={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: -20 }}
+                layout
               >
                 Categorizing
                 <SparklesIcon size={16} />
               </motion.span>
             )}
           </AnimatePresence>
-          <AnimatePresence mode="popLayout" initial={false}>
+          <AnimatePresence initial={false} mode="popLayout">
             {state === 'success' && (
               <motion.span
-                layout
-                className="inline-flex items-center gap-x-1.5 overflow-hidden"
-                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
+                className="inline-flex items-center gap-x-1.5 overflow-hidden"
                 exit={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: -20 }}
+                layout
               >
                 Software
                 <LaptopIcon size={16} />
@@ -95,11 +101,11 @@ const BadgeCategorization = () => {
           </AnimatePresence>
         </motion.div>
 
-        <AnimatePresence mode="popLayout" initial={false}>
+        <AnimatePresence initial={false} mode="popLayout">
           <motion.div
-            key="box-example"
-            id="box-example"
             className="relative z-20 overflow-hidden rounded-[20px]"
+            id="box-example"
+            key="box-example"
           >
             <div className="absolute inset-0 z-[-1] rounded-[20px] bg-neutral-200">
               <div className="trail absolute top-0 left-0 z-10 aspect-[2/1] w-[100px]" />
@@ -108,7 +114,8 @@ const BadgeCategorization = () => {
 
             <div
               style={{
-                background: 'linear-gradient(#ffffff, #e0e0e0) padding-box transparent',
+                background:
+                  'linear-gradient(#ffffff, #e0e0e0) padding-box transparent',
                 padding: '0 1.5rem',
                 border: '2px solid transparent',
                 borderRadius: '20px',

@@ -11,7 +11,6 @@ The mainly purpose y create and image of 21:9 aspect ratio.
 Por ahora la solucion es un scale en el export y el preview algo normal.
 */
 
-
 const DownloadWallpaperPage = () => {
   const wallpaperRef = useRef<HTMLDivElement>(null);
 
@@ -42,27 +41,27 @@ const DownloadWallpaperPage = () => {
   return (
     <div className="mx-auto grid h-[calc(100%_-_70px)] w-full max-w-3xl place-items-center bg-red-50">
       <button onClick={handleDownload}>Download</button>
-      <div> 
-      <div
-        ref={wallpaperRef}
-        id="wallpaper"
-        className="grid aspect-[9/21] w-full place-items-center"
-        style={{
-          background: 'blue',
-          padding: '100px',
-          transformOrigin: 'top center',
-        }}
-      >
-        <p
+      <div>
+        <div
+          className="grid aspect-[9/21] w-full place-items-center"
+          id="wallpaper"
+          ref={wallpaperRef}
           style={{
-            fontSize: '44px',
-              fontFamily: 'Instrument Serif',
-            fontWeight: '900',
+            background: 'blue',
+            padding: '100px',
+            transformOrigin: 'top center',
           }}
         >
-          Some amazing text here
-        </p>
-      </div>
+          <p
+            style={{
+              fontSize: '44px',
+              fontFamily: 'Instrument Serif',
+              fontWeight: '900',
+            }}
+          >
+            Some amazing text here
+          </p>
+        </div>
       </div>
     </div>
   );

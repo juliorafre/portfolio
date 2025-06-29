@@ -1,4 +1,4 @@
-import getRandomPositionInDiv from "./get-random-position-in-div";
-import { randomBetween, cn } from "./utils";
+import getRandomPositionInDiv from './get-random-position-in-div';
+import { cn, randomBetween } from './utils';
 
 export { getRandomPositionInDiv, randomBetween, cn };

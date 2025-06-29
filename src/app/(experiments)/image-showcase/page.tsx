@@ -1,6 +1,6 @@
-import ImageShowcase from '@/components/image-showcase/image-showcase';
 import CodeBlock from '@/components/codeblock';
 import CustomLink from '@/components/custom-link';
+import ImageShowcase from '@/components/image-showcase/image-showcase';
 
 const ImageShowcaseScreen = () => {
   const code =
@@ -51,18 +51,18 @@ const ImageShowcaseScreen = () => {
     '  );\n\n' +
     '  return (\n' +
     '    <div\n' +
-    '      className=\"inset-shadow-lg @container/image-showcase relative aspect-video min-h-[280px] w-full overflow-hidden rounded-2xl border border-neutral-300 bg-neutral-200\"\n' +
+    '      className="inset-shadow-lg @container/image-showcase relative aspect-video min-h-[280px] w-full overflow-hidden rounded-2xl border border-neutral-300 bg-neutral-200"\n' +
     '      ref={containerRef}\n' +
     '    >\n' +
     '      {sampleClothes.map((img, idx) => {\n' +
     '        return (\n' +
     '          <div\n' +
     '            key={img.url}\n' +
-    '            id={\\`image-card-\\\${idx}\\`}\n' +
-    '            className=\"image-card aspect-square h-[30vw] max-h-[250px] w-auto bg-transparent select-none sm:h-full\"\n' +
+    '            id={\\`image-card-\\${idx}\\`}\n' +
+    '            className="image-card aspect-square h-[30vw] max-h-[250px] w-auto bg-transparent select-none sm:h-full"\n' +
     '            style={{\n' +
     "              filter: 'blur(4px)',\n" +
-    '              transform: \\`translate(calc(-50% + \\\${img.translateX}), calc(-50% + \\\${img.translateY}))\\`,\n' +
+    '              transform: \\`translate(calc(-50% + \\${img.translateX}), calc(-50% + \\${img.translateY}))\\`,\n' +
     "              transformOrigin: 'bottom center',\n" +
     "              position: 'absolute',\n" +
     "              top: '50%',\n" +
@@ -71,7 +71,7 @@ const ImageShowcaseScreen = () => {
     '            }}\n' +
     '          >\n' +
     '            <motion.div\n' +
-    '              className=\"size-full\"\n' +
+    '              className="size-full"\n' +
     '              whileHover={{\n' +
     '                scale: 1.1,\n' +
     '                transition: {\n' +
@@ -86,8 +86,8 @@ const ImageShowcaseScreen = () => {
     '                width={img.width}\n' +
     '                height={img.height}\n' +
     '                alt={img.alt}\n' +
-    '                loading=\"lazy\"\n' +
-    '                className=\"pointer-events-none h-full w-full object-contain drop-shadow-xl\"\n' +
+    '                loading="lazy"\n' +
+    '                className="pointer-events-none h-full w-full object-contain drop-shadow-xl"\n' +
     '                style={{\n' +
     '                  scale: img.scale,\n' +
     '                }}\n' +
@@ -97,14 +97,14 @@ const ImageShowcaseScreen = () => {
     '        );\n' +
     '      })}\n' +
     '      <button\n' +
-    '        id=\"reload-button\"\n' +
-    '        className=\"absolute bottom-0 left-0 mb-2 ml-2 flex cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white/75 px-4 py-2 text-sm text-nowrap opacity-60 backdrop-blur-xl hover:bg-neutral-100 sm:mb-[20px] sm:ml-[20px] sm:px-2 sm:text-base\"\n' +
+    '        id="reload-button"\n' +
+    '        className="absolute bottom-0 left-0 mb-2 ml-2 flex cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white/75 px-4 py-2 text-sm text-nowrap opacity-60 backdrop-blur-xl hover:bg-neutral-100 sm:mb-[20px] sm:ml-[20px] sm:px-2 sm:text-base"\n' +
     '        onClick={() => setKey(prev => prev + 1)}\n' +
-    '        type=\"button\"\n' +
-    '        aria-label=\"Reload animation\"\n' +
+    '        type="button"\n' +
+    '        aria-label="Reload animation"\n' +
     '      >\n' +
-    '        <RefreshCcwIcon className=\"size-4 sm:size-5\" />\n' +
-    '        <span className=\"sm:sr-only\">Reload animation</span>\n' +
+    '        <RefreshCcwIcon className="size-4 sm:size-5" />\n' +
+    '        <span className="sm:sr-only">Reload animation</span>\n' +
     '      </button>\n' +
     '    </div>\n' +
     '  );\n' +

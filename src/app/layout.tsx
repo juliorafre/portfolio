@@ -1,21 +1,20 @@
-import type { Metadata } from 'next';
-import type { Viewport } from 'next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import type { Metadata, Viewport } from 'next';
 
 import {
-  Instrument_Serif,
+  Amatic_SC,
   Crimson_Pro,
+  Instrument_Serif,
   Inter,
   JetBrains_Mono,
-  Amatic_SC,
   Kalam,
 } from 'next/font/google';
 import './globals.css';
 import 'lenis/dist/lenis.css';
+import Script from 'next/script';
 import Footer from '@/components/footer';
 // import LenisInit from '@/components/lenis-init';
 import Header from '@/components/header';
-import Script from 'next/script';
 
 const instrumentSerif = Instrument_Serif({
   variable: '--font-instrument-serif',
@@ -57,7 +56,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.juliorafre.com'),
   title: {
     default: 'Julio Ramirez | Software Engineer focused on Frontend',
-    template: '%s | Julio Ramirez'
+    template: '%s | Julio Ramirez',
   },
   description:
     'I am Julio Ramirez, a Frontend Engineer specialized in React, TypeScript, and modern web architectures. I design user-centered products with fluid interfaces and interactions. Currently, I explore motion design using GSAP and Three.js to take digital experiences to the next level.',
@@ -74,7 +73,7 @@ export const metadata: Metadata = {
     'ui/ux',
     'software engineer',
     'javascript',
-    'web development'
+    'web development',
   ],
   authors: [{ name: 'Julio Ramirez', url: 'https://www.juliorafre.com' }],
   creator: 'Julio Ramirez',
@@ -128,18 +127,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} ${amaticSC.variable} ${kalam.variable} font-inter dark:bg-background-dark grid grid-rows-[auto_1fr_auto] pb-15 antialiased md:pb-0`}
+        className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} ${amaticSC.variable} ${kalam.variable} grid grid-rows-[auto_1fr_auto] pb-15 font-inter antialiased md:pb-0 dark:bg-background-dark`}
       >
         {/*  <LenisInit /> */}
         <Header />
-        <main className="relative min-h-dvh min-w-0 md:min-h-max">{children}</main>
+        <main className="relative min-h-dvh min-w-0 md:min-h-max">
+          {children}
+        </main>
         <Footer />
         <Script
-          strategy="afterInteractive"
-          src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "a01a229b64994eb891953c8b0dda26fd"}'
           id="cloudflare-analytics"
-        ></Script>
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          strategy="afterInteractive"
+        />
         <SpeedInsights />
       </body>
     </html>

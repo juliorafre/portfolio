@@ -1,63 +1,67 @@
-'use server'
+'use server';
 
 import fs from 'fs/promises';
-import path from 'path';
 import matter from 'gray-matter';
-import { PostMetadata } from '@/types';
 import { unstable_cache } from 'next/cache';
+import path from 'path';
+import type { PostMetadata } from '@/types';
 
 // TODO: Evaluate if this is needed, or if we can use the cache from the server component
 
-export const getBlogPostList = unstable_cache(async () => {
-  const fileNames = await readDirectory('/content');
+export const getBlogPostList = unstable_cache(
+  async () => {
+    const fileNames = await readDirectory('/content');
 
-  const blogPosts: PostMetadata[] = [];
+    const blogPosts: PostMetadata[] = [];
 
-  for (const fileName of fileNames) {
-    const rawContent = await readFile(`/content/${fileName}`);
+    for (const fileName of fileNames) {
+      const rawContent = await readFile(`/content/${fileName}`);
 
-    const { data: frontmatter } = matter(rawContent);
+      const { data: frontmatter } = matter(rawContent);
 
-    if (frontmatter.published === false) {
-      continue;
+      if (frontmatter.published === false) {
+        continue;
+      }
+
+      const newPost: PostMetadata = {
+        slug: fileName.replace('.mdx', '') as string,
+        ...frontmatter,
+      } as PostMetadata;
+
+      blogPosts.push(newPost);
     }
 
-    const newPost: PostMetadata = {
-      slug: fileName.replace('.mdx', '') as string,
-      ...frontmatter,
-    } as PostMetadata
-
-    blogPosts.push(newPost);
-  }
-
-  return blogPosts.sort((p1, p2) =>
-    p1.publishedOn < p2.publishedOn ? 1 : -1
-  );
-},
+    return blogPosts.sort((p1, p2) =>
+      p1.publishedOn < p2.publishedOn ? 1 : -1
+    );
+  },
   ['blog-post-list'],
   {
-    revalidate: 86400, // Revalidate every day
+    revalidate: 86_400, // Revalidate every day
     tags: ['blog-posts'],
-  })
-
-export const loadBlogPost = unstable_cache(async (slug: string) => {
-  const rawContent = await readFile(`/content/${slug}.mdx`);
-  const { data: frontmatter, content } = matter(rawContent);
-  return {
-    frontmatter,
-    content,
   }
-},
+);
+
+export const loadBlogPost = unstable_cache(
+  async (slug: string) => {
+    const rawContent = await readFile(`/content/${slug}.mdx`);
+    const { data: frontmatter, content } = matter(rawContent);
+    return {
+      frontmatter,
+      content,
+    };
+  },
   ['blog-post'],
   {
-    revalidate: 86400, // Revalidate every day
+    revalidate: 86_400, // Revalidate every day
     tags: ['blog-posts'],
-  })
+  }
+);
 
 export const readFile = async (localPath: string) => {
-  return fs.readFile(path.join(process.cwd(), localPath), 'utf8')
-}
+  return fs.readFile(path.join(process.cwd(), localPath), 'utf8');
+};
 
 export const readDirectory = async (localPath: string) => {
-  return fs.readdir(path.join(process.cwd(), localPath))
-}
+  return fs.readdir(path.join(process.cwd(), localPath));
+};

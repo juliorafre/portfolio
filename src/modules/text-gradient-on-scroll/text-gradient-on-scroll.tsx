@@ -1,10 +1,10 @@
 'use client';
-import { useEffect, useRef } from 'react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 import CustomEase from 'gsap/CustomEase';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import type { LenisRef } from 'lenis/react';
 import { ReactLenis } from 'lenis/react';
+import { useEffect, useRef } from 'react';
 import 'lenis/dist/lenis.css';
 import Spacer from '@/modules/share/spacer';
 
@@ -35,11 +35,11 @@ const TextGradientOnScroll = () => {
 
   const textSplitted = text.split(' ').map((word, index) => (
     <span
-      ref={el => {
+      key={word + '_' + index}
+      ref={(el) => {
         wordsRef.current[index] = el;
       }}
       style={{ opacity: 0.2, lineHeight: '40px' }}
-      key={word + '_' + index}
     >
       {word}{' '}
     </span>
@@ -50,7 +50,7 @@ const TextGradientOnScroll = () => {
       scrollTrigger: {
         trigger: containerRef.current,
         scrub: true,
-        start: `top 40%`,
+        start: 'top 40%',
         end: `+=${window.innerHeight / 1.2}`,
       },
       opacity: 1,
@@ -61,22 +61,36 @@ const TextGradientOnScroll = () => {
   };
 
   return (
-    <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
+    <ReactLenis options={{ autoRaf: false }} ref={lenisRef} root>
       <div className="bg-white">
-        <Spacer title="Darkrrom-Engineering" url="https://darkroom.engineering/about" vHSize={35} />
-        <div ref={containerRef} className="grid grid-cols-12 bg-black py-[20vh]">
+        <Spacer
+          title="Darkrrom-Engineering"
+          url="https://darkroom.engineering/about"
+          vHSize={35}
+        />
+        <div
+          className="grid grid-cols-12 bg-black py-[20vh]"
+          ref={containerRef}
+        >
           <div className="col-start-2 col-end-[-1] mb-[1vw] md:col-start-4">
-            <p className="w-[30vw] font-sans text-[67px] font-extrabold text-[#E30614] md:w-[22vw] md:text-6xl">
+            <p className="w-[30vw] font-extrabold font-sans text-[#E30614] text-[67px] md:w-[22vw] md:text-6xl">
               OUR PHILOSOPHY
             </p>
           </div>
-          <div ref={bodyRef} className="col-start-2 col-end-[-1] md:col-start-4">
-            <p className="w-[80vw] font-[Helvetica] text-[44px] leading-snug font-black text-[#b7b7b7] uppercase transition-opacity md:w-[72vw] md:text-4xl">
+          <div
+            className="col-start-2 col-end-[-1] md:col-start-4"
+            ref={bodyRef}
+          >
+            <p className="w-[80vw] font-[Helvetica] font-black text-[#b7b7b7] text-[44px] uppercase leading-snug transition-opacity md:w-[72vw] md:text-4xl">
               {textSplitted}
             </p>
           </div>
         </div>
-        <Spacer title="Darkrrom-Engineering" url="https://darkroom.engineering/about" vHSize={70} />
+        <Spacer
+          title="Darkrrom-Engineering"
+          url="https://darkroom.engineering/about"
+          vHSize={70}
+        />
       </div>
     </ReactLenis>
   );

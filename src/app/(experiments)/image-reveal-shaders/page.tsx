@@ -22,7 +22,7 @@ const ImageRevealShadersPage = () => {
   return (
     <div className="main-container">
       <div className="relative flex items-center justify-center">
-        <div className="absolute top-0 left-0 size-[400px] bg-green-300"></div>
+        <div className="absolute top-0 left-0 size-[400px] bg-green-300" />
         <Canvas
           className="absolute top-0 left-0 z-10"
           style={{
@@ -30,13 +30,16 @@ const ImageRevealShadersPage = () => {
             height: '300px',
           }}
         >
-          <RevealImage imageTexture="/images/example.png" revealProgress={revealProgress} />
+          <RevealImage
+            imageTexture="/images/example.png"
+            revealProgress={revealProgress}
+          />
         </Canvas>
       </div>
-      <div className="absolute bottom-7 left-1/2 z-50 flex -translate-x-1/2 items-center gap-4 text-nowrap max-sm:bottom-44">
+      <div className="-translate-x-1/2 absolute bottom-7 left-1/2 z-50 flex items-center gap-4 text-nowrap max-sm:bottom-44">
         <button
-          onClick={handleReveal}
           className="rounded-md bg-neutral-800 px-4 py-2 text-sm text-white"
+          onClick={handleReveal}
         >
           Show/hide
         </button>

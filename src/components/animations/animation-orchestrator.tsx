@@ -1,6 +1,11 @@
 'use client';
 
-import { useState, useEffect, HTMLAttributes, ReactNode } from 'react';
+import {
+  type HTMLAttributes,
+  type ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 
 interface AnimationOrchestratorProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
@@ -35,7 +40,8 @@ export function AnimationOrchestrator({
     }
   }, [animationClassName, sessionKey]); // Depend on these props in case they change
 
-  const combinedClassName = `${currentAnimationClass} ${className || ''}`.trim();
+  const combinedClassName =
+    `${currentAnimationClass} ${className || ''}`.trim();
 
   return (
     <div className={combinedClassName} {...props}>

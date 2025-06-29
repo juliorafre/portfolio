@@ -1,14 +1,14 @@
 'use client';
 
-import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Observer } from 'gsap/Observer';
-import { useRef, useState } from 'react';
+import gsap from 'gsap';
 import CustomEase from 'gsap/CustomEase';
+import { Observer } from 'gsap/Observer';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef, useState } from 'react';
 import InfiniteVeil from './infinite-veil';
-import MemoryGrid from './memory-grid';
 import MemoryCard from './memory-card';
+import MemoryGrid from './memory-grid';
 
 gsap.registerPlugin(useGSAP, Observer, CustomEase, ScrollTrigger);
 
@@ -19,7 +19,9 @@ interface MemoryCardProps {
 
 const InfiniteCanvas = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [selectedMemory, setSelectedMemory] = useState<MemoryCardProps | null>(null);
+  const [selectedMemory, setSelectedMemory] = useState<MemoryCardProps | null>(
+    null
+  );
 
   const handleMemoryClick = ({ id, layoutIdPrefix }: MemoryCardProps) => {
     setSelectedMemory({ id, layoutIdPrefix });
@@ -55,11 +57,19 @@ const InfiniteCanvas = () => {
         });
 
         // Add mouseover to images
-        images.forEach(image => {
+        images.forEach((image) => {
           const onMouseOver = () =>
-            gsap.to(image, { scale: 1.2, duration: 0.65, ease: 'elastic.out(1, 0.75)' });
+            gsap.to(image, {
+              scale: 1.2,
+              duration: 0.65,
+              ease: 'elastic.out(1, 0.75)',
+            });
           const onMouseOut = () =>
-            gsap.to(image, { scale: 1, duration: 0.65, ease: 'elastic.out(1, 0.75)' });
+            gsap.to(image, {
+              scale: 1,
+              duration: 0.65,
+              ease: 'elastic.out(1, 0.75)',
+            });
           image.addEventListener('mouseover', onMouseOver);
           image.addEventListener('mouseout', onMouseOut);
         });
@@ -88,7 +98,7 @@ const InfiniteCanvas = () => {
 
         wrapper.addEventListener(
           'wheel',
-          e => {
+          (e) => {
             e.preventDefault();
           },
           {
@@ -98,7 +108,7 @@ const InfiniteCanvas = () => {
 
         wrapper.addEventListener(
           'touchmove',
-          e => {
+          (e) => {
             e.preventDefault();
           },
           {
@@ -108,7 +118,7 @@ const InfiniteCanvas = () => {
 
         wrapper.addEventListener(
           'pointermove',
-          e => {
+          (e) => {
             e.preventDefault();
           },
           {
@@ -124,13 +134,13 @@ const InfiniteCanvas = () => {
           target: container,
           type: 'wheel,touch,pointer', // Handles wheel, touch, and drag
           dragMinimum: 5,
-          onChangeX: self => {
+          onChangeX: (self) => {
             if (self.event.type === 'wheel') incrX -= self.deltaX;
             else incrX += self.deltaX * 2;
 
             xTo(incrX); // smoothly animate to the new x position
           },
-          onChangeY: self => {
+          onChangeY: (self) => {
             if (self.event.type === 'wheel')
               incrY -= self.deltaY; // Update incrY based on the vertical movement
             else incrY += self.deltaY * 2;
@@ -155,31 +165,34 @@ const InfiniteCanvas = () => {
     <div className="smooth-infinite-wrapper">
       <div className="smooth-infinite-content">
         <div
+          className="@container/wrapper relative inset-shadow-lg aspect-video w-full overflow-hidden overscroll-contain rounded-2xl border border-neutral-200 bg-neutral-200"
           id="infinite-canvas"
-          className="inset-shadow-lg @container/wrapper relative aspect-video w-full overflow-hidden overscroll-contain rounded-2xl border border-neutral-200 bg-neutral-200"
         >
           {/* Memory Card Item */}
-          <MemoryCard selectedMemory={selectedMemory} resetSelectedMemory={resetSelectedMemory} />
+          <MemoryCard
+            resetSelectedMemory={resetSelectedMemory}
+            selectedMemory={selectedMemory}
+          />
 
           {/* Veil - Title */}
           <InfiniteVeil />
 
           {/* Infinite Canvas */}
           <div
-            ref={containerRef}
             className="infinite-wrapper grid grid-cols-2 will-change-transform"
+            ref={containerRef}
             style={{
               width: 'max-content',
             }}
           >
-            {[1, 2, 3, 4].map(index => {
+            {[1, 2, 3, 4].map((index) => {
               const isAriaHidden = index === 1 ? false : true;
               return (
                 <MemoryGrid
-                  key={index}
+                  handleMemoryClick={handleMemoryClick}
                   idPrefix={index}
                   isAriaHidden={isAriaHidden}
-                  handleMemoryClick={handleMemoryClick}
+                  key={index}
                 />
               );
             })}

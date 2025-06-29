@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
+import type React from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 interface FadeContainerGsapProps {
@@ -94,8 +95,8 @@ const FadeContainerGsap: React.FC<FadeContainerGsapProps> = ({
   // The container starts with initial styles (opacity 0), GSAP handles the full animation.
   return (
     <div
-      ref={containerRef}
       className={cn(className)}
+      ref={containerRef}
       style={{ opacity: 0 }} // Start with opacity 0; filter blur will be applied by GSAP
     >
       {children}
@@ -112,10 +113,7 @@ const FadeContainerGsap: React.FC<FadeContainerGsapProps> = ({
  * @param {string} [props.className] - Optional CSS class name for the item.
  * @returns {JSX.Element} The rendered item.
  */
-const FadeItemGsap: React.FC<FadeItemGsapProps> = ({
-  children,
-  className,
-}) => {
+const FadeItemGsap: React.FC<FadeItemGsapProps> = ({ children, className }) => {
   // This component is a "dumb" wrapper.
   // Its initial state (opacity 0, y-offset, blur) is set by FadeContainerGsap's `fromTo`.
   // We set opacity to 0 here to prevent a flash of unstyled content before GSAP takes over.
@@ -129,4 +127,4 @@ const FadeItemGsap: React.FC<FadeItemGsapProps> = ({
   );
 };
 
-export { FadeContainerGsap, FadeItemGsap }; 
+export { FadeContainerGsap, FadeItemGsap };

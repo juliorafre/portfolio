@@ -8,7 +8,6 @@ export interface Memory {
   comment: string;
 }
 
-
 export const memoriesData: Memory[] = [
   {
     id: 1,
@@ -26,7 +25,8 @@ export const memoriesData: Memory[] = [
     place: 'Grand Central Terminal',
     month: 'Jun',
     subtitle: 'Day trip',
-    comment: 'I keep seeing references to Madagascar, but what an impressive place!',
+    comment:
+      'I keep seeing references to Madagascar, but what an impressive place!',
   },
   {
     id: 3,
@@ -89,7 +89,8 @@ export const memoriesData: Memory[] = [
     place: 'Central Park',
     month: 'Jun',
     subtitle: 'Park Day',
-    comment: 'This statue reminds me of the good times watching Balto when I was a kid.',
+    comment:
+      'This statue reminds me of the good times watching Balto when I was a kid.',
   },
   {
     id: 10,
@@ -107,7 +108,8 @@ export const memoriesData: Memory[] = [
     place: 'NYC',
     month: 'Jun',
     subtitle: 'Dream Day!',
-    comment: 'The Empire State is so iconic, and it was honestly one of my favorite places when visiting NYC.',
+    comment:
+      'The Empire State is so iconic, and it was honestly one of my favorite places when visiting NYC.',
   },
   {
     id: 12,
@@ -143,7 +145,8 @@ export const memoriesData: Memory[] = [
     place: 'París. France',
     month: 'Dec',
     subtitle: 'Museum Day!',
-    comment: 'The size of the Louvre is truly surprising — absolutely impressive.',
+    comment:
+      'The size of the Louvre is truly surprising — absolutely impressive.',
   },
   {
     id: 16,
@@ -179,7 +182,8 @@ export const memoriesData: Memory[] = [
     place: 'NYC',
     month: 'Dec',
     subtitle: 'Amazing view!',
-    comment: 'Im still amazed by how hard it is to grasp the size of One World — and the view is absolutely stunning!',
+    comment:
+      'Im still amazed by how hard it is to grasp the size of One World — and the view is absolutely stunning!',
   },
   {
     id: 20,
@@ -188,7 +192,8 @@ export const memoriesData: Memory[] = [
     place: 'SF',
     month: 'March',
     subtitle: 'Beautiful monument!',
-    comment: 'I didn’t know about this place until I arrived in San Francisco — a must-see if you’re visiting the city!',
+    comment:
+      'I didn’t know about this place until I arrived in San Francisco — a must-see if you’re visiting the city!',
   },
   {
     id: 21,
@@ -197,7 +202,8 @@ export const memoriesData: Memory[] = [
     place: 'Any place in France',
     month: 'Dec',
     subtitle: 'The best bread I ever had!',
-    comment: 'I could undeniably eat boulangerie every single day if I lived in France.',
+    comment:
+      'I could undeniably eat boulangerie every single day if I lived in France.',
   },
   {
     id: 22,
@@ -215,7 +221,8 @@ export const memoriesData: Memory[] = [
     place: 'Vegas Airport',
     month: 'March',
     subtitle: 'Really?',
-    comment: 'Literally the first thing I saw when I arrived at the Las Vegas airport was slot machines xD',
+    comment:
+      'Literally the first thing I saw when I arrived at the Las Vegas airport was slot machines xD',
   },
   {
     id: 24,
@@ -233,7 +240,8 @@ export const memoriesData: Memory[] = [
     place: 'Universal Studios Hollywood',
     month: 'March',
     subtitle: 'The best theme park I ever been!',
-    comment: 'It was a rainy day, but it let us explore and enjoy the park with no lines at all — probably a little hack! \:D',
+    comment:
+      'It was a rainy day, but it let us explore and enjoy the park with no lines at all — probably a little hack! :D',
   },
   {
     id: 26,
@@ -280,4 +288,4 @@ export const memoriesData: Memory[] = [
     subtitle: 'A beautiful place in the world!',
     comment: 'One of the most wonderful experiences you can have.',
   },
-]
+];

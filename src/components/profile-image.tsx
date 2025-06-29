@@ -1,7 +1,7 @@
 'use client';
 
+import { AnimatePresence, motion } from 'motion/react';
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 
 interface ProfileImageProps {
   size?: number;
@@ -12,64 +12,66 @@ const ProfileImage = ({ size = 100 }: ProfileImageProps) => {
 
   return (
     <div
-      id="profile-image-interaction"
       className="relative"
+      id="profile-image-interaction"
       style={{
         width: `${size}px`,
         height: `${size}px`,
       }}
     >
       <motion.div
+        className="absolute top-0 left-0 overflow-clip bg-white"
         layout
         layoutId="shape"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        style={{
+          width: `${size}px`,
+          height: `${size}px`,
+          boxShadow: isHovered
+            ? 'var(--shadow-elevation-high)'
+            : 'var(--shadow-elevation-low)',
+          borderRadius: `${size}px`,
+        }}
+        transition={{ type: 'spring', duration: 0.45, bounce: 0.4 }}
         whileHover={{
           height: size * 1.62,
           scale: 1.1,
           rotateZ: -4,
           borderRadius: '12px',
         }}
-        transition={{ type: 'spring', duration: 0.45, bounce: 0.4 }}
-        className="absolute top-0 left-0 overflow-clip bg-white"
-        style={{
-          width: `${size}px`,
-          height: `${size}px`,
-          boxShadow: isHovered ? 'var(--shadow-elevation-high)' : 'var(--shadow-elevation-low)',
-          borderRadius: `${size}px`,
-        }}
       >
         <motion.div
+          className={`relative w-[${size}px] top-0 left-0 bg-white`}
           layout
           layoutId="image"
-          className={`relative w-[${size}px] top-0 left-0 bg-white`}
           style={{
             height: isHovered ? size * 1.72 : size,
           }}
         >
-          <AnimatePresence mode="popLayout" initial={false}>
+          <AnimatePresence initial={false} mode="popLayout">
             {!isHovered && (
               <motion.img
-                layout
-                initial={{ opacity: 0, filter: 'blur(4px)' }}
-                animate={{ opacity: 1, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, filter: 'blur(4px)', scale: 1.5 }}
-                className="absolute inset-0 aspect-square h-full w-full object-cover object-center"
-                src="/images/home/image.webp"
                 alt="Me"
+                animate={{ opacity: 1, filter: 'blur(0px)' }}
+                className="absolute inset-0 aspect-square h-full w-full object-cover object-center"
+                exit={{ opacity: 0, filter: 'blur(4px)', scale: 1.5 }}
+                initial={{ opacity: 0, filter: 'blur(4px)' }}
+                layout
+                src="/images/home/image.webp"
               />
             )}
           </AnimatePresence>
-          <AnimatePresence mode="popLayout" initial={false}>
+          <AnimatePresence initial={false} mode="popLayout">
             {isHovered && (
               <motion.img
-                layout
-                initial={{ opacity: 0, filter: 'blur(4px)' }}
-                animate={{ opacity: 1, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, filter: 'blur(4px)' }}
-                className="absolute inset-0 h-full w-full object-cover object-center"
-                src="/images/home/image-gif.gif"
                 alt="Me"
+                animate={{ opacity: 1, filter: 'blur(0px)' }}
+                className="absolute inset-0 h-full w-full object-cover object-center"
+                exit={{ opacity: 0, filter: 'blur(4px)' }}
+                initial={{ opacity: 0, filter: 'blur(4px)' }}
+                layout
+                src="/images/home/image-gif.gif"
               />
             )}
           </AnimatePresence>

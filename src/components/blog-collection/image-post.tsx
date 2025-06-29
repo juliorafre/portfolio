@@ -1,4 +1,4 @@
-import Image, { ImageProps } from 'next/image';
+import Image, { type ImageProps } from 'next/image';
 
 const ImagePost = (props: ImageProps) => {
   return (
@@ -7,9 +7,9 @@ const ImagePost = (props: ImageProps) => {
         <Image
           {...props}
           alt={props.alt}
-          width={props.width}
-          height={props.height}
           className="block h-full w-full object-cover object-center"
+          height={props.height}
+          width={props.width}
         />
       </div>
       <div
@@ -25,7 +25,7 @@ const ImagePost = (props: ImageProps) => {
           width: '100%',
           willChange: 'transform',
         }}
-      ></div>
+      />
     </section>
   );
 };

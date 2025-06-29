@@ -1,5 +1,5 @@
-import React, { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
+import React, { type ComponentPropsWithoutRef } from 'react';
 import { highlight } from 'sugar-high';
 import CodeSnippet from '@/components/code-snippet';
 
@@ -12,33 +12,33 @@ type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
 export const components = {
   h1: (props: HeadingProps) => (
-    <h1 className="font-medium pt-12 mb-0" {...props} />
+    <h1 className="mb-0 pt-12 font-medium" {...props} />
   ),
   h2: (props: HeadingProps) => (
     <h2
-      className="text-gray-800 dark:text-zinc-200 font-medium mt-8 mb-3"
+      className="mt-8 mb-3 font-medium text-gray-800 dark:text-zinc-200"
       {...props}
     />
   ),
   h3: (props: HeadingProps) => (
     <h3
-      className="text-gray-800 dark:text-zinc-200 font-medium mt-8 mb-3"
+      className="mt-8 mb-3 font-medium text-gray-800 dark:text-zinc-200"
       {...props}
     />
   ),
   h4: (props: HeadingProps) => <h4 className="font-medium" {...props} />,
   p: (props: ParagraphProps) => (
-    <p className="text-gray-800 dark:text-zinc-300 leading-snug" {...props} />
+    <p className="text-gray-800 leading-snug dark:text-zinc-300" {...props} />
   ),
   ol: (props: ListProps) => (
     <ol
-      className="text-gray-800 dark:text-zinc-300 list-decimal pl-5 space-y-2"
+      className="list-decimal space-y-2 pl-5 text-gray-800 dark:text-zinc-300"
       {...props}
     />
   ),
   ul: (props: ListProps) => (
     <ul
-      className="text-gray-800 dark:text-zinc-300 list-disc pl-5 space-y-1"
+      className="list-disc space-y-1 pl-5 text-gray-800 dark:text-zinc-300"
       {...props}
     />
   ),
@@ -54,24 +54,24 @@ export const components = {
       'text-blue-500 hover:text-blue-700 dark:text-gray-400 hover:dark:text-gray-300 dark:underline dark:underline-offset-2 dark:decoration-gray-800';
     if (href?.startsWith('/')) {
       return (
-        <Link href={href} className={className} {...props}>
+        <Link className={className} href={href} {...props}>
           {children}
         </Link>
       );
     }
     if (href?.startsWith('#')) {
       return (
-        <a href={href} className={className} {...props}>
+        <a className={className} href={href} {...props}>
           {children}
         </a>
       );
     }
     return (
       <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
         className={className}
+        href={href}
+        rel="noopener noreferrer"
+        target="_blank"
         {...props}
       >
         {children}
@@ -105,7 +105,7 @@ export const components = {
   ),
   blockquote: (props: BlockquoteProps) => (
     <blockquote
-      className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700 dark:border-zinc-600 dark:text-zinc-300"
+      className="ml-[0.075em] border-gray-300 border-l-3 pl-4 text-gray-700 dark:border-zinc-600 dark:text-zinc-300"
       {...props}
     />
   ),

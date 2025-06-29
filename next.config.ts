@@ -1,5 +1,5 @@
-import type { NextConfig } from 'next';
 import createMDX from '@next/mdx';
+import type { NextConfig } from 'next';
 
 /** @type {import('next').NextConfig} */
 
@@ -10,9 +10,18 @@ const withMDX = createMDX({
 const nextConfig: NextConfig = {
   /* config options here */
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/juliorafrecloud/**',
+      },
+    ],
+  },
   experimental: {
     mdxRs: true,
-    optimizePackageImports: ['@react-three/drei', '@react-three/fiber', 'gsap']
+    optimizePackageImports: ['@react-three/drei', '@react-three/fiber', 'gsap'],
   },
   outputFileTracingIncludes: {
     '/*': ['./content/**/*'],
@@ -30,7 +39,5 @@ const nextConfig: NextConfig = {
   },
   transpilePackages: ['next-mdx-remote'],
 };
-
-
 
 export default withMDX(nextConfig);

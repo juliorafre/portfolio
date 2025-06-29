@@ -6,7 +6,7 @@
  * @param asStyle - If true, returns { left, top, position: 'absolute' } for inline styles
  * @returns { x: number, y: number } or { left: number, top: number, position: 'absolute' }
  */
-import { randomBetween } from "@/lib/utils";
+import { randomBetween } from '@/lib/utils';
 
 export interface GetRandomPositionInDivProps {
   container: React.RefObject<HTMLDivElement | null>;
@@ -14,10 +14,14 @@ export interface GetRandomPositionInDivProps {
   asStyle?: boolean;
 }
 
-const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
+const clamp = (value: number, min: number, max: number) =>
+  Math.max(min, Math.min(max, value));
 
-const getRandomPositionInDiv = ({ container, padding = 0, asStyle = false }: GetRandomPositionInDivProps) => {
-
+const getRandomPositionInDiv = ({
+  container,
+  padding = 0,
+  asStyle = false,
+}: GetRandomPositionInDivProps) => {
   if (!container.current) {
     return { x: 0, y: 0 };
   }
@@ -40,7 +44,7 @@ const getRandomPositionInDiv = ({ container, padding = 0, asStyle = false }: Get
     return {
       left: x,
       bottom: y,
-      position: 'absolute' as const
+      position: 'absolute' as const,
     };
   }
   return { x, y };
@@ -48,8 +52,8 @@ const getRandomPositionInDiv = ({ container, padding = 0, asStyle = false }: Get
 
 export default getRandomPositionInDiv;
 
-
- {/* 
+{
+  /* 
   
   Example
   
@@ -65,4 +69,5 @@ export default getRandomPositionInDiv;
       </div> 
       
       
-      */}
+      */
+}

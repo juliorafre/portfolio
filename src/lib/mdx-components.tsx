@@ -1,20 +1,20 @@
-import CodeSnippet from '@/components/code-snippet';
-import ImageShowcase from '@/components/image-showcase';
-import { ComponentPropsWithoutRef } from 'react';
-import Highlight from '@/components/blog-collection/highlight/highlight';
-import ImagePost from '@/components/blog-collection/image-post';
+import type { ComponentPropsWithoutRef } from 'react';
 import { AnimatedTerminal } from '@/components/blog-collection/animated-terminal';
-import {
-  TerminalCommand,
-  TerminalFlag,
-  TerminalString,
-  TerminalUrl,
-  TerminalJson,
-  Terminal,
-  TerminalLine,
-} from '@/components/blog-collection/terminal';
 import CarouselWoved from '@/components/blog-collection/carousel-wowed/carousel-wowed';
 import CaseStudiesHeader from '@/components/blog-collection/case-studies-header';
+import Highlight from '@/components/blog-collection/highlight/highlight';
+import ImagePost from '@/components/blog-collection/image-post';
+import {
+  Terminal,
+  TerminalCommand,
+  TerminalFlag,
+  TerminalJson,
+  TerminalLine,
+  TerminalString,
+  TerminalUrl,
+} from '@/components/blog-collection/terminal';
+import CodeSnippet from '@/components/code-snippet';
+import ImageShowcase from '@/components/image-showcase';
 import {
   Carousel,
   CarouselContent,
@@ -74,7 +74,7 @@ const components = {
   Highlight,
   blockquote: (props: BlockquoteProps) => (
     <blockquote
-      className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700 dark:border-zinc-600 dark:text-zinc-300"
+      className="ml-[0.075em] border-gray-300 border-l-3 pl-4 text-gray-700 dark:border-zinc-600 dark:text-zinc-300"
       {...props}
     />
   ),

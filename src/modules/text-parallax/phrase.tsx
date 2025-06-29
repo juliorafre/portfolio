@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 interface PhraseProps {
   src: string;
@@ -6,10 +6,16 @@ interface PhraseProps {
 
 const Phrase = ({ src }: PhraseProps) => {
   return (
-    <div className="px-5 flex gap-5 items-center">
+    <div className="flex items-center gap-5 px-5">
       <p className="text-[7.5vw]">Front End Developer</p>
-      <span className="relative h-[7.5vw] aspect-4/2 rounded-full overflow-hidden">
-        <Image className="object-cover" src={src} alt="image" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+      <span className="relative aspect-4/2 h-[7.5vw] overflow-hidden rounded-full">
+        <Image
+          alt="image"
+          className="object-cover"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          src={src}
+        />
       </span>
       {/* <span className="relative h-[7.5vw] aspect-4/2 rounded-full overflow-hidden">
         <div className="absolute inset-0 bg-red-500 rounded-full"></div>

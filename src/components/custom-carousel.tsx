@@ -1,9 +1,9 @@
 'use client';
 
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { AnimatePresence, motion, type PanInfo } from 'motion/react';
 import Image from 'next/image';
-import { ChevronRightIcon, ChevronLeftIcon } from 'lucide-react';
-import { motion, AnimatePresence, PanInfo } from 'motion/react';
-import { useState, useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 const MotionImage = motion(Image);
 
@@ -12,17 +12,20 @@ const CustomCarousel = () => {
   const [direction, setDirection] = useState(0);
   const constraintsRef = useRef<HTMLDivElement>(null);
 
-  const images = ['/images/about/3.png', '/images/about/1.png', '/images/about/2.png'];
+  const images = [
+    '/images/about/3.png',
+    '/images/about/1.png',
+    '/images/about/2.png',
+  ];
 
   const paginate = useCallback(
     (newDirection: number) => {
       setDirection(newDirection);
-      setCurrentImage(prev => {
+      setCurrentImage((prev) => {
         if (newDirection > 0) {
           return (prev + 1) % images.length;
-        } else {
-          return (prev - 1 + images.length) % images.length;
         }
+        return (prev - 1 + images.length) % images.length;
       });
     },
     [images.length]
@@ -74,75 +77,75 @@ const CustomCarousel = () => {
       opacity: 0.7,
     }),
   };
-  
+
   return (
     <motion.div
+      className="group relative mb-10 flex h-[200px] w-full overflow-hidden rounded-2xl"
       ref={constraintsRef}
-      whileHover="hover"
+      style={{ touchAction: 'pan-y pinch-zoom' }}
       variants={{
         hover: {},
       }}
-      className="group relative mb-10 flex h-[200px] w-full overflow-hidden rounded-2xl"
-      style={{ touchAction: 'pan-y pinch-zoom' }}
+      whileHover="hover"
     >
-      <AnimatePresence initial={false} mode="popLayout" custom={direction}>
+      <AnimatePresence custom={direction} initial={false} mode="popLayout">
         <MotionImage
-          key={currentImage}
-          src={images[currentImage]}
           alt={`Experience picture ${currentImage + 1}`}
-          width={800}
-          height={700}
+          animate="center"
           className="absolute inset-0 z-10 size-full cursor-grab object-cover active:cursor-grabbing"
           custom={direction}
-          variants={slideVariants}
-          initial="enter"
-          animate="center"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
           exit="exit"
+          height={700}
+          initial="enter"
+          key={currentImage}
+          onDragEnd={handleDragEnd}
+          src={images[currentImage]}
           transition={{
             type: 'spring',
             bounce: 0.3,
             duration: 0.45,
           }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
-          onDragEnd={handleDragEnd}
+          variants={slideVariants}
           whileDrag={{
             scale: 1.02,
             transition: { duration: 0.1 },
           }}
+          width={800}
         />
       </AnimatePresence>
 
       {/* Navigation controls */}
       <motion.div
+        className="absolute bottom-0 left-0 z-30 flex w-full items-center justify-end px-2 py-2"
         initial={{ y: '110%' }}
-        variants={{
-          hover: {
-            y: 0,
-          },
-        }}
         transition={{
           type: 'spring',
           bounce: 0.3,
           duration: 0.45,
         }}
-        className="absolute bottom-0 left-0 z-30 flex w-full items-center justify-end px-2 py-2"
+        variants={{
+          hover: {
+            y: 0,
+          },
+        }}
       >
-        <div className="w-content flex items-center justify-center overflow-hidden rounded-full bg-white/20 backdrop-blur-lg">
+        <div className="flex w-content items-center justify-center overflow-hidden rounded-full bg-white/20 backdrop-blur-lg">
           <motion.button
-            onClick={handlePrevious}
-            className="flex cursor-pointer items-center gap-2 px-2 py-1 transition-all hover:bg-gray-100/50"
             aria-label="Previous image"
+            className="flex cursor-pointer items-center gap-2 px-2 py-1 transition-all hover:bg-gray-100/50"
+            onClick={handlePrevious}
             whileTap={{ scale: 0.95 }}
           >
             <ChevronLeftIcon className="size-5" />
             <span className="sr-only">Previous</span>
           </motion.button>
           <motion.button
-            onClick={handleNext}
-            className="flex cursor-pointer items-center gap-2 px-2 py-1 transition-all hover:bg-gray-100/50"
             aria-label="Next image"
+            className="flex cursor-pointer items-center gap-2 px-2 py-1 transition-all hover:bg-gray-100/50"
+            onClick={handleNext}
             whileTap={{ scale: 0.95 }}
           >
             <span className="sr-only">Next</span>
@@ -152,20 +155,20 @@ const CustomCarousel = () => {
       </motion.div>
 
       {/* Pagination dots */}
-      <div className="absolute bottom-2 left-1/2 z-30 flex -translate-x-1/2 space-x-2">
+      <div className="-translate-x-1/2 absolute bottom-2 left-1/2 z-30 flex space-x-2">
         {images.map((_, index) => (
           <motion.button
+            aria-label={`Go to image ${index + 1}`}
+            className={`h-2 w-2 rounded-full transition-all ${
+              index === currentImage ? 'bg-white' : 'bg-white/50'
+            }`}
             key={index}
             onClick={() => {
               const newDirection = index > currentImage ? 1 : -1;
               setDirection(newDirection);
               setCurrentImage(index);
             }}
-            className={`h-2 w-2 rounded-full transition-all ${
-              index === currentImage ? 'bg-white' : 'bg-white/50'
-            }`}
             whileTap={{ scale: 0.8 }}
-            aria-label={`Go to image ${index + 1}`}
           />
         ))}
       </div>

@@ -1,8 +1,8 @@
 'use client';
 
+import { CheckIcon, CopyIcon, MaximizeIcon, MinimizeIcon } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
-import { CopyIcon, CheckIcon, MaximizeIcon, MinimizeIcon } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 
 interface TerminalProps {
@@ -67,7 +67,9 @@ export function Terminal({
           </div>
 
           {/* Terminal Title */}
-          <span className="text-sm font-medium text-gray-300 select-none">{title}</span>
+          <span className="select-none font-medium text-gray-300 text-sm">
+            {title}
+          </span>
         </div>
 
         {/* Control Buttons */}
@@ -75,28 +77,31 @@ export function Terminal({
           <div className="flex items-center gap-2">
             {copyable && (
               <button
-                onClick={handleCopy}
-                className="group rounded-md p-1.5 transition-colors hover:bg-gray-700/50"
                 aria-label={isCopied ? 'Copied!' : 'Copy to clipboard'}
+                className="group rounded-md p-1.5 transition-colors hover:bg-gray-700/50"
+                onClick={handleCopy}
               >
                 <AnimatePresence mode="wait">
                   {isCopied ? (
                     <motion.div
-                      key="check"
-                      initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       exit={{ scale: 0 }}
+                      initial={{ scale: 0 }}
+                      key="check"
                     >
-                      <CheckIcon size={14} className="text-green-400" />
+                      <CheckIcon className="text-green-400" size={14} />
                     </motion.div>
                   ) : (
                     <motion.div
-                      key="copy"
-                      initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       exit={{ scale: 0 }}
+                      initial={{ scale: 0 }}
+                      key="copy"
                     >
-                      <CopyIcon size={14} className="text-gray-400 group-hover:text-gray-300" />
+                      <CopyIcon
+                        className="text-gray-400 group-hover:text-gray-300"
+                        size={14}
+                      />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -104,14 +109,20 @@ export function Terminal({
             )}
 
             <button
-              onClick={() => setIsMaximized(!isMaximized)}
-              className="group rounded-md p-1.5 transition-colors hover:bg-gray-700/50"
               aria-label={isMaximized ? 'Minimize' : 'Maximize'}
+              className="group rounded-md p-1.5 transition-colors hover:bg-gray-700/50"
+              onClick={() => setIsMaximized(!isMaximized)}
             >
               {isMaximized ? (
-                <MinimizeIcon size={14} className="text-gray-400 group-hover:text-gray-300" />
+                <MinimizeIcon
+                  className="text-gray-400 group-hover:text-gray-300"
+                  size={14}
+                />
               ) : (
-                <MaximizeIcon size={14} className="text-gray-400 group-hover:text-gray-300" />
+                <MaximizeIcon
+                  className="text-gray-400 group-hover:text-gray-300"
+                  size={14}
+                />
               )}
             </button>
           </div>
@@ -138,11 +149,15 @@ interface TerminalLineProps {
   className?: string;
 }
 
-export function TerminalLine({ number, children, className }: TerminalLineProps) {
+export function TerminalLine({
+  number,
+  children,
+  className,
+}: TerminalLineProps) {
   return (
     <div className={cn('flex items-baseline gap-3', className)}>
       {number && (
-        <span className="min-w-[1.5rem] text-right font-mono text-xs text-gray-500 select-none">
+        <span className="min-w-[1.5rem] select-none text-right font-mono text-gray-500 text-xs">
           {number}
         </span>
       )}

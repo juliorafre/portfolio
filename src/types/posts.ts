@@ -22,6 +22,4 @@ interface PostMetadata extends Partial<CaseStudyMetadata> {
   type: 'journal' | 'blog';
 }
 
-
-
 export type { PostMetadata, CaseStudyMetadata };

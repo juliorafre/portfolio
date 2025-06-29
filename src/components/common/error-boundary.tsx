@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React, { Component, type ErrorInfo, type ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -33,12 +33,14 @@ class ErrorBoundary extends Component<Props, State> {
       // You can render any custom fallback UI
       return (
         this.props.fallback || (
-          <div className="flex flex-col gap-y-2 items-center justify-center h-auto bg-red-100 p-5 text-red-900 rounded-lg border border-red-400 border-dashed inset-shadow-md shadow shadow-red-900/20">
+          <div className="inset-shadow-md flex h-auto flex-col items-center justify-center gap-y-2 rounded-lg border border-red-400 border-dashed bg-red-100 p-5 text-red-900 shadow shadow-red-900/20">
             <h2>Oops, there is an error!</h2>
             <button
+              className="cursor-pointer rounded-md bg-red-50 px-3 py-1 text-red-900 transition-opacity duration-200 hover:opacity-80"
+              onClick={() =>
+                this.setState({ hasError: false, error: undefined })
+              }
               type="button"
-              className="bg-red-50 text-red-900 px-3 py-1 rounded-md cursor-pointer hover:opacity-80 transition-opacity duration-200"
-              onClick={() => this.setState({ hasError: false, error: undefined })}
             >
               Try again?
             </button>

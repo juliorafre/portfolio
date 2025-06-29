@@ -1,5 +1,5 @@
-import JournalCard from './journal-card';
 import BlogSummaryCard from '@/modules/blogs/blog-summary-card';
+import JournalCard from './journal-card';
 
 const componentMap = {
   journal: JournalCard,
@@ -16,7 +16,10 @@ interface DynamicComponentBlogCardProps {
   slug: string;
 }
 
-const DynamicComponentBlogCard = ({ type, ...props }: DynamicComponentBlogCardProps) => {
+const DynamicComponentBlogCard = ({
+  type,
+  ...props
+}: DynamicComponentBlogCardProps) => {
   const Component = componentMap[type];
   if (!Component) {
     throw new Error(`Component type ${type} not found`);

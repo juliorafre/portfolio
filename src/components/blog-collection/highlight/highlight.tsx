@@ -1,8 +1,9 @@
 'use client';
-import { CopyIcon, CheckIcon } from 'lucide-react';
-import { useMemo, useState, isValidElement } from 'react';
 import { useCopyToClipboard } from '@uidotdev/usehooks';
-import { motion, AnimatePresence } from 'motion/react';
+import { CheckIcon, CopyIcon } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
+import { isValidElement, useMemo, useState } from 'react';
+
 // import Image from 'next/image';
 
 const Highlight = ({ children }: { children: React.ReactNode }) => {
@@ -23,7 +24,9 @@ const Highlight = ({ children }: { children: React.ReactNode }) => {
 
       if (isValidElement(node)) {
         // Type guard to ensure we have props
-        const element = node as React.ReactElement<{ children?: React.ReactNode }>;
+        const element = node as React.ReactElement<{
+          children?: React.ReactNode;
+        }>;
 
         // If it's a paragraph element, extract its children
         if (element.type === 'p') {
@@ -48,7 +51,7 @@ const Highlight = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <div className="highlight group font-jetbrains-mono inset-shadow-accent-foreground relative mb-6 rounded-xl border-3 border-white bg-neutral-100 p-4 text-sm font-semibold text-black shadow-lg md:text-base dark:border-gray-800 dark:bg-neutral-900 dark:text-white">
+    <div className="highlight group relative inset-shadow-accent-foreground mb-6 rounded-xl border-3 border-white bg-neutral-100 p-4 font-jetbrains-mono font-semibold text-black text-sm shadow-lg md:text-base dark:border-gray-800 dark:bg-neutral-900 dark:text-white">
       {/* <SparklesIcon className="absolute top-0 left-0 z-90 size-9 -translate-x-1/2 -translate-y-1/2 fill-amber-300 text-amber-300 dark:fill-amber-500 dark:text-amber-500" /> */}
       {/* <Image
         src="/images/sparkles.png"
@@ -58,17 +61,17 @@ const Highlight = ({ children }: { children: React.ReactNode }) => {
         className="absolute top-0 right-0 z-90 size-50 drop-shadow-xl translate-x-1/3 -translate-y-1/3"
       /> */}
       <button
-        onClick={copyToClipboard}
+        className="absolute top-2 right-2 z-50 grid cursor-pointer place-items-center overflow-hidden rounded-md bg-neutral-300/40 p-2 opacity-100 backdrop-blur transition-all duration-300 hover:bg-neutral-300 group-hover:opacity-100 md:opacity-0 dark:bg-neutral-800/40 dark:hover:bg-neutral-700"
         disabled={isCopied === 'copied'}
-        className="absolute top-2 right-2 z-50 grid cursor-pointer place-items-center overflow-hidden rounded-md bg-neutral-300/40 p-2 opacity-100 backdrop-blur transition-all duration-300 group-hover:opacity-100 hover:bg-neutral-300 md:opacity-0 dark:bg-neutral-800/40 dark:hover:bg-neutral-700"
+        onClick={copyToClipboard}
       >
-        <AnimatePresence mode="popLayout" initial={false}>
+        <AnimatePresence initial={false} mode="popLayout">
           <motion.span
-            transition={{ type: 'spring', duration: 0.54, bounce: 0.4 }}
-            initial={{ opacity: 0, y: -25 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: -25 }}
             key={isCopied}
+            transition={{ type: 'spring', duration: 0.54, bounce: 0.4 }}
           >
             {isCopied === 'copied' ? (
               <CheckIcon className="h-4 w-4" />
@@ -78,7 +81,7 @@ const Highlight = ({ children }: { children: React.ReactNode }) => {
           </motion.span>
         </AnimatePresence>
       </button>
-      <div className="bg-gradient-to-r from-[#ee5c43] via-[#1248d0] to-[#f12ef1] bg-clip-text text-xs font-light text-pretty text-transparent md:text-base dark:via-[#8dff42]">
+      <div className="text-pretty bg-gradient-to-r from-[#ee5c43] via-[#1248d0] to-[#f12ef1] bg-clip-text font-light text-transparent text-xs md:text-base dark:via-[#8dff42]">
         {children}
       </div>
     </div>

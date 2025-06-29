@@ -20,14 +20,15 @@ export function RRSSLink({ platform, href, className = '' }: RRSSLinkProps) {
   const { label } = platformConfig[platform];
   const isExternal = platform !== 'email';
 
-  const baseStyles = 'text-black dark:text-foreground flex items-center hover:underline transition-all duration-300';
+  const baseStyles =
+    'text-black dark:text-foreground flex items-center hover:underline transition-all duration-300';
 
   return (
     <a
-      href={href}
-      target={isExternal ? '_blank' : undefined}
-      rel={isExternal ? 'noopener noreferrer' : undefined}
       className={cn(baseStyles, className)}
+      href={href}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
+      target={isExternal ? '_blank' : undefined}
     >
       {label}
     </a>

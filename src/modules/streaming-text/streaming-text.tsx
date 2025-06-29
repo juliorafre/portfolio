@@ -1,7 +1,7 @@
 'use client';
 
+import { PlayIcon, RefreshCwIcon, StopCircleIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { PlayIcon, StopCircleIcon, RefreshCwIcon } from 'lucide-react';
 import useAnimatedText from './useAnimatedText';
 
 const textExample =
@@ -19,8 +19,11 @@ const StreamingText = () => {
     if (isPlaying) {
       const interval = setInterval(
         () => {
-          setText(prevText => {
-            return prevText + textExample.slice(prevText.length, prevText.length + characters);
+          setText((prevText) => {
+            return (
+              prevText +
+              textExample.slice(prevText.length, prevText.length + characters)
+            );
           });
         },
         isPlaying ? delay : 0
@@ -48,10 +51,10 @@ const StreamingText = () => {
         </button>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <div className="max-w-prose bg-neutral-100 rounded-xl p-4 h-[400px] overflow-y-auto">
+        <div className="h-[400px] max-w-prose overflow-y-auto rounded-xl bg-neutral-100 p-4">
           <p>{text}</p>
         </div>
-        <div className="max-w-prose bg-neutral-100 rounded-xl p-4 h-[400px] overflow-y-auto">
+        <div className="h-[400px] max-w-prose overflow-y-auto rounded-xl bg-neutral-100 p-4">
           <p>{animatedText}</p>
         </div>
       </div>

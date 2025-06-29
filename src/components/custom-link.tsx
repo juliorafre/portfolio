@@ -1,7 +1,7 @@
-import { cn } from '@/lib/utils';
+import { AnchorIcon, ArrowUpRightIcon } from 'lucide-react';
 import Link, { type LinkProps } from 'next/link';
-import { ArrowUpRightIcon, AnchorIcon } from 'lucide-react';
 import type { ComponentPropsWithoutRef, HTMLAttributes } from 'react';
+import { cn } from '@/lib/utils';
 
 // Combine props from <a> and Next/Link, adding our custom ones
 type CustomLinkProps = Omit<ComponentPropsWithoutRef<'a'>, 'href'> &
@@ -47,12 +47,12 @@ const CustomLink = ({
   /* External links */
   if (isExternal) {
     return (
-      <a {...props} href={href} className={cn(styles, className)}>
+      <a {...props} className={cn(styles, className)} href={href}>
         {children}
         {showIcon && (
           <ArrowUpRightIcon
+            className="-translate-y-[0.1rem] ml-0.5 inline-block transform dark:text-white"
             size={16}
-            className="ml-0.5 inline-block -translate-y-[0.1rem] transform dark:text-white"
           />
         )}
       </a>
@@ -64,14 +64,17 @@ const CustomLink = ({
     return (
       <a
         {...props}
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
         className={cn(styles, className)}
+        href={href}
+        rel="noopener noreferrer"
+        target="_blank"
       >
         {children}
         {showIcon && (
-          <AnchorIcon size={16} className="ml-0.5 inline-block -translate-y-[0.1rem] transform" />
+          <AnchorIcon
+            className="-translate-y-[0.1rem] ml-0.5 inline-block transform"
+            size={16}
+          />
         )}
       </a>
     );
@@ -80,12 +83,12 @@ const CustomLink = ({
   /* Default: Internal links */
 
   return (
-    <Link {...props} href={href} className={cn(styles, className)}>
+    <Link {...props} className={cn(styles, className)} href={href}>
       {children}
       {showIcon && (
         <ArrowUpRightIcon
+          className="-translate-y-[0.1rem] ml-0.5 inline-block transform dark:text-white"
           size={16}
-          className="ml-0.5 inline-block -translate-y-[0.1rem] transform dark:text-white"
         />
       )}
     </Link>

@@ -1,5 +1,5 @@
-import { motion, useTransform, MotionValue } from "motion/react";
-import Phrase from "./phrase";
+import { type MotionValue, motion, useTransform } from 'motion/react';
+import Phrase from './phrase';
 
 interface SlideProps {
   left: string;
@@ -11,10 +11,17 @@ interface SlideProps {
 const Slide = (props: SlideProps) => {
   const direction = props.direction == 'left' ? -1 : 1;
 
-  const translateX = useTransform(props.progress, [0, 1], [150 * direction, -150 * direction]);
+  const translateX = useTransform(
+    props.progress,
+    [0, 1],
+    [150 * direction, -150 * direction]
+  );
 
   return (
-    <motion.div style={{ left: props.left, x: translateX }} className="relative flex whitespace-nowrap">
+    <motion.div
+      className="relative flex whitespace-nowrap"
+      style={{ left: props.left, x: translateX }}
+    >
       <Phrase src={props.src} />
       <Phrase src={props.src} />
       <Phrase src={props.src} />

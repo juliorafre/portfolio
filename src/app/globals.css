@@ -1,17 +1,16 @@
-@import 'tailwindcss';
-@plugin 'tailwindcss-animate';
+@import "tailwindcss";
 
 :root {
-  --font-jetbrains-mono: 'JetBrains Mono', monospace;
-  --font-inter: 'Inter', sans-serif;
-  --font-amatic-sc: 'Amatic SC', cursive;
-  --font-kalam: 'Kalam', cursive;
-  --font-instrument-serif: 'Instrument Serif', serif;
-  --font-crimson-pro: 'Crimson Pro', serif;
+  --font-jetbrains-mono: "JetBrains Mono", monospace;
+  --font-inter: "Inter", sans-serif;
+  --font-amatic-sc: "Amatic SC", cursive;
+  --font-kalam: "Kalam", cursive;
+  --font-instrument-serif: "Instrument Serif", serif;
+  --font-crimson-pro: "Crimson Pro", serif;
   --background-dark: #181818;
 
   --radius: 0.625rem;
-  --background: oklch(0.9936 0.0013 106.42);
+  --background: oklch(0.9911 0 0); /*  0.9936 0.0013 106.42 */
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -142,7 +141,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --font-sans: system-ui, 'Helvetica', sans-serif;
+  --font-sans: system-ui, "Helvetica", sans-serif;
 
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -151,7 +150,8 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-color: 0deg 0% 62%;
   --shadow-elevation-low:
     -0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.48),
@@ -262,11 +262,19 @@
 
   .backdrop-glass {
     @apply pointer-events-none absolute inset-0;
-    background: linear-gradient(to bottom, hsl(0, 0%, 95%, 0.8) 0%, transparent 100%);
+    background: linear-gradient(
+      to bottom,
+      hsl(0, 0%, 95%, 0.8) 0%,
+      transparent 100%
+    );
     backdrop-filter: blur(8px) brightness(100%) saturate(140%);
     -webkit-backdrop-filter: blur(8px) brightness(100%) saturate(140%);
     mask-image: linear-gradient(to bottom, black 0% 50%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 0% 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0% 50%,
+      transparent 100%
+    );
   }
 
   .header-mobile {
@@ -301,13 +309,13 @@
   }
 
   .background-grid::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
   }
 
   .background-grid::after {
-    content: '';
+    content: "";
     position: absolute;
     background-image: url(/images/fx/grid.svg);
     background-position: 50%;
@@ -451,7 +459,8 @@
     This code gets applied for folks using
     browsers that support backdrop-filter.
   */
-  @supports (backdrop-filter: blur(16px)) or (-webkit-backdrop-filter: blur(16px)) {
+  @supports (backdrop-filter: blur(16px)) or
+    (-webkit-backdrop-filter: blur(16px)) {
     .header-mobile {
       background: hsl(0deg 0% 100% / 0.5);
     }
@@ -465,7 +474,11 @@
       */
       -webkit-backdrop-filter: blur(16px);
       backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, hsl(0deg 0% 100%), transparent 100%); /* prev 50% */
+      background: linear-gradient(
+        to bottom,
+        hsl(0deg 0% 100%),
+        transparent 100%
+      ); /* prev 50% */
       pointer-events: none;
     }
 
@@ -492,7 +505,11 @@
   @supports (mask-image: none) or (-webkit-mask-image: none) {
     .backdrop {
       height: 200%;
-      -webkit-mask-image: linear-gradient(to bottom, black 0% 50%, transparent 50% 100%);
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0% 50%,
+        transparent 50% 100%
+      );
       mask-image: linear-gradient(to bottom, black 0% 50%, transparent 50% 100%);
     }
     .backdrop-edge {
@@ -692,7 +709,7 @@
 }
 
 .terminal-scanlines::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -721,7 +738,7 @@
 }
 
 .terminal-cursor::after {
-  content: '█';
+  content: "█";
   animation: terminal-cursor 1s infinite;
   color: #10b981;
 }

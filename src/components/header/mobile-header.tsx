@@ -1,22 +1,36 @@
 // src/components/header/mobile-header.tsx
 'use client';
 
+import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'motion/react';
-import { NavLinks } from './nav-links';
 import { cn } from '@/lib';
+import { NavLinks } from './nav-links';
 
-const MobileWrapper = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+const MobileWrapper = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   return (
     <motion.div
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      className={cn(
+        'inset-shadow-accent cursor-pointer overflow-hidden rounded-full bg-[rgba(243,243,243,0.7)] shadow-2xl backdrop-blur-sm md:hidden',
+        className
+      )}
       initial={{
         opacity: 0,
         y: 40,
       }}
-      animate={{
-        opacity: 1,
-        y: 0,
+      style={{
+        boxShadow: 'inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff',
+        border: '2px solid rgb(206, 206, 206)',
       }}
       transition={{
         type: 'spring',
@@ -24,14 +38,6 @@ const MobileWrapper = ({ children, className }: { children: React.ReactNode; cla
         bounce: 0.3,
         ease: 'easeInOut',
         delay: 0.2,
-      }}
-      className={cn(
-        'inset-shadow-accent cursor-pointer overflow-hidden rounded-full bg-[rgba(243,243,243,0.7)] shadow-2xl backdrop-blur-sm md:hidden',
-        className
-      )}
-      style={{
-        boxShadow: 'inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff',
-        border: '2px solid rgb(206, 206, 206)',
       }}
     >
       {children}
@@ -45,11 +51,11 @@ export const MobileHeader = () => {
       <MobileWrapper className="self-start">
         <Link href="/">
           <Image
-            src="/images/home/image.webp"
             alt="logo"
-            width={40}
-            height={40}
             className="m-[5px] size-10 rounded-full md:size-10"
+            height={40}
+            src="/images/home/image.webp"
+            width={40}
           />
         </Link>
       </MobileWrapper>

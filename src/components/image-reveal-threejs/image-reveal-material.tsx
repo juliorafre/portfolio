@@ -6,6 +6,7 @@ import { shaderMaterial, useAspect, useTexture } from '@react-three/drei';
 import { extend, useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+
 // import imageRevealFragmentShader from './shaders/fragment.glsl?raw';
 // import imageRevealVertexShader from './shaders/vertex.glsl?raw';
 
@@ -183,7 +184,7 @@ const ImageRevealMaterial = shaderMaterial(
   },
   vertexShader,
   fragmentShader,
-  self => {
+  (self) => {
     if (self) {
       self.transparent = true;
     }
@@ -198,11 +199,15 @@ interface RevealImageProps {
   isFullScreen?: boolean;
 }
 
-const RevealImage = ({ imageTexture, revealProgress, isFullScreen = false }: RevealImageProps) => {
+const RevealImage = ({
+  imageTexture,
+  revealProgress,
+  isFullScreen = false,
+}: RevealImageProps) => {
   const materialRef = useRef(null);
 
   // LOADING TEXTURE & HANDLING ASPECT RATIO
-  const texture = useTexture(imageTexture, loadedTexture => {
+  const texture = useTexture(imageTexture, (loadedTexture) => {
     if (materialRef.current) {
       materialRef.current.uTexture = loadedTexture;
     }

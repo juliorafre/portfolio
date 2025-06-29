@@ -1,10 +1,10 @@
 'use client';
 
-import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import { Observer } from 'gsap/Observer';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import gsap from 'gsap';
+import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 
 gsap.registerPlugin(Observer, ScrollTrigger);
 
@@ -31,7 +31,7 @@ const CarouselWowed = ({ images }: CarouselWowedProps) => {
       const containerRect = container.getBoundingClientRect();
       const containerCenter = containerRect.left + containerRect.width / 2;
 
-      cards.forEach(card => {
+      cards.forEach((card) => {
         const cardRect = card.getBoundingClientRect();
         const cardCenter = cardRect.left + cardRect.width / 2;
 
@@ -68,11 +68,11 @@ const CarouselWowed = ({ images }: CarouselWowedProps) => {
   }, []);
 
   return (
-    <section id="carousel-wowed" className="full-wide my-0 md:hidden">
+    <section className="full-wide my-0 md:hidden" id="carousel-wowed">
       <div
-        ref={containerRef}
+        className="scrollbar-hide flex h-[60vh] w-full snap-x snap-mandatory gap-x-4 overflow-x-auto overflow-y-clip scroll-smooth md:scroll-pr-12.5vw md:scroll-pl-12.5vw md:gap-x-10"
         id="carousel-wowed-container"
-        className="scrollbar-hide md:scroll-pl-12.5vw md:scroll-pr-12.5vw flex h-[60vh] w-full snap-x snap-mandatory gap-x-4 overflow-x-auto overflow-y-clip scroll-smooth md:gap-x-10"
+        ref={containerRef}
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
@@ -82,16 +82,16 @@ const CarouselWowed = ({ images }: CarouselWowedProps) => {
       >
         {images.map((image, index) => (
           <div
-            key={index}
             className="carousel-card flex h-full w-[65vw] shrink-0 snap-center items-center justify-center md:w-[20vw] md:snap-start"
+            key={index}
           >
             <div className="relative aspect-square h-auto w-[65vw]">
               <Image
-                className="h-full w-full rounded-lg object-cover shadow"
-                src={image.src}
                 alt={image.alt}
+                className="h-full w-full rounded-lg object-cover shadow"
                 fill
                 sizes="(max-width: 768px) 65vw, (max-width: 1200px) 50vw, 33vw"
+                src={image.src}
               />
             </div>
           </div>

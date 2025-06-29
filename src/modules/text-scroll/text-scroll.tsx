@@ -1,7 +1,13 @@
 'use client';
-import { PanInfo, motion, useAnimation, useMotionValue, useMotionValueEvent, useTransform } from 'motion/react';
-import { useRef, useState } from 'react';
-import React from 'react';
+import {
+  motion,
+  type PanInfo,
+  useAnimation,
+  useMotionValue,
+  useMotionValueEvent,
+  useTransform,
+} from 'motion/react';
+import React, { useRef, useState } from 'react';
 
 const menuItems = [
   'Eero Aarnio Ball Chair',
@@ -47,14 +53,16 @@ export default function DraggableCurvedMenu() {
 
   useMotionValueEvent(rotation, 'change', (value) => {
     const adjustedRotation = ((value % 360) + 360) % 360;
-    const middleIndex = Math.round(adjustedRotation / angleIncrement) % menuItems.length;
-    const actualMiddleItem = menuItems[(menuItems.length - middleIndex) % menuItems.length];
+    const middleIndex =
+      Math.round(adjustedRotation / angleIncrement) % menuItems.length;
+    const actualMiddleItem =
+      menuItems[(menuItems.length - middleIndex) % menuItems.length];
     setMiddleItem(actualMiddleItem);
   });
 
   // Fix: Use a type that the compiler won't complain about
   type DragEvent = MouseEvent | TouchEvent | PointerEvent;
-  
+
   const onDrag = (_: DragEvent, info: PanInfo) => {
     const currentRotation = rotation.get() + info.offset.y * dragFactor;
     rotation.set(currentRotation);
@@ -73,27 +81,30 @@ export default function DraggableCurvedMenu() {
   });
 
   return (
-    <div className="relative flex h-[500px] w-full items-center justify-center overflow-hidden" ref={containerRef}>
-      <div className="pointer-events-none absolute left-0 top-0 z-50 h-32 w-full bg-neutral-100 to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)] dark:bg-neutral-900"></div>
+    <div
+      className="relative flex h-[500px] w-full items-center justify-center overflow-hidden"
+      ref={containerRef}
+    >
+      <div className="pointer-events-none absolute top-0 left-0 z-50 h-32 w-full bg-neutral-100 to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)] dark:bg-neutral-900" />
       <motion.div
-        className="relative -ml-[800px] flex h-[1000px] w-[1000px]  cursor-grab items-center justify-center active:cursor-grabbing"
         animate={controls}
+        className="-ml-[800px] relative flex h-[1000px] w-[1000px] cursor-grab items-center justify-center active:cursor-grabbing"
+        drag="y"
+        onDrag={onDrag}
+        onDragEnd={onDragEnd}
         style={{
           transformOrigin: 'center center',
           transform,
           rotate: rotation,
         }}
-        drag="y"
-        onDrag={onDrag}
-        onDragEnd={onDragEnd}
       >
         {menuItems.map((item, index) => {
           const rotate = angleIncrement * index;
 
           return (
             <motion.div
-              key={`${item}-${index}`}
               className={`absolute ${item === middleItem ? 'text-primary-light-12 dark:text-primary-dark-12' : 'text-primary-light-12/30 dark:text-primary-dark-12/30'} transition-colors duration-150`}
+              key={`${item}-${index}`}
               style={{
                 left: '50%',
                 transform: `rotate(${rotate}deg) translateX(300px)`,
@@ -105,7 +116,7 @@ export default function DraggableCurvedMenu() {
           );
         })}
       </motion.div>
-      <div className="pointer-events-none absolute bottom-0 left-0 z-50 h-32 w-full bg-neutral-100 to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-neutral-900"></div>
+      <div className="pointer-events-none absolute bottom-0 left-0 z-50 h-32 w-full bg-neutral-100 to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-neutral-900" />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Terminal, TerminalLine } from './terminal';
 
 interface AnimatedTerminalProps {
@@ -17,7 +17,7 @@ export function AnimatedTerminal({ commands, title }: AnimatedTerminalProps) {
   useEffect(() => {
     if (visibleCommands < commands.length) {
       const timer = setTimeout(() => {
-        setVisibleCommands(prev => prev + 1);
+        setVisibleCommands((prev) => prev + 1);
       }, commands[visibleCommands]?.delay || 1000);
 
       return () => clearTimeout(timer);

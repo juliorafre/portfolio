@@ -1,8 +1,13 @@
 'use client';
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
-import { useScroll, useMotionValueEvent, motion, useReducedMotion } from 'motion/react';
 import type { LenisRef } from 'lenis/react';
 import { ReactLenis } from 'lenis/react';
+import {
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+} from 'motion/react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import 'lenis/dist/lenis.css';
 import Spacer from '@/modules/share/spacer';
 
@@ -41,7 +46,7 @@ const TextGradientOnScrollWithMotion = () => {
   }, [updateScroll]);
 
   // Use a single event handler for all words
-  useMotionValueEvent(scrollYProgress, 'change', latest => {
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     // Only process animations if user doesn't prefer reduced motion
     if (!prefersReducedMotion) {
       const newVisibleIndices = new Set<number>();
@@ -55,7 +60,7 @@ const TextGradientOnScrollWithMotion = () => {
 
       // Only update state if the visible indices have changed
       if (
-        ![...newVisibleIndices].every(i => visibleIndices.has(i)) ||
+        ![...newVisibleIndices].every((i) => visibleIndices.has(i)) ||
         [...visibleIndices].length !== newVisibleIndices.size
       ) {
         setVisibleIndices(newVisibleIndices);
@@ -71,19 +76,19 @@ const TextGradientOnScrollWithMotion = () => {
 
       return (
         <motion.span
+          animate={{ opacity: isVisible ? 1 : 0.33 }}
+          className="leading-snug"
           data-trigger={triggerPoint}
           initial={{ opacity: prefersReducedMotion ? 1 : 0.33 }}
-          animate={{ opacity: isVisible ? 1 : 0.33 }}
+          key={word + '_' + index}
           style={{
             display: 'inline-block',
             marginRight: '0.25em',
           }}
-          className="leading-snug"
           transition={{
             duration: prefersReducedMotion ? 0 : 1.2,
             ease: [0.24, 0.86, 0.29, 0.9],
           }}
-          key={word + '_' + index}
         >
           {word}
         </motion.span>
@@ -92,25 +97,36 @@ const TextGradientOnScrollWithMotion = () => {
   }, [words, visibleIndices, prefersReducedMotion]);
 
   return (
-    <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
+    <ReactLenis options={{ autoRaf: false }} ref={lenisRef} root>
       <div className="bg-white">
-        <Spacer title="Darkrrom-Engineering" url="https://darkroom.engineering/about" vHSize={35} />
+        <Spacer
+          title="Darkrrom-Engineering"
+          url="https://darkroom.engineering/about"
+          vHSize={35}
+        />
         <div
-          ref={containerRef}
-          className="grid grid-cols-12 bg-black py-[20vh]"
-          role="region"
           aria-label="Our philosophy text with scroll animation"
+          className="grid grid-cols-12 bg-black py-[20vh]"
+          ref={containerRef}
+          role="region"
         >
-          <div ref={bodyRef} className="col-start-2 col-end-[-1] md:col-start-4">
-            <h2 className="w-[30vw] font-sans text-[32px] font-extrabold text-balance text-[#E30614] md:w-[22vw] md:text-6xl">
+          <div
+            className="col-start-2 col-end-[-1] md:col-start-4"
+            ref={bodyRef}
+          >
+            <h2 className="w-[30vw] text-balance font-extrabold font-sans text-[#E30614] text-[32px] md:w-[22vw] md:text-6xl">
               OUR PHILOSOPHY
             </h2>
-            <p className="w-[85vw] font-[Helvetica] text-[16px] leading-snug font-black text-[#b4b4b4] uppercase transition-opacity md:w-[72vw] md:text-4xl">
+            <p className="w-[85vw] font-[Helvetica] font-black text-[#b4b4b4] text-[16px] uppercase leading-snug transition-opacity md:w-[72vw] md:text-4xl">
               {textSplitted}
             </p>
           </div>
         </div>
-        <Spacer title="Darkrrom-Engineering" url="https://darkroom.engineering/about" vHSize={70} />
+        <Spacer
+          title="Darkrrom-Engineering"
+          url="https://darkroom.engineering/about"
+          vHSize={70}
+        />
       </div>
     </ReactLenis>
   );

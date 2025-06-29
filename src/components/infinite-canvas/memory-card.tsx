@@ -10,20 +10,21 @@ interface MemoryCardProps {
   resetSelectedMemory: () => void;
 }
 
-const MemoryCard = ({ selectedMemory, resetSelectedMemory }: MemoryCardProps) => {
+const MemoryCard = ({
+  selectedMemory,
+  resetSelectedMemory,
+}: MemoryCardProps) => {
   const layoutId = selectedMemory
     ? `${selectedMemory.layoutIdPrefix}-memory-item-${selectedMemory.id}`
     : 'memory-item';
   const memory = selectedMemory
-    ? memoriesData.find(memory => memory.id === selectedMemory.id)
+    ? memoriesData.find((memory) => memory.id === selectedMemory.id)
     : null;
 
   return (
     <AnimatePresence initial={false} mode="popLayout">
       {selectedMemory && (
         <motion.div
-          id="memory-item"
-          initial={{ opacity: 0, filter: 'blur(10px)' }}
           animate={{
             opacity: 1,
             filter: 'blur(0px)',
@@ -31,13 +32,15 @@ const MemoryCard = ({ selectedMemory, resetSelectedMemory }: MemoryCardProps) =>
               duration: 0.7,
             },
           }}
+          className="absolute inset-0 z-10 flex items-center justify-center bg-neutral-200/50 backdrop-blur-sm"
           exit={{
             opacity: 0,
             filter: 'blur(10px)',
           }}
-          className="absolute inset-0 z-10 flex items-center justify-center bg-neutral-200/50 backdrop-blur-sm"
+          id="memory-item"
+          initial={{ opacity: 0, filter: 'blur(10px)' }}
         >
-          <div className="relative flex h-full w-full flex-row items-center justify-center perspective-distant">
+          <div className="perspective-distant relative flex h-full w-full flex-row items-center justify-center">
             <button
               className="absolute top-0 right-0 m-2 cursor-pointer rounded-full bg-gray-100 p-1 md:m-2 md:p-2"
               onClick={resetSelectedMemory}
@@ -47,44 +50,44 @@ const MemoryCard = ({ selectedMemory, resetSelectedMemory }: MemoryCardProps) =>
             </button>
 
             <motion.img
+              alt="Infinite canvas"
+              className="absolute bottom-0 left-0 z-50 mb-4 ml-4 block w-[25%] select-none object-contain drop-shadow-xl"
+              height={300}
               layoutId={layoutId}
+              src={`/images/postcards/${selectedMemory.id}/${selectedMemory.id}.png`}
               transition={{
                 type: 'spring',
                 bounce: 0.2,
               }}
-              className="absolute bottom-0 left-0 z-50 mb-4 ml-4 block w-[25%] object-contain drop-shadow-xl select-none"
-              src={`/images/postcards/${selectedMemory.id}/${selectedMemory.id}.png`}
-              alt="Infinite canvas"
               width={300}
-              height={300}
             />
 
             <motion.div
+              animate={{
+                transform: 'rotateZ(3deg) rotateX(0deg) translateY(0%)',
+                scale: 1,
+              }}
+              className="relative z-20 grid aspect-video h-[80%] w-[80%] grid-cols-[50%_1fr] overflow-hidden rounded-xs bg-white p-3 shadow-lg"
+              exit={{
+                transform: 'rotateZ(0deg) rotateX(-50deg) translateY(200%)',
+                scale: 0.5,
+              }}
               id="memory-item-card"
               initial={{
                 transform: 'rotateZ(0deg) rotateX(50deg) translateY(-200%)',
                 scale: 0.5,
               }}
-              animate={{
-                transform: 'rotateZ(3deg) rotateX(0deg) translateY(0%)',
-                scale: 1,
-              }}
-              exit={{
-                transform: 'rotateZ(0deg) rotateX(-50deg) translateY(200%)',
-                scale: 0.5,
+              style={{
+                transformOrigin: 'center',
               }}
               transition={{
                 duration: 0.65,
                 type: 'spring',
                 bounce: 0.2,
               }}
-              className="relative z-20 grid aspect-video h-[80%] w-[80%] grid-cols-[50%_1fr] overflow-hidden rounded-xs bg-white p-3 shadow-lg"
-              style={{
-                transformOrigin: 'center',
-              }}
             >
               {/* Background Noise Image */}
-              <div className="absolute inset-0 -z-10">
+              <div className="-z-10 absolute inset-0">
                 <div
                   className="background-grid absolute inset-0 overflow-hidden"
                   style={{
@@ -93,7 +96,7 @@ const MemoryCard = ({ selectedMemory, resetSelectedMemory }: MemoryCardProps) =>
                     mixBlendMode: 'overlay',
                     opacity: 0.4,
                   }}
-                ></div>
+                />
                 <div
                   className="absolute inset-0 overflow-hidden"
                   style={{
@@ -102,60 +105,60 @@ const MemoryCard = ({ selectedMemory, resetSelectedMemory }: MemoryCardProps) =>
                     mixBlendMode: 'overlay',
                     opacity: 0.1,
                   }}
-                ></div>
+                />
               </div>
               {/* Stamp */}
               <Image
-                src={`/images/postcards/${selectedMemory.id}/stamp.png`}
                 alt="stamp"
-                width={500}
+                className="absolute top-0 right-0 z-50 m-4 block w-[14%] rotate-z-[4deg] select-none object-contain drop-shadow-xl"
                 height={500}
-                className="absolute top-0 right-0 z-50 m-4 block w-[14%] rotate-z-[4deg] object-contain drop-shadow-xl select-none"
+                src={`/images/postcards/${selectedMemory.id}/stamp.png`}
+                width={500}
               />
 
               {/* Lines */}
               <Image
-                src={`/images/postcards/common/lines.png`}
                 alt="lines"
-                width={500}
+                className="absolute top-0 right-0 z-50 m-2 block w-[12%] translate-x-[-65%] translate-y-[20%] select-none object-contain drop-shadow-xl"
                 height={500}
-                className="absolute top-0 right-0 z-50 m-2 block w-[12%] translate-x-[-65%] translate-y-[20%] object-contain drop-shadow-xl select-none"
+                src={'/images/postcards/common/lines.png'}
+                width={500}
               />
 
               {/* Image */}
-              <div className="size-full overflow-hidden rounded select-none">
+              <div className="size-full select-none overflow-hidden rounded">
                 <Image
-                  src={`/images/postcards/${selectedMemory.id}/image.jpeg`}
                   alt={`${memory?.subject}`}
-                  width={1000}
-                  height={1000}
-                  className="size-full object-cover object-center"
-                  placeholder="blur"
                   blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="
+                  className="size-full object-cover object-center"
+                  height={1000}
+                  placeholder="blur"
+                  src={`/images/postcards/${selectedMemory.id}/image.jpeg`}
+                  width={1000}
                 />
               </div>
               <div className="z-90 grid grid-cols-[70%_1fr] grid-rows-[40%_1fr] overflow-hidden px-4 pb-4">
-                <div className="font-kalam w-full font-bold text-stone-800">
+                <div className="w-full font-bold font-kalam text-stone-800">
                   <div className="flex flex-row justify-between text-[9px] md:text-base">
                     <p>Nr° {selectedMemory.id}</p>
                   </div>
-                  <div className="flex flex-row justify-between border-t border-black text-[9px] md:text-base">
+                  <div className="flex flex-row justify-between border-black border-t text-[9px] md:text-base">
                     <p>{memory?.place}</p>
                     <p>{memory?.month}</p>
                   </div>
-                  <div className="border-t border-black text-[9px] whitespace-nowrap last:border-b md:text-base">
+                  <div className="whitespace-nowrap border-black border-t text-[9px] last:border-b md:text-base">
                     <p>{memory?.subtitle}</p>
                   </div>
                 </div>
                 <div className="relative col-span-2 col-start-1 row-start-2">
                   <Image
-                    src={`/images/postcards/common/lines-2.png`}
                     alt="lines-2"
-                    width={600}
+                    className="absolute top-0 right-0 z-50 m-2 block w-full select-none object-contain drop-shadow-xl"
                     height={600}
-                    className="absolute top-0 right-0 z-50 m-2 block w-full object-contain drop-shadow-xl select-none"
+                    src={'/images/postcards/common/lines-2.png'}
+                    width={600}
                   />
-                  <p className="font-kalam mt-1 max-w-[78ch] text-[10px] leading-[1.2rem] overflow-ellipsis md:text-lg md:leading-[2.8rem]">
+                  <p className="mt-1 max-w-[78ch] overflow-ellipsis font-kalam text-[10px] leading-[1.2rem] md:text-lg md:leading-[2.8rem]">
                     {memory?.comment}
                   </p>
                 </div>

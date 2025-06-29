@@ -1,4 +1,4 @@
-import { CaseStudyMetadata } from '@/types';
+import type { CaseStudyMetadata } from '@/types';
 
 const CaseStudiesHeader = ({
   timeline,
@@ -10,7 +10,7 @@ const CaseStudiesHeader = ({
   stage,
 }: CaseStudyMetadata) => {
   return (
-    <div className="mb-10 grid grid-cols-2 md:grid-cols-3 gap-x-20 gap-y-4">
+    <div className="mb-10 grid grid-cols-2 gap-x-20 gap-y-4 md:grid-cols-3">
       <div>
         <p className="text-muted-foreground/80">When</p>
         <p>{timeline}</p>
@@ -26,10 +26,10 @@ const CaseStudiesHeader = ({
       <div>
         <p className="text-muted-foreground/80">For</p>
         <a
-          href={forCompany.url}
-          target="_blank"
-          rel="noopener noreferrer"
           className="text-primary underline underline-offset-4"
+          href={forCompany.url}
+          rel="noopener noreferrer"
+          target="_blank"
         >
           {forCompany.name}
         </a>

@@ -2,7 +2,7 @@ import TextParallax from '@/modules/text-parallax/text-parallax';
 
 const TextParallaxScreen = () => {
   return (
-    <div className="min-h-full w-full relative">
+    <div className="relative min-h-full w-full">
       <TextParallax />
     </div>
   );

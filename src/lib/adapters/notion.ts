@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { NotionBook } from "@/types/notion";
+import type { NotionBook } from '@/types/notion';
 
 /**
  * Adapter function to transform Notion API response into a NotionBook object

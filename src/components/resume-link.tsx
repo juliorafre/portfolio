@@ -1,5 +1,9 @@
 'use client';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 
 /* const resumeOptions = {
   english: {
@@ -27,23 +31,23 @@ const ResumeLink = () => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <button className="dark:text-foreground text-black uppercase transition-all duration-300 hover:underline">
+        <button className="text-black uppercase transition-all duration-300 hover:underline dark:text-foreground">
           Resume
         </button>
       </PopoverTrigger>
       <PopoverContent
-        side="top"
         align="center"
         className="h-auto w-auto overflow-hidden rounded-md p-0"
+        side="top"
       >
         <div className="flex divide-x">
           {resumeOptions.map((resume) => {
             return (
               <a
-                className="text-muted-foreground bg-white px-4 py-2 text-lg transition-all duration-100 hover:bg-neutral-200 hover:text-black focus-visible:bg-neutral-200 active:bg-neutral-200 md:px-2 md:py-1 md:text-base dark:bg-neutral-800 dark:text-white hover:dark:bg-neutral-700 hover:dark:text-white"
-                key={resume.url}
-                href={resume.url}
+                className="bg-white px-4 py-2 text-lg text-muted-foreground transition-all duration-100 hover:bg-neutral-200 hover:text-black focus-visible:bg-neutral-200 active:bg-neutral-200 md:px-2 md:py-1 md:text-base dark:bg-neutral-800 dark:text-white hover:dark:bg-neutral-700 hover:dark:text-white"
                 download
+                href={resume.url}
+                key={resume.url}
               >
                 {resume.label}
               </a>

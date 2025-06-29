@@ -12,7 +12,13 @@ const AudioProfile = () => {
   }, []);
 
   return (
-    <audio ref={audioRef} controls controlsList="nodownload" preload="metadata" className="mt-4">
+    <audio
+      className="mt-4"
+      controls
+      controlsList="nodownload"
+      preload="metadata"
+      ref={audioRef}
+    >
       <source src="/audio/profile.mp3" type="audio/mpeg" />
       Your browser doesn&apos;t support HTML5 audio.
     </audio>

@@ -1,33 +1,42 @@
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
-import { getBlogPostList } from '@/lib/file-helper';
 import DynamicComponentBlogCard from '@/components/blog-collection/dynamic-component-blog-card';
+import { getBlogPostList } from '@/lib/file-helper';
 
 const BlogPage = async () => {
   const blogPosts = await getBlogPostList();
 
   return (
-    <AnimationOrchestrator className="main-container mt-4 space-y-6" sessionKey="blogPageAnimation">
+    <AnimationOrchestrator
+      className="main-container mt-4 space-y-6"
+      sessionKey="blogPageAnimation"
+    >
       <div className="orchestration-element stagger-0 w-full space-y-1 md:max-w-1/2">
-        <h1 className="text-xl font-semibold">Journal</h1>
+        <h1 className="font-semibold text-xl">Journal</h1>
         <p className="text-muted-foreground">
-          Sharing my interest, experiements and thoughts on technology, design and art.
+          Sharing my interest, experiements and thoughts on technology, design
+          and art.
         </p>
       </div>
       <ul className="space-y-1">
-        {blogPosts.map(({ title, abstract, publishedOn, slug, type }, index) => {
-          return (
-            <li key={slug} className={`orchestration-element stagger-${index + 1}`}>
-              <DynamicComponentBlogCard
+        {blogPosts.map(
+          ({ title, abstract, publishedOn, slug, type }, index) => {
+            return (
+              <li
+                className={`orchestration-element stagger-${index + 1}`}
                 key={slug}
-                type={type}
-                title={title}
-                abstract={abstract}
-                publishedOn={publishedOn}
-                slug={slug}
-              />
-            </li>
-          );
-        })}
+              >
+                <DynamicComponentBlogCard
+                  abstract={abstract}
+                  key={slug}
+                  publishedOn={publishedOn}
+                  slug={slug}
+                  title={title}
+                  type={type}
+                />
+              </li>
+            );
+          }
+        )}
       </ul>
 
       {/*  <div className="flex flex-col gap-4">

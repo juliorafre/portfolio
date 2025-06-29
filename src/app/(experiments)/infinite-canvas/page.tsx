@@ -1,5 +1,5 @@
-import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
 import ErrorBoundary from '@/components/common/error-boundary';
+import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
 
 const InfiniteCanvasPage = () => {
   return (

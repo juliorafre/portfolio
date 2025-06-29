@@ -6,25 +6,24 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const Mapbox = () => {
   return (
     <Map
-      reuseMaps
-      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_KEY}
       initialViewState={{
-        zoom: 11.133496816795057,
-        bearing: 10.399999999999636,
-        latitude: 40.71123813798084,
-        longitude: -74.00710684744715,
+        zoom: 11.133_496_816_795_057,
+        bearing: 10.399_999_999_999_636,
+        latitude: 40.711_238_137_980_84,
+        longitude: -74.007_106_847_447_15,
         padding: { top: 0, bottom: 0, left: 0, right: 0 },
         pitch: 0,
       }}
-      onMove={e => {
-        console.log(e.viewState);
-      }}
-      style={{ width: 300, height: 300 }}
+      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_KEY}
+      mapStyle="mapbox://styles/mapbox/standard"
       onIdle={() => {
         console.log('map idle');
       }}
       onLoad={() => {
         console.log('map loaded');
+      }}
+      onMove={(e) => {
+        console.log(e.viewState);
       }}
       onRemove={() => {
         console.log('map removed');
@@ -32,7 +31,8 @@ const Mapbox = () => {
       onRender={() => {
         console.log('map rendered');
       }}
-      mapStyle="mapbox://styles/mapbox/standard"
+      reuseMaps
+      style={{ width: 300, height: 300 }}
     >
       <NavigationControl position="top-left" />
     </Map>

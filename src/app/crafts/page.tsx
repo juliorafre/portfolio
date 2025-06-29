@@ -1,8 +1,8 @@
+import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
 import CustomLink from '@/components/custom-link';
 // import Carousel from '@/modules/carousel/components/carousel';
 import ImageShowcase from '@/components/image-showcase/image-showcase';
 import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
-import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
 
 const PlaygroundPage = () => {
   return (
@@ -11,7 +11,7 @@ const PlaygroundPage = () => {
       sessionKey="craftsPageAnimation"
     >
       <div className="orchestration-element stagger-0 w-full space-y-1 md:max-w-1/2">
-        <h1 className="text-xl font-semibold">Crafts</h1>
+        <h1 className="font-semibold text-xl">Crafts</h1>
         <p className="text-muted-foreground">
           Sharing some of my experimentals components and projects.
         </p>
@@ -23,12 +23,17 @@ const PlaygroundPage = () => {
             <InfiniteCanvas />
           </div>
           <div className="order-2 flex flex-col">
-            <time className="text-muted-foreground text-sm" dateTime="2025-05-24">
+            <time
+              className="text-muted-foreground text-sm"
+              dateTime="2025-05-24"
+            >
               May 20, 2025
             </time>
-            <p className="text-base font-medium">Memories. (Infinite Canvas)</p>
+            <p className="font-medium text-base">Memories. (Infinite Canvas)</p>
           </div>
-          <p className="text-muted-foreground order-3 mb-1 text-base">WIP experiment.</p>
+          <p className="order-3 mb-1 text-base text-muted-foreground">
+            WIP experiment.
+          </p>
           <div className="order-4 flex flex-row gap-x-2 text-base">
             <CustomLink href="/infinite-canvas" showIcon>
               Code
@@ -44,12 +49,15 @@ const PlaygroundPage = () => {
             <ImageShowcase />
           </div>
           <div className="order-2 flex flex-col">
-            <time className="text-muted-foreground text-base" dateTime="2025-04-25">
+            <time
+              className="text-base text-muted-foreground"
+              dateTime="2025-04-25"
+            >
               April 25, 2025
             </time>
-            <p className="text-base font-medium">Showcase sticker clothes.</p>
+            <p className="font-medium text-base">Showcase sticker clothes.</p>
           </div>
-          <p className="text-muted-foreground order-3 mb-1 text-base">
+          <p className="order-3 mb-1 text-base text-muted-foreground">
             Small experiment replicating the sticker clothes reveal animation by{' '}
             <CustomLink href="https://x.com/bartek_marzec/status/1835432359815958530">
               @bartek_marzec
@@ -66,20 +74,23 @@ const PlaygroundPage = () => {
         <div className="flex w-full flex-col pt-2">
           <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-3 md:p-6">
             <video
-              src="https://res.cloudinary.com/juliorafrecloud/video/upload/v1740954577/hpsdmhwpeau1xz7jyrmx.mp4"
-              playsInline
               autoPlay
-              muted
+              className="overflow aspect-video w-full rounded-lg object-cover"
               loop
-              className="aspect-video w-full object-cover rounded-lg overflow"
-            ></video>
+              muted
+              playsInline
+              src="https://res.cloudinary.com/juliorafrecloud/video/upload/v1740954577/hpsdmhwpeau1xz7jyrmx.mp4"
+            />
           </div>
           <div className="order-2 flex flex-col">
-            <p className="text-muted-foreground text-base">March 2025</p>
-            <p className="text-base font-medium">Map interaction exploration.</p>
+            <p className="text-base text-muted-foreground">March 2025</p>
+            <p className="font-medium text-base">
+              Map interaction exploration.
+            </p>
           </div>
-          <p className="text-muted-foreground order-3 mb-1 text-base">
-            Inspired by the work of @nitishkmrk and built with motion-react and mapbox.
+          <p className="order-3 mb-1 text-base text-muted-foreground">
+            Inspired by the work of @nitishkmrk and built with motion-react and
+            mapbox.
           </p>
           <div className="order-4 flex flex-row gap-x-2 text-base">
             <CustomLink href="/map-interaction" showIcon>

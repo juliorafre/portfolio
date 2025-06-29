@@ -1,22 +1,38 @@
 'use client';
 
-import { siteConfig } from '@/app/siteConfig';
-import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'motion/react';
+import Image from 'next/image';
+import Link from 'next/link';
 // import { RRSSLink } from '@/components/rrss-link';
 import { usePathname } from 'next/navigation';
+import { siteConfig } from '@/app/siteConfig';
 import { cn } from '@/lib';
 
-const NavLinks = ({ className, isMobile }: { className?: string; isMobile?: boolean }) => {
+const NavLinks = ({
+  className,
+  isMobile,
+}: {
+  className?: string;
+  isMobile?: boolean;
+}) => {
   return (
-    <nav className={cn('relative flex items-center justify-center gap-x-2', className)}>
-      {siteConfig.baseLinks.map(link => {
+    <nav
+      className={cn(
+        'relative flex items-center justify-center gap-x-2',
+        className
+      )}
+    >
+      {siteConfig.baseLinks.map((link) => {
         const isComingSoon = 'isComingSoon' in link && link.isComingSoon;
         if (!link.isVisible) return null;
         if (isMobile && isComingSoon) return null;
         return (
-          <NavLink key={link.url} href={link.url} isComingSoon={isComingSoon} isMobile={isMobile}>
+          <NavLink
+            href={link.url}
+            isComingSoon={isComingSoon}
+            isMobile={isMobile}
+            key={link.url}
+          >
             {link.label}
           </NavLink>
         );
@@ -37,16 +53,11 @@ const NavLink = ({
   isMobile?: boolean;
 }) => {
   const pathname = usePathname();
-  const isActive = pathname === href || (pathname.startsWith(href) && href !== '/');
+  const isActive =
+    pathname === href || (pathname.startsWith(href) && href !== '/');
 
   return (
     <Link
-      href={isComingSoon ? '#' : href}
-      onClick={e => {
-        if (isComingSoon) {
-          e.preventDefault();
-        }
-      }}
       className={cn(
         'group flex items-center gap-x-2 rounded-sm px-2 py-1 transition-all duration-300',
         isMobile && 'px-2 py-3 first:pl-6 last:pr-6',
@@ -56,8 +67,14 @@ const NavLink = ({
         isActive && isMobile && 'text-black dark:text-black',
         'hover:bg-neutral-200 hover:text-black dark:hover:bg-neutral-600 dark:hover:text-white',
         isComingSoon &&
-          'hover:text-muted-foreground dark:hover:text-muted-foreground cursor-auto opacity-50 hover:bg-transparent hover:opacity-50 dark:hover:bg-transparent'
+          'cursor-auto opacity-50 hover:bg-transparent hover:text-muted-foreground hover:opacity-50 dark:hover:bg-transparent dark:hover:text-muted-foreground'
       )}
+      href={isComingSoon ? '#' : href}
+      onClick={(e) => {
+        if (isComingSoon) {
+          e.preventDefault();
+        }
+      }}
       /* style={{
         transition: 'all .2s cubic-bezier(.075,.82,.165,1)',
       }} */
@@ -79,10 +96,10 @@ const Header = () => {
         <div className="flex w-full items-center justify-between gap-x-2 md:w-fit md:justify-start">
           <Link href="/">
             <motion.div
-              id="logo"
-              className="w-full"
-              initial={{ opacity: 0 }}
               animate={{ rotate: 360, opacity: 1 }}
+              className="w-full"
+              id="logo"
+              initial={{ opacity: 0 }}
               transition={{
                 opacity: {
                   duration: 0.5,
@@ -91,17 +108,17 @@ const Header = () => {
                 rotate: {
                   delay: 0.5,
                   duration: 60,
-                  repeat: Infinity,
+                  repeat: Number.POSITIVE_INFINITY,
                   ease: 'linear',
                 },
               }}
             >
               <Image
-                src="/images/logo.png"
                 alt="logo"
-                width={40}
-                height={40}
                 className="size-10 invert md:size-10 dark:invert-0"
+                height={40}
+                src="/images/logo.png"
+                width={40}
               />
             </motion.div>
           </Link>
@@ -113,11 +130,11 @@ const Header = () => {
         <Wrapper className="self-start">
           <Link href="/">
             <Image
-              src="/images/home/image.webp"
               alt="logo"
-              width={40}
-              height={40}
               className="m-[5px] size-10 rounded-full md:size-10"
+              height={40}
+              src="/images/home/image.webp"
+              width={40}
             />
           </Link>
         </Wrapper>
@@ -131,16 +148,30 @@ const Header = () => {
 
 export default Header;
 
-const Wrapper = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+const Wrapper = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   return (
     <motion.div
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      className={cn(
+        'inset-shadow-accent cursor-pointer overflow-hidden rounded-full bg-[rgba(243,243,243,0.7)] shadow-2xl backdrop-blur-sm md:hidden',
+        className
+      )}
       initial={{
         opacity: 0,
         y: 40,
       }}
-      animate={{
-        opacity: 1,
-        y: 0,
+      style={{
+        boxShadow: 'inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff',
+        border: '2px solid rgb(206, 206, 206)',
       }}
       transition={{
         type: 'spring',
@@ -148,14 +179,6 @@ const Wrapper = ({ children, className }: { children: React.ReactNode; className
         bounce: 0.3,
         ease: 'easeInOut',
         delay: 0.2,
-      }}
-      className={cn(
-        'inset-shadow-accent cursor-pointer overflow-hidden rounded-full bg-[rgba(243,243,243,0.7)] shadow-2xl backdrop-blur-sm md:hidden',
-        className
-      )}
-      style={{
-        boxShadow: 'inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff',
-        border: '2px solid rgb(206, 206, 206)',
       }}
     >
       {children}
