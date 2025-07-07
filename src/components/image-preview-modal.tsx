@@ -52,16 +52,15 @@ const ImagePreviewModal: React.FC<ImagePreviewModalProps> = ({
                 />
               </Dialog.Overlay>
               <Dialog.Content asChild>
-                <motion.div className="pointer-events-none fixed inset-0 z-10 flex h-full w-full items-center justify-center">
-                  <Dialog.Title className="sr-only z-20">
-                    Image Preview
-                  </Dialog.Title>
-                  <Dialog.Description className="sr-only z-20">
+                <motion.div className="fixed inset-0 z-10 flex h-full w-full items-center justify-center p-4">
+                  <Dialog.Title className="sr-only">Image Preview</Dialog.Title>
+                  <Dialog.Description className="sr-only">
                     {currentImage.alt}
                   </Dialog.Description>
                   <motion.div
-                    className={`group relative z-20 aspect-[1.5/1] w-[90vw] overflow-hidden rounded-lg md:w-[80vw] lg:w-[70vw] ${modalClassName}`}
+                    className={`group relative aspect-[1.5/1] w-[90vw] overflow-hidden rounded-lg md:w-[80vw] lg:w-[70vw] ${modalClassName}`}
                     layoutId={layoutId}
+                    onClick={(e) => e.stopPropagation()}
                     transition={{
                       type: 'spring',
                       duration: transition.duration,
@@ -70,14 +69,14 @@ const ImagePreviewModal: React.FC<ImagePreviewModalProps> = ({
                   >
                     <Image
                       alt={currentImage.alt}
-                      className="z-30 h-full w-full object-cover"
+                      className="h-full w-full object-cover"
                       height={currentImage.height || 1000}
                       src={currentImage.src}
                       width={currentImage.width || 1000}
                     />
                     <Dialog.Close asChild>
                       <motion.button
-                        className="absolute top-4 right-4 z-40 cursor-pointer rounded-full bg-white/50 p-2 shadow-md backdrop-blur-2xl"
+                        className="absolute top-4 right-4 cursor-pointer rounded-full bg-white/50 p-2 shadow-md backdrop-blur-2xl"
                         onClick={closePreview}
                         type="button"
                         whileHover={{ scale: 1.1 }}

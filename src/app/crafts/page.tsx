@@ -16,8 +16,7 @@ const PlaygroundPage = () => {
           Sharing some of my experimentals components and projects.
         </p>
       </div>
-
-      <section className="orchestration-element stagger-1 space-y-6">
+      <section className="orchestration-element stagger-2 space-y-6">
         <div className="flex w-full flex-col pt-2">
           <div className="order-1 mb-2">
             <InfiniteCanvas />
@@ -123,7 +122,7 @@ const PlaygroundPage = () => {
       </section>
 
       {/* Playgrounds */}
-      <section className="orchestration-element stagger-2">
+      <section className="orchestration-element stagger-3">
         <h2 className="mb-2 text-lg">Playgrounds</h2>
         <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-4">
           <CustomLink

@@ -15,6 +15,7 @@ import {
 } from '@/components/blog-collection/terminal';
 import CodeSnippet from '@/components/code-snippet';
 import ImageShowcase from '@/components/image-showcase';
+import ImageWrapper from '@/components/image-wrapper';
 import {
   Carousel,
   CarouselContent,
@@ -31,6 +32,7 @@ import {
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
 const components = {
+  ImageWrapper,
   CaseStudiesHeader,
   CarouselWoved,
   AnimatedTerminal,
@@ -49,7 +51,7 @@ const components = {
   CarouselPrevious,
   // End of Carousel
   pre: CodeSnippet,
-  Image: ImagePost,
+  ImagePost,
   ImageShowcase,
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table>

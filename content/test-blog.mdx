@@ -9,14 +9,7 @@ slug: 'test-blog'
 type: 'blog'
 ---
 
-<Image
-  alt="New portfolio showcase"
-  width={1000}
-  height={1000}
-  src="/images/blog/new-portfolio/portfolio-showcase.png"
-  className="h-auto w-full"
-/>
-
+<ImagePost alt="New portfolio showcase" width={1000} height={1000} src="/images/blog/new-portfolio/portfolio-showcase.png" className="h-auto w-full" />
 
 ## The Art of Motion Design
 
@@ -37,7 +30,7 @@ In today's digital landscape, motion design plays a crucial role in:
 - **Accessibility**: Well-designed animations can improve navigation for users with different abilities
 - **Engagement**: Thoughtful interactions keep users interested and encourage exploration
 
-<Image alt="Galaxy Pixel Art" width={1000} height={1000} src="/images/example.png" />
+<ImagePost alt="Galaxy Pixel Art" width={1000} height={1000} src="/images/example.png" />
 
 ## Interactive Experiences
 
@@ -189,7 +182,7 @@ interface User {
 const createUser = (userData: Omit<User, 'id'>): User => {
   return {
     id: Math.random(),
-    ...userData
+    ...userData,
   };
 };
 ```
