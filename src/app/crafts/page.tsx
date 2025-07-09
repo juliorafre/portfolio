@@ -5,7 +5,7 @@ import CustomLink from '@/components/custom-link';
 import ImageShowcase from '@/components/image-showcase/image-showcase';
 import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
 
-export const craftComponents = [
+const craftComponents = [
   {
     href: '/text-parallax',
     text: 'Text Parallax',
