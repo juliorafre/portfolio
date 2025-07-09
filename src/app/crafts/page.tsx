@@ -1,8 +1,54 @@
+import Link from 'next/link';
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
 import CustomLink from '@/components/custom-link';
 // import Carousel from '@/modules/carousel/components/carousel';
 import ImageShowcase from '@/components/image-showcase/image-showcase';
 import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
+
+export const craftComponents = [
+  {
+    href: '/text-parallax',
+    text: 'Text Parallax',
+    year: 2025,
+    tags: ['gsap'],
+  },
+  {
+    href: '/text-gradient-on-scroll',
+    text: 'Text Gradient On Scroll',
+    year: 2025,
+    tags: ['gsap'],
+  },
+  {
+    href: '/map-interaction',
+    text: 'Map Interaction',
+    year: 2025,
+    tags: ['motion', 'mapbox'],
+  },
+  {
+    href: '/draggable-curved',
+    text: 'Draggable Curved',
+    year: 2025,
+    tags: ['gsap'],
+  },
+  {
+    href: '/button-categorization',
+    text: 'Button Categorization',
+    year: 2025,
+    tags: ['motion'],
+  },
+  {
+    href: '/streaming-text',
+    text: 'Streaming Text',
+    year: 2025,
+    tags: ['motion'],
+  },
+  {
+    href: '/inertia-grid',
+    text: 'Inertia Grid',
+    year: 2025,
+    tags: ['gsap'],
+  },
+];
 
 const PlaygroundPage = () => {
   return (
@@ -121,52 +167,34 @@ const PlaygroundPage = () => {
         </div> */}
       </section>
 
-      {/* Playgrounds */}
-      <section className="orchestration-element stagger-3">
-        <h2 className="mb-2 text-lg">Playgrounds</h2>
-        <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-4">
-          <CustomLink
-            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
-            href="/text-parallax"
-          >
-            Text Parallax
-          </CustomLink>
-          <CustomLink
-            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
-            href="/text-gradient-on-scroll"
-          >
-            Text Gradient On Scroll
-          </CustomLink>
-          <CustomLink
-            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
-            href="/map-interaction"
-          >
-            Map Interaction
-          </CustomLink>
-          <CustomLink
-            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
-            href="/draggable-curved"
-          >
-            Draggable Curved
-          </CustomLink>
-          <CustomLink
-            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
-            href="/button-categorization"
-          >
-            Button Categorization
-          </CustomLink>
-          <CustomLink
-            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
-            href="/streaming-text"
-          >
-            Streaming Text
-          </CustomLink>
-          <CustomLink
-            className="grid h-full w-full place-items-center rounded-lg px-2 py-2 text-center"
-            href="/inertia-grid"
-          >
-            Inertia Grid
-          </CustomLink>
+      {/* Components */}
+      <section className="orchestration-element stagger-3 mt-20">
+        <h2 className="mb-2 font-semibold text-lg">Components</h2>
+        <div className="flex w-full flex-col">
+          {craftComponents.map((component) => {
+            return (
+              <Link
+                className="-mx-3 flex w-[calc(100%_+_0.75rem)] items-center justify-between gap-x-4 rounded-lg px-3 py-3 transition-colors hover:bg-gray-100 active:bg-gray-200"
+                href={component.href}
+                key={component.href}
+              >
+                <span className="grow whitespace-nowrap">{component.text}</span>
+                <div className="w-full grow border-gray-300 border-b border-dashed" />
+                <div className="flex gap-x-2 text-muted-foreground">
+                  {component.tags.map((tag) => {
+                    return (
+                      <span
+                        className="rounded-full bg-neutral-100 px-2 text-sm"
+                        key={tag}
+                      >
+                        {tag}
+                      </span>
+                    );
+                  })}
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
     </AnimationOrchestrator>
