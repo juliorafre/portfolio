@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
-import CustomLink from '@/components/custom-link';
 // import Carousel from '@/modules/carousel/components/carousel';
-import ImageShowcase from '@/components/image-showcase/image-showcase';
-import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
+// import ImageShowcase from '@/components/image-showcase/image-showcase';
+// import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
+import ProjectItem, {
+  type ProjectItemProps,
+} from '@/modules/crafts/project-item';
 
 const craftComponents = [
   {
@@ -50,6 +52,37 @@ const craftComponents = [
   },
 ];
 
+const projectsList: ProjectItemProps[] = [
+  {
+    href: '/infinite-canvas',
+    mediaSrc:
+      'https://res.cloudinary.com/juliorafrecloud/video/upload/v1752466875/Portfolio/Projects/infinite-canvas/kourhsbylemkpk11gxi0.mp4',
+    mediaType: 'video',
+    title: 'Infinite Canvas',
+    year: 2025,
+    description: 'WIP experiment. An infinite canvas of memories.',
+  },
+  {
+    href: '/image-showcase',
+    mediaSrc: '/images/projects/showcase.png',
+    mediaType: 'image',
+    title: 'Image Showcase',
+    year: 2025,
+    description:
+      'Small experiment replicating the sticker clothes reveal animation by @bartek_marzec.',
+  },
+  {
+    href: '/map-interaction',
+    mediaSrc:
+      'https://res.cloudinary.com/juliorafrecloud/video/upload/v1740954577/hpsdmhwpeau1xz7jyrmx.mp4',
+    mediaType: 'video',
+    title: 'Map Interaction',
+    year: 2025,
+    description:
+      'Inspired by the work of @nitishkmrk and built with motion-react and mapbox.',
+  },
+];
+
 const PlaygroundPage = () => {
   return (
     <AnimationOrchestrator
@@ -62,113 +95,21 @@ const PlaygroundPage = () => {
           Sharing some of my experimentals components and projects.
         </p>
       </div>
-      <section className="orchestration-element stagger-2 space-y-6">
-        <div className="flex w-full flex-col pt-2">
-          <div className="order-1 mb-2">
-            <InfiniteCanvas />
-          </div>
-          <div className="order-2 flex flex-col">
-            <time
-              className="text-muted-foreground text-sm"
-              dateTime="2025-05-24"
-            >
-              May 20, 2025
-            </time>
-            <p className="font-medium text-base">Memories. (Infinite Canvas)</p>
-          </div>
-          <p className="order-3 mb-1 text-base text-muted-foreground">
-            WIP experiment.
-          </p>
-          <div className="order-4 flex flex-row gap-x-2 text-base">
-            <CustomLink href="/infinite-canvas" showIcon>
-              Code
-            </CustomLink>
-            {/*  <CustomLink href="/image-reveal-shaders" showIcon>
-              Image reveal shaders
-            </CustomLink> */}
-          </div>
-        </div>
-
-        <div className="flex w-full flex-col pt-2">
-          <div className="order-1 mb-2">
-            <ImageShowcase />
-          </div>
-          <div className="order-2 flex flex-col">
-            <time
-              className="text-base text-muted-foreground"
-              dateTime="2025-04-25"
-            >
-              April 25, 2025
-            </time>
-            <p className="font-medium text-base">Showcase sticker clothes.</p>
-          </div>
-          <p className="order-3 mb-1 text-base text-muted-foreground">
-            Small experiment replicating the sticker clothes reveal animation by{' '}
-            <CustomLink href="https://x.com/bartek_marzec/status/1835432359815958530">
-              @bartek_marzec
-            </CustomLink>
-            .
-          </p>
-          <div className="order-4 flex flex-row gap-x-2 text-base">
-            <CustomLink href="/image-showcase" showIcon>
-              Code
-            </CustomLink>
-          </div>
-        </div>
-
-        <div className="flex w-full flex-col pt-2">
-          <div className="order-1 mb-2 overflow-hidden rounded-lg border bg-gray-100 p-3 md:p-6">
-            <video
-              autoPlay
-              className="overflow aspect-video w-full rounded-lg object-cover"
-              loop
-              muted
-              playsInline
-              src="https://res.cloudinary.com/juliorafrecloud/video/upload/v1740954577/hpsdmhwpeau1xz7jyrmx.mp4"
-            />
-          </div>
-          <div className="order-2 flex flex-col">
-            <p className="text-base text-muted-foreground">March 2025</p>
-            <p className="font-medium text-base">
-              Map interaction exploration.
-            </p>
-          </div>
-          <p className="order-3 mb-1 text-base text-muted-foreground">
-            Inspired by the work of @nitishkmrk and built with motion-react and
-            mapbox.
-          </p>
-          <div className="order-4 flex flex-row gap-x-2 text-base">
-            <CustomLink href="/map-interaction" showIcon>
-              Demo
-            </CustomLink>
-          </div>
-        </div>
-
-        {/*  <div className="mb-10 flex w-full flex-col pt-2">
-          <div className="order-1 mb-2 aspect-video overflow-hidden rounded-lg border bg-gray-100 p-3 md:p-6">
-            <Carousel />
-          </div>
-          <div className="order-2 flex flex-col">
-            <p className="text-muted-foreground text-base">2022 –– 2024</p>
-            <p className="text-base font-medium">
-              madi™ an AI-powered web platform for protein engineering.
-            </p>
-          </div>
-          <p className="text-muted-foreground order-3 mb-1 text-base">
-            Developed interactive UI components and data visualizations to streamline analysis and
-            optimization. Collaborated with AI researchers and biochemists to enhance workflows,
-            improving efficiency and scalability. Led frontend development, ensuring performance and
-            maintainability.
-          </p>
-          <div className="order-4 flex flex-row gap-x-2 text-base">
-            <CustomLink href="/blog/madi">Read about it</CustomLink>
-            <CustomLink href="https://www.madi.bio/">Website</CustomLink>
-          </div>
-        </div> */}
+      <section className="orchestration-element stagger-2 -mx-2 grid w-[100%_+_0.5rem] grid-cols-1 gap-2 md:grid-cols-2">
+        {projectsList.map((project) => (
+          <ProjectItem
+            description={project.description}
+            href={project.href}
+            key={project.href}
+            mediaSrc={project.mediaSrc}
+            mediaType={project.mediaType}
+            title={project.title}
+            year={project.year}
+          />
+        ))}
       </section>
-
       {/* Components */}
-      <section className="orchestration-element stagger-3 mt-20">
+      <section className="orchestration-element stagger-3">
         <h2 className="mb-2 font-semibold text-lg">Components</h2>
         <div className="flex w-full flex-col">
           {craftComponents.map((component) => {

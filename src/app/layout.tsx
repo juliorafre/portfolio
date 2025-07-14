@@ -127,7 +127,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} ${amaticSC.variable} ${kalam.variable} grid grid-rows-[auto_1fr_auto] pb-15 font-inter antialiased md:pb-0 dark:bg-background-dark`}
+        className={`${instrumentSerif.variable} ${crimsonPro.variable} ${inter.variable} ${jetBrainsMono.variable} ${amaticSC.variable} ${kalam.variable} grid grid-rows-[auto_1fr_auto] bg-[#F7F7F7] pb-15 font-inter antialiased md:pb-0 dark:bg-background-dark`}
       >
         {/*  <LenisInit /> */}
         <Header />

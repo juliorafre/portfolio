@@ -36,7 +36,9 @@ const CustomLink = ({
   style = 'default',
   ...props
 }: CustomLinkProps) => {
-  if (!href) href = '#';
+  if (!href) {
+    href = '#';
+  }
   const isExternal = href.startsWith('http');
   // const isInternal = href.startsWith('/');
   const isAnchor = href.startsWith('#');

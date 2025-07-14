@@ -17,7 +17,7 @@ const BlogPage = async () => {
           and art.
         </p>
       </div>
-      <ul className="space-y-1">
+      <ul className="space-y-2">
         {blogPosts.map(
           ({ title, abstract, publishedOn, slug, type }, index) => {
             return (
@@ -75,30 +75,3 @@ const BlogPage = async () => {
 };
 
 export default BlogPage;
-
-{
-  /*  <svg
-              className="absolute h-full w-full overflow-hidden bg-red-200"
-              width="100%"
-              height="100%"
-              xmlns="http://www.w3.org/2000/svg"
-              version="1.1"
-            >
-              <defs>
-                <filter id="abobas" width="200%" height="200%">
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="8"
-                    result="blur"
-                  ></feGaussianBlur>
-                  <feColorMatrix
-                    in="blur"
-                    mode="matrix"
-                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                    result="goo"
-                  ></feColorMatrix>
-                  <feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite>
-                </filter>
-              </defs>
-            </svg> */
-}
