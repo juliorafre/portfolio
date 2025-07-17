@@ -54,13 +54,13 @@ const ImagePreview = ({ src, alt, width, height }: ImagePreviewProps) => {
                   <Dialog.Overlay>
                     <motion.div
                       animate={{ opacity: 1 }}
-                      className="fixed inset-0 z-40 h-full w-full backdrop-blur-xs"
+                      className="fixed inset-0 z-60 h-full w-full backdrop-blur-xs"
                       exit={{ opacity: 0 }}
                       initial={{ opacity: 0 }}
                     />
                   </Dialog.Overlay>
                   <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-                    <Dialog.Content className="w-[720px]">
+                    <Dialog.Content>
                       <Dialog.Title className="sr-only">
                         Image Preview
                       </Dialog.Title>
@@ -70,12 +70,13 @@ const ImagePreview = ({ src, alt, width, height }: ImagePreviewProps) => {
                       </Dialog.Description>
 
                       <motion.div
-                        className="relative aspect-video w-full overflow-hidden rounded-2xl"
+                        className="relative aspect-wide w-full overflow-hidden rounded-2xl"
                         layoutId="image-preview-dialog"
                       >
+                        <div className="absolute z-90 inset-0 top-0 left-0 bg-red-200"></div>
                         <MotionImage
                           alt={alt}
-                          className="select-none rounded-2xl object-cover"
+                          className="select-none object-cover"
                           height={height}
                           layoutId="image-preview"
                           sizes="100%"

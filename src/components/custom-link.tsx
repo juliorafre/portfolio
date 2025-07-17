@@ -22,7 +22,7 @@ const baseStyles: HTMLAttributes<HTMLElement>['className'] = cn(
 );
 
 const baseStylesProtera: HTMLAttributes<HTMLElement>['className'] = cn(
-  'relative inline gap-0.5 rounded-sm py-[4px] pr-1 pl-1.5 font-normal text-white',
+  'relative inline gap-0.5 rounded-sm pr-1 pl-1.5 py-1 font-normal text-white',
   'mt-0 bg-gradient-to-r from-[#060D4E] to-[#C531FD] transition-colors duration-300 dark:text-neutral-300',
   'bg-gradient-to-r dark:from-[#26C9D7] dark:via-[#C531FD]/80 dark:to-orange-500/80 dark:bg-clip-text dark:p-0 dark:text-transparent',
   'md:hover:not-dark:bg-gradient-to-r md:hover:not-dark:from-[#efa79b] md:hover:not-dark:via-[#90aaeb] md:hover:not-dark:to-[#bde064] md:hover:not-dark:text-black'

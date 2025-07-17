@@ -118,7 +118,7 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
                 <Dialog.Overlay asChild>
                   <motion.div
                     animate={{ opacity: 1 }}
-                    className={`fixed inset-0 ${overlayClassName}`}
+                    className={`fixed z-20 inset-0 ${overlayClassName}`}
                     exit={{ opacity: 0 }}
                     initial={{ opacity: 0 }}
                     transition={{ duration: 0.25, ease: 'easeOut' }}

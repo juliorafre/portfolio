@@ -66,14 +66,6 @@ const About = () => {
           interactive UIs. Currently exploring motion design, GSAP, and Motion
           (prev framer-motion) to push digital experiences further.
         </p>
-
-        <h2 className="mt-8 font-bold">Currently</h2>
-
-        <p>
-          Currently contributing to a <strong>fintech platform</strong> used by
-          financial institutions, building responsive UIs for investment
-          analysis, portfolio reporting, and client suitability tools.
-        </p>
       </div>
 
       <section className="orchestration-element stagger-2 space-y-6">
@@ -85,17 +77,22 @@ const About = () => {
         </div>
 
         <ul className="space-y-4">
+          <p className="bg-white p-4 -mx-4 w-[calc(100%_+_2rem)] rounded-lg">
+            <strong>Currently</strong> contributing building a <strong>Turney asset management platform</strong> used by
+            financial institutions, building responsive UIs for investment
+            analysis, portfolio reporting, and client suitability tools.
+          </p>
           {experiences.map((experience) => {
             const hasLink = Object.hasOwn(experience, 'link');
             return (
               <li
-                className="-mx-4 w-[calc(100%_+_2rem)] space-y-2 rounded-lg bg-neutral-100 px-4 pt-3 pb-4 dark:bg-neutral-800"
+                className="-mx-4 w-[calc(100%_+_2rem)] space-y-2 rounded-lg bg-white px-4 pt-3 pb-4 dark:bg-neutral-800"
                 key={experience.company}
               >
                 <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-3">
                   <p className="font-semibold">
                     {experience.role}{' '}
-                    <span className="text-muted-foreground">at</span>{' '}
+                    <span className="text-muted-foreground font-normal">at</span>{' '}
                     {experience.company}
                   </p>
                   <p className="whitespace-nowrap font-mono text-muted-foreground">
@@ -108,7 +105,6 @@ const About = () => {
                     <CustomLink
                       href={experience.link!}
                       showIcon
-                      style="protera"
                     >
                       Read about it
                     </CustomLink>
