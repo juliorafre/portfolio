@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image';
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
 import CustomLink from '@/components/custom-link';
@@ -7,7 +9,11 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi
 } from '@/components/ui/carousel';
+import { useState, useEffect } from 'react'
+import { cn } from '@/lib/utils';
+
 import { experiences } from '@/modules/about/data';
 
 const images = [
@@ -17,17 +23,44 @@ const images = [
 ];
 
 const About = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0)
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
+
   return (
     <AnimationOrchestrator
       className="main-container"
       sessionKey="aboutPageAnimation"
     >
       <Carousel
-        className="orchestration-element stagger-0 mb-10 overflow-hidden rounded-xl"
+        setApi={setApi}
+        className="relative orchestration-element stagger-0 mb-10 overflow-hidden rounded-xl"
         opts={{
           loop: true,
         }}
       >
+        <div className="absolute top-0 left-0 inset-0 z-90  pointer-events-none flex items-end justify-center">
+          <div className="flex gap-x-2 py-2">
+            {Array.from({length: count}, (_, i) => i + 1).map(pic => {
+              return (
+                <span key={pic} className={cn("size-2 md:size-3 rounded-full", current === pic ? 'bg-white/80': 'bg-white/40')} />
+              )
+            })}
+          </div>
+        </div>
         <CarouselContent>
           {images.map((image, index) => (
             <CarouselItem
@@ -68,7 +101,7 @@ const About = () => {
         </p>
       </div>
 
-      <section className="orchestration-element stagger-2 space-y-6">
+      <section className="orchestration-element stagger-2 space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="font-bold">Work experience</h2>
           <CustomLink href="https://www.linkedin.com/in/juliorafre/" showIcon>
@@ -77,16 +110,15 @@ const About = () => {
         </div>
 
         <ul className="space-y-4">
-          <p className="bg-white p-4 -mx-4 w-[calc(100%_+_2rem)] rounded-lg">
+          <p className="bg-white p-4 md:-mx-4 md:w-[calc(100%_+_2rem)] rounded-lg dark:bg-neutral-800">
             <strong>Currently</strong> contributing building a <strong>Turney asset management platform</strong> used by
-            financial institutions, building responsive UIs for investment
-            analysis, portfolio reporting, and client suitability tools.
+            financial institutions, building responsive UIs for investment analysis, portfolio reporting, and client suitability tools.
           </p>
           {experiences.map((experience) => {
             const hasLink = Object.hasOwn(experience, 'link');
             return (
               <li
-                className="-mx-4 w-[calc(100%_+_2rem)] space-y-2 rounded-lg bg-white px-4 pt-3 pb-4 dark:bg-neutral-800"
+                className="md:-mx-4 md:w-[calc(100%_+_2rem)] space-y-2 rounded-lg bg-white px-4 pt-3 pb-4 dark:bg-neutral-800"
                 key={experience.company}
               >
                 <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-3">

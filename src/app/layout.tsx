@@ -135,12 +135,14 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <Script
-          data-cf-beacon='{"token": "a01a229b64994eb891953c8b0dda26fd"}'
-          id="cloudflare-analytics"
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          strategy="afterInteractive"
-        />
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            data-cf-beacon='{"token": "a01a229b64994eb891953c8b0dda26fd"}'
+            id="cloudflare-analytics"
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            strategy="afterInteractive"
+          />
+        )}
         <SpeedInsights />
       </body>
     </html>
