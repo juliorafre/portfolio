@@ -5,20 +5,60 @@ import ImageWrapper from '@/components/image-wrapper';
 const ImagePreview = () => {
   return (
     <div className="main-container space-y-8">
+      <div className="space-y-2">
+        <h1 className="font-semibold text-lg">Image Preview</h1>
+        <p className="text-muted-foreground">Interaction built using shared layout from motion and Radix dialog
+          primitive. Inspired in the component of <a href="https://x.com/jakubkrehel" className="text-black underline" target="_blank" rel="noreferrer noopener">@jakubkrehel</a>
+        </p>
+        <p className="text-muted-foreground text-xs">For some reason the shared layout doesn&apos;t work well on mobile devices.</p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center md:gap-8 rounded-lg border bg-white dark:bg-neutral-800 p-4 md:p-10">
+        <div className="bg-[#F5F0E4] rounded-lg shadow">
+          <ImageWrapper
+            alt="robot"
+            className="rounded-lg"
+            containerClassName="aspect-square w-full max-w-md rounded-lg bg-neutral-50"
+            height={800}
+            src="/images/components/image-preview/robot-pain.webp"
+            width={800}
+          />
+          <div
+            className="px-4 py-2 font-bold font-instrument-serif text-muted-foreground flex items-center justify-between">
+            <h3>Claude - Employee of the month</h3>
+            <span>#975</span>
+          </div>
+        </div>
+        <div className="bg-[#F5F0E4] rounded-lg shadow">
+          <ImageWrapper
+            alt="me"
+            className="rounded-lg"
+            containerClassName="aspect-square w-full max-w-md rounded-lg bg-white "
+            height={800}
+            src="/images/components/image-preview/me.webp"
+            width={800}
+          />
+          <div
+            className="px-4 py-2 font-bold flex items-center text-muted-foreground font-instrument-serif justify-between">
+            <h3>Me</h3>
+            <span>#865</span>
+          </div>
+        </div>
+      </div>
       {/* Example 1: Basic usage */}
-      <div className="flex items-center justify-center rounded-lg border bg-white p-8">
+      {/*  <div className="flex items-center justify-center rounded-lg border bg-white p-8">
         <ImageWrapper
           alt="Basic Image Preview"
           className="rounded-lg"
           containerClassName="aspect-[1.5/1] w-full max-w-md rounded-lg"
-          height={1000}
+          modalClassName="aspect-wide"
+          height={1800}
           src="/images/example2.webp"
-          width={1000}
+          width={1200}
         />
-      </div>
+      </div>*/}
 
       {/* Example 2: Gallery grid */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {[
           '/images/example2.webp',
           '/images/example.png',
@@ -35,10 +75,10 @@ const ImagePreview = () => {
             width={400}
           />
         ))}
-      </div>
+      </div>*/}
 
       {/* Example 3: Custom styling */}
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <ImageWrapper
           alt="Custom Styled Image"
           buttonClassName="bg-blue-500/80 hover:bg-blue-600/80"
@@ -51,10 +91,10 @@ const ImagePreview = () => {
           width={800}
           wrapperClassName="shadow-2xl"
         />
-      </div>
+      </div>*/}
 
       {/* Example 4: Disabled preview (normal image) */}
-      <div className="flex justify-center">
+      {/*<div className="flex justify-center">
         <ImageWrapper
           alt="Disabled Preview Image"
           className="rounded-lg"
@@ -64,10 +104,10 @@ const ImagePreview = () => {
           width={300}
           wrapperClassName="rounded-lg border p-4"
         />
-      </div>
+      </div>*/}
 
       {/* Example 5: Blog/content images */}
-      <div className="prose max-w-4xl">
+      {/* <div className="prose max-w-4xl">
         <h2>Blog Post Example</h2>
         <p>
           Here&apos;s an example of how you can use the ImageWrapper component
@@ -86,7 +126,7 @@ const ImagePreview = () => {
           The image above demonstrates how seamlessly the preview functionality
           integrates with your content.
         </p>
-      </div>
+      </div>*/}
     </div>
   );
 };
