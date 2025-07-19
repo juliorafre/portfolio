@@ -6,8 +6,6 @@ import { unstable_cache } from 'next/cache';
 import path from 'path';
 import type { PostMetadata } from '@/types';
 
-// TODO: Evaluate if this is needed, or if we can use the cache from the server component
-
 export const getBlogPostList = unstable_cache(
   async () => {
     const fileNames = await readDirectory('/content');

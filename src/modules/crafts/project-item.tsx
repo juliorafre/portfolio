@@ -25,7 +25,7 @@ const ProjectItem = ({
 
   return (
     <Link
-      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-3xl p-3"
+      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-3xl p-3 bg-white"
       href={href}
     >
       <div
@@ -54,20 +54,7 @@ const ProjectItem = ({
             src={mediaSrc}
           />
         )}
-        {/*  <Image
-          alt={customAlt}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          src="/images/example2.webp"
-        />
-        <video
-          autoPlay
-          className="overflow w-full rounded-lg object-cover"
-          loop
-          muted
-          playsInline
-          src="https://res.cloudinary.com/juliorafrecloud/video/upload/v1740954577/hpsdmhwpeau1xz7jyrmx.mp4"
-        /> */}
+
       </div>
       <div className="z-20 order-2 px-2 pt-2">
         <div className="order-2 grid grid-cols-[1fr_auto] items-center gap-x-3">

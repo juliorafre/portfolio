@@ -95,7 +95,7 @@ const PlaygroundPage = () => {
           Sharing some of my experimentals components and projects.
         </p>
       </div>
-      <section className="orchestration-element stagger-2 -mx-2 grid w-[100%_+_0.5rem] grid-cols-1 gap-2 md:grid-cols-2">
+      <section className="orchestration-element stagger-2 -mx-2 grid w-[100%_+_0.5rem] grid-cols-1 gap-4 md:gap-2 md:grid-cols-2">
         {projectsList.map((project) => (
           <ProjectItem
             description={project.description}
@@ -115,7 +115,7 @@ const PlaygroundPage = () => {
           {craftComponents.map((component) => {
             return (
               <Link
-                className="-mx-3 flex w-[calc(100%_+_0.75rem)] items-center justify-between gap-x-4 rounded-lg px-3 py-3 transition-colors hover:bg-gray-100 active:bg-gray-200"
+                className="-mx-3 flex w-[calc(100%_+_0.75rem)] items-center justify-between gap-x-4 rounded-lg px-3 py-3 transition-colors hover:bg-white active:bg-gray-100"
                 href={component.href}
                 key={component.href}
               >
