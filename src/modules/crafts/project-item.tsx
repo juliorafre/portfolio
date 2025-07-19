@@ -25,7 +25,7 @@ const ProjectItem = ({
 
   return (
     <Link
-      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-3xl p-3 bg-white"
+      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-3xl p-3 bg-white md:bg-transparent"
       href={href}
     >
       <div
