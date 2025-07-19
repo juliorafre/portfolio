@@ -14,7 +14,7 @@ const badgeTextMap: Record<ProjectBadgeProps['type'], string> = {
 const badgeStyles: Record<ProjectBadgeProps['type'], string> = {
   draft: 'bg-yellow-100 text-yellow-800',
   'new-release': 'bg-green-100 text-green-800',
-  demo: 'bg-gradient-rainbow-light',
+  demo: 'bg-gradient-rainbow-light text-neutral-800',
 };
 
 const ProjectBadge = ({ type }: ProjectBadgeProps) => {

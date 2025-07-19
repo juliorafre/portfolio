@@ -101,7 +101,13 @@ const About = () => {
         </p>
       </div>
 
-      <section className="orchestration-element stagger-2 space-y-4">
+      {/* <section className="orchestration-element stagger-2 space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="font-bold">Tech Stack</h2>
+        </div>
+      </section>*/}
+
+      <section className="orchestration-element stagger-3 space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="font-bold">Work experience</h2>
           <CustomLink href="https://www.linkedin.com/in/juliorafre/" showIcon>

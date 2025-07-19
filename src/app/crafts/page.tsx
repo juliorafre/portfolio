@@ -115,7 +115,7 @@ const PlaygroundPage = () => {
           {craftComponents.map((component) => {
             return (
               <Link
-                className="-mx-3 flex w-[calc(100%_+_0.75rem)] items-center justify-between gap-x-4 rounded-lg px-3 py-3 transition-colors hover:bg-white active:bg-gray-100"
+                className="-mx-3 flex w-[calc(100%_+_0.75rem)] items-center justify-between gap-x-4 rounded-lg px-3 py-3 transition-colors hover:bg-white hover:dark:bg-neutral-800 active:bg-gray-100 active:dark:bg-neutral-900"
                 href={component.href}
                 key={component.href}
               >
@@ -125,7 +125,7 @@ const PlaygroundPage = () => {
                   {component.tags.map((tag) => {
                     return (
                       <span
-                        className="rounded-full bg-neutral-100 px-2 text-sm"
+                        className="rounded-full bg-neutral-100 dark:bg-transparent dark:text-white px-2 text-sm"
                         key={tag}
                       >
                         {tag}
