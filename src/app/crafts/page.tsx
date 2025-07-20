@@ -9,6 +9,12 @@ import ProjectItem, {
 
 const craftComponents = [
   {
+    href: '/image-preview',
+    text: 'Image Preview',
+    year: 2025,
+    tags: ['motion'],
+  },
+  {
     href: '/text-parallax',
     text: 'Text Parallax',
     year: 2025,
