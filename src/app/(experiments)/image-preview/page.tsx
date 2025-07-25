@@ -1,8 +1,6 @@
-'use client';
-
 import ImageWrapper from '@/components/image-wrapper';
-import ImageRobot from '/public/images/components/image-preview/robot-pain.webp'
-import ImageMe from '/public/images/components/image-preview/me.webp'
+import ImageRobot from '/public/images/components/image-preview/robot-pain.webp';
+import ImageMe from '/public/images/components/image-preview/me.webp';
 
 const ImagePreview = () => {
   return (
@@ -10,13 +8,17 @@ const ImagePreview = () => {
       <div className="space-y-2">
         <h1 className="font-semibold text-lg">Image Preview</h1>
         <p className="text-muted-foreground">Interaction built using shared layout from motion and Radix dialog
-          primitive. Inspired in the component of <a href="https://x.com/jakubkrehel" className="text-black underline" target="_blank" rel="noreferrer noopener">@jakubkrehel</a>
+          primitive. Inspired in the component of <a href="https://x.com/jakubkrehel" className="text-black underline"
+                                                     target="_blank" rel="noreferrer noopener">@jakubkrehel</a>
         </p>
-        <p className="text-muted-foreground text-xs">For some reason the shared layout doesn&apos;t work well on mobile devices.</p>
+        <p className="text-muted-foreground text-xs">For some reason the shared layout doesn&apos;t work well on mobile
+          devices.</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center md:gap-8 rounded-lg border bg-white dark:bg-neutral-800 p-4 md:p-10">
+      <div
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center md:gap-8 rounded-lg border bg-white dark:bg-neutral-800 p-4 md:p-10">
         <div className="bg-[#F5F0E4] rounded-lg shadow">
           <ImageWrapper
+            key="robot"
             alt="robot"
             className="rounded-lg"
             containerClassName="aspect-square w-full max-w-md rounded-lg bg-neutral-50"
@@ -30,6 +32,7 @@ const ImagePreview = () => {
         </div>
         <div className="bg-[#F5F0E4] rounded-lg shadow">
           <ImageWrapper
+            key="me"
             alt="me"
             className="rounded-lg"
             containerClassName="aspect-square w-full max-w-md rounded-lg bg-white "
@@ -56,7 +59,7 @@ const ImagePreview = () => {
       </div>*/}
 
       {/* Example 2: Gallery grid */}
-      {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+       {/*<div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {[
           '/images/example2.webp',
           '/images/example.png',
@@ -69,7 +72,6 @@ const ImagePreview = () => {
             height={300}
             key={src}
             src={src}
-            transition={{ duration: 0.4, bounce: 0.1 }}
             width={400}
           />
         ))}
@@ -105,7 +107,7 @@ const ImagePreview = () => {
       </div>*/}
 
       {/* Example 5: Blog/content images */}
-      {/* <div className="prose max-w-4xl">
+       {/*<div className="prose max-w-4xl">
         <h2>Blog Post Example</h2>
         <p>
           Here&apos;s an example of how you can use the ImageWrapper component
@@ -117,7 +119,6 @@ const ImagePreview = () => {
           containerClassName="aspect-[2/1] w-full rounded-lg"
           height={400}
           src="/images/example2.webp"
-          transition={{ duration: 0.5, bounce: 0 }}
           width={800}
         />
         <p>
