@@ -1,6 +1,8 @@
 'use client';
 
 import ImageWrapper from '@/components/image-wrapper';
+import ImageRobot from '/public/images/components/image-preview/robot-pain.webp'
+import ImageMe from '/public/images/components/image-preview/me.webp'
 
 const ImagePreview = () => {
   return (
@@ -18,9 +20,7 @@ const ImagePreview = () => {
             alt="robot"
             className="rounded-lg"
             containerClassName="aspect-square w-full max-w-md rounded-lg bg-neutral-50"
-            height={800}
-            src="/images/components/image-preview/robot-pain.webp"
-            width={800}
+            src={ImageRobot}
           />
           <div
             className="px-4 py-2 font-bold font-instrument-serif text-muted-foreground flex items-center justify-between">
@@ -33,9 +33,7 @@ const ImagePreview = () => {
             alt="me"
             className="rounded-lg"
             containerClassName="aspect-square w-full max-w-md rounded-lg bg-white "
-            height={800}
-            src="/images/components/image-preview/me.webp"
-            width={800}
+            src={ImageMe}
           />
           <div
             className="px-4 py-2 font-bold flex items-center text-muted-foreground font-instrument-serif justify-between">

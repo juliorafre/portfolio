@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   images: {
+    formats: ['image/webp'],
     remotePatterns: [
       {
         protocol: 'https',

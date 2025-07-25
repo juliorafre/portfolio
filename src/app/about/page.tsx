@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Image from 'next/image';
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
@@ -9,36 +9,40 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi
+  type CarouselApi,
 } from '@/components/ui/carousel';
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+
+import FirstImage from '/public/images/about/1.png';
+import SecondImage from '/public/images/about/2.png';
+import ThirdImage from '/public/images/about/3.png';
 
 import { experiences } from '@/modules/about/data';
 
 const images = [
-  '/images/about/1.png',
-  '/images/about/2.png',
-  '/images/about/3.png',
+  FirstImage,
+  SecondImage,
+  ThirdImage,
 ];
 
 const About = () => {
   const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0)
-  const [count, setCount] = useState(0)
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!api) {
-      return
+      return;
     }
 
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap() + 1)
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1)
-    })
-  }, [api])
+    api.on('select', () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
 
   return (
     <AnimationOrchestrator
@@ -54,10 +58,11 @@ const About = () => {
       >
         <div className="absolute top-0 left-0 inset-0 z-90  pointer-events-none flex items-end justify-center">
           <div className="flex gap-x-2 py-2">
-            {Array.from({length: count}, (_, i) => i + 1).map(pic => {
+            {Array.from({ length: count }, (_, i) => i + 1).map(pic => {
               return (
-                <span key={pic} className={cn("size-2 md:size-3 rounded-full", current === pic ? 'bg-white/80': 'bg-white/40')} />
-              )
+                <span key={pic}
+                      className={cn('size-2 md:size-3 rounded-full', current === pic ? 'bg-white/80' : 'bg-white/40')} />
+              );
             })}
           </div>
         </div>
@@ -65,15 +70,13 @@ const About = () => {
           {images.map((image, index) => (
             <CarouselItem
               className="h-[200px] basis-full pr-0 pl-0 md:h-[250px]"
-              key={index}
+              key={image.src}
             >
               <div className="relative h-full w-full">
                 <Image
                   alt={`Experience picture ${index + 1}`}
                   className="absolute inset-0 size-full object-cover"
-                  height={700}
                   src={image}
-                  width={800}
                 />
               </div>
             </CarouselItem>
@@ -118,7 +121,8 @@ const About = () => {
         <ul className="space-y-4">
           <p className="bg-white p-4 md:-mx-4 md:w-[calc(100%_+_2rem)] rounded-lg dark:bg-neutral-800">
             <strong>Currently</strong> contributing building a <strong>Turney asset management platform</strong> used by
-            financial institutions, building responsive UIs for investment analysis, portfolio reporting, and client suitability tools.
+            financial institutions, building responsive UIs for investment analysis, portfolio reporting, and client
+            suitability tools.
           </p>
           {experiences.map((experience) => {
             const hasLink = Object.hasOwn(experience, 'link');
