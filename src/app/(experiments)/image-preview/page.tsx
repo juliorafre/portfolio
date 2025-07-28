@@ -1,6 +1,9 @@
+'use client'
+
 import ImageWrapper from '@/components/image-wrapper';
 import ImageRobot from '/public/images/components/image-preview/robot-pain.webp';
 import ImageMe from '/public/images/components/image-preview/me.webp';
+import {motion} from "motion/react";
 
 const ImagePreview = () => {
   return (
@@ -14,14 +17,21 @@ const ImagePreview = () => {
         <p className="text-muted-foreground text-xs">For some reason the shared layout doesn&apos;t work well on mobile
           devices.</p>
       </div>
+      <div>
+        <motion.img
+          src={"/images/components/image-preview/robot-pain.webp"}
+          alt="robot"
+          layoutId="robot-pain"
+          className="sr-only"
+        />
+      </div>
       <div
         className="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center md:gap-8 rounded-lg border bg-white dark:bg-neutral-800 p-4 md:p-10">
-        <div className="bg-[#F5F0E4] rounded-lg shadow">
+        <div className="bg-[#F5F0E4] rounded-lg overflow-hidden">
           <ImageWrapper
             key="robot"
             alt="robot"
-            className="rounded-lg"
-            containerClassName="aspect-square w-full max-w-md rounded-lg bg-neutral-50"
+            containerClassName="aspect-square w-full max-w-md bg-neutral-50"
             src={ImageRobot}
           />
           <div
@@ -34,8 +44,7 @@ const ImagePreview = () => {
           <ImageWrapper
             key="me"
             alt="me"
-            className="rounded-lg"
-            containerClassName="aspect-square w-full max-w-md rounded-lg bg-white "
+            containerClassName="aspect-square w-full max-w-md bg-neutral-50"
             src={ImageMe}
           />
           <div
@@ -46,7 +55,7 @@ const ImagePreview = () => {
         </div>
       </div>
       {/* Example 1: Basic usage */}
-      {/*  <div className="flex items-center justify-center rounded-lg border bg-white p-8">
+      {/*<div className="flex items-center justify-center rounded-lg border bg-white p-8">
         <ImageWrapper
           alt="Basic Image Preview"
           className="rounded-lg"
@@ -59,28 +68,28 @@ const ImagePreview = () => {
       </div>*/}
 
       {/* Example 2: Gallery grid */}
-       {/*<div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {[
           '/images/example2.webp',
           '/images/example.png',
           '/images/home/image.webp',
         ].map((src, index) => (
           <ImageWrapper
-            alt={`Gallery image ${index + 1}`}
+            alt={`gallery-image-${index + 1}`}
             className="rounded-lg"
             containerClassName="aspect-square rounded-lg"
-            height={300}
+            height={600}
             key={src}
             src={src}
-            width={400}
+            width={800}
           />
         ))}
       </div>*/}
 
       {/* Example 3: Custom styling */}
-      {/* <div className="flex justify-center">
+       {/*<div className="flex justify-center">
         <ImageWrapper
-          alt="Custom Styled Image"
+          alt="Example-1"
           buttonClassName="bg-blue-500/80 hover:bg-blue-600/80"
           className="rounded-2xl"
           containerClassName="aspect-video w-full max-w-2xl rounded-2xl border-4 border-blue-500"
@@ -94,27 +103,27 @@ const ImagePreview = () => {
       </div>*/}
 
       {/* Example 4: Disabled preview (normal image) */}
-      {/*<div className="flex justify-center">
+     {/* <div className="flex justify-center">
         <ImageWrapper
-          alt="Disabled Preview Image"
+          alt="Example-2"
           className="rounded-lg"
           disablePreview
-          height={200}
+          height={800}
           src="/images/example2.webp"
-          width={300}
+          width={1200}
           wrapperClassName="rounded-lg border p-4"
         />
       </div>*/}
 
       {/* Example 5: Blog/content images */}
-       {/*<div className="prose max-w-4xl">
+      {/* <div className="prose max-w-4xl">
         <h2>Blog Post Example</h2>
         <p>
           Here&apos;s an example of how you can use the ImageWrapper component
           in blog posts or articles:
         </p>
         <ImageWrapper
-          alt="Blog post featured image"
+          alt="example-3"
           className="rounded-lg"
           containerClassName="aspect-[2/1] w-full rounded-lg"
           height={400}
@@ -126,6 +135,7 @@ const ImagePreview = () => {
           integrates with your content.
         </p>
       </div>*/}
+
     </div>
   );
 };
