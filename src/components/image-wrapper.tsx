@@ -46,8 +46,8 @@ const ImageWrapper = ({
                         ...imageProps
                       }: ImageWrapperProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  //const imageId = 'image-' + imageProps.alt;
-  const containerId = 'container-' + imageProps.alt;
+  const imageId = 'image-' + imageProps.alt;
+  //const containerId = 'container-' + imageProps.alt;
 
   const handleOpenChange = (open: boolean) => {
     setIsOpen(open);
@@ -79,19 +79,19 @@ const ImageWrapper = ({
     <>
       <div className={wrapperClassName}>
         <motion.div
-          layoutId={containerId}
           className={cn('group relative overflow-hidden', containerClassName)}
         >
           <MotionImage
-           /* layoutId={imageId}*/
+            layoutId={imageId}
             className={cn('h-full w-full object-cover', imageProps.className)}
             src={imageProps.src}
             alt={imageProps.alt}
             width={imageProps.width}
             height={imageProps.height}
             transition={{
-              ease: 'easeOut',
-              duration: 0.05,
+              type: 'spring',
+              bounce: 0.3,
+              duration: 0.3,
             }}
           />
           <motion.button
@@ -111,8 +111,9 @@ const ImageWrapper = ({
           {/* Overlay */}
           <AnimatePresence>
             {isOpen ? (
-              <Dialog.Overlay asChild>
+              <Dialog.Overlay key="overlay-wrapper" asChild>
                 <motion.div
+                  key="overlay"
                   className={cn('fixed z-10 inset-0 bg-black/60 backdrop-blur-xs', overlayClassName)}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -125,36 +126,38 @@ const ImageWrapper = ({
           {isOpen ? (
             <Dialog.Content asChild>
               <motion.div
-                layout
+                key="content-wrapper"
                 className="fixed inset-0 z-50 flex size-full items-center justify-center p-4"
               >
-                <Dialog.Title className="sr-only">
+                <Dialog.Title key="title-content-sr-only" className="sr-only">
                   Image Preview
                 </Dialog.Title>
-                <Dialog.Description className="sr-only">
+                <Dialog.Description key="description-content-sr-only" className="sr-only">
                   Image Preview
                 </Dialog.Description>
                 <motion.div
-                  layoutId={containerId}
+                  key="content"
                   className={cn('group relative max-w-[90vw] max-h-[85vh] size-fit overflow-hidden rounded-lg', modalClassName)}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
                   <MotionImage
-                   /* layoutId={imageId}*/
+                    layoutId={imageId}
                     className={cn('h-full w-full object-contain', imageProps.className)}
                     src={imageProps.src}
                     alt={imageProps.alt}
                     width={imageProps.width}
                     height={imageProps.height}
                     transition={{
-                      ease: 'easeOut',
-                      duration: 0.05,
+                      type: 'spring',
+                      bounce: 0.3,
+                      duration: 0.3,
                     }}
                   />
-                  <Dialog.Close asChild>
+                  <Dialog.Close key="dialog-close-wrapper" asChild>
                     <motion.button
+                      key="dialog-close-button"
                       className="absolute top-4 right-4 cursor-pointer rounded-full bg-white/50 p-2 shadow-md backdrop-blur-2xl"
                       onClick={() => setIsOpen(false)}
                       type="button"

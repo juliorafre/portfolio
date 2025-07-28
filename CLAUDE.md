@@ -12,6 +12,10 @@ This is a Next.js portfolio project. Use these commands for development:
 - `pnpm start` - Start production server
 - `pnpm lint` - Run ESLint for code quality
 
+## Code Best Practices
+
+- Always use descriptive variable names
+
 ## Project Architecture
 
 ### Core Technologies
