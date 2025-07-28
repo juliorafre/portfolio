@@ -664,6 +664,10 @@
       --stagger: 17;
     }
 
+    .stagger-18 {
+      --stagger: 17;
+    }
+
     @keyframes paco-enter {
       to {
         opacity: 1;
