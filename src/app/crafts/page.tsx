@@ -60,6 +60,16 @@ const craftComponents = [
 
 const projectsList: ProjectItemProps[] = [
   {
+    href: '',
+    mediaSrc:
+      'https://res.cloudinary.com/juliorafrecloud/video/upload/v1754338503/Portfolio/Projects/kyoki/yyrs2vowc048omhbeawh.mp4',
+    mediaType: 'video',
+    title: 'Kyoki Lab',
+    year: 2025,
+    description: 'More comming soon!',
+    projectType: 'none'
+  },
+  {
     href: '/infinite-canvas',
     mediaSrc:
       'https://res.cloudinary.com/juliorafrecloud/video/upload/v1752466875/Portfolio/Projects/infinite-canvas/kourhsbylemkpk11gxi0.mp4',
@@ -96,7 +106,7 @@ const PlaygroundPage = () => {
       sessionKey="craftsPageAnimation"
     >
       <div className="orchestration-element stagger-0 w-full space-y-1 md:max-w-1/2">
-        <h1 className="font-semibold text-xl">Crafts</h1>
+        <h1 className="font-semibold text-xl">Projects</h1>
         <p className="text-muted-foreground">
           Sharing some of my experimentals components and projects.
         </p>
@@ -111,6 +121,7 @@ const PlaygroundPage = () => {
             mediaType={project.mediaType}
             title={project.title}
             year={project.year}
+            projectType={project.projectType}
           />
         ))}
       </section>

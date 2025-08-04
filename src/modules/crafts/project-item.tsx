@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ProjectBadge from './project-badge';
+import {cn} from '@/lib'
 
 export interface ProjectItemProps {
   href: string;
@@ -10,6 +11,7 @@ export interface ProjectItemProps {
   mediaType: 'image' | 'video';
   mediaSrc: string;
   mediaAlt?: string;
+  projectType?: 'demo' | 'none';
 }
 
 const ProjectItem = ({
@@ -20,12 +22,16 @@ const ProjectItem = ({
   mediaType,
   mediaSrc,
   mediaAlt,
+  projectType = 'demo',
 }: ProjectItemProps) => {
   const customAlt = mediaAlt || `Project ${title}`;
+  const renderBadge = projectType !== 'none' ? (<div className="absolute inset-0 top-0 left-0 z-30 flex h-1/4 w-full items-start justify-end bg-transparent px-3 py-3">
+    <ProjectBadge type="demo" />
+  </div>) : null;
 
   return (
     <Link
-      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-3xl p-3 bg-white dark:bg-neutral-800 md:bg-transparent"
+      className={cn('group relative flex w-full flex-col overflow-hidden rounded-3xl p-3 bg-white dark:bg-neutral-800 md:bg-transparent', href.length == 0 ? 'cursor-auto' : 'cursor-pointer')}
       href={href}
     >
       <div
@@ -33,9 +39,7 @@ const ProjectItem = ({
         className="absolute inset-0 top-0 left-0 z-10 scale-95 transform rounded-3xl bg-white dark:bg-neutral-800 opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100"
       />
       <div className="relative z-20 order-1 aspect-wide overflow-hidden rounded-2xl border bg-neutral-100">
-        <div className="absolute inset-0 top-0 left-0 z-30 flex h-1/4 w-full items-start justify-end bg-transparent px-3 py-3">
-          <ProjectBadge type="demo" />
-        </div>
+        {renderBadge}
         {mediaType === 'image' ? (
           <Image
             alt={customAlt}
