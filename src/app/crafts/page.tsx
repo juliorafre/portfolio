@@ -106,12 +106,12 @@ const PlaygroundPage = () => {
       sessionKey="craftsPageAnimation"
     >
       <div className="orchestration-element stagger-0 w-full space-y-1 md:max-w-1/2">
-        <h1 className="font-semibold text-xl">Craft</h1>
+        <h1 className="font-semibold text-xl">Crafts</h1>
         <p className="text-muted-foreground">
           Sharing some of my experimentals components and projects.
         </p>
       </div>
-      <section className="orchestration-element stagger-2 -mx-2 grid w-[100%_+_0.5rem] grid-cols-1 gap-4 md:gap-2 md:grid-cols-2">
+      <section className="orchestration-element stagger-1 -mx-2 grid w-[100%_+_0.5rem] grid-cols-1 gap-4 md:gap-2 md:grid-cols-2">
         {projectsList.map((project) => (
           <ProjectItem
             description={project.description}
@@ -126,7 +126,7 @@ const PlaygroundPage = () => {
         ))}
       </section>
       {/* Components */}
-      <section className="orchestration-element stagger-3">
+      <section className="orchestration-element stagger-2">
         <h2 className="mb-2 font-semibold text-lg">Components</h2>
         <div className="flex w-full flex-col">
           {craftComponents.map((component) => {
