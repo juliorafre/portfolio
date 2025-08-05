@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { cn } from '@/lib';
 import ProjectBadge from './project-badge';
-import {cn} from '@/lib'
 
 export interface ProjectItemProps {
   href: string;
@@ -25,18 +25,24 @@ const ProjectItem = ({
   projectType = 'demo',
 }: ProjectItemProps) => {
   const customAlt = mediaAlt || `Project ${title}`;
-  const renderBadge = projectType !== 'none' ? (<div className="absolute inset-0 top-0 left-0 z-30 flex h-1/4 w-full items-start justify-end bg-transparent px-3 py-3">
-    <ProjectBadge type="demo" />
-  </div>) : null;
+  const renderBadge =
+    projectType !== 'none' ? (
+      <div className="absolute inset-0 top-0 left-0 z-30 flex h-1/4 w-full items-start justify-end bg-transparent px-3 py-3">
+        <ProjectBadge type="demo" />
+      </div>
+    ) : null;
 
   return (
     <Link
-      className={cn('group relative flex w-full flex-col overflow-hidden rounded-3xl p-3 bg-white dark:bg-neutral-800 md:bg-transparent', href.length == 0 ? 'cursor-auto' : 'cursor-pointer')}
+      className={cn(
+        'group relative flex w-full flex-col overflow-hidden rounded-3xl bg-white p-3 md:bg-transparent dark:bg-neutral-800',
+        href.length === 0 ? 'cursor-auto' : 'cursor-pointer'
+      )}
       href={href}
     >
       <div
         aria-hidden
-        className="absolute inset-0 top-0 left-0 z-10 scale-95 transform rounded-3xl bg-white dark:bg-neutral-800 opacity-0 transition-all duration-150 ease-out group-hover:scale-100 group-hover:opacity-100"
+        className="absolute inset-0 top-0 left-0 z-10 scale-95 transform rounded-3xl bg-white opacity-0 transition-all duration-150 ease-out group-hover:scale-100 group-hover:opacity-100 dark:bg-neutral-800"
       />
       <div className="relative z-20 order-1 aspect-wide overflow-hidden rounded-2xl border bg-neutral-100">
         {renderBadge}
@@ -58,7 +64,6 @@ const ProjectItem = ({
             src={mediaSrc}
           />
         )}
-
       </div>
       <div className="z-20 order-2 px-2 pt-2">
         <div className="order-2 grid grid-cols-[1fr_auto] items-center gap-x-3">

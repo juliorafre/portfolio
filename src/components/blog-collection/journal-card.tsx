@@ -12,7 +12,7 @@ const JournalCard = ({
   return (
     <div
       className={
-        'md:-ml-4 inset-shadow-neutral-200 inset-shadow-sm my-2 w-full rounded-lg bg-neutral-200 px-4 py-3 md:w-[calc(100%_+_2rem)] dark:inset-shadow-none dark:border dark:border-neutral-800 dark:bg-neutral-800'
+        'md:-ml-4 inset-shadow-neutral-200 inset-shadow-sm z-50 my-2 w-full rounded-lg bg-neutral-200 px-4 py-3 md:w-[calc(100%_+_2rem)] dark:inset-shadow-none dark:border dark:border-neutral-800 dark:bg-neutral-800'
       }
     >
       <div className="mb-1 grid grid-cols-[1fr_auto] items-baseline gap-2">
