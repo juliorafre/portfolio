@@ -106,7 +106,7 @@ const PlaygroundPage = () => {
       sessionKey="craftsPageAnimation"
     >
       <div className="orchestration-element stagger-0 w-full space-y-1 md:max-w-1/2">
-        <h1 className="font-semibold text-xl">Projects</h1>
+        <h1 className="font-semibold text-xl">Craft</h1>
         <p className="text-muted-foreground">
           Sharing some of my experimentals components and projects.
         </p>
