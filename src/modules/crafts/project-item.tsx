@@ -36,7 +36,7 @@ const ProjectItem = ({
     >
       <div
         aria-hidden
-        className="absolute inset-0 top-0 left-0 z-10 scale-95 transform rounded-3xl bg-white dark:bg-neutral-800 opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100"
+        className="absolute inset-0 top-0 left-0 z-10 scale-95 transform rounded-3xl bg-white dark:bg-neutral-800 opacity-0 transition-all duration-150 ease-out group-hover:scale-100 group-hover:opacity-100"
       />
       <div className="relative z-20 order-1 aspect-wide overflow-hidden rounded-2xl border bg-neutral-100">
         {renderBadge}

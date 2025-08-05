@@ -24,7 +24,7 @@ export const NavLink = ({
   return (
     <Link
       className={cn(
-        'group flex cursor-pointer items-center gap-x-2 rounded-sm px-2 py-1 transition-all duration-300',
+        'group flex cursor-pointer items-center gap-x-2 rounded-sm px-2 py-1 transition-all duration-150 active:scale-97',
         isMobile && 'px-2 py-3 first:pl-6 last:pr-6',
         isActive && !isMobile
           ? 'text-black dark:text-white'
