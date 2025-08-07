@@ -45,7 +45,7 @@ const BlogSummaryCard = ({
     >
       {title && (
         <div>
-          <h2 className="z-20 text-lg">{title}</h2>
+          <h2 className="z-20 text-lg ">{title}</h2>
         </div>
       )}
       {publishedOn && (
