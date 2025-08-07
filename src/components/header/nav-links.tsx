@@ -14,7 +14,7 @@ export const NavLinks = ({ className, isMobile }: NavLinksProps) => {
   return (
     <nav
       className={cn(
-        'relative flex items-center justify-center gap-x-2',
+        'relative flex items-center justify-center gap-x-0',
         className
       )}
     >
