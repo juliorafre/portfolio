@@ -12,12 +12,22 @@ const Hero = ({
       className={cn('flex w-full flex-col items-start gap-2', className)}
       style={style}
     >
-      <h1 className="block font-medium text-base text-primary leading-tight">
+      <h1 className="block font-semibold text-base text-primary leading-tight">
         Julio Ramirez
       </h1>
       <h2 className="block font-medium text-base text-muted-foreground leading-tight">
         Software Engineer focused on Frontend Web, based in Santiago, Chile
       </h2>
+      <p className="text-base text-muted-foreground">
+        {/* I craft impactful, user-centric products, focusing on seamless interactions and interface
+          design. Passionate about collaboration, I thrive in multidisciplinary teams, always
+          learning and innovating. Specializing in React, TypeScript, and modern web architectures,
+          I build high-performance, scalable applications with real-time data and interactive UIs.
+          Currently exploring motion design, GSAP, and Motion (prev framer-motion) to push digital experiences further. */}
+        Passionate about crafting performant, interactive experiences — blending
+        design precision, scalable architecture, and dynamic motion into
+        seamless digital products.
+      </p>
     </div>
   );
 };

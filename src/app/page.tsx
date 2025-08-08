@@ -12,16 +12,16 @@ export default async function Home() {
 
   return (
     <AnimationOrchestrator
-      className="container mx-auto flex h-full max-w-3xl flex-col items-center justify-center space-y-10 px-6 py-10 md:px-0"
+      className="container mx-auto flex h-full max-w-3xl flex-col items-center justify-center space-y-6 px-6 py-10 md:px-0"
       sessionKey="homePageAnimation"
     >
       {/* Hero */}
       <Hero className="orchestration-element stagger-0" />
 
       {/* About */}
-      <section className="orchestration-element stagger-1" id="about">
-        <h2 className="text-base">About me</h2>
-        <p className="text-base text-muted-foreground">
+      <section className="orchestration-element stagger-1 w-full" id="about">
+        <h2 className="hidden text-base">About me</h2>
+        <p className="hidden text-base text-muted-foreground">
           {/* I craft impactful, user-centric products, focusing on seamless interactions and interface
           design. Passionate about collaboration, I thrive in multidisciplinary teams, always
           learning and innovating. Specializing in React, TypeScript, and modern web architectures,
@@ -32,7 +32,7 @@ export default async function Home() {
           <span className="whitespace-nowrap">(prev framer-motion)</span> to
           craft more dynamic digital moments.
         </p>
-        <div className="mt-4 flex items-center gap-x-2 font-light text-sm uppercase">
+        <div className="flex items-center gap-x-2 font-light text-sm uppercase">
           <RRSSLink href="mailto:juliorafre@gmail.com" platform="email" />
           <span className="text-muted-foreground text-xs">✦</span>
           <RRSSLink href="https://github.com/juliorafre" platform="github" />
@@ -50,7 +50,7 @@ export default async function Home() {
 
       {/* Today */}
       <section className="orchestration-element stagger-2 w-full" id="today">
-        <h2 className="text-base">Today</h2>
+        <h2 className="hidden text-base">Today</h2>
         <p className="text-base text-muted-foreground">
           Listening to{' '}
           <CustomLink href="https://podcasts.apple.com/us/podcast/the-pragmatic-engineer/id1769051199">
