@@ -49,7 +49,7 @@ export const NavLink = ({
       <span className="z-20">{children}</span>
       {isHovered && (
         <motion.span
-          className="dark: absolute inset-0 z-10 rounded-sm bg-neutral-200 dark:bg-neutral-600"
+          className="absolute inset-0 z-10 hidden rounded-sm bg-neutral-200 md:block dark:bg-neutral-600"
           layoutId="nav-link-highlight"
           transition={{ duration: 0.2, type: 'spring', bounce: 0.3 }}
         />
