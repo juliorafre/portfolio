@@ -12,7 +12,7 @@ interface RRSSLinkProps {
 const platformConfig: Record<RRSSPlatform, { label: string; icon?: string }> = {
   email: { label: 'Email' },
   github: { label: 'GitHub' },
-  x: { label: 'X' },
+  x: { label: 'X(Twitter)' },
   linkedin: { label: 'LinkedIn' },
 };
 
