@@ -1,36 +1,26 @@
 'use client';
-import { cn } from '@/lib/utils';
+import { ArrowUpRightIcon } from 'lucide-react';
 
-type RRSSPlatform = 'email' | 'github' | 'x' | 'linkedin';
+type RRSSPlatform = 'email' | 'rrss';
 
 interface RRSSLinkProps {
   platform: RRSSPlatform;
   href: string;
-  className?: string;
+  children?: React.ReactNode;
 }
 
-const platformConfig: Record<RRSSPlatform, { label: string; icon?: string }> = {
-  email: { label: 'Email' },
-  github: { label: 'GitHub' },
-  x: { label: 'X(Twitter)' },
-  linkedin: { label: 'LinkedIn' },
-};
-
-export function RRSSLink({ platform, href, className = '' }: RRSSLinkProps) {
-  const { label } = platformConfig[platform];
+export function RRSSLink({ platform = 'rrss', href, children }: RRSSLinkProps) {
   const isExternal = platform !== 'email';
-
-  const baseStyles =
-    'text-black dark:text-foreground flex items-center hover:underline transition-all duration-300';
 
   return (
     <a
-      className={cn(baseStyles, className)}
+      className="flex cursor-pointer items-center gap-x-0.5 rounded-full bg-neutral-200/50 py-0.5 pr-2 pl-2.5 font-medium text-black transition-all duration-150 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-foreground dark:hover:bg-neutral-700"
       href={href}
       rel={isExternal ? 'noopener noreferrer' : undefined}
       target={isExternal ? '_blank' : undefined}
     >
-      {label}
+      {children}
+      <ArrowUpRightIcon size={16} />
     </a>
   );
 }

@@ -5,24 +5,13 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 
-/* const resumeOptions = {
-  english: {
-    url: '/files/Julio_Ramirez_cv_english.pdf',
-    label: 'En',
-  },
-  spanish: {
-    url: '/files/Julio_Ramirez_cv_español.pdf',
-    label: 'Es',
-  },
-}; */
-
 const resumeOptions = [
   {
-    url: '/files/Julio_Ramirez_cv_english.pdf',
+    url: '/files/Julio_Ramirez_CV_EN.pdf',
     label: 'En',
   },
   {
-    url: '/files/Julio_Ramirez_cv_español.pdf',
+    url: '/files/Julio_Ramirez_CV_ES.pdf',
     label: 'Es',
   },
 ];
@@ -31,7 +20,10 @@ const ResumeLink = () => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <button className="text-black uppercase transition-all duration-300 hover:underline dark:text-foreground">
+        <button
+          className="rounded-full bg-neutral-200/50 py-0.5 pr-2 pl-2.5 font-medium text-black transition-all duration-150 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-foreground dark:hover:bg-neutral-700"
+          type="button"
+        >
           Resume
         </button>
       </PopoverTrigger>

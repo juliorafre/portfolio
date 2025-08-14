@@ -1,30 +1,24 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
 import CustomLink from '@/components/custom-link';
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from '@/components/ui/carousel';
-import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-
+import { experiences } from '@/modules/about/data';
 import FirstImage from '/public/images/about/1.png';
 import SecondImage from '/public/images/about/2.png';
 import ThirdImage from '/public/images/about/3.png';
 
-import { experiences } from '@/modules/about/data';
-
-const images = [
-  FirstImage,
-  SecondImage,
-  ThirdImage,
-];
+const images = [FirstImage, SecondImage, ThirdImage];
 
 const About = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -50,18 +44,23 @@ const About = () => {
       sessionKey="aboutPageAnimation"
     >
       <Carousel
-        setApi={setApi}
-        className="relative orchestration-element stagger-0 mb-10 overflow-hidden rounded-xl"
+        className="orchestration-element stagger-0 relative mb-10 overflow-hidden rounded-xl"
         opts={{
           loop: true,
         }}
+        setApi={setApi}
       >
-        <div className="absolute top-0 left-0 inset-0 z-90  pointer-events-none flex items-end justify-center">
+        <div className="pointer-events-none absolute inset-0 top-0 left-0 z-90 flex items-end justify-center">
           <div className="flex gap-x-2 py-2">
-            {Array.from({ length: count }, (_, i) => i + 1).map(pic => {
+            {Array.from({ length: count }, (_, i) => i + 1).map((pic) => {
               return (
-                <span key={pic}
-                      className={cn('size-2 md:size-3 rounded-full', current === pic ? 'bg-white/80' : 'bg-white/40')} />
+                <span
+                  className={cn(
+                    'size-2 rounded-full md:size-3',
+                    current === pic ? 'bg-white/80' : 'bg-white/40'
+                  )}
+                  key={pic}
+                />
               );
             })}
           </div>
@@ -119,22 +118,25 @@ const About = () => {
         </div>
 
         <ul className="space-y-4">
-          <p className="bg-white p-4 md:-mx-4 md:w-[calc(100%_+_2rem)] rounded-lg dark:bg-neutral-800">
-            <strong>Currently</strong> contributing building a <strong>Turney asset management platform</strong> used by
-            financial institutions, building responsive UIs for investment analysis, portfolio reporting, and client
-            suitability tools.
+          <p className="md:-mx-4 rounded-lg bg-white p-4 md:w-[calc(100%_+_2rem)] dark:bg-neutral-800">
+            <strong>Currently</strong> contributing building a{' '}
+            <strong>Turney asset management platform</strong> used by financial
+            institutions, building responsive UIs for investment analysis,
+            portfolio reporting, and client suitability tools.
           </p>
           {experiences.map((experience) => {
             const hasLink = Object.hasOwn(experience, 'link');
             return (
               <li
-                className="md:-mx-4 md:w-[calc(100%_+_2rem)] space-y-2 rounded-lg bg-white px-4 pt-3 pb-4 dark:bg-neutral-800"
+                className="md:-mx-4 space-y-2 rounded-lg bg-white px-4 pt-3 pb-4 md:w-[calc(100%_+_2rem)] dark:bg-neutral-800"
                 key={experience.company}
               >
                 <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-3">
                   <p className="font-semibold">
                     {experience.role}{' '}
-                    <span className="text-muted-foreground font-normal">at</span>{' '}
+                    <span className="font-normal text-muted-foreground">
+                      at
+                    </span>{' '}
                     {experience.company}
                   </p>
                   <p className="whitespace-nowrap font-mono text-muted-foreground">
@@ -144,10 +146,7 @@ const About = () => {
                 <p>{experience.description}</p>
                 {hasLink && (
                   <div className="mt-4">
-                    <CustomLink
-                      href={experience.link!}
-                      showIcon
-                    >
+                    <CustomLink href={experience.link!} showIcon>
                       Read about it
                     </CustomLink>
                   </div>

@@ -32,18 +32,26 @@ export default async function Home() {
           <span className="whitespace-nowrap">(prev framer-motion)</span> to
           craft more dynamic digital moments.
         </p>
-        <div className="flex items-center gap-x-2 font-light text-sm uppercase">
-          <RRSSLink href="mailto:juliorafre@gmail.com" platform="email" />
-          <span className="text-muted-foreground text-xs">✦</span>
-          <RRSSLink href="https://github.com/juliorafre" platform="github" />
-          <span className="text-muted-foreground text-xs">✦</span>
-          <RRSSLink href="https://x.com/juliorafre" platform="x" />
-          <span className="text-muted-foreground text-xs">✦</span>
+        <div className="flex items-center gap-x-3">
+          <RRSSLink href="mailto:juliorafre@gmail.com" platform="email">
+            Email
+          </RRSSLink>
+          {/*   <span className="text-muted-foreground text-xs">✦</span> */}
+          <RRSSLink href="https://github.com/juliorafre" platform="rrss">
+            GitHub
+          </RRSSLink>
+          {/*  <span className="text-muted-foreground text-xs">✦</span> */}
+          <RRSSLink href="https://x.com/juliorafre" platform="rrss">
+            X(Twitter)
+          </RRSSLink>
+          {/*  <span className="text-muted-foreground text-xs">✦</span> */}
           <RRSSLink
             href="https://www.linkedin.com/in/juliorafre/"
-            platform="linkedin"
-          />
-          <span className="text-muted-foreground text-xs">✦</span>
+            platform="rrss"
+          >
+            LinkedIn
+          </RRSSLink>
+          {/*  <span className="text-muted-foreground text-xs">✦</span> */}
           <ResumeLink />
         </div>
       </section>
