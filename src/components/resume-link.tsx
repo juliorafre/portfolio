@@ -7,11 +7,11 @@ import {
 
 const resumeOptions = [
   {
-    url: '/files/Julio_Ramirez_CV_EN.pdf',
+    url: 'https://drive.google.com/file/d/1MFdShQdcZOn0yqZr2x5pZ-__PFxCbw5n/view?usp=drive_link',
     label: 'En',
   },
   {
-    url: '/files/Julio_Ramirez_CV_ES.pdf',
+    url: 'https://drive.google.com/file/d/1dd9eaHZ-8Ewf4JBcdG2AeqACflj7tQFL/view?usp=drive_link',
     label: 'Es',
   },
 ];
@@ -37,9 +37,10 @@ const ResumeLink = () => {
             return (
               <a
                 className="bg-white px-4 py-2 text-lg text-muted-foreground transition-all duration-100 hover:bg-neutral-200 hover:text-black focus-visible:bg-neutral-200 active:bg-neutral-200 md:px-2 md:py-1 md:text-base dark:bg-neutral-800 dark:text-white hover:dark:bg-neutral-700 hover:dark:text-white"
-                download
                 href={resume.url}
                 key={resume.url}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 {resume.label}
               </a>
