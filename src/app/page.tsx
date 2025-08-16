@@ -1,7 +1,6 @@
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
 import CustomLink from '@/components/custom-link';
 import Hero from '@/components/hero';
-import ResumeLink from '@/components/resume-link';
 import { RRSSLink } from '@/components/rrss-link';
 import { getReadingBooks } from './blog/actions';
 
@@ -32,7 +31,7 @@ export default async function Home() {
           <span className="whitespace-nowrap">(prev framer-motion)</span> to
           craft more dynamic digital moments.
         </p>
-        <div className="flex items-center gap-x-3">
+        <div className="flex flex-wrap items-center gap-3">
           <RRSSLink href="mailto:juliorafre@gmail.com" platform="email">
             Email
           </RRSSLink>
@@ -52,7 +51,7 @@ export default async function Home() {
             LinkedIn
           </RRSSLink>
           {/*  <span className="text-muted-foreground text-xs">✦</span> */}
-          <ResumeLink />
+          {/*   <ResumeLink /> */}
         </div>
       </section>
 

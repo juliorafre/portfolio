@@ -1,4 +1,5 @@
 'use client';
+import { ArrowDownToLineIcon } from 'lucide-react';
 import {
   Popover,
   PopoverContent,
@@ -21,10 +22,11 @@ const ResumeLink = () => {
     <Popover>
       <PopoverTrigger asChild>
         <button
-          className="rounded-full bg-neutral-200/50 py-0.5 pr-2 pl-2.5 font-medium text-black transition-all duration-150 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-foreground dark:hover:bg-neutral-700"
+          className="flex items-center gap-1 rounded-full bg-neutral-200/50 py-0.5 pr-3 pl-2.5 font-medium text-black transition-all duration-150 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-foreground dark:hover:bg-neutral-700"
           type="button"
         >
           Resume
+          <ArrowDownToLineIcon size={16} />
         </button>
       </PopoverTrigger>
       <PopoverContent
@@ -36,7 +38,7 @@ const ResumeLink = () => {
           {resumeOptions.map((resume) => {
             return (
               <a
-                className="bg-white px-4 py-2 text-lg text-muted-foreground transition-all duration-100 hover:bg-neutral-200 hover:text-black focus-visible:bg-neutral-200 active:bg-neutral-200 md:px-2 md:py-1 md:text-base dark:bg-neutral-800 dark:text-white hover:dark:bg-neutral-700 hover:dark:text-white"
+                className="flex items-center gap-1 bg-white px-4 py-2 text-lg text-muted-foreground transition-all duration-100 hover:bg-neutral-200 hover:text-black focus-visible:bg-neutral-200 active:bg-neutral-200 md:px-2 md:py-1 md:text-base dark:bg-neutral-800 dark:text-white hover:dark:bg-neutral-700 hover:dark:text-white"
                 href={resume.url}
                 key={resume.url}
                 rel="noopener noreferrer"
