@@ -9,16 +9,16 @@ const Hero = ({
 }) => {
   return (
     <div
-      className={cn('flex w-full flex-col items-start gap-2', className)}
+      className={cn('flex w-full flex-col items-start', className)}
       style={style}
     >
-      <h1 className="block font-semibold text-base text-primary leading-tight">
+      <h1 className="block font-semibold text-lg text-primary leading-tight">
         Julio Ramirez
       </h1>
-      <h2 className="block font-medium text-base text-muted-foreground leading-tight">
+      <h2 className="block mt-1 font-medium text-lg text-muted-foreground leading-tight">
         Software Engineer focused on Frontend Web, based in Santiago, Chile
       </h2>
-      <p className="text-base text-muted-foreground">
+      <p className="text-base text-muted-foreground mt-2">
         {/* I craft impactful, user-centric products, focusing on seamless interactions and interface
           design. Passionate about collaboration, I thrive in multidisciplinary teams, always
           learning and innovating. Specializing in React, TypeScript, and modern web architectures,

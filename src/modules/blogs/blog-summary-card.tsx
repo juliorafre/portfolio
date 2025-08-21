@@ -15,7 +15,6 @@ const BlogSummaryCard = ({
   publishedOn,
   slug,
 }: BlogSummaryCardProps) => {
-  // console.log(title, abstract, publishedOn, slug);
   return (
     <Link
       aria-description={abstract}
