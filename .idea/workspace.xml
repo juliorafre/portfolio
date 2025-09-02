@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cabb1bd0-6b83-48cb-8819-04d7839d75e9" name="Changes" comment="feat(ui): update crafts page heading and adjust section stagger order">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/blogs/blog-summary-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/blogs/blog-summary-card.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +83,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-WS-252.23892.411" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-WS-252.25557.126" />
       </set>
     </attachedChunks>
   </component>
@@ -105,7 +102,9 @@
       <workItem from="1754421983526" duration="121000" />
       <workItem from="1754422610748" duration="2528000" />
       <workItem from="1755544638681" duration="350000" />
-      <workItem from="1755814781549" duration="770000" />
+      <workItem from="1755814781549" duration="908000" />
+      <workItem from="1756757778158" duration="7000" />
+      <workItem from="1756757793986" duration="795000" />
     </task>
     <task id="LOCAL-00001" summary="feat(ui): update crafts page heading and adjust section stagger order">
       <option name="closed" value="true" />

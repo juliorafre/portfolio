@@ -63,21 +63,29 @@ export const metadata: Metadata = {
   keywords: [
     'frontend engineer',
     'react developer',
-    'typescript',
-    'nextjs',
+    'typescript developer',
+    'nextjs developer',
     'motion design',
-    'gsap',
-    'three.js',
-    'animations',
-    'web interactions',
-    'ui/ux',
-    'software engineer',
-    'javascript',
-    'web development',
+    'gsap animations',
+    'three.js developer',
+    'web animations',
+    'ui/ux developer',
+    'javascript engineer',
+    'modern web development',
+    'chile developer',
+    'remote frontend developer'
   ],
   authors: [{ name: 'Julio Ramirez', url: 'https://www.juliorafre.com' }],
   creator: 'Julio Ramirez',
   publisher: 'Julio Ramirez',
+  alternates:{
+    canonical: '/',
+    types: {
+      'application/rss+xml': '/feed.xml',
+    },
+  },
+  category: 'Technology',
+  classification: 'Portfolio Website',
   formatDetection: {
     email: false,
     address: false,
@@ -86,6 +94,10 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    noarchive: false,
+    nosnippet: false,
+    noimageindex: false,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -100,7 +112,7 @@ export const metadata: Metadata = {
       'I am Julio Ramirez, a Frontend Engineer specialized in React, TypeScript, and modern web architectures. I design user-centered products with fluid interfaces and interactions. Currently, I explore motion design using GSAP and Three.js to take digital experiences to the next level.',
     url: 'https://www.juliorafre.com',
     siteName: 'Julio Ramirez | Software Engineer focused on Frontend',
-    locale: 'es_CL',
+    locale: 'es_US',
     type: 'website',
     images: [
       {

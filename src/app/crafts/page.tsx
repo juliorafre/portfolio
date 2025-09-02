@@ -7,6 +7,7 @@ import ProjectItem, {
   type ProjectItemProps,
 } from '@/modules/crafts/project-item';
 import type { ComponentItemType } from '@/types/crafts';
+import type { Metadata } from 'next';
 
 const craftComponents: ComponentItemType[] = [
   {
@@ -99,6 +100,32 @@ const projectsList: ProjectItemProps[] = [
       'Inspired by the work of @nitishkmrk and built with motion-react and mapbox.',
   },
 ];
+
+export const metadata: Metadata = {
+  title: 'Crafts - Interactive Experiments & Code Demos',
+  description: 'Explore my interactive experiments, code demonstrations, and creative coding projects. Featuring GSAP animations, Three.js experiments, React components, and modern web development techniques.',
+  keywords: [
+    'interactive experiments',
+    'code demos',
+    'gsap experiments',
+    'three.js demos',
+    'react components',
+    'creative coding',
+    'web experiments',
+    'animation demos',
+    'frontend demos',
+    'web development showcase'
+  ],
+  alternates: {
+    canonical: './crafts',
+  },
+  openGraph: {
+    title: 'Crafts - Interactive Experiments & Code Demos',
+    description: 'Explore my interactive experiments, code demonstrations, and creative coding projects.',
+    type: 'website',
+    url: './crafts',
+  }
+}
 
 const PlaygroundPage = () => {
   return (
