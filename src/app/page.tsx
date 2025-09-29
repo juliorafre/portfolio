@@ -41,7 +41,7 @@ export default async function Home() {
           </RRSSLink>
           {/*  <span className="text-muted-foreground text-xs">✦</span> */}
           <RRSSLink href="https://x.com/juliorafre" platform="rrss">
-            X(Twitter)
+            X
           </RRSSLink>
           {/*  <span className="text-muted-foreground text-xs">✦</span> */}
           <RRSSLink
