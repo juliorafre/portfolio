@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cabb1bd0-6b83-48cb-8819-04d7839d75e9" name="Changes" comment="feat(ui): update crafts page heading and adjust section stagger order">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/animations/sparkles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/animations/sparkles.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +107,8 @@
       <workItem from="1756757793986" duration="795000" />
       <workItem from="1756770887447" duration="6030000" />
       <workItem from="1756821306305" duration="3189000" />
-      <workItem from="1759174331475" duration="346000" />
+      <workItem from="1759174331475" duration="605000" />
+      <workItem from="1759194081208" duration="664000" />
     </task>
     <task id="LOCAL-00001" summary="feat(ui): update crafts page heading and adjust section stagger order">
       <option name="closed" value="true" />
