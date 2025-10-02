@@ -119,11 +119,11 @@ const CarouselDragable = () => {
         return;
       }
 
-      const containerHeight = containerRef.current.getBoundingClientRect();
-      const cardsWrapperHeight = container.getBoundingClientRect();
+      //const containerHeight = containerRef.current.getBoundingClientRect();
+      //const cardsWrapperHeight = container.getBoundingClientRect();
 
       // I need the distance between container bottom and cardsWrapper bottom
-      const distanceToMove = containerHeight.bottom - cardsWrapperHeight.bottom;
+      //const distanceToMove = containerHeight.bottom - cardsWrapperHeight.bottom;
 
       /* Specific animations */
       const flowerImage = document.getElementById('flower-image');
@@ -184,7 +184,7 @@ const CarouselDragable = () => {
         },
         {
           scale: 1,
-          y: distanceToMove,
+          // y: distanceToMove,
           duration: 1,
           transformOrigin: 'left center',
           ease: 'elastic.out(1, 0.9)',
