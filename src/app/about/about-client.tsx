@@ -140,7 +140,7 @@ const AboutClient = () => {
                 <p>{experience.description}</p>
                 {hasLink && (
                   <div className="mt-4">
-                    <CustomLink href={experience.link!} showIcon>
+                    <CustomLink href={experience.link || '#'} showIcon>
                       Read about it
                     </CustomLink>
                   </div>

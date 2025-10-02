@@ -73,12 +73,12 @@ export const metadata: Metadata = {
     'javascript engineer',
     'modern web development',
     'chile developer',
-    'remote frontend developer'
+    'remote frontend developer',
   ],
   authors: [{ name: 'Julio Ramirez', url: 'https://www.juliorafre.com' }],
   creator: 'Julio Ramirez',
   publisher: 'Julio Ramirez',
-  alternates:{
+  alternates: {
     canonical: '/',
     types: {
       'application/rss+xml': '/feed.xml',

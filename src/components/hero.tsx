@@ -10,18 +10,18 @@ const Hero = ({
 }) => {
   return (
     <div
-      className={cn('flex w-full flex-col items-start', className)}
+      className={cn(' flex w-full flex-col items-start', className)}
       style={style}
     >
       <div className="flex items-baseline gap-x-2">
         <h1 className="inline-block align-top font-medium text-lg text-primary leading-tight">
           Hi! I&apos;m{' '}
           <Image
-            src="/images/home/image.webp"
             alt="portrait"
-            width={100}
+            className="-translate-y-0.5 inline-block size-[1.5em] rounded-full object-cover"
             height={100}
-            className="inline-block size-[1.5em] -translate-y-0.5 rounded-full object-cover"
+            src="/images/home/image.webp"
+            width={100}
           />{' '}
           Julio Ramirez Software Engineer focused on Frontend Web, <br /> based
           in Santiago, Chile
@@ -30,7 +30,7 @@ const Hero = ({
       {/*<h2 className="block mt-1 font-medium text-lg text-muted-foreground leading-tight">
         Software Engineer focused on Frontend Web, based in Santiago, Chile
       </h2>*/}
-      <p className="text-base text-muted-foreground mt-2">
+      <p className="mt-2 text-base text-muted-foreground">
         {/* I craft impactful, user-centric products, focusing on seamless interactions and interface
           design. Passionate about collaboration, I thrive in multidisciplinary teams, always
           learning and innovating. Specializing in React, TypeScript, and modern web architectures,
