@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
 import ComponentItem from '@/modules/crafts/component-item';
 // import Carousel from '@/modules/carousel/components/carousel';
@@ -7,9 +8,14 @@ import ProjectItem, {
   type ProjectItemProps,
 } from '@/modules/crafts/project-item';
 import type { ComponentItemType } from '@/types/crafts';
-import type { Metadata } from 'next';
 
 const craftComponents: ComponentItemType[] = [
+  {
+    href: '/carousel-dragable',
+    text: 'Carousel Dragable',
+    year: 2025,
+    tags: ['gsap'],
+  },
   {
     href: '/image-preview',
     text: 'Image Preview',
@@ -103,7 +109,8 @@ const projectsList: ProjectItemProps[] = [
 
 export const metadata: Metadata = {
   title: 'Crafts - Interactive Experiments & Code Demos',
-  description: 'Explore my interactive experiments, code demonstrations, and creative coding projects. Featuring GSAP animations, Three.js experiments, React components, and modern web development techniques.',
+  description:
+    'Explore my interactive experiments, code demonstrations, and creative coding projects. Featuring GSAP animations, Three.js experiments, React components, and modern web development techniques.',
   keywords: [
     'interactive experiments',
     'code demos',
@@ -114,18 +121,19 @@ export const metadata: Metadata = {
     'web experiments',
     'animation demos',
     'frontend demos',
-    'web development showcase'
+    'web development showcase',
   ],
   alternates: {
     canonical: './crafts',
   },
   openGraph: {
     title: 'Crafts - Interactive Experiments & Code Demos',
-    description: 'Explore my interactive experiments, code demonstrations, and creative coding projects.',
+    description:
+      'Explore my interactive experiments, code demonstrations, and creative coding projects.',
     type: 'website',
     url: './crafts',
-  }
-}
+  },
+};
 
 const PlaygroundPage = () => {
   return (
