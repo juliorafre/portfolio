@@ -1,32 +1,46 @@
-'use client'
+"use client";
 
-import ImageWrapper from '@/components/image-wrapper';
-import ImageRobot from '/public/images/components/image-preview/robot-pain.webp';
-import ImageMe from '/public/images/components/image-preview/me.webp';
-import {motion} from "motion/react";
+import { motion } from "motion/react";
+import Image from "next/image";
+import ImageWrapper from "@/components/image-wrapper";
+import ImageMe from "/public/images/components/image-preview/me.webp";
+import ImageRobot from "/public/images/components/image-preview/robot-pain.webp";
+
+const MotionImage = motion(Image);
 
 const ImagePreview = () => {
   return (
     <div className="main-container space-y-8">
       <div className="space-y-2">
         <h1 className="font-semibold text-lg">Image Preview</h1>
-        <p className="text-muted-foreground">Interaction built using shared layout from motion and Radix dialog
-          primitive. Inspired in the component of <a href="https://x.com/jakubkrehel" className="text-black underline"
-                                                     target="_blank" rel="noreferrer noopener">@jakubkrehel</a>
+        <p className="text-muted-foreground">
+          Interaction built using shared layout from motion and Radix dialog
+          primitive. Inspired in the component of{" "}
+          <a
+            href="https://x.com/jakubkrehel"
+            className="text-black underline"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            @jakubkrehel
+          </a>
         </p>
-        <p className="text-muted-foreground text-xs">For some reason the shared layout doesn&apos;t work well on mobile
-          devices.</p>
+        <p className="text-muted-foreground text-xs">
+          For some reason the shared layout doesn&apos;t work well on mobile
+          devices.
+        </p>
       </div>
       <div>
-        <motion.img
+        <MotionImage
           src={"/images/components/image-preview/robot-pain.webp"}
           alt="robot"
           layoutId="robot-pain"
           className="sr-only"
+          width={300}
+          height={500}
         />
       </div>
-      <div
-        className="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center md:gap-8 rounded-lg border bg-white dark:bg-neutral-800 p-4 md:p-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center md:gap-8 rounded-lg border bg-white dark:bg-neutral-800 p-4 md:p-10">
         <div className="bg-[#F5F0E4] rounded-lg overflow-hidden">
           <ImageWrapper
             key="robot"
@@ -34,8 +48,7 @@ const ImagePreview = () => {
             containerClassName="aspect-square w-full max-w-md bg-neutral-50"
             src={ImageRobot}
           />
-          <div
-            className="px-4 py-2 font-bold font-instrument-serif text-muted-foreground flex items-center justify-between">
+          <div className="px-4 py-2 font-bold font-instrument-serif text-muted-foreground flex items-center justify-between">
             <h3>Claude - Employee of the month</h3>
             <span>#975</span>
           </div>
@@ -47,8 +60,7 @@ const ImagePreview = () => {
             containerClassName="aspect-square w-full max-w-md bg-neutral-50"
             src={ImageMe}
           />
-          <div
-            className="px-4 py-2 font-bold flex items-center text-muted-foreground font-instrument-serif justify-between">
+          <div className="px-4 py-2 font-bold flex items-center text-muted-foreground font-instrument-serif justify-between">
             <h3>Me</h3>
             <span>#865</span>
           </div>
@@ -87,7 +99,7 @@ const ImagePreview = () => {
       </div>*/}
 
       {/* Example 3: Custom styling */}
-       {/*<div className="flex justify-center">
+      {/*<div className="flex justify-center">
         <ImageWrapper
           alt="Example-1"
           buttonClassName="bg-blue-500/80 hover:bg-blue-600/80"
@@ -103,7 +115,7 @@ const ImagePreview = () => {
       </div>*/}
 
       {/* Example 4: Disabled preview (normal image) */}
-     {/* <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <ImageWrapper
           alt="Example-2"
           className="rounded-lg"
@@ -135,7 +147,6 @@ const ImagePreview = () => {
           integrates with your content.
         </p>
       </div>*/}
-
     </div>
   );
 };

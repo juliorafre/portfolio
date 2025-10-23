@@ -1,11 +1,11 @@
-'use client';
-import { useState } from 'react';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import TextGradientOnScroll from '@/modules/text-gradient-on-scroll/text-gradient-on-scroll';
-import TextGradientOnScrollWithMotion from '@/modules/text-gradient-on-scroll/text-gradient-on-scroll-with-motion';
+"use client";
+import { useState } from "react";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import TextGradientOnScroll from "@/modules/text-gradient-on-scroll/text-gradient-on-scroll";
+import TextGradientOnScrollWithMotion from "@/modules/text-gradient-on-scroll/text-gradient-on-scroll-with-motion";
 
 const TextGradientOnScrollScreen = () => {
-  const [isWithMotion, setIsWithMotion] = useState<string>('motion');
+  const [isWithMotion, setIsWithMotion] = useState<string>("motion");
 
   return (
     <div>
@@ -19,7 +19,7 @@ const TextGradientOnScrollScreen = () => {
           <ToggleGroupItem value="gsap">GSAP</ToggleGroupItem>
         </ToggleGroup>
       </div>
-      {isWithMotion === 'motion' ? (
+      {isWithMotion === "motion" ? (
         <TextGradientOnScrollWithMotion />
       ) : (
         <TextGradientOnScroll />

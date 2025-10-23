@@ -1,4 +1,4 @@
-import type { CaseStudyMetadata } from '@/types';
+import type { CaseStudyMetadata } from "@/types";
 
 const CaseStudiesHeader = ({
   timeline,

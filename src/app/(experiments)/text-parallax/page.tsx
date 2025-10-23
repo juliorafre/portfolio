@@ -1,4 +1,4 @@
-import TextParallax from '@/modules/text-parallax/text-parallax';
+import TextParallax from "@/modules/text-parallax/text-parallax";
 
 const TextParallaxScreen = () => {
   return (

@@ -8,7 +8,8 @@
     "dev:turbo": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "biome check",
+    "format": "biome format --write",
     "prepare": "husky"
   },
   "type": "module",
@@ -58,11 +59,9 @@
     "vaul": "^1.1.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.0.5",
+    "@biomejs/biome": "^2.2.7",
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
-    "@eslint/eslintrc": "^3",
-    "@next/eslint-plugin-next": "15.5.4",
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4.0.9",
     "@types/mapbox-gl": "^3.4.1",
@@ -72,9 +71,6 @@
     "@types/react": "19.2.0",
     "@types/react-dom": "19.2.0",
     "@types/three": "^0.176.0",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.4",
-    "eslint-plugin-react-hooks": "^5.2.0",
     "husky": "^9.1.7",
     "postcss": "^8",
     "prettier": "^3.5.2",

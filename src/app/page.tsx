@@ -1,8 +1,8 @@
-import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
-import CustomLink from '@/components/custom-link';
-import Hero from '@/components/hero';
-import { RRSSLink } from '@/components/rrss-link';
-import { getReadingBooks } from './blog/actions';
+import { AnimationOrchestrator } from "@/components/animations/animation-orchestrator";
+import CustomLink from "@/components/custom-link";
+import Hero from "@/components/hero";
+import { RRSSLink } from "@/components/rrss-link";
+import { getReadingBooks } from "./blog/actions";
 
 export default async function Home() {
   const listOfBooks = await getReadingBooks();
@@ -27,7 +27,7 @@ export default async function Home() {
           I build high-performance, scalable applications with real-time data and interactive UIs.
           Currently exploring motion design, GSAP, and Motion (prev framer-motion) to push digital experiences further. */}
           I’m a frontend developer passionate about turning ideas into seamless,
-          interactive experiences. Currently diving into GSAP and Motion{' '}
+          interactive experiences. Currently diving into GSAP and Motion{" "}
           <span className="whitespace-nowrap">(prev framer-motion)</span> to
           craft more dynamic digital moments.
         </p>
@@ -59,16 +59,16 @@ export default async function Home() {
       <section className="orchestration-element stagger-2 w-full" id="today">
         <h2 className="hidden text-base">Today</h2>
         <p className="text-base text-muted-foreground">
-          Listening to{' '}
+          Listening to{" "}
           <CustomLink href="https://podcasts.apple.com/us/podcast/the-pragmatic-engineer/id1769051199">
             The Pragmatic Engineer
-          </CustomLink>{' '}
-          by{' '}
+          </CustomLink>{" "}
+          by{" "}
           <span className="text-black dark:text-muted-foreground">
             Gergely Orosz
-          </span>{' '}
-          <br /> Reading{' '}
-          <CustomLink href={bookReading.url}>{bookReading.title}</CustomLink> by{' '}
+          </span>{" "}
+          <br /> Reading{" "}
+          <CustomLink href={bookReading.url}>{bookReading.title}</CustomLink> by{" "}
           <span className="text-black dark:text-muted-foreground">
             {bookReading.author}
           </span>

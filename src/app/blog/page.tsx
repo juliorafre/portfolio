@@ -1,40 +1,41 @@
-import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
-import DynamicComponentBlogCard from '@/components/blog-collection/dynamic-component-blog-card';
-import { getBlogPostList } from '@/lib/file-helper';
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
+import { AnimationOrchestrator } from "@/components/animations/animation-orchestrator";
+import DynamicComponentBlogCard from "@/components/blog-collection/dynamic-component-blog-card";
+import { getBlogPostList } from "@/lib/file-helper";
 
 export const metadata: Metadata = {
-  title: 'Journal',
-  description: 'Sharing my interests, experiments and thoughts on technology, design and art. Explore articles about frontend development, React, TypeScript, GSAP animations, and modern web development.',
+  title: "Journal",
+  description:
+    "Sharing my interests, experiments and thoughts on technology, design and art. Explore articles about frontend development, React, TypeScript, GSAP animations, and modern web development.",
   keywords: [
-    'frontend development blog',
-    'react tutorials',
-    'typescript articles',
-    'gsap animations',
-    'three.js tutorials',
-    'web development journal',
-    'motion design blog',
-    'javascript articles',
-    'nextjs tutorials',
-    'web technology insights'
+    "frontend development blog",
+    "react tutorials",
+    "typescript articles",
+    "gsap animations",
+    "three.js tutorials",
+    "web development journal",
+    "motion design blog",
+    "javascript articles",
+    "nextjs tutorials",
+    "web technology insights",
   ],
   alternates: {
-    canonical: './blog',
+    canonical: "./blog",
     types: {
-      'application/rss+xml': [
-        { url: './feed.xml', title: 'Julio Ramirez Journal RSS Feed' }
+      "application/rss+xml": [
+        { url: "./feed.xml", title: "Julio Ramirez Journal RSS Feed" },
       ],
     },
   },
-  category: 'Blog',
+  category: "Blog",
   openGraph: {
-    title: 'Journal - Thoughts on Technology, Design & Development',
-    description: 'Sharing my interests, experiments and thoughts on technology, design and art.',
-    type: 'website',
-    url: './blog',
-    },
-}
-
+    title: "Journal - Thoughts on Technology, Design & Development",
+    description:
+      "Sharing my interests, experiments and thoughts on technology, design and art.",
+    type: "website",
+    url: "./blog",
+  },
+};
 
 const BlogPage = async () => {
   const blogPosts = await getBlogPostList();
@@ -69,7 +70,7 @@ const BlogPage = async () => {
                 />
               </li>
             );
-          }
+          },
         )}
       </ul>
     </AnimationOrchestrator>

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
-import CustomLink from '@/components/custom-link';
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { AnimationOrchestrator } from "@/components/animations/animation-orchestrator";
+import CustomLink from "@/components/custom-link";
 import {
   Carousel,
   type CarouselApi,
@@ -11,12 +11,12 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel';
-import { cn } from '@/lib/utils';
-import { experiences } from '@/modules/about/data';
-import FirstImage from '/public/images/about/1.png';
-import SecondImage from '/public/images/about/2.png';
-import ThirdImage from '/public/images/about/3.png';
+} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
+import { experiences } from "@/modules/about/data";
+import FirstImage from "/public/images/about/1.png";
+import SecondImage from "/public/images/about/2.png";
+import ThirdImage from "/public/images/about/3.png";
 
 const images = [FirstImage, SecondImage, ThirdImage];
 
@@ -33,7 +33,7 @@ const AboutClient = () => {
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on('select', () => {
+    api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
@@ -56,8 +56,8 @@ const AboutClient = () => {
               return (
                 <span
                   className={cn(
-                    'size-2 rounded-full md:size-3',
-                    current === pic ? 'bg-white/80' : 'bg-white/40'
+                    "size-2 rounded-full md:size-3",
+                    current === pic ? "bg-white/80" : "bg-white/40",
                   )}
                   key={pic}
                 />
@@ -113,13 +113,13 @@ const AboutClient = () => {
 
         <ul className="space-y-4">
           <p className="md:-mx-4 rounded-lg bg-white p-4 md:w-[calc(100%_+_2rem)] dark:bg-neutral-800">
-            <strong>Currently</strong> contributing building a{' '}
+            <strong>Currently</strong> contributing building a{" "}
             <strong>Turney asset management platform</strong> used by financial
             institutions, building responsive UIs for investment analysis,
             portfolio reporting, and client suitability tools.
           </p>
           {experiences.map((experience) => {
-            const hasLink = Object.hasOwn(experience, 'link');
+            const hasLink = Object.hasOwn(experience, "link");
             return (
               <li
                 className="md:-mx-4 space-y-2 rounded-lg bg-white px-4 pt-3 pb-4 md:w-[calc(100%_+_2rem)] dark:bg-neutral-800"
@@ -127,10 +127,10 @@ const AboutClient = () => {
               >
                 <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-3">
                   <p className="font-semibold">
-                    {experience.role}{' '}
+                    {experience.role}{" "}
                     <span className="font-normal text-muted-foreground">
                       at
-                    </span>{' '}
+                    </span>{" "}
                     {experience.company}
                   </p>
                   <p className="whitespace-nowrap font-mono text-muted-foreground">
@@ -140,7 +140,7 @@ const AboutClient = () => {
                 <p>{experience.description}</p>
                 {hasLink && (
                   <div className="mt-4">
-                    <CustomLink href={experience.link || '#'} showIcon>
+                    <CustomLink href={experience.link || "#"} showIcon>
                       Read about it
                     </CustomLink>
                   </div>

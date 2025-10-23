@@ -1,11 +1,11 @@
 // src/components/header/desktop-header.tsx
-'use client';
+"use client";
 
 // import { motion } from 'motion/react';
 // import Image from 'next/image';
 // import Link from 'next/link';
-import { Hour } from './hour';
-import { NavLinks } from './nav-links';
+import { Hour } from "./hour";
+import { NavLinks } from "./nav-links";
 
 export const DesktopHeader = () => {
   return (

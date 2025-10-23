@@ -1,6 +1,6 @@
 // components/LenisInit.tsx
-'use client';
-import { ReactLenis } from 'lenis/react';
+"use client";
+import { ReactLenis } from "lenis/react";
 
 export default function LenisInit() {
   return (

@@ -1,19 +1,19 @@
-'use client';
-import { ArrowDownToLineIcon } from 'lucide-react';
+"use client";
+import { ArrowDownToLineIcon } from "lucide-react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
+} from "@/components/ui/popover";
 
 const resumeOptions = [
   {
-    url: 'https://drive.google.com/file/d/1MFdShQdcZOn0yqZr2x5pZ-__PFxCbw5n/view?usp=drive_link',
-    label: 'En',
+    url: "https://drive.google.com/file/d/1MFdShQdcZOn0yqZr2x5pZ-__PFxCbw5n/view?usp=drive_link",
+    label: "En",
   },
   {
-    url: 'https://drive.google.com/file/d/1dd9eaHZ-8Ewf4JBcdG2AeqACflj7tQFL/view?usp=drive_link',
-    label: 'Es',
+    url: "https://drive.google.com/file/d/1dd9eaHZ-8Ewf4JBcdG2AeqACflj7tQFL/view?usp=drive_link",
+    label: "Es",
   },
 ];
 

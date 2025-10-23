@@ -1,4 +1,4 @@
-import InertiaGrid from '@/modules/inertia-grid/inertia-grid';
+import InertiaGrid from "@/modules/inertia-grid/inertia-grid";
 
 const InertiaGridPage = () => {
   return <InertiaGrid />;

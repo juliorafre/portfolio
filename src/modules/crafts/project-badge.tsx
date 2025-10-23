@@ -1,20 +1,20 @@
-import { ArrowUpRightIcon } from 'lucide-react';
-import { cn } from '@/lib';
+import { ArrowUpRightIcon } from "lucide-react";
+import { cn } from "@/lib";
 
 type ProjectBadgeProps = {
-  type: 'draft' | 'new-release' | 'demo';
+  type: "draft" | "new-release" | "demo";
 };
 
-const badgeTextMap: Record<ProjectBadgeProps['type'], string> = {
-  draft: 'Draft',
-  'new-release': 'New Release',
-  demo: 'Demo',
+const badgeTextMap: Record<ProjectBadgeProps["type"], string> = {
+  draft: "Draft",
+  "new-release": "New Release",
+  demo: "Demo",
 };
 
-const badgeStyles: Record<ProjectBadgeProps['type'], string> = {
-  draft: 'bg-yellow-100 text-yellow-800',
-  'new-release': 'bg-green-100 text-green-800',
-  demo: 'bg-gradient-rainbow-light text-neutral-800',
+const badgeStyles: Record<ProjectBadgeProps["type"], string> = {
+  draft: "bg-yellow-100 text-yellow-800",
+  "new-release": "bg-green-100 text-green-800",
+  demo: "bg-gradient-rainbow-light text-neutral-800",
 };
 
 const ProjectBadge = ({ type }: ProjectBadgeProps) => {
@@ -22,7 +22,7 @@ const ProjectBadge = ({ type }: ProjectBadgeProps) => {
     return null;
   }
 
-  if (type === 'new-release') {
+  if (type === "new-release") {
     return (
       <div className="flex items-center justify-center rounded-md bg-[#4D585D] px-2.5 py-1">
         <span className="flex items-center text-sm text-white">
@@ -35,13 +35,13 @@ const ProjectBadge = ({ type }: ProjectBadgeProps) => {
   return (
     <div
       className={cn(
-        'flex items-center justify-center rounded-md py-1 pr-1 pl-2',
-        badgeStyles[type]
+        "flex items-center justify-center rounded-md py-1 pr-1 pl-2",
+        badgeStyles[type],
       )}
     >
       <span className="flex items-center text-sm">
         {badgeTextMap[type]}
-        {type === 'demo' && (
+        {type === "demo" && (
           <ArrowUpRightIcon className="inline-block" size={14} />
         )}
       </span>

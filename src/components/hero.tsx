@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import { cn } from '@/lib';
+import Image from "next/image";
+import { cn } from "@/lib";
 
 const Hero = ({
   className,
@@ -10,19 +10,19 @@ const Hero = ({
 }) => {
   return (
     <div
-      className={cn(' flex w-full flex-col items-start', className)}
+      className={cn(" flex w-full flex-col items-start", className)}
       style={style}
     >
       <div className="flex items-baseline gap-x-2">
         <h1 className="inline-block align-top font-medium text-lg text-primary leading-tight">
-          Hi! I&apos;m{' '}
+          Hi! I&apos;m{" "}
           <Image
             alt="portrait"
             className="-translate-y-0.5 inline-block size-[1.5em] rounded-full object-cover"
             height={100}
             src="/images/home/image.webp"
             width={100}
-          />{' '}
+          />{" "}
           Julio Ramirez Software Engineer focused on Frontend Web, <br /> based
           in Santiago, Chile
         </h1>

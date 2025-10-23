@@ -1,7 +1,7 @@
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import BlogHeader from '@/components/blog-header';
-import { getBlogPostList, loadBlogPost } from '@/lib/file-helper';
-import components from '@/lib/mdx-components';
+import { MDXRemote } from "next-mdx-remote/rsc";
+import BlogHeader from "@/components/blog-header";
+import { getBlogPostList, loadBlogPost } from "@/lib/file-helper";
+import components from "@/lib/mdx-components";
 
 export async function generateStaticParams() {
   // Evaluate this generateStaticParams function is needed?
@@ -26,17 +26,17 @@ export const generateMetadata = async ({
     authors: [
       {
         name: frontmatter.author,
-        url: 'https://www.juliorafre.com/about'
-      }
+        url: "https://www.juliorafre.com/about",
+      },
     ],
     creator: frontmatter.author,
-    publisher: 'Julio Ramirez',
+    publisher: "Julio Ramirez",
     keywords: [
       ...(frontmatter.tags || []),
-      'frontend development',
-      'web development',
-      'julio ramirez',
-      `${frontmatter.type} article`
+      "frontend development",
+      "web development",
+      "julio ramirez",
+      `${frontmatter.type} article`,
     ],
     publishedTime: frontmatter.publishedOn,
     modifiedTime: frontmatter.lastModified || frontmatter.publishedOn,
@@ -46,14 +46,14 @@ export const generateMetadata = async ({
     openGraph: {
       title: frontmatter.title,
       description: frontmatter.abstract,
-      type: 'article',
+      type: "article",
       url: `./blog/${slug}`,
-      siteName: 'Julio Ramirez Journal',
-      locale: 'en_US',
+      siteName: "Julio Ramirez Journal",
+      locale: "en_US",
       publishedTime: frontmatter.publishedOn,
       modifiedTime: frontmatter.lastModified || frontmatter.publishedOn,
       authors: [frontmatter.author],
-      section: frontmatter.type === 'journal' ? 'Journal' : 'Blog',
+      section: frontmatter.type === "journal" ? "Journal" : "Blog",
       tags: frontmatter.tags,
     },
     robots: {
@@ -62,9 +62,9 @@ export const generateMetadata = async ({
       googleBot: {
         index: frontmatter.published !== false,
         follow: true,
-        'max-snippet': -1,
-        'max-image-preview': 'large',
-        'max-video-preview': -1,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
       },
     },
   };

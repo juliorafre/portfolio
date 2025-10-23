@@ -1,14 +1,14 @@
-'use server';
+"use server";
 
-import fs from 'fs/promises';
-import matter from 'gray-matter';
-import { unstable_cache } from 'next/cache';
-import path from 'path';
-import type { PostMetadata } from '@/types';
+import fs from "node:fs/promises";
+import path from "node:path";
+import matter from "gray-matter";
+import { unstable_cache } from "next/cache";
+import type { PostMetadata } from "@/types";
 
 export const getBlogPostList = unstable_cache(
   async () => {
-    const fileNames = await readDirectory('/content');
+    const fileNames = await readDirectory("/content");
 
     const blogPosts: PostMetadata[] = [];
 
@@ -22,7 +22,7 @@ export const getBlogPostList = unstable_cache(
       }
 
       const newPost: PostMetadata = {
-        slug: fileName.replace('.mdx', '') as string,
+        slug: fileName.replace(".mdx", "") as string,
         ...frontmatter,
       } as PostMetadata;
 
@@ -30,14 +30,14 @@ export const getBlogPostList = unstable_cache(
     }
 
     return blogPosts.sort((p1, p2) =>
-      p1.publishedOn < p2.publishedOn ? 1 : -1
+      p1.publishedOn < p2.publishedOn ? 1 : -1,
     );
   },
-  ['blog-post-list'],
+  ["blog-post-list"],
   {
     revalidate: 86_400, // Revalidate every day
-    tags: ['blog-posts'],
-  }
+    tags: ["blog-posts"],
+  },
 );
 
 export const loadBlogPost = unstable_cache(
@@ -49,15 +49,15 @@ export const loadBlogPost = unstable_cache(
       content,
     };
   },
-  ['blog-post'],
+  ["blog-post"],
   {
     revalidate: 86_400, // Revalidate every day
-    tags: ['blog-posts'],
-  }
+    tags: ["blog-posts"],
+  },
 );
 
 export const readFile = async (localPath: string) => {
-  return fs.readFile(path.join(process.cwd(), localPath), 'utf8');
+  return fs.readFile(path.join(process.cwd(), localPath), "utf8");
 };
 
 export const readDirectory = async (localPath: string) => {

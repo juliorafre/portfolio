@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState } from "react";
 
 interface UseImagePreviewOptions {
   /**
@@ -37,7 +37,7 @@ export const useImagePreview = (options: UseImagePreviewOptions = {}) => {
       setCurrentImage(imageData);
       setIsOpen(true);
     },
-    []
+    [],
   );
 
   const closePreview = useCallback(() => {
@@ -52,8 +52,8 @@ export const useImagePreview = (options: UseImagePreviewOptions = {}) => {
     closePreview,
     transition: options.transition || { duration: 0.34, bounce: 0.2 },
     overlayClassName:
-      options.overlayClassName || 'bg-black/60 backdrop-blur-xs',
-    modalClassName: options.modalClassName || '',
+      options.overlayClassName || "bg-black/60 backdrop-blur-xs",
+    modalClassName: options.modalClassName || "",
   };
 
   return {

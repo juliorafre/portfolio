@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import MapInteraction from '@/modules/map-interaction/map-interaction';
+import MapInteraction from "@/modules/map-interaction/map-interaction";
 
 const MapInteractionScreen = () => {
   return (

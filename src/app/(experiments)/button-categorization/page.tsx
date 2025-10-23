@@ -1,4 +1,4 @@
-import BadgeCategorization from '@/modules/button-categorization/button-categorization';
+import BadgeCategorization from "@/modules/button-categorization/button-categorization";
 
 const ButtonCategorizationPage = () => {
   return (

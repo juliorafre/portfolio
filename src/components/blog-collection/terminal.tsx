@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { CheckIcon, CopyIcon, MaximizeIcon, MinimizeIcon } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
-import { useState } from 'react';
-import { cn } from '@/lib/utils';
+import { CheckIcon, CopyIcon, MaximizeIcon, MinimizeIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface TerminalProps {
   title?: string;
@@ -14,7 +14,7 @@ interface TerminalProps {
 }
 
 export function Terminal({
-  title = 'command.shell',
+  title = "command.shell",
   children,
   className,
   showControls = true,
@@ -30,31 +30,31 @@ export function Terminal({
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     } catch (error) {
-      console.error('Failed to copy:', error);
+      console.error("Failed to copy:", error);
     }
   };
 
   const extractTextContent = (node: React.ReactNode): string => {
-    if (typeof node === 'string') return node;
-    if (typeof node === 'number') return node.toString();
-    if (Array.isArray(node)) return node.map(extractTextContent).join('');
-    if (node && typeof node === 'object' && 'props' in node) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (typeof node === "string") return node;
+    if (typeof node === "number") return node.toString();
+    if (Array.isArray(node)) return node.map(extractTextContent).join("");
+    if (node && typeof node === "object" && "props" in node) {
+      // biome-ignore lint/suspicious/noExplicitAny: Fix later
       return extractTextContent((node as any).props.children);
     }
-    return '';
+    return "";
   };
 
   return (
     <motion.div
       className={cn(
-        'relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl',
-        'border border-gray-700/50',
-        isMaximized && 'fixed inset-4 z-50',
-        className
+        "relative overflow-hidden rounded-xl bg-linear-to-br from-gray-800 to-gray-900 shadow-2xl",
+        "border border-gray-700/50",
+        isMaximized && "fixed inset-4 z-50",
+        className,
       )}
       layout={isMaximized}
-      transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+      transition={{ type: "spring", damping: 25, stiffness: 300 }}
     >
       {/* Terminal Header */}
       <div className="flex items-center justify-between bg-gray-800/80 px-4 py-3 backdrop-blur-sm">
@@ -77,7 +77,8 @@ export function Terminal({
           <div className="flex items-center gap-2">
             {copyable && (
               <button
-                aria-label={isCopied ? 'Copied!' : 'Copy to clipboard'}
+                type="button"
+                aria-label={isCopied ? "Copied!" : "Copy to clipboard"}
                 className="group rounded-md p-1.5 transition-colors hover:bg-gray-700/50"
                 onClick={handleCopy}
               >
@@ -109,7 +110,8 @@ export function Terminal({
             )}
 
             <button
-              aria-label={isMaximized ? 'Minimize' : 'Maximize'}
+              type="button"
+              aria-label={isMaximized ? "Minimize" : "Maximize"}
               className="group rounded-md p-1.5 transition-colors hover:bg-gray-700/50"
               onClick={() => setIsMaximized(!isMaximized)}
             >
@@ -155,7 +157,7 @@ export function TerminalLine({
   className,
 }: TerminalLineProps) {
   return (
-    <div className={cn('flex items-baseline gap-3', className)}>
+    <div className={cn("flex items-baseline gap-3", className)}>
       {number && (
         <span className="min-w-[1.5rem] select-none text-right font-mono text-gray-500 text-xs">
           {number}

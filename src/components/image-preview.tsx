@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { XIcon } from 'lucide-react';
-import { AnimatePresence, MotionConfig, motion } from 'motion/react';
-import Image from 'next/image';
-import { Dialog } from 'radix-ui';
-import { useState } from 'react';
+import { XIcon } from "lucide-react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import Image from "next/image";
+import { Dialog } from "radix-ui";
+import { useState } from "react";
 
 interface ImagePreviewProps {
   src: string;
@@ -22,7 +22,7 @@ const ImagePreview = ({ src, alt, width, height }: ImagePreviewProps) => {
     <div className="relative flex flex-col rounded-xl">
       <MotionConfig
         transition={{
-          type: 'spring',
+          type: "spring",
           stiffness: 300,
           damping: 30,
           mass: 1,
@@ -107,8 +107,7 @@ const ImagePreview = ({ src, alt, width, height }: ImagePreviewProps) => {
 
 export default ImagePreview;
 
-{
-  /* <div>
+/* <div>
       <MotionImage
         whileHover={{
           scale: 1.1,
@@ -127,4 +126,3 @@ export default ImagePreview;
         style={style}
       />
     </div> */
-}

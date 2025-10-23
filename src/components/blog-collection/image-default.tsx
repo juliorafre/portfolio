@@ -1,10 +1,10 @@
-import Image, { type ImageProps } from 'next/image';
+import Image, { type ImageProps } from "next/image";
 
 interface ImageDefaultProps extends ImageProps {
   alt: string;
 }
 
-const ImageDefault = ({ alt = '', ...props }: ImageDefaultProps) => {
+const ImageDefault = ({ alt = "", ...props }: ImageDefaultProps) => {
   return <Image alt={alt} {...props} />;
 };
 

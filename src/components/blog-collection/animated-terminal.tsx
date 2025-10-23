@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { Terminal, TerminalLine } from './terminal';
+import { useEffect, useState } from "react";
+import { Terminal, TerminalLine } from "./terminal";
 
 interface AnimatedTerminalProps {
   commands: Array<{
@@ -27,6 +27,7 @@ export function AnimatedTerminal({ commands, title }: AnimatedTerminalProps) {
   return (
     <Terminal title={title}>
       {commands.slice(0, visibleCommands).map((command, index) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: TODO resolve key
         <TerminalLine key={index} number={index + 1}>
           {command.content}
           {index === visibleCommands - 1 && (

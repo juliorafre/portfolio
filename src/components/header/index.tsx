@@ -1,5 +1,5 @@
-import { DesktopHeader } from './desktop-header';
-import { MobileHeader } from './mobile-header';
+import { DesktopHeader } from "./desktop-header";
+import { MobileHeader } from "./mobile-header";
 
 const Header = () => {
   return (

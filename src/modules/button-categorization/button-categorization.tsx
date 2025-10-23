@@ -1,29 +1,29 @@
-'use client';
-import { InfoIcon, LaptopIcon, SparklesIcon } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
-import { useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
+"use client";
+import { InfoIcon, LaptopIcon, SparklesIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 // https://codesandbox.io/p/sandbox/framer-motion-familys-fluid-button-f68w5h
 
 const badgeStylesVariants = {
-  base: 'font-display inline-flex w-fit items-center gap-x-1.5 rounded-lg border px-3 py-1 font-medium',
-  idle: 'border-neutral-100 bg-neutral-100 text-neutral-500',
-  analyzing: 'border-neutral-100 bg-white text-blue-500',
-  success: 'border-[#DCF3FF] bg-[#DCF3FF] text-[#4D83A1]',
+  base: "font-display inline-flex w-fit items-center gap-x-1.5 rounded-lg border px-3 py-1 font-medium",
+  idle: "border-neutral-100 bg-neutral-100 text-neutral-500",
+  analyzing: "border-neutral-100 bg-white text-blue-500",
+  success: "border-[#DCF3FF] bg-[#DCF3FF] text-[#4D83A1]",
 };
 
 const BadgeCategorization = () => {
-  const [state, setState] = useState<'idle' | 'analyzing' | 'success'>('idle');
+  const [state, setState] = useState<"idle" | "analyzing" | "success">("idle");
 
   useEffect(() => {
     const interval = setInterval(() => {
       setState((prev) =>
-        prev === 'idle'
-          ? 'analyzing'
-          : prev === 'analyzing'
-            ? 'success'
-            : 'idle'
+        prev === "idle"
+          ? "analyzing"
+          : prev === "analyzing"
+            ? "success"
+            : "idle",
       );
     }, 3000);
     return () => clearInterval(interval);
@@ -51,14 +51,14 @@ const BadgeCategorization = () => {
         <motion.div
           className={cn(badgeStylesVariants.base, badgeStylesVariants[state])}
           style={{
-            transformOrigin: 'left center',
+            transformOrigin: "left center",
           }}
           transition={{
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
         >
           <AnimatePresence initial={false} mode="popLayout">
-            {state === 'idle' && (
+            {state === "idle" && (
               <motion.span
                 animate={{ opacity: 1, x: 0 }}
                 className="inline-flex items-center gap-x-1.5 overflow-hidden"
@@ -72,7 +72,7 @@ const BadgeCategorization = () => {
             )}
           </AnimatePresence>
           <AnimatePresence initial={false} mode="popLayout">
-            {state === 'analyzing' && (
+            {state === "analyzing" && (
               <motion.span
                 animate={{ opacity: 1, x: 0 }}
                 className="inline-flex items-center gap-x-1.5 overflow-hidden"
@@ -86,7 +86,7 @@ const BadgeCategorization = () => {
             )}
           </AnimatePresence>
           <AnimatePresence initial={false} mode="popLayout">
-            {state === 'success' && (
+            {state === "success" && (
               <motion.span
                 animate={{ opacity: 1, x: 0 }}
                 className="inline-flex items-center gap-x-1.5 overflow-hidden"
@@ -115,11 +115,11 @@ const BadgeCategorization = () => {
             <div
               style={{
                 background:
-                  'linear-gradient(#ffffff, #e0e0e0) padding-box transparent',
-                padding: '0 1.5rem',
-                border: '2px solid transparent',
-                borderRadius: '20px',
-                textAlign: 'center',
+                  "linear-gradient(#ffffff, #e0e0e0) padding-box transparent",
+                padding: "0 1.5rem",
+                border: "2px solid transparent",
+                borderRadius: "20px",
+                textAlign: "center",
               }}
             >
               <p> contenido</p>

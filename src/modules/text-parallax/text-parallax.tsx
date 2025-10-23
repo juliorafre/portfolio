@@ -1,10 +1,10 @@
-'use client';
-import type { LenisRef } from 'lenis/react';
-import { ReactLenis } from 'lenis/react';
-import { useScroll } from 'motion/react';
-import { useEffect, useRef } from 'react';
-import 'lenis/dist/lenis.css';
-import Slide from './slide';
+"use client";
+import type { LenisRef } from "lenis/react";
+import { ReactLenis } from "lenis/react";
+import { useScroll } from "motion/react";
+import { useEffect, useRef } from "react";
+import "lenis/dist/lenis.css";
+import Slide from "./slide";
 
 function TextParallax() {
   const lenisRef = useRef<LenisRef>(null);
@@ -12,7 +12,7 @@ function TextParallax() {
 
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
 
   useEffect(() => {

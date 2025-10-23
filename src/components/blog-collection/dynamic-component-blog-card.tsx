@@ -1,5 +1,5 @@
-import BlogSummaryCard from '@/modules/blogs/blog-summary-card';
-import JournalCard from './journal-card';
+import BlogSummaryCard from "@/modules/blogs/blog-summary-card";
+import JournalCard from "./journal-card";
 
 const componentMap = {
   journal: JournalCard,

@@ -1,8 +1,8 @@
-'use client';
-import { motion } from 'motion/react';
-import Link from 'next/link';
-import { useState } from 'react';
-import type { ComponentItemType } from '@/types/crafts';
+"use client";
+import { motion } from "motion/react";
+import Link from "next/link";
+import { useState } from "react";
+import type { ComponentItemType } from "@/types/crafts";
 
 const ComponentItem = ({ component }: { component: ComponentItemType }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -18,7 +18,7 @@ const ComponentItem = ({ component }: { component: ComponentItemType }) => {
         <motion.span
           className="inset-0 z-10 h-auto w-full rounded-lg bg-white md:absolute dark:bg-neutral-800"
           layoutId="bg-hovered"
-          transition={{ type: 'spring', bounce: 0.3, duration: 0.25 }}
+          transition={{ type: "spring", bounce: 0.3, duration: 0.25 }}
         />
       )}
       <span className="z-20 grow whitespace-nowrap">{component.text}</span>

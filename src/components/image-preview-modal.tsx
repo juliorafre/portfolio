@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { XIcon } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
-import Image from 'next/image';
-import { Dialog } from 'radix-ui';
+import { XIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
+import { Dialog } from "radix-ui";
 
 interface ImagePreviewModalProps {
   isOpen: boolean;
@@ -27,14 +27,14 @@ const ImagePreviewModal: React.FC<ImagePreviewModalProps> = ({
   currentImage,
   closePreview,
   transition = { duration: 0.34, bounce: 0.2 },
-  overlayClassName = 'bg-black/60 backdrop-blur-xs',
-  modalClassName = '',
+  overlayClassName = "bg-black/60 backdrop-blur-xs",
+  modalClassName = "",
 }) => {
   if (!currentImage) {
     return null;
   }
 
-  const layoutId = `image-preview-${currentImage.src.replace(/[^a-zA-Z0-9]/g, '-')}`;
+  const layoutId = `image-preview-${currentImage.src.replace(/[^a-zA-Z0-9]/g, "-")}`;
 
   return (
     <Dialog.Root onOpenChange={closePreview} open={isOpen}>
@@ -48,7 +48,7 @@ const ImagePreviewModal: React.FC<ImagePreviewModalProps> = ({
                   className={`fixed inset-0 ${overlayClassName}`}
                   exit={{ opacity: 0 }}
                   initial={{ opacity: 0 }}
-                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                 />
               </Dialog.Overlay>
               <Dialog.Content asChild>
@@ -62,7 +62,7 @@ const ImagePreviewModal: React.FC<ImagePreviewModalProps> = ({
                     layoutId={layoutId}
                     onClick={(e) => e.stopPropagation()}
                     transition={{
-                      type: 'spring',
+                      type: "spring",
                       duration: transition.duration,
                       bounce: transition.bounce,
                     }}

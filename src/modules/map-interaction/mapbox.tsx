@@ -1,11 +1,10 @@
-'use client';
-import React from 'react';
-import Map, { NavigationControl } from 'react-map-gl/mapbox';
-import 'mapbox-gl/dist/mapbox-gl.css';
+"use client";
+import { Map as MapboxMap, NavigationControl } from "react-map-gl/mapbox";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const Mapbox = () => {
   return (
-    <Map
+    <MapboxMap
       initialViewState={{
         zoom: 11.133_496_816_795_057,
         bearing: 10.399_999_999_999_636,
@@ -17,25 +16,25 @@ const Mapbox = () => {
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_KEY}
       mapStyle="mapbox://styles/mapbox/standard"
       onIdle={() => {
-        console.log('map idle');
+        console.log("map idle");
       }}
       onLoad={() => {
-        console.log('map loaded');
+        console.log("map loaded");
       }}
       onMove={(e) => {
         console.log(e.viewState);
       }}
       onRemove={() => {
-        console.log('map removed');
+        console.log("map removed");
       }}
       onRender={() => {
-        console.log('map rendered');
+        console.log("map rendered");
       }}
       reuseMaps
       style={{ width: 300, height: 300 }}
     >
       <NavigationControl position="top-left" />
-    </Map>
+    </MapboxMap>
   );
 };
 

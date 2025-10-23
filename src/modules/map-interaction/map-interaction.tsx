@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { MapIcon, XIcon } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
-import { useRef, useState } from 'react';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import Mapbox from './mapbox';
+import { MapIcon, XIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useRef, useState } from "react";
+import "mapbox-gl/dist/mapbox-gl.css";
+import Mapbox from "./mapbox";
 
 const MapInteraction = () => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -23,15 +23,15 @@ const MapInteraction = () => {
         {!isOpen && (
           <motion.button
             className="rounded-full border border-[#C4C4C4] bg-[#f0eeee] px-4 py-2 transition-colors hover:bg-slate-100"
-            exit={{ filter: 'blur(4px)' }}
+            exit={{ filter: "blur(4px)" }}
             layout
             layoutId="map-interaction"
             onClick={toggle}
             transition={{
               duration: 0.25,
-              type: 'spring',
+              type: "spring",
               bounce: 0,
-              ease: 'easeInOut',
+              ease: "easeInOut",
             }}
           >
             <motion.span
@@ -59,12 +59,13 @@ const MapInteraction = () => {
             ref={mapRef}
             transition={{
               duration: 0.45,
-              type: 'spring',
+              type: "spring",
               bounce: 0.3,
-              ease: 'easeInOut',
+              ease: "easeInOut",
             }}
           >
             <button
+              type="button"
               className="absolute top-0 right-0 z-10 mt-2 mr-2 rounded-full bg-white/70 p-2 shadow-sm backdrop-blur-sm transition-colors hover:bg-slate-100"
               id="button-close-map"
               onClick={toggle}
@@ -75,7 +76,7 @@ const MapInteraction = () => {
             {/* <img src="/images/map.png" alt="map-interaction" className="w-full h-full object-cover" /> */}
             <motion.div
               exit={{
-                filter: 'blur(4px)',
+                filter: "blur(4px)",
               }}
             >
               <Mapbox />

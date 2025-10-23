@@ -1,11 +1,11 @@
 // src/components/header/mobile-header.tsx
-'use client';
+"use client";
 
-import { motion } from 'motion/react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { cn } from '@/lib';
-import { NavLinks } from './nav-links';
+import { motion } from "motion/react";
+import Image from "next/image";
+import Link from "next/link";
+import { cn } from "@/lib";
+import { NavLinks } from "./nav-links";
 
 const MobileWrapper = ({
   children,
@@ -21,22 +21,22 @@ const MobileWrapper = ({
         y: 0,
       }}
       className={cn(
-        'inset-shadow-accent cursor-pointer overflow-hidden rounded-full bg-[rgba(243,243,243,0.7)] shadow-2xl backdrop-blur-sm md:hidden',
-        className
+        "inset-shadow-accent cursor-pointer overflow-hidden rounded-full bg-[rgba(243,243,243,0.7)] shadow-2xl backdrop-blur-sm md:hidden",
+        className,
       )}
       initial={{
         opacity: 0,
         y: 40,
       }}
       style={{
-        boxShadow: 'inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff',
-        border: '2px solid rgb(206, 206, 206)',
+        boxShadow: "inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff",
+        border: "2px solid rgb(206, 206, 206)",
       }}
       transition={{
-        type: 'spring',
+        type: "spring",
         duration: 0.95,
         bounce: 0.3,
-        ease: 'easeInOut',
+        ease: "easeInOut",
         delay: 0.2,
       }}
     >

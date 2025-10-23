@@ -1,137 +1,137 @@
-import type { Metadata } from 'next';
-import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
-import ComponentItem from '@/modules/crafts/component-item';
+import type { Metadata } from "next";
+import { AnimationOrchestrator } from "@/components/animations/animation-orchestrator";
+import ComponentItem from "@/modules/crafts/component-item";
 // import Carousel from '@/modules/carousel/components/carousel';
 // import ImageShowcase from '@/components/image-showcase/image-showcase';
 // import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
 import ProjectItem, {
   type ProjectItemProps,
-} from '@/modules/crafts/project-item';
-import type { ComponentItemType } from '@/types/crafts';
+} from "@/modules/crafts/project-item";
+import type { ComponentItemType } from "@/types/crafts";
 
 const craftComponents: ComponentItemType[] = [
   {
-    href: '/carousel-dragable',
-    text: 'Carousel Dragable',
+    href: "/carousel-dragable",
+    text: "Carousel Dragable",
     year: 2025,
-    tags: ['gsap'],
+    tags: ["gsap"],
   },
   {
-    href: '/image-preview',
-    text: 'Image Preview',
+    href: "/image-preview",
+    text: "Image Preview",
     year: 2025,
-    tags: ['motion'],
+    tags: ["motion"],
   },
   {
-    href: '/text-parallax',
-    text: 'Text Parallax',
+    href: "/text-parallax",
+    text: "Text Parallax",
     year: 2025,
-    tags: ['gsap'],
+    tags: ["gsap"],
   },
   {
-    href: '/text-gradient-on-scroll',
-    text: 'Text Gradient On Scroll',
+    href: "/text-gradient-on-scroll",
+    text: "Text Gradient On Scroll",
     year: 2025,
-    tags: ['gsap'],
+    tags: ["gsap"],
   },
   {
-    href: '/map-interaction',
-    text: 'Map Interaction',
+    href: "/map-interaction",
+    text: "Map Interaction",
     year: 2025,
-    tags: ['motion', 'mapbox'],
+    tags: ["motion", "mapbox"],
   },
   {
-    href: '/draggable-curved',
-    text: 'Draggable Curved',
+    href: "/draggable-curved",
+    text: "Draggable Curved",
     year: 2025,
-    tags: ['gsap'],
+    tags: ["gsap"],
   },
   {
-    href: '/button-categorization',
-    text: 'Button Categorization',
+    href: "/button-categorization",
+    text: "Button Categorization",
     year: 2025,
-    tags: ['motion'],
+    tags: ["motion"],
   },
   {
-    href: '/streaming-text',
-    text: 'Streaming Text',
+    href: "/streaming-text",
+    text: "Streaming Text",
     year: 2025,
-    tags: ['motion'],
+    tags: ["motion"],
   },
   {
-    href: '/inertia-grid',
-    text: 'Inertia Grid',
+    href: "/inertia-grid",
+    text: "Inertia Grid",
     year: 2025,
-    tags: ['gsap'],
+    tags: ["gsap"],
   },
 ];
 
 const projectsList: ProjectItemProps[] = [
   {
-    href: '',
+    href: "",
     mediaSrc:
-      'https://res.cloudinary.com/juliorafrecloud/video/upload/v1754338503/Portfolio/Projects/kyoki/yyrs2vowc048omhbeawh.mp4',
-    mediaType: 'video',
-    title: 'Kyoki Lab',
+      "https://res.cloudinary.com/juliorafrecloud/video/upload/v1754338503/Portfolio/Projects/kyoki/yyrs2vowc048omhbeawh.mp4",
+    mediaType: "video",
+    title: "Kyoki Lab",
     year: 2025,
-    description: 'More comming soon!',
-    projectType: 'none',
+    description: "More comming soon!",
+    projectType: "none",
   },
   {
-    href: '/infinite-canvas',
+    href: "/infinite-canvas",
     mediaSrc:
-      'https://res.cloudinary.com/juliorafrecloud/video/upload/v1752466875/Portfolio/Projects/infinite-canvas/kourhsbylemkpk11gxi0.mp4',
-    mediaType: 'video',
-    title: 'Infinite Canvas',
+      "https://res.cloudinary.com/juliorafrecloud/video/upload/v1752466875/Portfolio/Projects/infinite-canvas/kourhsbylemkpk11gxi0.mp4",
+    mediaType: "video",
+    title: "Infinite Canvas",
     year: 2025,
-    description: 'WIP experiment. An infinite canvas of memories.',
+    description: "WIP experiment. An infinite canvas of memories.",
   },
   {
-    href: '/image-showcase',
-    mediaSrc: '/images/projects/showcase.png',
-    mediaType: 'image',
-    title: 'Image Showcase',
+    href: "/image-showcase",
+    mediaSrc: "/images/projects/showcase.png",
+    mediaType: "image",
+    title: "Image Showcase",
     year: 2025,
     description:
-      'Small experiment replicating the sticker clothes reveal animation by @bartek_marzec.',
+      "Small experiment replicating the sticker clothes reveal animation by @bartek_marzec.",
   },
   {
-    href: '/map-interaction',
+    href: "/map-interaction",
     mediaSrc:
-      'https://res.cloudinary.com/juliorafrecloud/video/upload/v1740954577/hpsdmhwpeau1xz7jyrmx.mp4',
-    mediaType: 'video',
-    title: 'Map Interaction',
+      "https://res.cloudinary.com/juliorafrecloud/video/upload/v1740954577/hpsdmhwpeau1xz7jyrmx.mp4",
+    mediaType: "video",
+    title: "Map Interaction",
     year: 2025,
     description:
-      'Inspired by the work of @nitishkmrk and built with motion-react and mapbox.',
+      "Inspired by the work of @nitishkmrk and built with motion-react and mapbox.",
   },
 ];
 
 export const metadata: Metadata = {
-  title: 'Crafts - Interactive Experiments & Code Demos',
+  title: "Crafts - Interactive Experiments & Code Demos",
   description:
-    'Explore my interactive experiments, code demonstrations, and creative coding projects. Featuring GSAP animations, Three.js experiments, React components, and modern web development techniques.',
+    "Explore my interactive experiments, code demonstrations, and creative coding projects. Featuring GSAP animations, Three.js experiments, React components, and modern web development techniques.",
   keywords: [
-    'interactive experiments',
-    'code demos',
-    'gsap experiments',
-    'three.js demos',
-    'react components',
-    'creative coding',
-    'web experiments',
-    'animation demos',
-    'frontend demos',
-    'web development showcase',
+    "interactive experiments",
+    "code demos",
+    "gsap experiments",
+    "three.js demos",
+    "react components",
+    "creative coding",
+    "web experiments",
+    "animation demos",
+    "frontend demos",
+    "web development showcase",
   ],
   alternates: {
-    canonical: './crafts',
+    canonical: "./crafts",
   },
   openGraph: {
-    title: 'Crafts - Interactive Experiments & Code Demos',
+    title: "Crafts - Interactive Experiments & Code Demos",
     description:
-      'Explore my interactive experiments, code demonstrations, and creative coding projects.',
-    type: 'website',
-    url: './crafts',
+      "Explore my interactive experiments, code demonstrations, and creative coding projects.",
+    type: "website",
+    url: "./crafts",
   },
 };
 
