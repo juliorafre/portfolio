@@ -3,8 +3,6 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import ImageWrapper from "@/components/image-wrapper";
-import ImageMe from "/public/images/components/image-preview/me.webp";
-import ImageRobot from "/public/images/components/image-preview/robot-pain.webp";
 
 const MotionImage = motion(Image);
 
@@ -46,7 +44,7 @@ const ImagePreview = () => {
             key="robot"
             alt="robot"
             containerClassName="aspect-square w-full max-w-md bg-neutral-50"
-            src={ImageRobot}
+            src="/images/components/image-preview/robot-pain.webp"
           />
           <div className="px-4 py-2 font-bold font-instrument-serif text-muted-foreground flex items-center justify-between">
             <h3>Claude - Employee of the month</h3>
@@ -58,7 +56,7 @@ const ImagePreview = () => {
             key="me"
             alt="me"
             containerClassName="aspect-square w-full max-w-md bg-neutral-50"
-            src={ImageMe}
+            src="/images/components/image-preview/me.webp"
           />
           <div className="px-4 py-2 font-bold flex items-center text-muted-foreground font-instrument-serif justify-between">
             <h3>Me</h3>

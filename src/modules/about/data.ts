@@ -1,12 +1,13 @@
 import type { Experience } from "@/types/experience";
 
 export const experiences: Experience[] = [
-  /* {
-    "yearRange": "2024 - 2025",
-    "role": "Freelance Frontend Developer",
-    "company": "Seaview IM",
-    "description": "Built responsive UIs for investment tools with real-time data and visualizations. Focused on UX and performance for financial decision-making."
-  }, */
+  {
+    yearRange: "2024 - 2025",
+    role: "Freelance Frontend Developer",
+    company: "Seaview IM",
+    description:
+      "Built responsive UIs for a Turney asset management platform used by financial institutions, building responsive UIs for investment analysis, portfolio reporting, and client suitability tools.",
+  },
   {
     yearRange: "2022 - 2024",
     role: "Frontend Developer",

@@ -14,11 +14,12 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import { experiences } from "@/modules/about/data";
-import FirstImage from "/public/images/about/1.png";
-import SecondImage from "/public/images/about/2.png";
-import ThirdImage from "/public/images/about/3.png";
 
-const images = [FirstImage, SecondImage, ThirdImage];
+const images = [
+  "/images/about/1.png",
+  "/images/about/2.png",
+  "/images/about/3.png",
+];
 
 const AboutClient = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -69,13 +70,14 @@ const AboutClient = () => {
           {images.map((image, index) => (
             <CarouselItem
               className="h-[200px] basis-full pr-0 pl-0 md:h-[250px]"
-              key={image.src}
+              key={image}
             >
               <div className="relative h-full w-full">
                 <Image
                   alt={`Experience picture ${index + 1}`}
                   className="absolute inset-0 size-full object-cover"
                   src={image}
+                  fill
                 />
               </div>
             </CarouselItem>
@@ -112,17 +114,11 @@ const AboutClient = () => {
         </div>
 
         <ul className="space-y-4">
-          <p className="md:-mx-4 rounded-lg bg-white p-4 md:w-[calc(100%_+_2rem)] dark:bg-neutral-800">
-            <strong>Currently</strong> contributing building a{" "}
-            <strong>Turney asset management platform</strong> used by financial
-            institutions, building responsive UIs for investment analysis,
-            portfolio reporting, and client suitability tools.
-          </p>
           {experiences.map((experience) => {
             const hasLink = Object.hasOwn(experience, "link");
             return (
               <li
-                className="md:-mx-4 space-y-2 rounded-lg bg-white px-4 pt-3 pb-4 md:w-[calc(100%_+_2rem)] dark:bg-neutral-800"
+                className="md:-mx-4 space-y-2 rounded-lg bg-white px-4 pt-3 pb-4 md:w-[calc(100%+2rem)] dark:bg-neutral-800"
                 key={experience.company}
               >
                 <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-3">
