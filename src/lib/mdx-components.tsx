@@ -1,9 +1,10 @@
-import type { ComponentPropsWithoutRef } from 'react';
-import { AnimatedTerminal } from '@/components/blog-collection/animated-terminal';
-import CarouselWoved from '@/components/blog-collection/carousel-wowed/carousel-wowed';
-import CaseStudiesHeader from '@/components/blog-collection/case-studies-header';
-import Highlight from '@/components/blog-collection/highlight/highlight';
-import ImagePost from '@/components/blog-collection/image-post';
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: I need those index  - fix later*/
+import type { ComponentPropsWithoutRef } from "react";
+import { AnimatedTerminal } from "@/components/blog-collection/animated-terminal";
+import CarouselWoved from "@/components/blog-collection/carousel-wowed/carousel-wowed";
+import CaseStudiesHeader from "@/components/blog-collection/case-studies-header";
+import Highlight from "@/components/blog-collection/highlight/highlight";
+import ImagePost from "@/components/blog-collection/image-post";
 import {
   Terminal,
   TerminalCommand,
@@ -12,24 +13,24 @@ import {
   TerminalLine,
   TerminalString,
   TerminalUrl,
-} from '@/components/blog-collection/terminal';
-import CodeSnippet from '@/components/code-snippet';
-import ImageShowcase from '@/components/image-showcase';
-import ImageWrapper from '@/components/image-wrapper';
+} from "@/components/blog-collection/terminal";
+import CodeSnippet from "@/components/code-snippet";
+import ImageShowcase from "@/components/image-showcase";
+import ImageWrapper from "@/components/image-wrapper";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel';
+} from "@/components/ui/carousel";
 
 //type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 //type ParagraphProps = ComponentPropsWithoutRef<'p'>;
 //type ListProps = ComponentPropsWithoutRef<'ul'>;
 //type ListItemProps = ComponentPropsWithoutRef<'li'>;
 //type AnchorProps = ComponentPropsWithoutRef<'a'>;
-type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
+type BlockquoteProps = ComponentPropsWithoutRef<"blockquote">;
 
 const components = {
   ImageWrapper,
@@ -80,7 +81,7 @@ const components = {
       {...props}
     />
   ),
-  strong: (props: ComponentPropsWithoutRef<'strong'>) => (
+  strong: (props: ComponentPropsWithoutRef<"strong">) => (
     <strong className="font-medium" {...props} />
   ),
 };

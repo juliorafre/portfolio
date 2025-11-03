@@ -345,7 +345,6 @@ const CarouselDragable = () => {
           listOfItems.map((item) => {
             return (
               <div
-              
                 className="card size-[30vw] cursor-pointer select-none opacity-0 md:size-[10vw]"
                 key={item.id + 10}
                 style={{ transformOrigin: "50% 100%" }}

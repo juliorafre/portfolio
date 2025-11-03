@@ -1,11 +1,11 @@
 /* eslint-disable */
 // @ts-nocheck
-'use client';
+"use client";
 
-import { shaderMaterial, useAspect, useTexture } from '@react-three/drei';
-import { extend, useFrame, useThree } from '@react-three/fiber';
-import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
+import { shaderMaterial, useAspect, useTexture } from "@react-three/drei";
+import { extend, useFrame, useThree } from "@react-three/fiber";
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 // import imageRevealFragmentShader from './shaders/fragment.glsl?raw';
 // import imageRevealVertexShader from './shaders/vertex.glsl?raw';
@@ -188,7 +188,7 @@ const ImageRevealMaterial = shaderMaterial(
     if (self) {
       self.transparent = true;
     }
-  }
+  },
 );
 
 extend({ ImageRevealMaterial });
@@ -225,7 +225,7 @@ const RevealImage = ({
     if (materialRef.current) {
       materialRef.current.uRes.set(
         isFullScreen ? viewportScale[0] : scale[0],
-        isFullScreen ? viewportScale[1] : scale[1]
+        isFullScreen ? viewportScale[1] : scale[1],
       );
       materialRef.current.uImageRes.set(width, height);
     }

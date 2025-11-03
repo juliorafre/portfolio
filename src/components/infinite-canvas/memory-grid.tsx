@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { memoriesData } from '@/modules/infinite-canvas/data';
-import MemoryItem from './memory-item';
+import { memoriesData } from "@/modules/infinite-canvas/data";
+import MemoryItem from "./memory-item";
 
 interface MemoryGridProps {
   idPrefix: number;
@@ -25,7 +25,7 @@ const MemoryGrid = ({
       aria-hidden={isAriaHidden}
       className="grid grid-cols-5 gap-[5cqw] p-[5cqw] will-change-transform"
       style={{
-        width: 'max-content',
+        width: "max-content",
       }}
     >
       {memoriesData.map((memory) => {

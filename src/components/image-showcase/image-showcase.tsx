@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import Observer from 'gsap/Observer';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { RefreshCcwIcon } from 'lucide-react';
-import { motion } from 'motion/react';
-import Image from 'next/image';
-import { useRef, useState } from 'react';
-import { randomBetween } from '@/lib';
-import { sampleClothes } from '@/modules/carousel/data/sample.data';
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import Observer from "gsap/Observer";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { RefreshCcwIcon } from "lucide-react";
+import { motion } from "motion/react";
+import Image from "next/image";
+import { useRef, useState } from "react";
+import { randomBetween } from "@/lib";
+import { sampleClothes } from "@/modules/carousel/data/sample.data";
 
 gsap.registerPlugin(Observer, useGSAP, ScrollTrigger);
 
@@ -20,33 +20,33 @@ const ImageShowcase = () => {
   useGSAP(
     () => {
       if (containerRef.current) {
-        const cards = containerRef.current.querySelectorAll('.image-card');
+        const cards = containerRef.current.querySelectorAll(".image-card");
         gsap.fromTo(
           cards,
           {
             scale: 0,
             opacity: 1,
-            filter: 'blur(10px)',
+            filter: "blur(10px)",
             rotate: () => randomBetween(-80, -20),
           },
           {
             scale: 1,
-            filter: 'blur(0px)',
+            filter: "blur(0px)",
             rotate: () => randomBetween(-5, 8),
-            ease: 'elastic.out(0.4, 0.3, 0.1)', // spring-like
+            ease: "elastic.out(0.4, 0.3, 0.1)", // spring-like
             duration: 0.85,
             stagger: 0.1,
             scrollTrigger: {
               trigger: containerRef.current,
               scrub: false,
-              start: 'top 60%',
+              start: "top 60%",
               end: `+=${window.innerHeight / 1.2}`,
             },
-          }
+          },
         );
       }
     },
-    { dependencies: [key], scope: containerRef }
+    { dependencies: [key], scope: containerRef },
   );
 
   return (
@@ -61,13 +61,13 @@ const ImageShowcase = () => {
             id={`image-card-${idx}`}
             key={img.url}
             style={{
-              filter: 'blur(4px)',
+              filter: "blur(4px)",
               transform: `translate(calc(-50% + ${img.translateX}), calc(-50% + ${img.translateY}))`,
-              transformOrigin: 'bottom center',
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              rotate: '0deg',
+              transformOrigin: "bottom center",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              rotate: "0deg",
               opacity: 0,
             }}
           >
@@ -76,7 +76,7 @@ const ImageShowcase = () => {
               whileHover={{
                 scale: 1.1,
                 transition: {
-                  type: 'spring',
+                  type: "spring",
                   stiffness: 300,
                   damping: 10,
                 },

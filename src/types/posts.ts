@@ -19,7 +19,7 @@ interface PostMetadata extends Partial<CaseStudyMetadata> {
   tags: string[];
   published: boolean;
   slug: string;
-  type: 'journal' | 'blog';
+  type: "journal" | "blog";
 }
 
 export type { PostMetadata, CaseStudyMetadata };

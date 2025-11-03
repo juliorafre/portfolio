@@ -1,9 +1,9 @@
 // src/components/header/nav-links.tsx
-'use client';
+"use client";
 
-import { siteConfig } from '@/app/siteConfig';
-import { cn } from '@/lib';
-import { NavLink } from './nav-link';
+import { siteConfig } from "@/app/siteConfig";
+import { cn } from "@/lib";
+import { NavLink } from "./nav-link";
 
 interface NavLinksProps {
   className?: string;
@@ -14,19 +14,19 @@ export const NavLinks = ({ className, isMobile }: NavLinksProps) => {
   return (
     <nav
       className={cn(
-        'relative flex items-center justify-center gap-x-2',
-        className
+        "relative flex items-center justify-center gap-x-0",
+        className,
       )}
     >
       {siteConfig.baseLinks.map((link) => {
-        const isComingSoon = 'isComingSoon' in link && link.isComingSoon;
+        const isComingSoon = "isComingSoon" in link && link.isComingSoon;
         if (!link.isVisible) {
           return null;
         }
         if (isMobile && isComingSoon) {
           return null;
         }
-        if (isMobile && link.url === '/') {
+        if (isMobile && link.url === "/") {
           return null;
         }
         return (

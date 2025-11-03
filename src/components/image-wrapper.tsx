@@ -1,10 +1,13 @@
-'use client';
+"use client";
 
-import { Maximize2Icon, XIcon } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
-import Image, { type ImageProps } from 'next/image';
-import { Dialog } from 'radix-ui';
-import { useId, useState } from 'react';
+import { Maximize2Icon, XIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import Image, { type ImageProps } from "next/image";
+import { Dialog } from "radix-ui";
+import { useState } from "react";
+import { cn } from "@/lib";
+
+const MotionImage = motion.create(Image, { forwardMotionProps: false });
 
 interface ImageWrapperProps extends ImageProps {
   /**
@@ -28,78 +31,84 @@ interface ImageWrapperProps extends ImageProps {
    */
   disablePreview?: boolean;
   /**
-   * Custom spring transition config
-   */
-  transition?: {
-    duration?: number;
-    bounce?: number;
-  };
-  /**
    * Custom overlay background
    */
   overlayClassName?: string;
 }
 
-const ImageWrapper: React.FC<ImageWrapperProps> = ({
-  wrapperClassName = '',
-  containerClassName = '',
-  buttonClassName = '',
-  modalClassName = '',
-  overlayClassName = 'bg-black/60 backdrop-blur-xs',
+const ImageWrapper = ({
+  wrapperClassName = "",
+  containerClassName = "",
+  buttonClassName = "",
+  modalClassName = "",
+  overlayClassName = "",
   disablePreview = false,
-  transition = { duration: 0.34, bounce: 0.2 },
-  className,
-  alt,
-  src,
-  width,
-  height,
   ...imageProps
-}) => {
+}: ImageWrapperProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  // const imageId = 'image-' + imageProps.alt;
+  const containerId = `container-${imageProps.alt}`;
 
-  const handleOpenChange = (open: boolean) => {
+  /*const handleOpenChange = (open: boolean) => {
     setIsOpen(open);
-  };
-
-  const layoutId = useId();
+  };*/
 
   if (disablePreview) {
     return (
       <div className={wrapperClassName}>
         <Image
-          alt={alt}
-          className={className}
-          height={height}
-          src={src}
-          width={width}
-          {...imageProps}
+          className={cn("h-full w-full object-cover", imageProps.className)}
+          src={imageProps.src}
+          alt={imageProps.alt}
+          width={imageProps.width}
+          height={imageProps.height}
         />
       </div>
     );
   }
 
+  /*useEffect(() => {
+    console.group('image: ' + imageProps);
+    console.log('Image: ', imageProps);
+    console.log('imageID: ', imageId);
+    console.log('containerID: ', containerId);
+    console.groupEnd();
+    console.log('imageID: ', imageId);
+  });*/
+
   return (
     <>
       <div className={wrapperClassName}>
         <motion.div
-          className={`group relative overflow-hidden ${containerClassName}`}
-          layoutId={layoutId}
+          layoutId={containerId}
+          className={cn("group relative overflow-hidden", containerClassName)}
           transition={{
-            type: 'spring',
-            duration: transition.duration,
-            bounce: transition.bounce,
+            type: "spring",
+            bounce: 0.3,
+            duration: 0.45,
           }}
         >
-          <Image
-            alt={alt}
-            className={`h-full w-full object-cover ${className || ''}`}
-            height={height}
-            src={src}
-            width={width}
-            {...imageProps}
+          <MotionImage
+            /*layoutId={imageId}*/
+            className={cn(
+              "h-full w-full object-cover rounded-lg",
+              imageProps.className,
+            )}
+            src={imageProps.src}
+            alt={imageProps.alt}
+            width={imageProps.width}
+            height={imageProps.height}
+            transition={{
+              type: "spring",
+              bounce: 0.3,
+              duration: 0.3,
+            }}
           />
           <motion.button
-            className={`absolute top-4 right-4 cursor-pointer rounded-full bg-white/50 p-2 opacity-0 shadow-md backdrop-blur-2xl transition-opacity duration-[250ms] group-hover:opacity-100 ${buttonClassName}`}
+            className={cn(
+              "absolute top-3 right-3 cursor-pointer rounded-full bg-white/50 p-2 md:p-2.5 opacity-100 scale-100 md:scale-50 md:opacity-0 shadow-md backdrop-blur-2xl transition-all duration-[250ms] group-hover:opacity-100 group-hover:scale-100",
+              buttonClassName,
+            )}
             onClick={() => setIsOpen(true)}
             type="button"
             whileHover={{ scale: 1.1 }}
@@ -110,65 +119,93 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
         </motion.div>
       </div>
 
-      <Dialog.Root onOpenChange={handleOpenChange} open={isOpen}>
-        <Dialog.Portal forceMount>
-          <AnimatePresence>
-            {isOpen && (
-              <>
-                <Dialog.Overlay asChild>
-                  <motion.div
-                    animate={{ opacity: 1 }}
-                    className={`fixed inset-0 ${overlayClassName}`}
-                    exit={{ opacity: 0 }}
-                    initial={{ opacity: 0 }}
-                    transition={{ duration: 0.25, ease: 'easeOut' }}
-                  />
-                </Dialog.Overlay>
-                <Dialog.Content asChild>
-                  <motion.div className="fixed inset-0 z-10 flex h-full w-full items-center justify-center p-4">
-                    <Dialog.Title className="sr-only">
-                      Image Preview
-                    </Dialog.Title>
-                    <Dialog.Description className="sr-only">
-                      Image Preview
-                    </Dialog.Description>
-                    <motion.div
-                      className={`group relative aspect-[1.5/1] w-[90vw] overflow-hidden rounded-lg md:w-[80vw] lg:w-[70vw] ${modalClassName}`}
-                      layoutId={layoutId}
-                      onClick={(e) => e.stopPropagation()}
+      <AnimatePresence initial={false} mode="popLayout">
+        {isOpen && (
+          <Dialog.Root>
+            <Dialog.Portal forceMount>
+              {/* Overlay */}
+              <Dialog.Overlay key="overlay-wrapper">
+                <motion.div
+                  key="overlay"
+                  className={cn(
+                    "fixed inset-0 bg-black/65 backdrop-blur-xs",
+                    overlayClassName,
+                  )}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                />
+              </Dialog.Overlay>
+              {/* Content */}
+              <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[min(90vh,90vw)] sm:h-[min(80vh,80vw)] flex items-center justify-center">
+                <Dialog.Title className="sr-only">Image Preview</Dialog.Title>
+                <Dialog.Description className="sr-only">
+                  Image Preview
+                </Dialog.Description>
+
+                <motion.div
+                  layoutId={containerId}
+                  key="image-wrapper"
+                  className={cn(
+                    "relative w-full h-full rounded-lg overflow-hidden",
+                    modalClassName,
+                  )}
+                  transition={{
+                    type: "spring",
+                    bounce: 0.3,
+                    duration: 0.45,
+                  }}
+                >
+                  <Dialog.Close asChild>
+                    <motion.button
+                      className={cn(
+                        "absolute top-4 right-4 cursor-pointer border border-white/15 rounded-full bg-white/50 p-2 shadow-md backdrop-blur-2xl active:scale-95 hover:scale-101 transition-all duration-200",
+                      )}
+                      onClick={() => setIsOpen(false)}
+                      type="button"
+                      initial={{
+                        opacity: 0,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        transition: {
+                          delay: 0.45,
+                        },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        transition: { duration: 0 },
+                      }}
                       transition={{
-                        type: 'spring',
-                        duration: transition.duration,
-                        bounce: transition.bounce,
+                        duration: 0.25,
                       }}
                     >
-                      <Image
-                        alt={alt}
-                        className="h-full w-full object-cover"
-                        height={height}
-                        src={src}
-                        width={width}
-                        {...imageProps}
-                      />
-                      <Dialog.Close asChild>
-                        <motion.button
-                          className="absolute top-4 right-4 cursor-pointer rounded-full bg-white/50 p-2 shadow-md backdrop-blur-2xl"
-                          onClick={() => setIsOpen(false)}
-                          type="button"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <XIcon className="size-6 text-black" />
-                        </motion.button>
-                      </Dialog.Close>
-                    </motion.div>
-                  </motion.div>
-                </Dialog.Content>
-              </>
-            )}
-          </AnimatePresence>
-        </Dialog.Portal>
-      </Dialog.Root>
+                      <XIcon className="size-6 text-black" />
+                    </motion.button>
+                  </Dialog.Close>
+                  <MotionImage
+                    /*layoutId={imageId}*/
+                    className={cn(
+                      "object-contain size-full",
+                      imageProps.className,
+                    )}
+                    src={imageProps.src}
+                    alt={imageProps.alt}
+                    width={imageProps.width}
+                    height={imageProps.height}
+                    transition={{
+                      type: "spring",
+                      bounce: 0.3,
+                      duration: 0.45,
+                    }}
+                  />
+                </motion.div>
+              </Dialog.Content>
+            </Dialog.Portal>
+          </Dialog.Root>
+        )}
+      </AnimatePresence>
     </>
   );
 };

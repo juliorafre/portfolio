@@ -1,10 +1,10 @@
-'use client';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import Observer from 'gsap/Observer';
-import Image from 'next/image';
-import { useCallback, useRef } from 'react';
-import { imagesList } from '@/modules/carousel/data/carousel.data';
+"use client";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import Observer from "gsap/Observer";
+import Image from "next/image";
+import { useCallback, useRef } from "react";
+import { imagesList } from "@/modules/carousel/data/carousel.data";
 
 gsap.registerPlugin(Observer, useGSAP);
 
@@ -16,7 +16,7 @@ const Carousel = () => {
   const updateCardScales = useCallback(() => {
     if (!(containerRef.current && carouselWrapperRef.current)) return;
 
-    const cards = containerRef.current.querySelectorAll('.card');
+    const cards = containerRef.current.querySelectorAll(".card");
     const wrapperRect = carouselWrapperRef.current.getBoundingClientRect();
     const wrapperCenter = wrapperRect.left + wrapperRect.width / 2;
 
@@ -31,7 +31,7 @@ const Carousel = () => {
       // Normalize distance (0 = center, 1 = edge of card width)
       const normalizedDistance = Math.min(
         distanceFromCenter / (cardWidth * 0.6),
-        1
+        1,
       );
 
       // Calculate scale: 1.1 for focused (center), 0.9 for distant
@@ -42,8 +42,8 @@ const Carousel = () => {
       gsap.to(card, {
         scale: clampedScale,
         duration: 0.3,
-        ease: 'power2.out',
-        transformOrigin: 'center center',
+        ease: "power2.out",
+        transformOrigin: "center center",
       });
     });
   }, []);
@@ -51,15 +51,15 @@ const Carousel = () => {
   useGSAP(
     () => {
       if (containerRef.current) {
-        const cards = containerRef.current.querySelectorAll('.card');
+        const cards = containerRef.current.querySelectorAll(".card");
         const cardsLength = cards.length / 2;
         const contentHalf = containerRef.current.clientWidth / 2;
 
         const wrap = gsap.utils.wrap(-contentHalf, 0);
 
-        const xTo = gsap.quickTo(containerRef.current, 'x', {
+        const xTo = gsap.quickTo(containerRef.current, "x", {
           duration: 0.5,
-          ease: 'power3',
+          ease: "power3",
           modifiers: {
             x: gsap.utils.unitize(wrap),
           },
@@ -80,7 +80,7 @@ const Carousel = () => {
           scale: 0.95,
           duration: 0.5,
           // cards will move with a slight rebound:
-          ease: 'back.inOut(3)',
+          ease: "back.inOut(3)",
         });
 
         // Initialize card scales
@@ -91,7 +91,7 @@ const Carousel = () => {
 
         let total = 0;
 
-        const tick = (time: number, deltaTime: number) => {
+        const tick = (_time: number, deltaTime: number) => {
           total -= deltaTime / 20; // Adjust the speed of automatic scrolling
           xTo(total);
           // Update scales continuously during automatic scrolling
@@ -102,7 +102,7 @@ const Carousel = () => {
 
         Observer.create({
           target: containerRef.current,
-          type: 'pointer,touch',
+          type: "pointer,touch",
           onPress: () => {
             tl.play();
             gsap.ticker.remove(tick);
@@ -128,16 +128,16 @@ const Carousel = () => {
           setTimeout(updateCardScales, 100);
         };
 
-        window.addEventListener('resize', handleResize);
+        window.addEventListener("resize", handleResize);
 
         // Cleanup
         return () => {
-          window.removeEventListener('resize', handleResize);
+          window.removeEventListener("resize", handleResize);
           gsap.ticker.remove(tick);
         };
       }
     },
-    { scope: containerRef, dependencies: [updateCardScales] }
+    { scope: containerRef, dependencies: [updateCardScales] },
   );
 
   return (
@@ -152,6 +152,7 @@ const Carousel = () => {
         {imagesList.map((img, index) => (
           <div
             className="card aspect-video w-[80vw] overflow-hidden bg-red-50 transition-transform lg:w-[672px]"
+            // biome-ignore lint/suspicious/noArrayIndexKey: TODO fix later
             key={index}
           >
             <Image

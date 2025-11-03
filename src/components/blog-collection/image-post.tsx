@@ -1,4 +1,4 @@
-import Image, { type ImageProps } from 'next/image';
+import Image, { type ImageProps } from "next/image";
 
 const ImagePost = (props: ImageProps) => {
   return (
@@ -14,16 +14,16 @@ const ImagePost = (props: ImageProps) => {
       </div>
       <div
         style={{
-          borderRadius: '12px',
-          boxShadow: 'inset 0 0.5px 0 1.5px rgba(255, 255, 255, 0.4)',
-          flex: 'none',
-          height: '100%',
+          borderRadius: "12px",
+          boxShadow: "inset 0 0.5px 0 1.5px rgba(255, 255, 255, 0.4)",
+          flex: "none",
+          height: "100%",
           left: 0,
-          overflow: 'hidden',
-          position: 'absolute',
+          overflow: "hidden",
+          position: "absolute",
           top: 0,
-          width: '100%',
-          willChange: 'transform',
+          width: "100%",
+          willChange: "transform",
         }}
       />
     </section>

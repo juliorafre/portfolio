@@ -1,14 +1,15 @@
-import Link from 'next/link';
-import React, { type ComponentPropsWithoutRef } from 'react';
-import { highlight } from 'sugar-high';
-import CodeSnippet from '@/components/code-snippet';
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: I need those index */
+import Link from "next/link";
+import type { ComponentPropsWithoutRef } from "react";
+import { highlight } from "sugar-high";
+import CodeSnippet from "@/components/code-snippet";
 
-type HeadingProps = ComponentPropsWithoutRef<'h1'>;
-type ParagraphProps = ComponentPropsWithoutRef<'p'>;
-type ListProps = ComponentPropsWithoutRef<'ul'>;
-type ListItemProps = ComponentPropsWithoutRef<'li'>;
-type AnchorProps = ComponentPropsWithoutRef<'a'>;
-type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
+type HeadingProps = ComponentPropsWithoutRef<"h1">;
+type ParagraphProps = ComponentPropsWithoutRef<"p">;
+type ListProps = ComponentPropsWithoutRef<"ul">;
+type ListItemProps = ComponentPropsWithoutRef<"li">;
+type AnchorProps = ComponentPropsWithoutRef<"a">;
+type BlockquoteProps = ComponentPropsWithoutRef<"blockquote">;
 
 export const components = {
   h1: (props: HeadingProps) => (
@@ -43,23 +44,23 @@ export const components = {
     />
   ),
   li: (props: ListItemProps) => <li className="pl-1" {...props} />,
-  em: (props: ComponentPropsWithoutRef<'em'>) => (
+  em: (props: ComponentPropsWithoutRef<"em">) => (
     <em className="font-medium" {...props} />
   ),
-  strong: (props: ComponentPropsWithoutRef<'strong'>) => (
+  strong: (props: ComponentPropsWithoutRef<"strong">) => (
     <strong className="font-medium" {...props} />
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
     const className =
-      'text-blue-500 hover:text-blue-700 dark:text-gray-400 hover:dark:text-gray-300 dark:underline dark:underline-offset-2 dark:decoration-gray-800';
-    if (href?.startsWith('/')) {
+      "text-blue-500 hover:text-blue-700 dark:text-gray-400 hover:dark:text-gray-300 dark:underline dark:underline-offset-2 dark:decoration-gray-800";
+    if (href?.startsWith("/")) {
       return (
         <Link className={className} href={href} {...props}>
           {children}
         </Link>
       );
     }
-    if (href?.startsWith('#')) {
+    if (href?.startsWith("#")) {
       return (
         <a className={className} href={href} {...props}>
           {children}
@@ -79,8 +80,9 @@ export const components = {
     );
   },
   pre: CodeSnippet,
-  code: ({ children, ...props }: ComponentPropsWithoutRef<'code'>) => {
+  code: ({ children, ...props }: ComponentPropsWithoutRef<"code">) => {
     const codeHTML = highlight(children as string);
+    // biome-ignore lint/security/noDangerouslySetInnerHtml: I need this to render highlighted code
     return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
   },
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (

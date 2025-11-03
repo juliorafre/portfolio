@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
-import { AnimatePresence, motion, type PanInfo } from 'motion/react';
-import Image from 'next/image';
-import { useCallback, useRef, useState } from 'react';
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { AnimatePresence, motion, type PanInfo } from "motion/react";
+import Image from "next/image";
+import { useCallback, useRef, useState } from "react";
 
 const MotionImage = motion(Image);
 
@@ -13,23 +13,20 @@ const CustomCarousel = () => {
   const constraintsRef = useRef<HTMLDivElement>(null);
 
   const images = [
-    '/images/about/3.png',
-    '/images/about/1.png',
-    '/images/about/2.png',
+    "/images/about/3.png",
+    "/images/about/1.png",
+    "/images/about/2.png",
   ];
 
-  const paginate = useCallback(
-    (newDirection: number) => {
-      setDirection(newDirection);
-      setCurrentImage((prev) => {
-        if (newDirection > 0) {
-          return (prev + 1) % images.length;
-        }
-        return (prev - 1 + images.length) % images.length;
-      });
-    },
-    [images.length]
-  );
+  const paginate = useCallback((newDirection: number) => {
+    setDirection(newDirection);
+    setCurrentImage((prev) => {
+      if (newDirection > 0) {
+        return (prev + 1) % images.length;
+      }
+      return (prev - 1 + images.length) % images.length;
+    });
+  }, []);
 
   const handleNext = useCallback(() => {
     paginate(1);
@@ -41,7 +38,7 @@ const CustomCarousel = () => {
 
   // Handle swipe gestures
   const handleDragEnd = useCallback(
-    (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
       const swipeThreshold = 50;
       const swipeVelocityThreshold = 500;
 
@@ -59,13 +56,13 @@ const CustomCarousel = () => {
         }
       }
     },
-    [paginate]
+    [paginate],
   );
 
   // Animation variants with proper directional sliding
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? '100%' : '-100%',
+      x: direction > 0 ? "100%" : "-100%",
       opacity: 0.7,
     }),
     center: {
@@ -73,7 +70,7 @@ const CustomCarousel = () => {
       opacity: 1,
     },
     exit: (direction: number) => ({
-      x: direction > 0 ? '-100%' : '100%',
+      x: direction > 0 ? "-100%" : "100%",
       opacity: 0.7,
     }),
   };
@@ -82,7 +79,7 @@ const CustomCarousel = () => {
     <motion.div
       className="group relative mb-10 flex h-[200px] w-full overflow-hidden rounded-2xl"
       ref={constraintsRef}
-      style={{ touchAction: 'pan-y pinch-zoom' }}
+      style={{ touchAction: "pan-y pinch-zoom" }}
       variants={{
         hover: {},
       }}
@@ -104,7 +101,7 @@ const CustomCarousel = () => {
           onDragEnd={handleDragEnd}
           src={images[currentImage]}
           transition={{
-            type: 'spring',
+            type: "spring",
             bounce: 0.3,
             duration: 0.45,
           }}
@@ -120,9 +117,9 @@ const CustomCarousel = () => {
       {/* Navigation controls */}
       <motion.div
         className="absolute bottom-0 left-0 z-30 flex w-full items-center justify-end px-2 py-2"
-        initial={{ y: '110%' }}
+        initial={{ y: "110%" }}
         transition={{
-          type: 'spring',
+          type: "spring",
           bounce: 0.3,
           duration: 0.45,
         }}
@@ -160,8 +157,9 @@ const CustomCarousel = () => {
           <motion.button
             aria-label={`Go to image ${index + 1}`}
             className={`h-2 w-2 rounded-full transition-all ${
-              index === currentImage ? 'bg-white' : 'bg-white/50'
+              index === currentImage ? "bg-white" : "bg-white/50"
             }`}
+            // biome-ignore lint/suspicious/noArrayIndexKey: TODO resolve key
             key={index}
             onClick={() => {
               const newDirection = index > currentImage ? 1 : -1;

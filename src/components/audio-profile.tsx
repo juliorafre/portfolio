@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 const AudioProfile = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -12,6 +12,7 @@ const AudioProfile = () => {
   }, []);
 
   return (
+    // biome-ignore lint/a11y/useMediaCaption: i dont have any track files
     <audio
       className="mt-4"
       controls

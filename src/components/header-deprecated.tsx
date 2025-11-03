@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { motion } from 'motion/react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { motion } from "motion/react";
+import Image from "next/image";
+import Link from "next/link";
 // import { RRSSLink } from '@/components/rrss-link';
-import { usePathname } from 'next/navigation';
-import { siteConfig } from '@/app/siteConfig';
-import { cn } from '@/lib';
+import { usePathname } from "next/navigation";
+import { siteConfig } from "@/app/siteConfig";
+import { cn } from "@/lib";
 
 const NavLinks = ({
   className,
@@ -18,12 +18,12 @@ const NavLinks = ({
   return (
     <nav
       className={cn(
-        'relative flex items-center justify-center gap-x-2',
-        className
+        "relative flex items-center justify-center gap-x-2",
+        className,
       )}
     >
       {siteConfig.baseLinks.map((link) => {
-        const isComingSoon = 'isComingSoon' in link && link.isComingSoon;
+        const isComingSoon = "isComingSoon" in link && link.isComingSoon;
         if (!link.isVisible) return null;
         if (isMobile && isComingSoon) return null;
         return (
@@ -54,22 +54,22 @@ const NavLink = ({
 }) => {
   const pathname = usePathname();
   const isActive =
-    pathname === href || (pathname.startsWith(href) && href !== '/');
+    pathname === href || (pathname.startsWith(href) && href !== "/");
 
   return (
     <Link
       className={cn(
-        'group flex items-center gap-x-2 rounded-sm px-2 py-1 transition-all duration-300',
-        isMobile && 'px-2 py-3 first:pl-6 last:pr-6',
+        "group flex items-center gap-x-2 rounded-sm px-2 py-1 transition-all duration-300",
+        isMobile && "px-2 py-3 first:pl-6 last:pr-6",
         isActive && !isMobile
-          ? 'text-black dark:text-white'
-          : 'text-neutral-500 dark:text-neutral-500',
-        isActive && isMobile && 'text-black dark:text-black',
-        'hover:bg-neutral-200 hover:text-black dark:hover:bg-neutral-600 dark:hover:text-white',
+          ? "text-black dark:text-white"
+          : "text-neutral-500 dark:text-neutral-500",
+        isActive && isMobile && "text-black dark:text-black",
+        "hover:bg-neutral-200 hover:text-black dark:hover:bg-neutral-600 dark:hover:text-white",
         isComingSoon &&
-          'cursor-auto opacity-50 hover:bg-transparent hover:text-muted-foreground hover:opacity-50 dark:hover:bg-transparent dark:hover:text-muted-foreground'
+          "cursor-auto opacity-50 hover:bg-transparent hover:text-muted-foreground hover:opacity-50 dark:hover:bg-transparent dark:hover:text-muted-foreground",
       )}
-      href={isComingSoon ? '#' : href}
+      href={isComingSoon ? "#" : href}
       onClick={(e) => {
         if (isComingSoon) {
           e.preventDefault();
@@ -103,13 +103,13 @@ const Header = () => {
               transition={{
                 opacity: {
                   duration: 0.5,
-                  ease: 'easeInOut',
+                  ease: "easeInOut",
                 },
                 rotate: {
                   delay: 0.5,
                   duration: 60,
                   repeat: Number.POSITIVE_INFINITY,
-                  ease: 'linear',
+                  ease: "linear",
                 },
               }}
             >
@@ -162,22 +162,22 @@ const Wrapper = ({
         y: 0,
       }}
       className={cn(
-        'inset-shadow-accent cursor-pointer overflow-hidden rounded-full bg-[rgba(243,243,243,0.7)] shadow-2xl backdrop-blur-sm md:hidden',
-        className
+        "inset-shadow-accent cursor-pointer overflow-hidden rounded-full bg-[rgba(243,243,243,0.7)] shadow-2xl backdrop-blur-sm md:hidden",
+        className,
       )}
       initial={{
         opacity: 0,
         y: 40,
       }}
       style={{
-        boxShadow: 'inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff',
-        border: '2px solid rgb(206, 206, 206)',
+        boxShadow: "inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff",
+        border: "2px solid rgb(206, 206, 206)",
       }}
       transition={{
-        type: 'spring',
+        type: "spring",
         duration: 0.95,
         bounce: 0.3,
-        ease: 'easeInOut',
+        ease: "easeInOut",
         delay: 0.2,
       }}
     >

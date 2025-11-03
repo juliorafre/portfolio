@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
   motion,
   type PanInfo,
@@ -6,40 +6,40 @@ import {
   useMotionValue,
   useMotionValueEvent,
   useTransform,
-} from 'motion/react';
-import React, { useRef, useState } from 'react';
+} from "motion/react";
+import { useRef, useState } from "react";
 
 const menuItems = [
-  'Eero Aarnio Ball Chair',
-  'Verner Panton Chair',
-  'Eero Saarinen Tulip Table',
-  'Arne Jacobsen Egg Chair',
-  'Joe Colombo Elda Chair',
-  'Olivier Mourgue Djinn Chairs',
-  'Pierre Paulin Orange Slice Chair',
-  'George Nelson Coconut Chair',
-  'Isamu Noguchi Coffee Table',
-  'Warren Platner Coffee Table',
-  'Marc Newson Lockheed Lounge',
-  'Vitra Eames Lounge Chair',
-  'Mario Bellini Camaleonda Sofa',
-  'Eero Aarnio Pastil Chair',
-  'Pierre Cardin Dining Table',
-  'Marcel Breuer Wassily Chair',
-  'Alvar Aalto Savoy Vase',
-  'Le Corbusier LC4 Chaise Longue',
-  'Eileen Gray Bibendum Chair',
-  'Charles and Ray Eames Molded Plastic Chair',
-  'Olivetti Synthesis Office Chair',
-  'Giancarlo Piretti Plia Chair',
-  'Rodolfo Bonetto Boomerang Desk',
-  'Richard Sapper Tizio Lamp',
-  'Vico Magistretti Maralunga Sofa',
-  'Peter Ghyczy Garden Egg Chair',
-  'Paulin Globe Chair',
-  'Luigi Colani Rotor Table',
-  'Ross Lovegrove Go Chair',
-  'Ron Arad Well Tempered Chair',
+  "Eero Aarnio Ball Chair",
+  "Verner Panton Chair",
+  "Eero Saarinen Tulip Table",
+  "Arne Jacobsen Egg Chair",
+  "Joe Colombo Elda Chair",
+  "Olivier Mourgue Djinn Chairs",
+  "Pierre Paulin Orange Slice Chair",
+  "George Nelson Coconut Chair",
+  "Isamu Noguchi Coffee Table",
+  "Warren Platner Coffee Table",
+  "Marc Newson Lockheed Lounge",
+  "Vitra Eames Lounge Chair",
+  "Mario Bellini Camaleonda Sofa",
+  "Eero Aarnio Pastil Chair",
+  "Pierre Cardin Dining Table",
+  "Marcel Breuer Wassily Chair",
+  "Alvar Aalto Savoy Vase",
+  "Le Corbusier LC4 Chaise Longue",
+  "Eileen Gray Bibendum Chair",
+  "Charles and Ray Eames Molded Plastic Chair",
+  "Olivetti Synthesis Office Chair",
+  "Giancarlo Piretti Plia Chair",
+  "Rodolfo Bonetto Boomerang Desk",
+  "Richard Sapper Tizio Lamp",
+  "Vico Magistretti Maralunga Sofa",
+  "Peter Ghyczy Garden Egg Chair",
+  "Paulin Globe Chair",
+  "Luigi Colani Rotor Table",
+  "Ross Lovegrove Go Chair",
+  "Ron Arad Well Tempered Chair",
 ];
 
 const angleIncrement = 360 / menuItems.length;
@@ -51,7 +51,7 @@ export default function DraggableCurvedMenu() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [middleItem, setMiddleItem] = useState(menuItems[0]);
 
-  useMotionValueEvent(rotation, 'change', (value) => {
+  useMotionValueEvent(rotation, "change", (value) => {
     const adjustedRotation = ((value % 360) + 360) % 360;
     const middleIndex =
       Math.round(adjustedRotation / angleIncrement) % menuItems.length;
@@ -72,7 +72,7 @@ export default function DraggableCurvedMenu() {
     const endRotation = rotation.get() + info.velocity.y * dragFactor;
     controls.start({
       rotate: endRotation,
-      transition: { type: 'spring', mass: 0.1 },
+      transition: { type: "spring", mass: 0.1 },
     });
   };
 
@@ -93,7 +93,7 @@ export default function DraggableCurvedMenu() {
         onDrag={onDrag}
         onDragEnd={onDragEnd}
         style={{
-          transformOrigin: 'center center',
+          transformOrigin: "center center",
           transform,
           rotate: rotation,
         }}
@@ -103,12 +103,15 @@ export default function DraggableCurvedMenu() {
 
           return (
             <motion.div
-              className={`absolute ${item === middleItem ? 'text-primary-light-12 dark:text-primary-dark-12' : 'text-primary-light-12/30 dark:text-primary-dark-12/30'} transition-colors duration-150`}
-              key={`${item}-${index}`}
+              className={`absolute ${item === middleItem ? "text-primary-light-12 dark:text-primary-dark-12" : "text-primary-light-12/30 dark:text-primary-dark-12/30"} transition-colors duration-150`}
+              key={`${item}-${
+                // biome-ignore lint/suspicious/noArrayIndexKey: i need those
+                index
+              }`}
               style={{
-                left: '50%',
+                left: "50%",
                 transform: `rotate(${rotate}deg) translateX(300px)`,
-                transformOrigin: 'left center',
+                transformOrigin: "left center",
               }}
             >
               {item}

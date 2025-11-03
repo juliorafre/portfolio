@@ -1,19 +1,19 @@
 // src/components/common/error-test-component.tsx
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const ErrorTestComponent = ({ throwOnInit = false }) => {
   const [shouldThrow, setShouldThrow] = useState(false);
 
   useEffect(() => {
     if (throwOnInit) {
-      throw new Error('Test error on component mount!');
+      throw new Error("Test error on component mount!");
     }
   }, [throwOnInit]);
 
   if (shouldThrow) {
-    throw new Error('Test error on button click!');
+    throw new Error("Test error on button click!");
   }
 
   return (
@@ -22,7 +22,7 @@ const ErrorTestComponent = ({ throwOnInit = false }) => {
       <p>This component is used to test the ErrorBoundary.</p>
       <button
         onClick={() => setShouldThrow(true)}
-        style={{ border: '1px solid red', padding: '5px', margin: '5px' }}
+        style={{ border: "1px solid red", padding: "5px", margin: "5px" }}
         type="button"
       >
         Click to Throw Error

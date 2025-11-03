@@ -1,9 +1,11 @@
-'use client';
+"use client";
 
-import { XIcon } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
-import Image from 'next/image';
-import { memoriesData } from '@/modules/infinite-canvas/data';
+import { XIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
+import { memoriesData } from "@/modules/infinite-canvas/data";
+
+const MotionImage = motion(Image);
 
 interface MemoryCardProps {
   selectedMemory: { id: number; layoutIdPrefix: number } | null;
@@ -16,7 +18,7 @@ const MemoryCard = ({
 }: MemoryCardProps) => {
   const layoutId = selectedMemory
     ? `${selectedMemory.layoutIdPrefix}-memory-item-${selectedMemory.id}`
-    : 'memory-item';
+    : "memory-item";
   const memory = selectedMemory
     ? memoriesData.find((memory) => memory.id === selectedMemory.id)
     : null;
@@ -27,7 +29,7 @@ const MemoryCard = ({
         <motion.div
           animate={{
             opacity: 1,
-            filter: 'blur(0px)',
+            filter: "blur(0px)",
             transition: {
               duration: 0.7,
             },
@@ -35,13 +37,14 @@ const MemoryCard = ({
           className="absolute inset-0 z-10 flex items-center justify-center bg-neutral-200/50 backdrop-blur-sm"
           exit={{
             opacity: 0,
-            filter: 'blur(10px)',
+            filter: "blur(10px)",
           }}
           id="memory-item"
-          initial={{ opacity: 0, filter: 'blur(10px)' }}
+          initial={{ opacity: 0, filter: "blur(10px)" }}
         >
           <div className="perspective-distant relative flex h-full w-full flex-row items-center justify-center">
             <button
+              type="button"
               className="absolute top-0 right-0 m-2 cursor-pointer rounded-full bg-gray-100 p-1 md:m-2 md:p-2"
               onClick={resetSelectedMemory}
             >
@@ -49,14 +52,14 @@ const MemoryCard = ({
               <p className="sr-only">Close</p>
             </button>
 
-            <motion.img
+            <MotionImage
               alt="Infinite canvas"
               className="absolute bottom-0 left-0 z-50 mb-4 ml-4 block w-[25%] select-none object-contain drop-shadow-xl"
               height={300}
               layoutId={layoutId}
               src={`/images/postcards/${selectedMemory.id}/${selectedMemory.id}.png`}
               transition={{
-                type: 'spring',
+                type: "spring",
                 bounce: 0.2,
               }}
               width={300}
@@ -64,25 +67,25 @@ const MemoryCard = ({
 
             <motion.div
               animate={{
-                transform: 'rotateZ(3deg) rotateX(0deg) translateY(0%)',
+                transform: "rotateZ(3deg) rotateX(0deg) translateY(0%)",
                 scale: 1,
               }}
               className="relative z-20 grid aspect-video h-[80%] w-[80%] grid-cols-[50%_1fr] overflow-hidden rounded-xs bg-white p-3 shadow-lg"
               exit={{
-                transform: 'rotateZ(0deg) rotateX(-50deg) translateY(200%)',
+                transform: "rotateZ(0deg) rotateX(-50deg) translateY(200%)",
                 scale: 0.5,
               }}
               id="memory-item-card"
               initial={{
-                transform: 'rotateZ(0deg) rotateX(50deg) translateY(-200%)',
+                transform: "rotateZ(0deg) rotateX(50deg) translateY(-200%)",
                 scale: 0.5,
               }}
               style={{
-                transformOrigin: 'center',
+                transformOrigin: "center",
               }}
               transition={{
                 duration: 0.65,
-                type: 'spring',
+                type: "spring",
                 bounce: 0.2,
               }}
             >
@@ -91,9 +94,9 @@ const MemoryCard = ({
                 <div
                   className="background-grid absolute inset-0 overflow-hidden"
                   style={{
-                    backgroundColor: 'rgba(250, 241, 225, 1)',
-                    backgroundPosition: '50%',
-                    mixBlendMode: 'overlay',
+                    backgroundColor: "rgba(250, 241, 225, 1)",
+                    backgroundPosition: "50%",
+                    mixBlendMode: "overlay",
                     opacity: 0.4,
                   }}
                 />
@@ -101,8 +104,8 @@ const MemoryCard = ({
                   className="absolute inset-0 overflow-hidden"
                   style={{
                     backgroundImage: "url('images/fx/noise.avif')",
-                    backgroundPosition: '50%',
-                    mixBlendMode: 'overlay',
+                    backgroundPosition: "50%",
+                    mixBlendMode: "overlay",
                     opacity: 0.1,
                   }}
                 />
@@ -121,7 +124,7 @@ const MemoryCard = ({
                 alt="lines"
                 className="absolute top-0 right-0 z-50 m-2 block w-[12%] translate-x-[-65%] translate-y-[20%] select-none object-contain drop-shadow-xl"
                 height={500}
-                src={'/images/postcards/common/lines.png'}
+                src={"/images/postcards/common/lines.png"}
                 width={500}
               />
 
@@ -155,7 +158,7 @@ const MemoryCard = ({
                     alt="lines-2"
                     className="absolute top-0 right-0 z-50 m-2 block w-full select-none object-contain drop-shadow-xl"
                     height={600}
-                    src={'/images/postcards/common/lines-2.png'}
+                    src={"/images/postcards/common/lines-2.png"}
                     width={600}
                   />
                   <p className="mt-1 max-w-[78ch] overflow-ellipsis font-kalam text-[10px] leading-[1.2rem] md:text-lg md:leading-[2.8rem]">

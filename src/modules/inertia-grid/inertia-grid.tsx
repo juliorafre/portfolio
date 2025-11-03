@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
-import CustomBounce from 'gsap/CustomBounce';
-import CustomEase from 'gsap/CustomEase';
-import InertiaPlugin from 'gsap/InertiaPlugin';
-import Image from 'next/image';
-import { useRef } from 'react';
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import CustomBounce from "gsap/CustomBounce";
+import CustomEase from "gsap/CustomEase";
+import InertiaPlugin from "gsap/InertiaPlugin";
+import Image from "next/image";
+import { useRef } from "react";
 
 gsap.registerPlugin(useGSAP, InertiaPlugin, CustomEase, CustomBounce);
 
@@ -20,7 +20,7 @@ const InertiaGrid = () => {
       deltaX = 0,
       deltaY = 0;
 
-    rootRef.current.addEventListener('mousemove', (e) => {
+    rootRef.current.addEventListener("mousemove", (e) => {
       deltaX = e.clientX - oldX;
       deltaY = e.clientY - oldY;
 
@@ -31,7 +31,7 @@ const InertiaGrid = () => {
     // Store initial positions for each element
     const initialPositions = new Map();
 
-    rootRef.current.querySelectorAll('.media').forEach((media) => {
+    rootRef.current.querySelectorAll(".media").forEach((media) => {
       //const mediaImg = media.querySelector('img') as HTMLImageElement;
       const computedStyle = window.getComputedStyle(media);
       const matrix = new DOMMatrix(computedStyle.transform);
@@ -46,7 +46,7 @@ const InertiaGrid = () => {
         rotate: rotationDegrees,
       });
 
-      media.addEventListener('mouseenter', () => {
+      media.addEventListener("mouseenter", () => {
         const initialPos = initialPositions.get(media);
 
         const tl = gsap.timeline({
@@ -57,7 +57,7 @@ const InertiaGrid = () => {
         tl.timeScale(1.2);
         // const mediaImg = media.querySelector('img');
 
-        const bounceEase = CustomBounce.create('myBounce', {
+        const bounceEase = CustomBounce.create("myBounce", {
           strength: 0.7,
           endAtStart: false,
         });
@@ -85,9 +85,9 @@ const InertiaGrid = () => {
             rotate: (Math.random() - 0.5) * 20,
             yoyo: true,
             repeat: 1,
-            ease: 'power1.inOut',
+            ease: "power1.inOut",
           },
-          '<'
+          "<",
         );
       });
     });
@@ -116,56 +116,56 @@ const InertiaGrid = () => {
         <div
           className="media rounded-lg will-change-transform"
           style={{
-            transform: 'rotate(4deg) translateX(100px)',
+            transform: "rotate(4deg) translateX(100px)",
           }}
         >
           <Image
             alt="mini-1"
             className="pointer-events-none size-[11vw] h-full w-full rounded-lg object-contain will-change-transform"
             height={800}
-            src={'/images/samples/minis/mini-1.png'}
+            src={"/images/samples/minis/mini-1.png"}
             width={800}
           />
         </div>
         <div
           className="media rounded-lg will-change-transform"
           style={{
-            transform: 'translateY(-20px) rotate(-8deg) translateX(30px)',
+            transform: "translateY(-20px) rotate(-8deg) translateX(30px)",
           }}
         >
           <Image
             alt="mini-1"
             className="pointer-events-none size-[11vw] h-full w-full rounded-lg object-contain will-change-transform"
             height={800}
-            src={'/images/samples/minis/mini-2.png'}
+            src={"/images/samples/minis/mini-2.png"}
             width={800}
           />
         </div>
         <div
           className="media rounded-lg will-change-transform"
           style={{
-            transform: 'rotate(8deg) translateX(-30px)',
+            transform: "rotate(8deg) translateX(-30px)",
           }}
         >
           <Image
             alt="mini-1"
             className="pointer-events-none size-[11vw] h-full w-full rounded-lg object-contain will-change-transform"
             height={800}
-            src={'/images/samples/minis/mini-3.png'}
+            src={"/images/samples/minis/mini-3.png"}
             width={800}
           />
         </div>
         <div
           className="media rounded-lg will-change-transform"
           style={{
-            transform: 'translateX(-100px) translateY(-0px) rotate(-6deg)',
+            transform: "translateX(-100px) translateY(-0px) rotate(-6deg)",
           }}
         >
           <Image
             alt="mini-1"
             className="pointer-events-none size-[11vw] h-full w-full rounded-lg object-contain will-change-transform"
             height={800}
-            src={'/images/samples/minis/mini-4.png'}
+            src={"/images/samples/minis/mini-4.png"}
             width={800}
           />
         </div>

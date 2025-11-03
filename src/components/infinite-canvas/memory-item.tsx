@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { AnimatePresence, motion } from 'motion/react';
-import Image from 'next/image';
-import type { Memory } from '@/modules/infinite-canvas/data';
+import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
+import type { Memory } from "@/modules/infinite-canvas/data";
 
 const MotionImage = motion.create(Image);
 
@@ -26,7 +26,7 @@ const MemoryItem = ({
   const layoutId = `${layoutIdPrefix}-memory-item-${memory.id}`;
 
   return (
-    <div
+    <button
       className="image-wrapper aspect-square w-[15cqw] scale-0 transform cursor-pointer select-none opacity-0"
       onClick={() => {
         onMemoryClick({
@@ -34,7 +34,7 @@ const MemoryItem = ({
           layoutIdPrefix,
         });
       }}
-      role="button"
+      type="button"
     >
       <AnimatePresence initial={false} mode="popLayout">
         <MotionImage
@@ -45,13 +45,13 @@ const MemoryItem = ({
           priority
           src={`/images/postcards/${memory.id}/${memory.id}.png`}
           transition={{
-            type: 'spring',
+            type: "spring",
             bounce: 0.15,
           }}
           width={500}
         />
       </AnimatePresence>
-    </div>
+    </button>
   );
 };
 

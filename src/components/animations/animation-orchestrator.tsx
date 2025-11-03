@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
 import {
   type HTMLAttributes,
   type ReactNode,
   useEffect,
   useState,
-} from 'react';
+} from "react";
 
 interface AnimationOrchestratorProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
@@ -24,24 +24,24 @@ interface AnimationOrchestratorProps extends HTMLAttributes<HTMLDivElement> {
 export function AnimationOrchestrator({
   children,
   className,
-  animationClassName = 'orchestration',
-  sessionKey = 'pageAnimated',
+  animationClassName = "orchestration",
+  sessionKey = "pageAnimated",
   ...props
 }: AnimationOrchestratorProps) {
-  const [currentAnimationClass, setCurrentAnimationClass] = useState('');
+  const [currentAnimationClass, setCurrentAnimationClass] = useState("");
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       // Ensure sessionStorage is available
-      if (sessionStorage.getItem(sessionKey) !== 'true') {
+      if (sessionStorage.getItem(sessionKey) !== "true") {
         setCurrentAnimationClass(animationClassName);
-        sessionStorage.setItem(sessionKey, 'false');
+        sessionStorage.setItem(sessionKey, "false");
       }
     }
   }, [animationClassName, sessionKey]); // Depend on these props in case they change
 
   const combinedClassName =
-    `${currentAnimationClass} ${className || ''}`.trim();
+    `${currentAnimationClass} ${className || ""}`.trim();
 
   return (
     <div className={combinedClassName} {...props}>

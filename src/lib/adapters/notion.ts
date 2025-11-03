@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { NotionBook } from '@/types/notion';
+import type { NotionBook } from "@/types/notion";
 
 /**
  * Adapter function to transform Notion API response into a NotionBook object
@@ -8,17 +8,19 @@ import type { NotionBook } from '@/types/notion';
  * @returns Transformed NotionBook object
  * @throws Error if required fields are missing or malformed
  */
+
+// biome-ignore lint/suspicious/noExplicitAny: TODO fix later
 export const notionAdapter = (response: any): NotionBook => {
   if (!response?.properties?.Name?.title?.[0]?.plain_text) {
-    throw new Error('Invalid Notion response: Missing or malformed title');
+    throw new Error("Invalid Notion response: Missing or malformed title");
   }
 
   if (!response?.properties?.Author?.rich_text?.[0]?.plain_text) {
-    throw new Error('Invalid Notion response: Missing or malformed author');
+    throw new Error("Invalid Notion response: Missing or malformed author");
   }
 
   if (!response?.properties?.Status?.select?.name) {
-    throw new Error('Invalid Notion response: Missing or malformed status');
+    throw new Error("Invalid Notion response: Missing or malformed status");
   }
 
   return {

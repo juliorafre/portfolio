@@ -1,4 +1,4 @@
-import StreamingText from '@/modules/streaming-text/streaming-text';
+import StreamingText from "@/modules/streaming-text/streaming-text";
 
 const StreamingTextPage = () => {
   return (

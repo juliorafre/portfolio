@@ -1,5 +1,5 @@
-import { formatDate } from '@/lib/utils';
-import type { PostMetadata } from '@/types';
+import { formatDate } from "@/lib/utils";
+import type { PostMetadata } from "@/types";
 
 const BlogHeader = (props: PostMetadata) => {
   return (
@@ -17,7 +17,7 @@ const BlogHeader = (props: PostMetadata) => {
           id="title"
           style={{
             lineHeight:
-              'clamp(2.28rem, calc(2.28rem + 1.72 * ((100vw - 23.4375rem) / 66.5625)), 3rem)',
+              "clamp(2.28rem, calc(2.28rem + 1.72 * ((100vw - 23.4375rem) / 66.5625)), 3rem)",
           }}
         >
           {props.title}

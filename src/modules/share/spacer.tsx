@@ -1,4 +1,4 @@
-import { ExternalLinkIcon } from 'lucide-react';
+import { ExternalLinkIcon } from "lucide-react";
 
 interface SpacerProps {
   url: string;
@@ -24,17 +24,21 @@ const GridPattern = ({ numberOfSquares = 20 }: GridPatternProps) => {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
+      <title>Grid Pattern</title>
       <g fill="none" stroke="hsl(261, 60%, 38%)" strokeWidth="0.75">
         {Array.from({ length: numberOfSquares }, (_, i) =>
           Array.from({ length: numberOfSquares }, (_, j) => (
             <rect
               height={squareSize}
-              key={`${i}-${j}`}
+              key={`${i}-${
+                // biome-ignore lint/suspicious/noArrayIndexKey: TODO fix later
+                j
+              }`}
               width={squareSize}
               x={j * squareSize}
               y={i * squareSize}
             />
-          ))
+          )),
         )}
       </g>
     </svg>

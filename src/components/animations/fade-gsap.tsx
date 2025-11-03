@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import gsap from 'gsap';
-import type React from 'react';
-import { useLayoutEffect, useRef } from 'react';
-import { cn } from '@/lib/utils';
+import gsap from "gsap";
+import type React from "react";
+import { useLayoutEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 interface FadeContainerGsapProps {
   children: React.ReactNode;
@@ -16,12 +16,12 @@ interface FadeItemGsapProps {
   className?: string;
 }
 
-const containerInitialHidden = { opacity: 0, filter: 'blur(4px)' };
-const containerTargetShow = { opacity: 1, filter: 'blur(0px)' };
+const containerInitialHidden = { opacity: 0, filter: "blur(4px)" };
+const containerTargetShow = { opacity: 1, filter: "blur(0px)" };
 
-const itemInitialHidden = { opacity: 0, y: 10, filter: 'blur(4px)' };
-const itemTargetShow = { opacity: 1, y: 0, filter: 'blur(0px)' };
-const itemTransitionConfig = { duration: 0.6, ease: 'easeInOut' };
+const itemInitialHidden = { opacity: 0, y: 10, filter: "blur(4px)" };
+const itemTargetShow = { opacity: 1, y: 0, filter: "blur(0px)" };
+const itemTransitionConfig = { duration: 0.6, ease: "easeInOut" };
 
 const DEFAULT_STAGGER_DELAY = 0.129;
 
@@ -63,14 +63,14 @@ const FadeContainerGsap: React.FC<FadeContainerGsapProps> = ({
         {
           ...containerTargetShow,
           duration: 0.5, // Animation duration for the container itself
-          ease: 'power2.out',
-        }
+          ease: "power2.out",
+        },
       );
 
       // Animate direct children of the container
       if (containerRef.current) {
         const childElements = gsap.utils.toArray<Element>(
-          containerRef.current.children
+          containerRef.current.children,
         );
 
         if (childElements.length > 0) {
@@ -83,7 +83,7 @@ const FadeContainerGsap: React.FC<FadeContainerGsapProps> = ({
               ease: itemTransitionConfig.ease,
               stagger: staggerDelay,
             },
-            '<0.2' // Start child animations 0.2s after the container animation begins
+            "<0.2", // Start child animations 0.2s after the container animation begins
           );
         }
       }

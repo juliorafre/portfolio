@@ -1,25 +1,25 @@
-'use client';
-import { useCopyToClipboard } from '@uidotdev/usehooks';
-import { CheckIcon, CopyIcon } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
-import { isValidElement, useMemo, useState } from 'react';
+"use client";
+import { useCopyToClipboard } from "@uidotdev/usehooks";
+import { CheckIcon, CopyIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { isValidElement, useMemo, useState } from "react";
 
 // import Image from 'next/image';
 
 const Highlight = ({ children }: { children: React.ReactNode }) => {
-  const [isCopied, setIsCopied] = useState('idle');
+  const [isCopied, setIsCopied] = useState("idle");
   const [, copyToClipboardFunction] = useCopyToClipboard();
 
   const text = useMemo(() => {
     const extractText = (node: React.ReactNode): string => {
-      if (!node) return '';
+      if (!node) return "";
 
-      if (typeof node === 'string' || typeof node === 'number') {
+      if (typeof node === "string" || typeof node === "number") {
         return String(node);
       }
 
       if (Array.isArray(node)) {
-        return node.map(extractText).join('\n');
+        return node.map(extractText).join("\n");
       }
 
       if (isValidElement(node)) {
@@ -29,23 +29,23 @@ const Highlight = ({ children }: { children: React.ReactNode }) => {
         }>;
 
         // If it's a paragraph element, extract its children
-        if (element.type === 'p') {
+        if (element.type === "p") {
           return extractText(element.props.children);
         }
         // For other elements, recursively extract text from children
         return extractText(element.props.children);
       }
 
-      return '';
+      return "";
     };
     return extractText(children);
   }, [children]);
 
   const copyToClipboard = () => {
     copyToClipboardFunction(text);
-    setIsCopied('copied');
+    setIsCopied("copied");
     const timeout = setTimeout(() => {
-      setIsCopied('idle');
+      setIsCopied("idle");
     }, 2000);
     return () => clearTimeout(timeout);
   };
@@ -61,8 +61,9 @@ const Highlight = ({ children }: { children: React.ReactNode }) => {
         className="absolute top-0 right-0 z-90 size-50 drop-shadow-xl translate-x-1/3 -translate-y-1/3"
       /> */}
       <button
+        type="button"
         className="absolute top-2 right-2 z-50 grid cursor-pointer place-items-center overflow-hidden rounded-md bg-neutral-300/40 p-2 opacity-100 backdrop-blur transition-all duration-300 hover:bg-neutral-300 group-hover:opacity-100 md:opacity-0 dark:bg-neutral-800/40 dark:hover:bg-neutral-700"
-        disabled={isCopied === 'copied'}
+        disabled={isCopied === "copied"}
         onClick={copyToClipboard}
       >
         <AnimatePresence initial={false} mode="popLayout">
@@ -71,9 +72,9 @@ const Highlight = ({ children }: { children: React.ReactNode }) => {
             exit={{ opacity: 0, y: 25 }}
             initial={{ opacity: 0, y: -25 }}
             key={isCopied}
-            transition={{ type: 'spring', duration: 0.54, bounce: 0.4 }}
+            transition={{ type: "spring", duration: 0.54, bounce: 0.4 }}
           >
-            {isCopied === 'copied' ? (
+            {isCopied === "copied" ? (
               <CheckIcon className="h-4 w-4" />
             ) : (
               <CopyIcon className="h-4 w-4" />

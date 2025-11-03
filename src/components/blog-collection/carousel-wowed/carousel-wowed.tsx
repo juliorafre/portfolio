@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import gsap from 'gsap';
-import { Observer } from 'gsap/Observer';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import gsap from "gsap";
+import { Observer } from "gsap/Observer";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(Observer, ScrollTrigger);
 
@@ -22,7 +22,7 @@ const CarouselWowed = ({ images }: CarouselWowedProps) => {
     const container = containerRef.current;
     if (!container) return;
 
-    const cards = container.querySelectorAll('.carousel-card');
+    const cards = container.querySelectorAll(".carousel-card");
 
     // Create a continuous animation based on scroll position
     const updateCardScales = () => {
@@ -59,11 +59,11 @@ const CarouselWowed = ({ images }: CarouselWowedProps) => {
     const ticker = gsap.ticker.add(updateCardScales);
 
     // Also listen to scroll events for immediate updates
-    container.addEventListener('scroll', updateCardScales, { passive: true });
+    container.addEventListener("scroll", updateCardScales, { passive: true });
 
     return () => {
       gsap.ticker.remove(ticker);
-      container.removeEventListener('scroll', updateCardScales);
+      container.removeEventListener("scroll", updateCardScales);
     };
   }, []);
 
@@ -74,15 +74,16 @@ const CarouselWowed = ({ images }: CarouselWowedProps) => {
         id="carousel-wowed-container"
         ref={containerRef}
         style={{
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none',
-          paddingLeft: '12.5vw',
-          paddingRight: '12.5vw',
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          paddingLeft: "12.5vw",
+          paddingRight: "12.5vw",
         }}
       >
         {images.map((image, index) => (
           <div
             className="carousel-card flex h-full w-[65vw] shrink-0 snap-center items-center justify-center md:w-[20vw] md:snap-start"
+            // biome-ignore lint/suspicious/noArrayIndexKey: TODO resolve key
             key={index}
           >
             <div className="relative aspect-square h-auto w-[65vw]">

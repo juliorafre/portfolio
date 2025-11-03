@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { animate, useMotionValue } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { animate, useMotionValue } from "motion/react";
+import { useEffect, useState } from "react";
 
 interface useAnimatedTextProps {
   text: string;
@@ -14,7 +14,7 @@ const useAnimatedText = ({ text }: useAnimatedTextProps) => {
   useEffect(() => {
     const controls = animate(animatedCursor, text.length, {
       duration: 1.85,
-      ease: 'linear',
+      ease: "linear",
       onUpdate: (latest) => {
         setCursor((prevValue) => {
           if (latest < prevValue) {

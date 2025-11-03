@@ -1,7 +1,7 @@
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import BlogHeader from '@/components/blog-header';
-import { getBlogPostList, loadBlogPost } from '@/lib/file-helper';
-import components from '@/lib/mdx-components';
+import { MDXRemote } from "next-mdx-remote/rsc";
+import BlogHeader from "@/components/blog-header";
+import { getBlogPostList, loadBlogPost } from "@/lib/file-helper";
+import components from "@/lib/mdx-components";
 
 export async function generateStaticParams() {
   // Evaluate this generateStaticParams function is needed?
@@ -19,9 +19,54 @@ export const generateMetadata = async ({
 }) => {
   const { slug } = await params;
   const { frontmatter } = await loadBlogPost(slug);
+
   return {
     title: `${frontmatter.title} • Julio Ramirez`,
     description: frontmatter.abstract,
+    authors: [
+      {
+        name: frontmatter.author,
+        url: "https://www.juliorafre.com/about",
+      },
+    ],
+    creator: frontmatter.author,
+    publisher: "Julio Ramirez",
+    keywords: [
+      ...(frontmatter.tags || []),
+      "frontend development",
+      "web development",
+      "julio ramirez",
+      `${frontmatter.type} article`,
+    ],
+    publishedTime: frontmatter.publishedOn,
+    modifiedTime: frontmatter.lastModified || frontmatter.publishedOn,
+    alternates: {
+      canonical: `./blog/${slug}`,
+    },
+    openGraph: {
+      title: frontmatter.title,
+      description: frontmatter.abstract,
+      type: "article",
+      url: `./blog/${slug}`,
+      siteName: "Julio Ramirez Journal",
+      locale: "en_US",
+      publishedTime: frontmatter.publishedOn,
+      modifiedTime: frontmatter.lastModified || frontmatter.publishedOn,
+      authors: [frontmatter.author],
+      section: frontmatter.type === "journal" ? "Journal" : "Blog",
+      tags: frontmatter.tags,
+    },
+    robots: {
+      index: frontmatter.published !== false,
+      follow: true,
+      googleBot: {
+        index: frontmatter.published !== false,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
   };
 };
 

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light dark;
+
   --font-jetbrains-mono: "JetBrains Mono", monospace;
   --font-inter: "Inter", sans-serif;
   --font-amatic-sc: "Amatic SC", cursive;
@@ -93,7 +95,7 @@
   }
 }
 
-@theme inline {
+@theme {
   --font-instrument-serif: var(--font-instrument-serif), serif;
   --font-crimson-pro: var(--font-crimson-pro), serif;
   --font-inter: var(--font-inter), sans-serif;
@@ -105,8 +107,6 @@
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -154,26 +154,36 @@
     0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-color: 0deg 0% 62%;
   --shadow-elevation-low:
-    -0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.48),
-    -0.3px 0.3px 0.4px -1.7px hsl(var(--shadow-color) / 0.4),
-    -0.7px 0.7px 1px -3.4px hsl(var(--shadow-color) / 0.31);
+    -0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.48), -0.3px 0.3px 0.4px -1.7px hsl(
+      var(--shadow-color) /
+      0.4
+    ), -0.7px 0.7px 1px -3.4px hsl(var(--shadow-color) / 0.31);
   --shadow-elevation-medium:
-    -0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.41),
-    -0.4px 0.3px 0.5px -0.9px hsl(var(--shadow-color) / 0.36),
-    -0.8px 0.7px 1px -1.7px hsl(var(--shadow-color) / 0.32),
-    -1.8px 1.6px 2.4px -2.6px hsl(var(--shadow-color) / 0.27),
-    -3.6px 3.3px 4.8px -3.4px hsl(var(--shadow-color) / 0.23);
+    -0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.41), -0.4px 0.3px 0.5px -0.9px hsl(
+      var(--shadow-color) /
+      0.36
+    ), -0.8px 0.7px 1px -1.7px hsl(var(--shadow-color) / 0.32),
+    -1.8px 1.6px 2.4px -2.6px hsl(var(--shadow-color) / 0.27), -3.6px 3.3px 4.8px -3.4px hsl(
+      var(--shadow-color) /
+      0.23
+    );
   --shadow-elevation-high:
-    -0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.38),
-    -0.6px 0.6px 0.8px -0.4px hsl(var(--shadow-color) / 0.36),
-    -1.1px 1px 1.5px -0.8px hsl(var(--shadow-color) / 0.34),
-    -1.8px 1.6px 2.4px -1.1px hsl(var(--shadow-color) / 0.32),
-    -2.8px 2.6px 3.8px -1.5px hsl(var(--shadow-color) / 0.29),
-    -4.4px 3.9px 5.8px -1.9px hsl(var(--shadow-color) / 0.27),
-    -6.5px 5.9px 8.6px -2.3px hsl(var(--shadow-color) / 0.25),
-    -9.5px 8.6px 12.6px -2.7px hsl(var(--shadow-color) / 0.23),
-    -13.4px 12.1px 17.7px -3.1px hsl(var(--shadow-color) / 0.21),
+    -0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.38), -0.6px 0.6px 0.8px -0.4px hsl(
+      var(--shadow-color) /
+      0.36
+    ), -1.1px 1px 1.5px -0.8px hsl(var(--shadow-color) / 0.34),
+    -1.8px 1.6px 2.4px -1.1px hsl(var(--shadow-color) / 0.32), -2.8px 2.6px 3.8px -1.5px hsl(
+      var(--shadow-color) /
+      0.29
+    ), -4.4px 3.9px 5.8px -1.9px hsl(var(--shadow-color) / 0.27),
+    -6.5px 5.9px 8.6px -2.3px hsl(var(--shadow-color) / 0.25), -9.5px 8.6px 12.6px -2.7px hsl(
+      var(--shadow-color) /
+      0.23
+    ), -13.4px 12.1px 17.7px -3.1px hsl(var(--shadow-color) / 0.21),
     -18.4px 16.7px 24.4px -3.4px hsl(var(--shadow-color) / 0.19);
+
+  --aspect-showcase: 1.5 / 1;
+  --aspect-wide: 3 / 2;
 }
 
 @layer base {
@@ -246,443 +256,444 @@
     @apply text-muted-foreground mt-2 text-center text-sm italic;
   }
 
-  * {
-    @apply border-border outline-ring/50;
+  :where(hr, button, input, textarea, select, [class*="border"]) {
+    border-color: var(--color-border);
+  }
+
+  :where(*, :before, :after) {
+    outline-color: var(--color-ring);
   }
 }
 
-@layer components {
-  .header {
-    background: hsl(0deg 0% 100% / 0.25);
-    backdrop-filter: blur(8px);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+/* Header and backdrop components */
+.header {
+  background: hsl(0deg 0% 100% / 0.25);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+@utility backdrop-glass {
+  @apply pointer-events-none absolute inset-0;
+  background: linear-gradient(
+    to bottom,
+    hsl(0, 0%, 95%, 0.8) 0%,
+    transparent 100%
+  );
+  backdrop-filter: blur(8px) brightness(100%) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) brightness(100%) saturate(140%);
+  mask-image: linear-gradient(to bottom, black 0% 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0% 50%,
+    transparent 100%
+  );
+}
+
+.header-mobile {
+  background: hsl(0deg 0% 100% / 0.95);
+}
+
+@utility bg-gradient-rainbow-light {
+  @apply bg-linear-to-r from-[#efa79b]/20 via-[#90aaeb]/20 to-[#bde064]/20 dark:from-[#1A3776]/20 dark:via-[#F5315B]/20 dark:to-orange-500/20;
+}
+
+@utility bg-gradient-rainbow {
+  @apply bg-linear-to-r from-[#efa79b] via-[#90aaeb] to-[#bde064];
+}
+
+/* ----------------------------------------------------------------------------- */
+/* INFINITE CANVAS */
+/* ----------------------------------------------------------------------------- */
+
+.infinite-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: max-content;
+  will-change: transform;
+}
+
+.infinite-content {
+  display: grid;
+  width: max-content;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10vw;
+  padding: 5vw;
+}
+
+.background-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.background-grid::after {
+  content: "";
+  position: absolute;
+  background-image: url(/images/fx/grid.svg);
+  background-position: 50%;
+  -webkit-mask-image: radial-gradient(
+    circle at calc(50% - 94px) calc(50% - 93px),
+    #fff 40%,
+    transparent 75%
+  );
+  mask-image: radial-gradient(
+    circle at calc(50% - 94px) calc(50% - 93px),
+    #fff 40%,
+    transparent 75%
+  );
+  opacity: 0.4;
+  inset: -188px;
+  top: -2px;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* BLOG */
+/* ----------------------------------------------------------------------------- */
+
+@utility post-header {
+  @apply mx-auto w-full max-w-3xl px-6;
+}
+
+@utility post-content {
+  @apply flex w-full flex-col px-6 md:px-0;
+}
+
+.post-content > *:not(.wide):not(.full-wide) {
+  @apply mx-auto w-full max-w-3xl;
+}
+
+.post-content > .wide {
+  @apply mx-auto w-full max-w-4xl;
+}
+
+.post-content > .full-wide {
+  @apply mx-auto w-full max-w-full;
+}
+
+@utility video-content {
+  @apply relative mx-auto my-6 aspect-video w-full overflow-hidden rounded-lg shadow-lg;
+}
+
+@utility image-content {
+  @apply mt-0 mb-5 grid place-content-center lg:mb-10 first:lg:mt-5;
+}
+
+@utility double-image-content {
+  @apply col-span-12 grid place-content-center overflow-hidden rounded-xl py-10 lg:col-span-10 lg:col-start-2;
+}
+
+.post-content :where(p, h1, h2, h3, h4, h5, h6) {
+  overflow-wrap: break-word;
+}
+
+.post-content :where(p, h2, h3, h4, h5, h6) {
+  text-wrap: pretty;
+}
+
+.post-content > p {
+  color: #444;
+  font-size: 1.0625rem;
+  line-height: 1.7499375rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.55rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-content > p {
+    color: #ccc;
+  }
+}
+
+.post-content p:last-child {
+  margin-bottom: 0;
+}
+
+.post-content > h1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #202020;
+}
+
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #202020;
+}
+
+.post-content h2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-content :where(h1, h2, h3, h4, h5, h6) {
+    color: #ccc;
+  }
+}
+
+.post-content ul {
+  margin-bottom: 1.55rem;
+  margin-left: 1.5rem;
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+.post-content ul > * + * {
+  margin-top: 0.5rem;
+}
+
+.post-content ol {
+  margin-bottom: 1.55rem;
+  margin-left: 1.5rem;
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
+.post-content ol > * + * {
+  margin-top: 0.5rem;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* BLOG END */
+/* ----------------------------------------------------------------------------- */
+
+@utility job-protera {
+  @apply inline-block rounded-lg bg-linear-to-r from-purple-950 via-fuchsia-600 to-green-500 px-2 text-white;
+}
+
+/*
+  This code gets applied for folks using
+  browsers that support backdrop-filter.
+*/
+@supports (backdrop-filter: blur(16px)) or
+  (-webkit-backdrop-filter: blur(16px)) {
+  .header-mobile {
+    background: hsl(0deg 0% 100% / 0.5);
   }
 
-  .backdrop-glass {
-    @apply pointer-events-none absolute inset-0;
-    background: linear-gradient(
-      to bottom,
-      hsl(0, 0%, 95%, 0.8) 0%,
-      transparent 100%
-    );
-    backdrop-filter: blur(8px) brightness(100%) saturate(140%);
-    -webkit-backdrop-filter: blur(8px) brightness(100%) saturate(140%);
-    mask-image: linear-gradient(to bottom, black 0% 50%, transparent 100%);
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    background: linear-gradient(to bottom, hsl(0deg 0% 100%), transparent 100%);
+    pointer-events: none;
+  }
+
+  .backdrop-edge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--thickness);
+    background: hsl(0deg 0% 100% / 0.1);
+    -webkit-backdrop-filter: blur(12px) brightness(0.96);
+    backdrop-filter: blur(12px) brightness(0.96);
+    transform: translateY(100%);
+    pointer-events: none;
+  }
+}
+
+/*
+  This code gets applied for folks using
+  browsers that support mask-image. This
+  adds the "consider near elements"
+  optimization discussed in this article.
+*/
+@supports (mask-image: none) or (-webkit-mask-image: none) {
+  .backdrop {
+    height: 200%;
     -webkit-mask-image: linear-gradient(
       to bottom,
       black 0% 50%,
-      transparent 100%
+      transparent 50% 100%
     );
+    mask-image: linear-gradient(to bottom, black 0% 50%, transparent 50% 100%);
   }
-
-  .header-mobile {
-    background: hsl(0deg 0% 100% / 0.95);
-  }
-
-  .bg-gradient-rainbow-light {
-    @apply bg-gradient-to-r from-[#efa79b]/20 via-[#90aaeb]/20 to-[#bde064]/20 dark:from-[#1A3776]/20 dark:via-[#F5315B]/20 dark:to-orange-500/20;
-  }
-
-  .bg-gradient-rainbow {
-    @apply bg-gradient-to-r from-[#efa79b] via-[#90aaeb] to-[#bde064];
-  }
-
-  /* ----------------------------------------------------------------------------- */
-  /* INFINITE CANVAS */
-  /* ----------------------------------------------------------------------------- */
-
-  .infinite-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: max-content;
-    will-change: transform;
-  }
-
-  .infinite-content {
-    display: grid;
-    width: max-content;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10vw;
-    padding: 5vw;
-  }
-
-  .background-grid::before {
-    content: "";
-    position: absolute;
+  .backdrop-edge {
+    height: 100%;
     inset: 0;
-  }
-
-  .background-grid::after {
-    content: "";
-    position: absolute;
-    background-image: url(/images/fx/grid.svg);
-    background-position: 50%;
-    -webkit-mask-image: radial-gradient(
-      circle at calc(50% - 94px) calc(50% - 93px),
-      #fff 40%,
-      transparent 75%
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0,
+      black var(--thickness),
+      transparent var(--thickness)
     );
-    mask-image: radial-gradient(
-      circle at calc(50% - 94px) calc(50% - 93px),
-      #fff 40%,
-      transparent 75%
+    mask-image: linear-gradient(
+      to bottom,
+      black 0,
+      black var(--thickness),
+      transparent var(--thickness)
     );
-    opacity: 0.4;
-    inset: -188px;
-    left: 0;
-    top: -2px;
+  }
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+.clip-path-container {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  overflow: hidden;
+  transition: clip-path 0.25s ease;
+  clip-path: inset(0px 75% 0px 0% round 17px);
+}
+
+@utility main-container {
+  @apply mx-auto w-full max-w-3xl px-6 pt-4 pb-10 md:px-0;
+  container-type: inline-size;
+}
+
+.orchestration {
+  --delay: 120ms;
+}
+
+@container (min-width: 640px) {
+  .container-sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+/* ----------------------------------------------------------------------------- */
+/* ANIMATIONS */
+/* ----------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* ----- FADE IN ----- */
+  .animate-fade-in {
+    animation: fade-in 0.5s var(--ease-out);
   }
 
-  /* ----------------------------------------------------------------------------- */
-  /* BLOG */
-  /* ----------------------------------------------------------------------------- */
-
-  .post-header {
-    /* @apply grid w-full grid-flow-row grid-cols-12 px-6; */
-    @apply mx-auto w-full max-w-3xl px-6;
-  }
-
-  /* .post-header > * {
-    @apply col-span-12 lg:col-span-6 lg:col-start-4;
-  } */
-
-  .post-content {
-    /*  @apply grid w-full grid-flow-row-dense grid-cols-12 place-content-center px-6; */
-    @apply flex w-full flex-col px-6 md:px-0;
-  }
-
-  .post-content > *:not(.wide):not(.full-wide) {
-    /* @apply col-span-12 lg:col-span-6 lg:col-start-4; */
-    @apply mx-auto w-full max-w-3xl;
-  }
-
-  .post-content > .wide {
-    /* @apply col-span-12 lg:col-span-8 lg:col-start-3; */
-    @apply mx-auto w-full max-w-4xl;
-  }
-
-  .post-content > .full-wide {
-    /* @apply col-span-12 lg:col-span-12 lg:col-start-1; */
-    @apply mx-auto w-full max-w-full;
-  }
-
-  .post-content > .video-content {
-    @apply relative mx-auto my-6 aspect-video w-full overflow-hidden rounded-lg shadow-lg;
-  }
-
-  .post-content > .image-content {
-    @apply mt-0 mb-5 grid place-content-center lg:mb-10 first:lg:mt-5;
-  }
-
-  .post-content > .double-image-content {
-    @apply col-span-12 grid place-content-center overflow-hidden rounded-xl py-10 lg:col-span-10 lg:col-start-2;
-  }
-
-  /* .content > p > a {
-    @apply hover:text-muted-foreground underline underline-offset-3 transition-colors duration-200;
-  } */
-
-  .post-content > p,
-  .post-content > h1,
-  .post-content > h2,
-  .post-content > h3,
-  .post-content > h4,
-  .post-content > h5,
-  .post-content > h6 {
-    @apply wrap-break-word;
-  }
-
-  .post-content > p,
-  .post-content > h2,
-  .post-content > h3,
-  .post-content > h4,
-  .post-content > h5,
-  .post-content > h6 {
-    @apply text-pretty;
-  }
-
-  .post-content > p {
-    @apply leading-relaxed text-[#444] dark:text-[#ccc];
-    font-size: 1.0625rem;
-    line-height: 1.7499375rem;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.55rem;
-  }
-
-  .post-content p:last-child {
-    margin-bottom: 0;
-  }
-
-  .post-content > h1 {
-    @apply mt-4 mb-4 text-lg font-semibold text-[#202020] dark:text-[#ccc];
-  }
-
-  .post-content h2 {
-    @apply mt-4 mb-4 text-lg font-semibold text-[#202020] dark:text-[#ccc];
-  }
-
-  .post-content h3 {
-    @apply mt-2 mb-2 text-lg font-semibold text-[#202020] dark:text-[#ccc];
-  }
-
-  .post-content h4 {
-    @apply mt-2 mb-2 text-lg font-semibold text-[#202020] dark:text-[#ccc];
-  }
-
-  .post-content h5 {
-    @apply mt-2 mb-2 text-lg font-semibold text-[#202020] dark:text-[#ccc];
-  }
-
-  .post-content h6 {
-    @apply mt-2 mb-2 text-lg font-semibold text-[#202020] dark:text-[#ccc];
-  }
-
-  .post-content ul {
-    @apply mb-[1.55rem] ml-6 list-outside list-disc space-y-2;
-  }
-
-  .post-content ol {
-    @apply mb-[1.55rem] ml-6 list-inside list-decimal space-y-2;
-  }
-
-  /* ----------------------------------------------------------------------------- */
-  /* BLOG END */
-  /* ----------------------------------------------------------------------------- */
-
-  .job-protera {
-    @apply inline-block rounded-lg bg-gradient-to-r from-purple-950 via-fuchsia-600 to-green-500 px-2 text-white;
-  }
-
-  /*
-    This code gets applied for folks using
-    browsers that support backdrop-filter.
-  */
-  @supports (backdrop-filter: blur(16px)) or
-    (-webkit-backdrop-filter: blur(16px)) {
-    .header-mobile {
-      background: hsl(0deg 0% 100% / 0.5);
-    }
-
-    .backdrop {
-      position: absolute;
-      inset: 0;
-      /*
-        These prefixed properties are usually
-        added automatically by tooling:
-      */
-      -webkit-backdrop-filter: blur(16px);
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        hsl(0deg 0% 100%),
-        transparent 100%
-      ); /* prev 50% */
-      pointer-events: none;
-    }
-
-    .backdrop-edge {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: var(--thickness);
-      background: hsl(0deg 0% 100% / 0.1);
-      -webkit-backdrop-filter: blur(12px) brightness(0.96);
-      backdrop-filter: blur(12px) brightness(0.96);
-      transform: translateY(100%);
-      pointer-events: none;
-    }
-  }
-
-  /*
-    This code gets applied for folks using
-    browsers that support mask-image. This
-    adds the "consider near elements"
-    optimization discussed in this article.
-  */
-  @supports (mask-image: none) or (-webkit-mask-image: none) {
-    .backdrop {
-      height: 200%;
-      -webkit-mask-image: linear-gradient(
-        to bottom,
-        black 0% 50%,
-        transparent 50% 100%
-      );
-      mask-image: linear-gradient(to bottom, black 0% 50%, transparent 50% 100%);
-    }
-    .backdrop-edge {
-      height: 100%;
-      inset: 0;
-      -webkit-mask-image: linear-gradient(
-        to bottom,
-        black 0,
-        black var(--thickness),
-        transparent var(--thickness)
-      );
-      mask-image: linear-gradient(
-        to bottom,
-        black 0,
-        black var(--thickness),
-        transparent var(--thickness)
-      );
-    }
-  }
-
-  .scroll-smooth {
-    scroll-behavior: smooth;
-  }
-
-  .clip-path-container {
-    position: absolute;
-    z-index: 10;
-    width: 100%;
-    overflow: hidden;
-    transition: clip-path 0.25s ease;
-    clip-path: inset(0px 75% 0px 0% round 17px);
-  }
-
-  .main-container {
-    @apply mx-auto w-full max-w-3xl px-6 pt-4 pb-10 md:px-0;
-  }
-
-  .orchestration {
-    --delay: 120ms;
-  }
-
-  @container (min-width: 640px) {
-    .container-sm\:text-lg {
-      font-size: 1.125rem;
-      line-height: 1.75rem;
-    }
-  }
-
-  /* ----------------------------------------------------------------------------- */
-  /* ANIMATIONS */
-  /* ----------------------------------------------------------------------------- */
-
-  @media (prefers-reduced-motion: no-preference) {
-    /* ----- FADE IN ----- */
-    .animate-fade-in {
-      animation: fade-in 0.5s var(--ease-out);
-    }
-
-    @keyframes fade-in {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* ----- SLIDE UP ----- */
-    .animate-slide-up {
-      animation: slide-up 0.5s var(--ease-out);
-    }
-
-    @keyframes slide-up {
-      from {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    /* ----- ORCHESTRATION ----- */
-
-    .orchestration-element {
+  @keyframes fade-in {
+    from {
       opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* ----- SLIDE UP ----- */
+  .animate-slide-up {
+    animation: slide-up 0.5s var(--ease-out);
+  }
+
+  @keyframes slide-up {
+    from {
       transform: translateY(20px);
-      filter: blur(4px);
+      opacity: 0;
     }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 
-    .orchestration .orchestration-element {
-      animation: paco-enter 800ms ease both;
-      animation-delay: calc(var(--delay) * var(--stagger, 1));
-    }
+  /* ----- ORCHESTRATION ----- */
 
-    .stagger-0 {
-      --stagger: 0;
-    }
-    .stagger-1 {
-      --stagger: 1;
-    }
-    .stagger-2 {
-      --stagger: 2;
-    }
-    .stagger-3 {
-      --stagger: 3;
-    }
-    .stagger-4 {
-      --stagger: 4;
-    }
-    .stagger-5 {
-      --stagger: 5;
-    }
-    .stagger-6 {
-      --stagger: 6;
-    }
-    .stagger-7 {
-      --stagger: 7;
-    }
-    .stagger-8 {
-      --stagger: 8;
-    }
-    .stagger-9 {
-      --stagger: 9;
-    }
-    .stagger-10 {
-      --stagger: 10;
-    }
-    .stagger-11 {
-      --stagger: 11;
-    }
-    .stagger-12 {
-      --stagger: 12;
-    }
-    .stagger-13 {
-      --stagger: 13;
-    }
-    .stagger-14 {
-      --stagger: 14;
-    }
-    .stagger-15 {
-      --stagger: 15;
-    }
-    .stagger-16 {
-      --stagger: 16;
-    }
-    .stagger-17 {
-      --stagger: 17;
-    }
+  .orchestration-element {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
 
-    @keyframes paco-enter {
-      to {
-        opacity: 1;
-        transform: translateY(0px);
-        filter: blur(0px);
-      }
-    }
+  .orchestration .orchestration-element {
+    animation: paco-enter 800ms ease both;
+    animation-delay: calc(var(--delay) * var(--stagger, 1));
+  }
 
-    /* ----- HIDE VEIL ----- */
-    .animate-hide-veil {
-      animation: hide-veil 1.2s var(--ease-out) forwards;
-    }
+  .stagger-0 {
+    --stagger: 0;
+  }
+  .stagger-1 {
+    --stagger: 1;
+  }
+  .stagger-2 {
+    --stagger: 2;
+  }
+  .stagger-3 {
+    --stagger: 3;
+  }
+  .stagger-4 {
+    --stagger: 4;
+  }
+  .stagger-5 {
+    --stagger: 5;
+  }
+  .stagger-6 {
+    --stagger: 6;
+  }
+  .stagger-7 {
+    --stagger: 7;
+  }
+  .stagger-8 {
+    --stagger: 8;
+  }
+  .stagger-9 {
+    --stagger: 9;
+  }
+  .stagger-10 {
+    --stagger: 10;
+  }
+  .stagger-11 {
+    --stagger: 11;
+  }
+  .stagger-12 {
+    --stagger: 12;
+  }
+  .stagger-13 {
+    --stagger: 13;
+  }
+  .stagger-14 {
+    --stagger: 14;
+  }
+  .stagger-15 {
+    --stagger: 15;
+  }
+  .stagger-16 {
+    --stagger: 16;
+  }
+  .stagger-17 {
+    --stagger: 17;
+  }
+  .stagger-18 {
+    --stagger: 18;
+  }
 
-    @keyframes hide-veil {
-      from {
-        opacity: 1;
-        filter: blur(0px);
-      }
-      to {
-        opacity: 0;
-        filter: blur(10px);
-      }
+  @keyframes paco-enter {
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+      filter: blur(0px);
+    }
+  }
+
+  /* ----- HIDE VEIL ----- */
+  .animate-hide-veil {
+    animation: hide-veil 1.2s var(--ease-out) forwards;
+  }
+
+  @keyframes hide-veil {
+    from {
+      opacity: 1;
+      filter: blur(0px);
+    }
+    to {
+      opacity: 0;
+      filter: blur(10px);
     }
   }
 }
@@ -690,15 +701,6 @@
 @utility flex-center {
   @apply flex items-center justify-center;
 }
-
-/* @utility bg-gradient-rainbow {
-  @apply bg-gradient-to-r from-[#efa79b] via-[#90aaeb] to-[#bde064];
-}
-
-@utility bg-gradient-rainbow-light {
-  @apply bg-gradient-to-r from-[#efa79b]/20 via-[#90aaeb]/20 to-[#bde064]/20;
-}
- */
 
 /* Terminal specific styles */
 .terminal-glow {
@@ -711,10 +713,7 @@
 .terminal-scanlines::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: repeating-linear-gradient(
     0deg,
     transparent,
@@ -735,6 +734,19 @@
   100% {
     opacity: 0;
   }
+}
+
+@keyframes doubledot-blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-doubledot {
+  animation: doubledot-blink steps(2) 1s infinite;
 }
 
 .terminal-cursor::after {

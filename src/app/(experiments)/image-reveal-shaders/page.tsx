@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Canvas } from '@react-three/fiber';
-import { animate } from 'motion';
-import { useMotionValue } from 'motion/react';
-import { useState } from 'react';
-import RevealImage from '@/components/image-reveal-threejs/image-reveal-material';
+import { Canvas } from "@react-three/fiber";
+import { animate } from "motion";
+import { useMotionValue } from "motion/react";
+import { useState } from "react";
+import RevealImage from "@/components/image-reveal-threejs/image-reveal-material";
 
 const ImageRevealShadersPage = () => {
   // REVEAL PROGRESS ANIMATION
@@ -14,7 +14,7 @@ const ImageRevealShadersPage = () => {
   const handleReveal = () => {
     animate(revealProgress, isRevealed ? 0 : 1, {
       duration: 1.5,
-      ease: 'easeInOut',
+      ease: "easeInOut",
     });
     setIsRevealed(!isRevealed);
   };
@@ -26,8 +26,8 @@ const ImageRevealShadersPage = () => {
         <Canvas
           className="absolute top-0 left-0 z-10"
           style={{
-            width: '300px',
-            height: '300px',
+            width: "300px",
+            height: "300px",
           }}
         >
           <RevealImage
@@ -38,6 +38,7 @@ const ImageRevealShadersPage = () => {
       </div>
       <div className="-translate-x-1/2 absolute bottom-7 left-1/2 z-50 flex items-center gap-4 text-nowrap max-sm:bottom-44">
         <button
+          type="button"
           className="rounded-md bg-neutral-800 px-4 py-2 text-sm text-white"
           onClick={handleReveal}
         >

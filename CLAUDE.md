@@ -10,13 +10,19 @@ This is a Next.js portfolio project. Use these commands for development:
 - `pnpm dev:turbo` - Start development server with Turbopack
 - `pnpm build` - Build for production
 - `pnpm start` - Start production server
-- `pnpm lint` - Run ESLint for code quality
+- `pnpm lint` - Run Biome linting and formatting checks
+- `pnpm format` - Auto-format code with Biome
+
+## Code Best Practices
+
+- Always use descriptive variable names
 
 ## Project Architecture
 
 ### Core Technologies
 - **Next.js 15** with App Router
 - **TypeScript** with strict mode
+- **Biome** for linting and formatting
 - **Tailwind CSS** for styling
 - **MDX** for content management (blog posts and case studies)
 - **GSAP** and **Motion** (previously Framer Motion) for animations and interactions

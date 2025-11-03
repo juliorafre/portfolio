@@ -1,9 +1,8 @@
-import { AnimationOrchestrator } from '@/components/animations/animation-orchestrator';
-import CustomLink from '@/components/custom-link';
-import Hero from '@/components/hero';
-import ResumeLink from '@/components/resume-link';
-import { RRSSLink } from '@/components/rrss-link';
-import { getReadingBooks } from './blog/actions';
+import { AnimationOrchestrator } from "@/components/animations/animation-orchestrator";
+import CustomLink from "@/components/custom-link";
+import Hero from "@/components/hero";
+import { RRSSLink } from "@/components/rrss-link";
+import { getReadingBooks } from "./blog/actions";
 
 export default async function Home() {
   const listOfBooks = await getReadingBooks();
@@ -12,56 +11,64 @@ export default async function Home() {
 
   return (
     <AnimationOrchestrator
-      className="container mx-auto flex h-full max-w-3xl flex-col items-center justify-center space-y-10 px-6 py-10 md:px-0"
+      className="container mx-auto flex h-full max-w-3xl flex-col items-center justify-center space-y-6 px-6 py-10 md:px-0"
       sessionKey="homePageAnimation"
     >
       {/* Hero */}
       <Hero className="orchestration-element stagger-0" />
 
       {/* About */}
-      <section className="orchestration-element stagger-1" id="about">
-        <h2 className="text-base">About me</h2>
-        <p className="text-base text-muted-foreground">
+      <section className="orchestration-element stagger-1 w-full" id="about">
+        <h2 className="hidden text-base">About me</h2>
+        <p className="hidden text-base text-muted-foreground">
           {/* I craft impactful, user-centric products, focusing on seamless interactions and interface
           design. Passionate about collaboration, I thrive in multidisciplinary teams, always
           learning and innovating. Specializing in React, TypeScript, and modern web architectures,
           I build high-performance, scalable applications with real-time data and interactive UIs.
           Currently exploring motion design, GSAP, and Motion (prev framer-motion) to push digital experiences further. */}
           I’m a frontend developer passionate about turning ideas into seamless,
-          interactive experiences. Currently diving into GSAP and Motion{' '}
+          interactive experiences. Currently diving into GSAP and Motion{" "}
           <span className="whitespace-nowrap">(prev framer-motion)</span> to
           craft more dynamic digital moments.
         </p>
-        <div className="mt-4 flex items-center gap-x-2 font-light text-sm uppercase">
-          <RRSSLink href="mailto:juliorafre@gmail.com" platform="email" />
-          <span className="text-muted-foreground text-xs">✦</span>
-          <RRSSLink href="https://github.com/juliorafre" platform="github" />
-          <span className="text-muted-foreground text-xs">✦</span>
-          <RRSSLink href="https://x.com/juliorafre" platform="x" />
-          <span className="text-muted-foreground text-xs">✦</span>
+        <div className="flex flex-wrap items-center gap-3">
+          <RRSSLink href="mailto:juliorafre@gmail.com" platform="email">
+            Email
+          </RRSSLink>
+          {/*   <span className="text-muted-foreground text-xs">✦</span> */}
+          <RRSSLink href="https://github.com/juliorafre" platform="rrss">
+            GitHub
+          </RRSSLink>
+          {/*  <span className="text-muted-foreground text-xs">✦</span> */}
+          <RRSSLink href="https://x.com/juliorafre" platform="rrss">
+            X
+          </RRSSLink>
+          {/*  <span className="text-muted-foreground text-xs">✦</span> */}
           <RRSSLink
             href="https://www.linkedin.com/in/juliorafre/"
-            platform="linkedin"
-          />
-          <span className="text-muted-foreground text-xs">✦</span>
-          <ResumeLink />
+            platform="rrss"
+          >
+            LinkedIn
+          </RRSSLink>
+          {/*  <span className="text-muted-foreground text-xs">✦</span> */}
+          {/*   <ResumeLink /> */}
         </div>
       </section>
 
       {/* Today */}
       <section className="orchestration-element stagger-2 w-full" id="today">
-        <h2 className="text-base">Today</h2>
+        <h2 className="hidden text-base">Today</h2>
         <p className="text-base text-muted-foreground">
-          Listening to{' '}
+          Listening to{" "}
           <CustomLink href="https://podcasts.apple.com/us/podcast/the-pragmatic-engineer/id1769051199">
             The Pragmatic Engineer
-          </CustomLink>{' '}
-          by{' '}
+          </CustomLink>{" "}
+          by{" "}
           <span className="text-black dark:text-muted-foreground">
             Gergely Orosz
-          </span>{' '}
-          <br /> Reading{' '}
-          <CustomLink href={bookReading.url}>{bookReading.title}</CustomLink> by{' '}
+          </span>{" "}
+          <br /> Reading{" "}
+          <CustomLink href={bookReading.url}>{bookReading.title}</CustomLink> by{" "}
           <span className="text-black dark:text-muted-foreground">
             {bookReading.author}
           </span>
