@@ -16,9 +16,9 @@ import { cn } from "@/lib/utils";
 import { experiences } from "@/modules/about/data";
 
 const images = [
-  "/images/about/1.png",
   "/images/about/2.png",
   "/images/about/3.png",
+  "/images/about/1.png",
 ];
 
 const AboutClient = () => {
