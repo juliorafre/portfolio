@@ -19,16 +19,24 @@ const InfiniteVeil = () => {
       )}
       id="infinite-canvas-veil"
     >
-      <p className="mt-6 font-instrument-serif text-4xl dark:text-gray-800">
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        className="mt-6 font-instrument-serif text-4xl md:text-5xl dark:text-gray-800"
+      >
         Memories
-      </p>
-      <button
+      </motion.p>
+      <motion.button
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1 }}
         type="button"
-        className="inset-shadow-lg inset-shadow-white-200/50 h-[46px] cursor-pointer rounded-full border border-neutral-700/10 bg-neutral-200/80 px-6 py-1 text-sm transition-all hover:bg-neutral-200/90 md:h-auto dark:text-gray-800"
+        className="inset-shadow-lg inset-shadow-white-200/50 h-[46px] cursor-pointer rounded-full border border-neutral-700/10 bg-neutral-200/90 px-6 py-1 text-sm hover:bg-neutral-200/90 active:scale-95 md:h-auto dark:text-gray-800"
         onClick={handleHideVeil}
       >
         Explore
-      </button>
+      </motion.button>
     </motion.div>
   );
 };

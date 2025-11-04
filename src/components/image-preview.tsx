@@ -38,12 +38,12 @@ const ImagePreview = ({ src, alt, width, height }: ImagePreviewProps) => {
               <MotionImage
                 alt={alt}
                 className="rounded-lg object-cover"
+                width={width}
                 height={height}
                 layoutId="image-preview"
                 priority
                 sizes="100%"
                 src={src}
-                width={width}
               />
             </motion.div>
           </Dialog.Trigger>

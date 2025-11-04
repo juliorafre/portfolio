@@ -3,6 +3,7 @@ import type { LenisRef } from "lenis/react";
 import { ReactLenis } from "lenis/react";
 import { useScroll } from "motion/react";
 import { useEffect, useRef } from "react";
+// @ts-expect-error: allow side-effect CSS import without types
 import "lenis/dist/lenis.css";
 import Slide from "./slide";
 
@@ -41,19 +42,19 @@ function TextParallax() {
             direction="left"
             left="-10%"
             progress={scrollYProgress}
-            src="/images/1.jpg"
+            src="/images/samples/1.jpg"
           />
           <Slide
             direction="right"
             left="-5%"
             progress={scrollYProgress}
-            src="/images/2.jpg"
+            src="/images/samples/2.jpg"
           />
           <Slide
             direction="left"
             left="-8%"
             progress={scrollYProgress}
-            src="/images/3.jpg"
+            src="/images/samples/3.jpg"
           />
         </div>
         <div className="flex h-[70vh] w-screen items-center justify-center">

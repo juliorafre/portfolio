@@ -43,18 +43,25 @@ const InfiniteCanvas = () => {
       let ObserverInstance = null;
 
       if (container && wrapper && images) {
-        gsap.to(images, {
-          duration: 1,
-          opacity: 1,
-          scale: 1,
-          ease: "elastic.out(1,1.5)",
-          delay: 1,
-          stagger: {
-            each: 0.1,
-            grid: [5, 6],
-            from: "start",
+        gsap.fromTo(
+          images,
+          {
+            opacity: 0,
+            scale: 0.8,
           },
-        });
+          {
+            duration: 1,
+            opacity: 1,
+            scale: 1,
+            ease: "elastic.out(1,1.5)",
+            delay: 1,
+            stagger: {
+              each: 0.1,
+              grid: [5, 6],
+              from: "start",
+            },
+          },
+        );
 
         // Add mouseover to images
         images.forEach((image) => {
@@ -165,7 +172,7 @@ const InfiniteCanvas = () => {
     <div className="smooth-infinite-wrapper">
       <div className="smooth-infinite-content">
         <div
-          className="@container/wrapper relative inset-shadow-lg aspect-video w-full overflow-hidden overscroll-contain rounded-2xl border border-neutral-200 bg-neutral-200"
+          className="@container/wrapper relative inset-shadow-2xl aspect-video w-full overflow-hidden overscroll-contain rounded-2xl border border-neutral-300 bg-neutral-200"
           id="infinite-canvas"
         >
           {/* Memory Card Item */}

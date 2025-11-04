@@ -46,7 +46,7 @@ const ImageWrapper = ({
   ...imageProps
 }: ImageWrapperProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const imageId = 'image-' + imageProps.alt;
+  const imageId = `image-${imageProps.alt}`;
   const containerId = `container-${imageProps.alt}`;
 
   /*const handleOpenChange = (open: boolean) => {
@@ -89,7 +89,7 @@ const ImageWrapper = ({
           }}
         >
           <MotionImage
-            /*layoutId={imageId}*/
+            layoutId={imageId}
             className={cn(
               "h-full w-full object-cover rounded-lg",
               imageProps.className,
@@ -106,7 +106,7 @@ const ImageWrapper = ({
           />
           <motion.button
             className={cn(
-              "absolute top-3 right-3 cursor-pointer rounded-full bg-white/50 p-2 md:p-2.5 opacity-100 scale-100 md:scale-50 md:opacity-0 shadow-md backdrop-blur-2xl transition-all duration-[250ms] group-hover:opacity-100 group-hover:scale-100",
+              "absolute top-3 right-3 cursor-pointer rounded-full bg-white/50 p-2 md:p-2.5 opacity-100 scale-100 md:scale-50 md:opacity-0 shadow-md backdrop-blur-2xl transition-all duration-250 group-hover:opacity-100 group-hover:scale-100",
               buttonClassName,
             )}
             onClick={() => setIsOpen(true)}
@@ -185,7 +185,7 @@ const ImageWrapper = ({
                     </motion.button>
                   </Dialog.Close>
                   <MotionImage
-                    /*layoutId={imageId}*/
+                    layoutId={imageId}
                     className={cn(
                       "object-contain size-full",
                       imageProps.className,

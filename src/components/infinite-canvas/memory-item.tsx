@@ -27,7 +27,7 @@ const MemoryItem = ({
 
   return (
     <button
-      className="image-wrapper aspect-square w-[15cqw] scale-0 transform cursor-pointer select-none opacity-0"
+      className="image-wrapper aspect-square w-[15cqw] scale-50 transform cursor-pointer select-none opacity-0"
       onClick={() => {
         onMemoryClick({
           id: memory.id,

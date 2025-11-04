@@ -11,6 +11,12 @@ import type { ComponentItemType } from "@/types/crafts";
 
 const craftComponents: ComponentItemType[] = [
   {
+    href: "/finite-canvas",
+    text: "Palmer's Finite Canvas",
+    year: 2025,
+    tags: ["gsap"],
+  },
+  {
     href: "/carousel-dragable",
     text: "Carousel Dragable",
     year: 2025,
@@ -147,7 +153,7 @@ const PlaygroundPage = () => {
           Sharing some of my experimentals components and projects.
         </p>
       </div>
-      <section className="orchestration-element stagger-1 -mx-2 grid w-[100%_+_0.5rem] grid-cols-1 gap-4 md:grid-cols-2 md:gap-2">
+      <section className="orchestration-element stagger-1 -mx-2 grid w-[100%+0.5rem] grid-cols-1 gap-4 md:grid-cols-2 md:gap-2">
         {projectsList.map((project) => (
           <ProjectItem
             description={project.description}
