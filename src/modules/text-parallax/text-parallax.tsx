@@ -3,7 +3,6 @@ import type { LenisRef } from "lenis/react";
 import { ReactLenis } from "lenis/react";
 import { useScroll } from "motion/react";
 import { useEffect, useRef } from "react";
-// @ts-expect-error: allow side-effect CSS import without types
 import "lenis/dist/lenis.css";
 import Slide from "./slide";
 

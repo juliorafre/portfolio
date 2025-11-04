@@ -96,7 +96,13 @@ const FiniteCanvas = () => {
         const newX = (currentX + deltaX) as number;
         const newY = (currentY + deltaY) as number;
 
-        const bounds = draggableInstance?.vars.bounds;
+        type Bounds = {
+          minX: number;
+          maxX: number;
+          minY: number;
+          maxY: number;
+        };
+        const bounds = draggableInstance?.vars.bounds as Bounds | undefined;
         if (!bounds) return;
         const clampedX = Math.max(bounds.minX, Math.min(bounds.maxX, newX));
         const clampedY = Math.max(bounds.minY, Math.min(bounds.maxY, newY));
