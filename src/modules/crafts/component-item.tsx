@@ -16,7 +16,7 @@ const ComponentItem = ({ component }: { component: ComponentItemType }) => {
     >
       {isHovered && (
         <motion.span
-          className="inset-0 z-10 h-auto w-full rounded-lg bg-white hidden md:absolute dark:bg-neutral-800"
+          className="inset-0 z-10 h-auto w-full rounded-lg bg-white absolute dark:bg-neutral-800"
           layoutId="bg-hovered"
           transition={{ type: "spring", bounce: 0.3, duration: 0.25 }}
         />
