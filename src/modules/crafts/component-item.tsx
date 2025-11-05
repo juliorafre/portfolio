@@ -8,7 +8,7 @@ const ComponentItem = ({ component }: { component: ComponentItemType }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <Link
-      className="-mx-3 relative flex w-[calc(100%+0.75rem)] items-center justify-between gap-x-4 rounded-lg px-3 py-3 transition-all duration-150 hover:bg-white active:scale-99 active:bg-gray-100 md:hover:bg-transparent active:dark:bg-neutral-900 hover:dark:bg-neutral-800"
+      className="-mx-3 relative grid grid-cols-[auto_1fr_auto] items-center gap-x-4 rounded-lg px-3 py-3 transition-all duration-150 hover:bg-white active:scale-99 active:bg-gray-100 md:hover:bg-transparent active:dark:bg-neutral-900 hover:dark:bg-neutral-800"
       href={component.href}
       key={component.href}
       onMouseEnter={() => setIsHovered(true)}
