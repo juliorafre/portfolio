@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { AnimationOrchestrator } from "@/components/animations/animation-orchestrator";
 import ComponentItem from "@/modules/crafts/component-item";
-// import Carousel from '@/modules/carousel/components/carousel';
-// import ImageShowcase from '@/components/image-showcase/image-showcase';
-// import InfiniteCanvas from '@/components/infinite-canvas/infinite-canvas';
 import ProjectItem, {
   type ProjectItemProps,
 } from "@/modules/crafts/project-item";
@@ -12,7 +9,7 @@ import type { ComponentItemType } from "@/types/crafts";
 const craftComponents: ComponentItemType[] = [
   {
     href: "/finite-canvas",
-    text: "Palmer's Finite Canvas",
+    text: "Finite Canvas",
     year: 2025,
     tags: ["gsap"],
   },

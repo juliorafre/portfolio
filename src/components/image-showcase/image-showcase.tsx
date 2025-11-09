@@ -5,9 +5,8 @@ import gsap from "gsap";
 import Observer from "gsap/Observer";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { RefreshCcwIcon } from "lucide-react";
-import { motion } from "motion/react";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { randomBetween } from "@/lib";
 import { sampleClothes } from "@/modules/carousel/data/sample.data";
 
@@ -15,38 +14,60 @@ gsap.registerPlugin(Observer, useGSAP, ScrollTrigger);
 
 const ImageShowcase = () => {
   const [key, setKey] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const timelineRef = useRef<GSAPTimeline | null>(null);
+
+  const handleImageLoad = useCallback((url: string) => {
+    setLoadedImages((prev) => {
+      const newSet = new Set(prev);
+      newSet.add(url);
+      return newSet;
+    });
+  }, []);
+
+  const allImagesLoaded = useMemo(() => {
+    return loadedImages.size === sampleClothes.length;
+  }, [loadedImages]);
+
+  const resetAnimation = useCallback(() => {
+    setKey((prev) => prev + 1);
+    if (timelineRef.current) {
+      timelineRef.current.restart();
+    }
+  }, []);
 
   useGSAP(
     () => {
-      if (containerRef.current) {
-        const cards = containerRef.current.querySelectorAll(".image-card");
-        gsap.fromTo(
-          cards,
-          {
-            scale: 0,
-            opacity: 1,
-            filter: "blur(10px)",
-            rotate: () => randomBetween(-80, -20),
-          },
-          {
-            scale: 1,
-            filter: "blur(0px)",
-            rotate: () => randomBetween(-5, 8),
-            ease: "elastic.out(0.4, 0.3, 0.1)", // spring-like
-            duration: 0.85,
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: containerRef.current,
-              scrub: false,
-              start: "top 60%",
-              end: `+=${window.innerHeight / 1.2}`,
-            },
-          },
-        );
-      }
+      if (!containerRef.current) return;
+      if (!allImagesLoaded) return;
+      timelineRef.current = gsap.timeline();
+      const timeline = timelineRef.current;
+
+      gsap.set(".image-card", {
+        scale: 0.4,
+        opacity: 0,
+        filter: "blur(4px)",
+        rotate: () => randomBetween(-80, -20),
+      });
+
+      timeline.to(".image-card", {
+        scale: 1,
+        opacity: 1,
+        filter: "blur(0px)",
+        rotate: () => randomBetween(-5, 8),
+        ease: "elastic.out(0.4, 0.3, 0.1)",
+        duration: 0.85,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          scrub: false,
+          start: "top 60%",
+          end: `+=${window.innerHeight / 1.2}`,
+        },
+      });
     },
-    { dependencies: [key], scope: containerRef },
+    { dependencies: [key, allImagesLoaded], scope: containerRef },
   );
 
   return (
@@ -71,67 +92,28 @@ const ImageShowcase = () => {
               opacity: 0,
             }}
           >
-            <motion.div
-              className="size-full"
-              whileHover={{
-                scale: 1.1,
-                transition: {
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 10,
-                },
-              }}
-            >
+            <div className="size-full">
               <Image
                 alt={img.alt}
                 className="pointer-events-none h-full w-full object-contain drop-shadow-xl"
                 height={img.height}
-                loading="lazy"
+                loading="eager"
                 src={img.url}
                 style={{
                   scale: img.scale,
                 }}
+                onLoad={() => handleImageLoad(img.url)}
                 width={img.width}
               />
-            </motion.div>
+            </div>
           </div>
         );
       })}
-      {/* Dummy card for testing */}
-      {/*       <div
-        key={'example-key'}
-        id={'example-id'}
-        className="image-card absolute aspect-square h-[30vw] max-h-[250px] w-auto bg-transparent select-none sm:h-full"
-        style={{
-          filter: 'blur(4px)',
-          transform: `translate(calc(-50% + 0), calc(-50% + 0))`,
-          transformOrigin: 'bottom center',
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          rotate: '0deg',
-        }}
-      >
-        <motion.div
-          className="size-[100px] bg-red-400"
-          whileHover={{
-            scale: 1.1,
-          }}
-          transition={{
-            type: 'spring',
-            stiffness: 300,
-            damping: 10,
-          }}
-        >
-          <p>hi</p>
-        </motion.div>
-      </div> */}
-      {/* End of dummy card */}
       <button
         aria-label="Reload animation"
         className="absolute bottom-0 left-0 mb-2 ml-2 flex cursor-pointer items-center justify-center gap-x-2 text-nowrap rounded-full bg-white/75 px-4 py-2 text-sm opacity-60 backdrop-blur-xl hover:bg-neutral-100 sm:mb-[20px] sm:ml-[20px] sm:px-2 sm:text-base dark:text-gray-900"
         id="reload-button"
-        onClick={() => setKey((prev) => prev + 1)}
+        onClick={resetAnimation}
         type="button"
       >
         <RefreshCcwIcon className="size-4 sm:size-5" />
