@@ -1,10 +1,10 @@
 /** biome-ignore-all lint/suspicious/noTemplateCurlyInString: i need those */
-import CodeBlock from "@/components/codeblock";
+// import CodeBlock from "@/components/codeblock";
 import CustomLink from "@/components/custom-link";
 import ImageShowcase from "@/components/image-showcase/image-showcase";
 
 const ImageShowcaseScreen = () => {
-  const code =
+  /* const code =
     "'use client';\n\n" +
     "import { sampleClothes } from '@/modules/carousel/data/sample.data';\n" +
     "import Image from 'next/image';\n" +
@@ -110,7 +110,7 @@ const ImageShowcaseScreen = () => {
     "    </div>\n" +
     "  );\n" +
     "};\n\n" +
-    "export default ImageShowcase;\n";
+    "export default ImageShowcase;\n"; */
 
   return (
     <div className="main-container h-full space-y-4">
@@ -125,6 +125,11 @@ const ImageShowcaseScreen = () => {
             @bartek_marzec
           </CustomLink>
         </p>
+        <p>
+          <CustomLink href="https://codepen.io/juliorafre/pen/QwyeBbP">
+            Codepen
+          </CustomLink>
+        </p>
         <p className="text-muted-foreground text-sm">
           11/09/2025: I implemented a small update for this component. Now, the
           animation begins only after all images have loaded, and the timeline
@@ -134,7 +139,7 @@ const ImageShowcaseScreen = () => {
 
       <ImageShowcase />
 
-      <CodeBlock code={code} />
+      {/* <CodeBlock code={code} /> */}
     </div>
   );
 };

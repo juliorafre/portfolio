@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Observer from "gsap/Observer";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { RefreshCcwIcon } from "lucide-react";
+import { Loader2Icon, RefreshCcwIcon } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { randomBetween } from "@/lib";
@@ -27,6 +27,7 @@ const ImageShowcase = () => {
   }, []);
 
   const allImagesLoaded = useMemo(() => {
+    /* return false; */
     return loadedImages.size === sampleClothes.length;
   }, [loadedImages]);
 
@@ -75,6 +76,12 @@ const ImageShowcase = () => {
       className="@container/image-showcase relative inset-shadow-lg aspect-video min-h-[280px] w-full overflow-hidden rounded-2xl border border-neutral-300 bg-neutral-200"
       ref={containerRef}
     >
+      {!allImagesLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Loader2Icon className=" text-neutral-400 animate-spin" />
+          <span className="sr-only">Loading images</span>
+        </div>
+      )}
       {sampleClothes.map((img, idx) => {
         return (
           <div
