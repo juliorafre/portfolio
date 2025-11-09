@@ -13,7 +13,7 @@ const BlogHeader = (props: PostMetadata) => {
           {formatDate(props.publishedOn)}
         </time>
         <h1
-          className="max-w-[50.5rem] text-balance font-instrument-serif font-semibold text-3xl lg:text-4xl"
+          className="max-w-2xl text-balance font-instrument-serif font-semibold text-3xl lg:text-4xl"
           id="title"
           style={{
             lineHeight:
@@ -23,7 +23,7 @@ const BlogHeader = (props: PostMetadata) => {
           {props.title}
         </h1>
         <div
-          className="mb-6 text-balance text-muted-foreground text-sm md:text-base"
+          className="mb-6 text-pretty text-muted-foreground text-sm md:text-base"
           id="abstract"
         >
           <p className="leading-relaxed">{props.abstract}</p>

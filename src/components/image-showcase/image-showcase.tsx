@@ -33,7 +33,7 @@ const ImageShowcase = () => {
   const resetAnimation = useCallback(() => {
     setKey((prev) => prev + 1);
     if (timelineRef.current) {
-      timelineRef.current.restart();
+      timelineRef.current.kill();
     }
   }, []);
 

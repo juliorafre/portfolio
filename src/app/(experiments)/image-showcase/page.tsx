@@ -118,12 +118,17 @@ const ImageShowcaseScreen = () => {
         <h1 className="text-lg md:text-xl">Image Showcase</h1>
         <p className="text-muted-foreground text-sm">25 April 2025</p>
       </div>
-      <div className="space-y-4">
-        <p className="order-3 max-w-prose text-base leading-tight md:max-w-full">
+      <div className="w-full max-w-prose md:max-w-full space-y-2">
+        <p>
           Small experiment replicating the sticker clothes reveal animation by{" "}
           <CustomLink href="https://x.com/bartek_marzec/status/1835432359815958530">
             @bartek_marzec
           </CustomLink>
+        </p>
+        <p className="text-muted-foreground text-sm">
+          11/09/2025: I implemented a small update for this component. Now, the
+          animation begins only after all images have loaded, and the timeline
+          control follows GSAP best practices for improved reliability.
         </p>
       </div>
 
