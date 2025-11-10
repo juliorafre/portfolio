@@ -116,7 +116,7 @@ const ImageShowcaseScreen = () => {
     <div className="main-container h-full space-y-4">
       <div className="flex flex-col gap-y-1">
         <h1 className="text-lg md:text-xl">Image Showcase</h1>
-        <p className="text-muted-foreground text-sm">25 April 2025</p>
+        <p className="text-muted-foreground text-sm">09 Nov 2025</p>
       </div>
       <div className="w-full max-w-prose md:max-w-full space-y-2">
         <p>
@@ -126,7 +126,11 @@ const ImageShowcaseScreen = () => {
           </CustomLink>
         </p>
         <p>
-          <CustomLink href="https://codepen.io/juliorafre/pen/QwyeBbP">
+          <CustomLink
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://codepen.io/juliorafre/pen/QwyeBbP"
+          >
             Codepen
           </CustomLink>
         </p>
