@@ -309,6 +309,18 @@
   @apply bg-linear-to-r from-[#efa79b] via-[#90aaeb] to-[#bde064];
 }
 
+.gradient-1 {
+  @apply bg-linear-to-r from-[#060D4E] to-[#C531FD];
+}
+
+.gradient-2 {
+  @apply bg-linear-to-r from-[#efa79b]/30 via-[#90aaeb]/30 to-[#bde064]/30;
+}
+
+.gradient-3 {
+  @apply bg-linear-to-r from-[#3E86C6] via-[#F5315B]/80 to-orange-500/80;
+}
+
 /* ----------------------------------------------------------------------------- */
 /* INFINITE CANVAS */
 /* ----------------------------------------------------------------------------- */
