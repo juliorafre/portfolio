@@ -53,7 +53,7 @@ export const memoriesData: Memory[] = [
     place: "Louvre Museum",
     month: "Dec",
     subtitle: "Museum Day!",
-    comment: "Well, I did see it — from about 10 meters away 😅",
+    comment: "Well, I did see it from about 10 meters away 😅",
   },
   {
     id: 6,
@@ -146,7 +146,7 @@ export const memoriesData: Memory[] = [
     month: "Dec",
     subtitle: "Museum Day!",
     comment:
-      "The size of the Louvre is truly surprising — absolutely impressive.",
+      "The size of the Louvre is truly surprising absolutely impressive.",
   },
   {
     id: 16,
@@ -183,7 +183,7 @@ export const memoriesData: Memory[] = [
     month: "Dec",
     subtitle: "Amazing view!",
     comment:
-      "Im still amazed by how hard it is to grasp the size of One World — and the view is absolutely stunning!",
+      "Im still amazed by how hard it is to grasp the size of One World and the view is absolutely stunning!",
   },
   {
     id: 20,
@@ -241,7 +241,7 @@ export const memoriesData: Memory[] = [
     month: "March",
     subtitle: "The best theme park I ever been!",
     comment:
-      "It was a rainy day, but it let us explore and enjoy the park with no lines at all — probably a little hack! :D",
+      "It was a rainy day, but it let us explore and enjoy the park with no lines at all, probably a little hack! :D",
   },
   {
     id: 26,

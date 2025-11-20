@@ -1,23 +1,21 @@
 import { ArrowUpRightIcon } from "lucide-react";
 import { cn } from "@/lib";
 
-type ProjectBadgeProps = {
-  type: "draft" | "new-release" | "demo";
-};
+type BadgeType = "draft" | "new-release" | "demo";
 
-const badgeTextMap: Record<ProjectBadgeProps["type"], string> = {
+const badgeTextMap: Record<BadgeType, string> = {
   draft: "Draft",
   "new-release": "New Release",
   demo: "Demo",
 };
 
-const badgeStyles: Record<ProjectBadgeProps["type"], string> = {
+const badgeStyles: Record<BadgeType, string> = {
   draft: "bg-yellow-100 text-yellow-800",
   "new-release": "bg-green-100 text-green-800",
   demo: "bg-gradient-rainbow-light text-neutral-800",
 };
 
-const ProjectBadge = ({ type }: ProjectBadgeProps) => {
+const ProjectBadge = ({ type }: { type: BadgeType }) => {
   if (!badgeTextMap[type]) {
     return null;
   }
