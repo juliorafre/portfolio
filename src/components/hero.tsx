@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { cn } from "@/lib";
 import ImageToVideo from "./header/image-to-video";
 
