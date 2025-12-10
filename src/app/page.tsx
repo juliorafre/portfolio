@@ -19,18 +19,6 @@ export default async function Home() {
 
       {/* About */}
       <section className="orchestration-element stagger-1 w-full" id="about">
-        <h2 className="hidden text-base">About me</h2>
-        <p className="hidden text-base text-muted-foreground">
-          {/* I craft impactful, user-centric products, focusing on seamless interactions and interface
-          design. Passionate about collaboration, I thrive in multidisciplinary teams, always
-          learning and innovating. Specializing in React, TypeScript, and modern web architectures,
-          I build high-performance, scalable applications with real-time data and interactive UIs.
-          Currently exploring motion design, GSAP, and Motion (prev framer-motion) to push digital experiences further. */}
-          I’m a frontend developer passionate about turning ideas into seamless,
-          interactive experiences. Currently diving into GSAP and Motion{" "}
-          <span className="whitespace-nowrap">(prev framer-motion)</span> to
-          craft more dynamic digital moments.
-        </p>
         <div className="flex flex-wrap items-center gap-3">
           <RRSSLink href="mailto:juliorafre@gmail.com" platform="email">
             Email
