@@ -14,12 +14,11 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import { experiences } from "@/modules/about/data";
+import aboutImage1 from "../../../public/images/about/1.png";
+import aboutImage2 from "../../../public/images/about/2.png";
+import aboutImage3 from "../../../public/images/about/3.png";
 
-const images = [
-  "/images/about/2.png",
-  "/images/about/3.png",
-  "/images/about/1.png",
-];
+const images = [aboutImage2, aboutImage3, aboutImage1];
 
 const AboutClient = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -70,7 +69,7 @@ const AboutClient = () => {
           {images.map((image, index) => (
             <CarouselItem
               className="h-[200px] basis-full pr-0 pl-0 md:h-[250px]"
-              key={image}
+              key={image.src}
             >
               <div className="relative h-full w-full">
                 <Image
@@ -78,6 +77,9 @@ const AboutClient = () => {
                   className="absolute inset-0 size-full object-cover"
                   src={image}
                   fill
+                  priority
+                  placeholder="blur"
+                  sizes="(max-width: 768px) 100vw, 768px"
                 />
               </div>
             </CarouselItem>
