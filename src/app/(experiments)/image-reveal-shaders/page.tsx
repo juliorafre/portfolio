@@ -2,18 +2,19 @@
 
 import { Canvas } from "@react-three/fiber";
 import { animate } from "motion";
-import { useMotionValue } from "motion/react";
+import { useMotionValue, useReducedMotion } from "motion/react";
+import Image from "next/image";
 import { useState } from "react";
 import RevealImage from "@/components/image-reveal-threejs/image-reveal-material";
 
 const ImageRevealShadersPage = () => {
-  // REVEAL PROGRESS ANIMATION
   const [isRevealed, setIsRevealed] = useState(true);
   const revealProgress = useMotionValue(0);
+  const prefersReducedMotion = useReducedMotion();
 
   const handleReveal = () => {
     animate(revealProgress, isRevealed ? 0 : 1, {
-      duration: 1.5,
+      duration: prefersReducedMotion ? 0 : 1.5,
       ease: "easeInOut",
     });
     setIsRevealed(!isRevealed);
@@ -23,18 +24,25 @@ const ImageRevealShadersPage = () => {
     <div className="main-container">
       <div className="relative flex items-center justify-center">
         <div className="absolute top-0 left-0 size-[400px] bg-green-300" />
-        <Canvas
-          className="absolute top-0 left-0 z-10"
-          style={{
-            width: "300px",
-            height: "300px",
-          }}
-        >
-          <RevealImage
-            imageTexture="/images/example.png"
-            revealProgress={revealProgress}
+        {prefersReducedMotion ? (
+          <Image
+            alt="example"
+            className="absolute top-0 left-0 z-10 size-[300px] object-cover"
+            src="/images/example.png"
+            width={300}
+            height={300}
           />
-        </Canvas>
+        ) : (
+          <Canvas
+            className="absolute top-0 left-0 z-10"
+            style={{ width: "300px", height: "300px" }}
+          >
+            <RevealImage
+              imageTexture="/images/example.png"
+              revealProgress={revealProgress}
+            />
+          </Canvas>
+        )}
       </div>
       <div className="-translate-x-1/2 absolute bottom-7 left-1/2 z-50 flex items-center gap-4 text-nowrap max-sm:bottom-44">
         <button

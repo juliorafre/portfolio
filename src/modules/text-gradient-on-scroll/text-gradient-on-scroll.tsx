@@ -19,6 +19,11 @@ const TextGradientOnScroll = () => {
   const lenisRef = useRef<LenisRef>(null);
 
   const createAnimation = useCallback(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.set(wordsRef.current, { opacity: 1 });
+      return;
+    }
+
     gsap.to(wordsRef.current, {
       scrollTrigger: {
         trigger: containerRef.current,

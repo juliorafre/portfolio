@@ -196,6 +196,13 @@
     scroll-behavior: smooth;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    button:active,
+    a:active {
+      transform: scale(0.97);
+    }
+  }
+
   *,
   *::before,
   *::after {
