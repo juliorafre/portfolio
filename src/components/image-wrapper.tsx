@@ -71,15 +71,40 @@ const ImageWrapper = ({
 
   const imageSizes = imageProps.sizes || "(max-width: 768px) 100vw, 800px";
 
+  const nextImageProps = useMemo(() => {
+    return {
+      src: imageProps.src,
+      alt: imageProps.alt,
+      width: imageProps.width,
+      height: imageProps.height,
+      priority: imageProps.priority,
+      placeholder: imageProps.placeholder,
+      blurDataURL: imageProps.blurDataURL,
+      fill: imageProps.fill,
+      quality: imageProps.quality,
+      loading: imageProps.loading,
+      unoptimized: imageProps.unoptimized,
+    };
+  }, [
+    imageProps.src,
+    imageProps.alt,
+    imageProps.width,
+    imageProps.height,
+    imageProps.priority,
+    imageProps.placeholder,
+    imageProps.blurDataURL,
+    imageProps.fill,
+    imageProps.quality,
+    imageProps.loading,
+    imageProps.unoptimized,
+  ]);
+
   if (disablePreview) {
     return (
       <div className={wrapperClassName}>
         <Image
+          {...nextImageProps}
           className={cn("h-full w-full object-cover", imageProps.className)}
-          src={imageProps.src}
-          alt={imageProps.alt}
-          width={imageProps.width}
-          height={imageProps.height}
           sizes={imageSizes}
         />
       </div>
@@ -96,14 +121,11 @@ const ImageWrapper = ({
         >
           <MotionImage
             layoutId={imageId}
+            {...nextImageProps}
             className={cn(
               "h-full w-full object-cover rounded-lg",
               imageProps.className,
             )}
-            src={imageProps.src}
-            alt={imageProps.alt}
-            width={imageProps.width}
-            height={imageProps.height}
             sizes={imageSizes}
             transition={sharedTransition}
           />
@@ -171,14 +193,11 @@ const ImageWrapper = ({
                   </Dialog.Close>
                   <MotionImage
                     layoutId={imageId}
+                    {...nextImageProps}
                     className={cn(
                       "w-full h-full object-cover rounded-lg",
                       imageProps.className,
                     )}
-                    src={imageProps.src}
-                    alt={imageProps.alt}
-                    width={imageProps.width}
-                    height={imageProps.height}
                     sizes={imageSizes}
                     priority
                     transition={sharedTransition}

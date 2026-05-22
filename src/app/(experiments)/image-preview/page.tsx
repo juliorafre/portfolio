@@ -1,6 +1,8 @@
 "use client";
 
 import ImageWrapper from "@/components/image-wrapper";
+import meImg from "../../../../public/images/components/image-preview/me.webp";
+import robotPainImg from "../../../../public/images/components/image-preview/robot-pain.webp";
 
 const ImagePreview = () => {
   return (
@@ -30,9 +32,11 @@ const ImagePreview = () => {
             key="robot"
             alt="robot"
             containerClassName="aspect-square w-full max-w-md bg-neutral-50"
-            src="/images/components/image-preview/robot-pain.webp"
+            src={robotPainImg}
             width={500}
             height={500}
+            priority
+            placeholder="blur"
           />
           <div className="px-4 py-2 font-bold font-instrument-serif text-muted-foreground flex items-center justify-between">
             <h3>Claude - Employee of the month</h3>
@@ -44,9 +48,11 @@ const ImagePreview = () => {
             key="me"
             alt="me"
             containerClassName="aspect-square w-full max-w-md bg-neutral-50"
-            src="/images/components/image-preview/me.webp"
+            src={meImg}
             width={500}
             height={500}
+            priority
+            placeholder="blur"
           />
           <div className="px-4 py-2 font-bold flex items-center text-muted-foreground font-instrument-serif justify-between">
             <h3>Me</h3>
