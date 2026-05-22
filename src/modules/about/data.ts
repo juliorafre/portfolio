@@ -2,6 +2,13 @@ import type { Experience } from "@/types/experience";
 
 export const experiences: Experience[] = [
   {
+    yearRange: "2026 - Current",
+    role: "Software Engineer II",
+    company: "Ria Money Transfer",
+    description:
+      "Developing and optimizing global money transfer web applications, focusing on scalable frontend architectures, responsive designs, and seamless transaction flows.",
+  },
+  {
     yearRange: "2024 - 2025",
     role: "Freelance Frontend Developer",
     company: "Seaview IM",
