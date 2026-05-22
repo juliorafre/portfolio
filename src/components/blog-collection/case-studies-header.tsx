@@ -4,11 +4,14 @@ const CaseStudiesHeader = ({
   timeline,
   role,
   sector,
-  for: forCompany,
+  for: forProp,
+  company,
   platform,
   techStack,
   stage,
 }: CaseStudyMetadata) => {
+  const forCompany = company || forProp;
+
   return (
     <div className="mb-10 grid grid-cols-2 gap-x-20 gap-y-4 md:grid-cols-3">
       <div>
@@ -25,14 +28,18 @@ const CaseStudiesHeader = ({
       </div>
       <div>
         <p className="text-muted-foreground/80">For</p>
-        <a
-          className="text-primary underline underline-offset-4"
-          href={forCompany.url}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          {forCompany.name}
-        </a>
+        {forCompany ? (
+          <a
+            className="text-primary underline underline-offset-4"
+            href={forCompany.url}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {forCompany.name}
+          </a>
+        ) : (
+          <p>-</p>
+        )}
       </div>
       <div>
         <p className="text-muted-foreground/80">Stage</p>

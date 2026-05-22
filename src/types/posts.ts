@@ -2,7 +2,11 @@ interface CaseStudyMetadata {
   timeline: string;
   role: string;
   sector: string;
-  for: {
+  for?: {
+    name: string;
+    url: string;
+  };
+  company?: {
     name: string;
     url: string;
   };

@@ -42,7 +42,7 @@
     "mapbox-gl": "^3.10.0",
     "motion": "^12.18.1",
     "next": "16.0.8",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "prismjs": "^1.30.0",
     "radix-ui": "^1.4.2",
     "raw-loader": "^4.0.2",

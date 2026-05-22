@@ -15,7 +15,7 @@ export interface CarouselWowedProps {
   }[];
 }
 
-const CarouselWowed = ({ images }: CarouselWowedProps) => {
+const CarouselWowed = ({ images = [] }: CarouselWowedProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
