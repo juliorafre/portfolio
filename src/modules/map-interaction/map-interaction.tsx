@@ -2,16 +2,36 @@
 
 import { MapIcon, XIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useRef, useState } from "react";
+import dynamic from "next/dynamic";
+import { useState } from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Mapbox from "./mapbox";
+
+const Mapbox = dynamic(() => import("./mapbox"), {
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#f0eeee] dark:bg-neutral-800">
+      <div className="h-8 w-8 animate-spin rounded-full border-4 border-neutral-300 border-t-neutral-800" />
+      <p className="mt-3 text-xs font-semibold text-neutral-500 font-display">
+        Loading Map...
+      </p>
+    </div>
+  ),
+});
 
 const MapInteraction = () => {
-  const mapRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [shouldLoadMap, setShouldLoadMap] = useState(false);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  const prefetchMap = () => {
+    setShouldLoadMap(true);
+  };
 
   const toggle = () => {
     setIsOpen(!isOpen);
+    if (isOpen) {
+      setIsMapLoaded(false);
+    }
   };
 
   return (
@@ -26,7 +46,13 @@ const MapInteraction = () => {
             exit={{ filter: "blur(4px)" }}
             layout
             layoutId="map-interaction"
-            onClick={toggle}
+            onClick={() => {
+              prefetchMap();
+              toggle();
+            }}
+            onMouseEnter={prefetchMap}
+            onTouchStart={prefetchMap}
+            onFocus={prefetchMap}
             transition={{
               duration: 0.25,
               type: "spring",
@@ -56,7 +82,6 @@ const MapInteraction = () => {
             id="map-interaction"
             layout
             layoutId="map-interaction"
-            ref={mapRef}
             transition={{
               duration: 0.45,
               type: "spring",
@@ -66,7 +91,7 @@ const MapInteraction = () => {
           >
             <button
               type="button"
-              className="absolute top-0 right-0 z-10 mt-2 mr-2 rounded-full bg-white/70 p-2 shadow-sm backdrop-blur-sm transition-colors hover:bg-slate-100"
+              className="absolute top-0 right-0 z-30 mt-2 mr-2 rounded-full bg-white/70 p-2 shadow-sm backdrop-blur-sm transition-colors hover:bg-slate-100"
               id="button-close-map"
               onClick={toggle}
             >
@@ -78,9 +103,28 @@ const MapInteraction = () => {
               exit={{
                 filter: "blur(4px)",
               }}
+              className="h-full w-full"
             >
-              <Mapbox />
+              {shouldLoadMap && <Mapbox onLoad={() => setIsMapLoaded(true)} />}
             </motion.div>
+
+            <AnimatePresence>
+              {!isMapLoaded && (
+                <motion.div
+                  key="loader"
+                  className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#f0eeee] dark:bg-neutral-800"
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="h-8 w-8 animate-spin rounded-full border-4 border-neutral-300 border-t-neutral-800" />
+                  <p className="mt-3 text-xs font-semibold text-neutral-500 font-display">
+                    Loading Map...
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <motion.div
               animate={{ opacity: 1, y: 0 }}
               className="absolute bottom-0 left-0 z-10 m-2 flex h-[55px] w-[120px] flex-col rounded-xl bg-white/70 px-3 py-2 leading-none shadow-sm backdrop-blur-sm"

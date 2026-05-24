@@ -2,7 +2,11 @@
 import { Map as MapboxMap, NavigationControl } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const Mapbox = () => {
+type MapboxProps = {
+  onLoad?: () => void;
+};
+
+const Mapbox = ({ onLoad }: MapboxProps) => {
   return (
     <MapboxMap
       initialViewState={{
@@ -20,6 +24,7 @@ const Mapbox = () => {
       }}
       onLoad={() => {
         console.log("map loaded");
+        onLoad?.();
       }}
       onMove={(e) => {
         console.log(e.viewState);
@@ -37,17 +42,5 @@ const Mapbox = () => {
     </MapboxMap>
   );
 };
-
-/* 
-Amsterdan
- initialViewState={{
-        longitude: 4.89545,
-        latitude: 52.38282,
-        zoom: 8,
-      }}
-      
-  mapStyle="mapbox://styles/mapbox/standard"
-      mapStyle="mapbox://styles/juliorafre/cm76r6ued00k601s3ay90huv2"
- */
 
 export default Mapbox;
